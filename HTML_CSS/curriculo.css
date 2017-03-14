@@ -1,0 +1,58 @@
+/*seletor de tag*/
+h2{
+    /*definição de uma cor de fundo de uma tag*/
+    background-color:#5599DD;
+    /*definição da cor da fonte da tag*/
+    color:#DDDDDD;
+    padding: 5px;
+}
+/*seletor de classe*/
+.exp{
+    /*definição de identação de um texto*/
+    text-indent:50px;   
+}
+/*seletor de id*/
+#email{
+    /*definição da decoração de uma fonte*/
+    text-decoration:underline;
+    /*definição do estio de uma fonte*/
+    font-style:italic;
+}
+body{
+    /*definição da cor de fundo da tela*/
+    /*background-color: #5599DD;*/
+    /*definição da cor de fonte */
+    /*color: #DDDDDD;*/
+    font-family: Arial, Helvetica;
+    /*margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;*/
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1{
+        text-decoration: overline;
+}
+h2{
+    text-decoration: line-through;
+}
+h3{
+    text-decoration: underline;
+    /*
+    none 	       Defines a normal text. This is default 	
+    underline 	   Defines a line below the text 	
+    overline 	   Defines a line above the text 	
+    line-through   Defines a line through the text 	
+    initial 	   Sets this property to its default value. Read about initial 	
+    inherit 	   Inherits this property from its parent element. Read about inherit
+    blink          para fazer com que o texto fique piscando.
+    */
+}
+p{
+    text-decoration: blink;
+}
+#header{
+    text-align:center;
+}
