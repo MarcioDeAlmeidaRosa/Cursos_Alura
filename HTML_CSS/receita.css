@@ -1,0 +1,61 @@
+body{
+    background-color: #F5F0DC;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 940px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+h2{
+    background-color: #B3A742;
+    /*padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;*/
+
+    /*para setar um valor igual para todos os lados, podemos fazer igual a atribuição de cima
+    ou a forma de baixo que é resumida*/
+
+    padding: 5px;
+    color: #FFFFFF;
+}
+
+/*definindo a cunfiguração para a tabela com id tb-nutriente*/
+#tb-nutrientes{
+    width: 40%;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid black;
+}
+
+/*definindo a cor da linha do cabeçalho da tabela*/
+#tb-nutrientes th{
+    background-color: #F8EA6B; 
+}
+
+/*definindo cor da linha para as linhas impares*/
+#tb-nutrientes tr:nth-child(odd){
+    background-color: #FFFFFF;
+}
+
+/*definindo as cores das linhas para as linhas pares*/
+#tb-nutrientes tr:nth-child(even){
+    background-color: #F8EAB3;
+}
+
+/*definindo alinhamento ee estilo de fonte no rodape de uma tabela*/
+#tb-nutrientes tfoot{
+    text-align: center;
+    font-style: italic;
+}
+
+/*definindo posicionamento horizontal para o menu de navegação superiro*/
+nav ul li{
+    display: inline;
+    margin-right: 50px;
+}
+
+/*configurando o alinhamento dos itens dentro da section criada com o nome topo*/
+#topo{
+    text-align: center;
+}
