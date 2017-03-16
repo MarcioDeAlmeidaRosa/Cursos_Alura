@@ -49,11 +49,16 @@ h2{
     color: #FFFFFF;
 }
 
+#img_receita{
+    width: 350px;
+    margin-top: 20px;
+}
+
 figure{
     background-color: #FFFFFF;
-    width: 630px;
+    width: 400px;
     text-align: center;
-    padding: 15px;
+    /*padding: 15px;*/
     font-family: 'Comic Sans MS', cursive;
     border: 1px solid black;
     /*configuração de sombra na borda
@@ -63,7 +68,6 @@ figure{
     --> E por fim o último parâmetro é a cor (rgba, que recebe 4 valores: a quantidade de vermelho, depois verde, depois azul e por fim o grau de opacidade. O valor das três cores pode variar de 0 a 255 e a opacidade de 0 a 1)
     */
     box-shadow: 5px 5px 3px rgba(0,0,0,0.7);
-    
 }
 
 /*configura a rotação da imagem somente quando passar o mouse por cima dela*/
@@ -109,10 +113,71 @@ figure:hover{
     font-style: italic;
 }
 
+/*REMOVIDO PARA APLICAR UM NOVO ESTIO DE MENU NO CANTO ESQUERDO DA TELA*/
 /*definindo posicionamento horizontal para o menu de navegação superiro*/
-nav ul li{
+/*nav ul li{
     display: inline;
     margin-right: 50px;
+}*/
+nav{
+    /*faz com que o elemento flutue em uma determinanda posição, no caso a esquerda
+    usando essa propriedade o elemento apenas flutua sem empurrar os outros elementos,
+    como se existisse uma camada para os elementos flutuantes
+    */
+    float: left;
+    width: 200px;
+}
+
+/*configura cor e espaçamento do item do menu*/
+nav ul li{
+    background-color: #C7BE9B;
+    margin-bottom: 3px;
+}
+
+/*definindo comportamento quando o mouse passar por cima do link do menu*/
+nav ul li:hover{
+    background-color: #9C8F67;
+}
+
+/*configura o link do menu*/
+nav ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+/*removendo as bolinhas dos itens do menu e espaço a esqueda*/
+nav ul{
+    list-style: none;
+    padding-left: 0px;
+}
+
+#banner{
+    top: 0;
+    right: 0;
+    /*
+       Tome nota que o "absolute" acabou top e right relativos ao browser, 
+         permitindo assim utilizarmos as propriedades top, right, left e bottom que será 
+         relativos ao primeiro pai que não seja position static.
+         O comportamento do absolute faz com que a imagem ande com o resto do texto durante 
+         o scroll.
+    */
+    /*position: absolute;*/
+
+    /*
+    Para permitir que o objeto fique sempre visive em uma determinada posição, 
+    basta usar fixed em vez de absolute
+    */
+    position: fixed;
+}
+
+/*configurando posicionamento e tamanho do bloco principal de conteúdo*/
+#conteudo{
+    /*faz com que o elemento flutue em uma determinanda posição, no caso a direita
+    usando essa propriedade o elemento apenas flutua sem empurrar os outros elementos,
+    como se existisse uma camada para os elementos flutuantes
+    */
+    float: right;
+    width: 740px;
 }
 
 /*configurando o alinhamento dos itens dentro da section criada com o nome topo*/
