@@ -8,16 +8,76 @@ body{
 
 h2{
     background-color: #B3A742;
-    /*padding-top: 5px;
+    /*configuração de gradiente na borda para o mozila/Safari/firefox
+    -->top, indica onde o degradê começa e sua direção
+    -->o segundo, #9C8F67, indica qual a cor de início do degradê
+    -->e o terceiro, #C7BE9B, indica a cor que termina o degradê
+    */
+    background: -moz-linear-gradient(top, #9C8F67, #C7BE9B 50%);
+    /*configuração de gradiente na borda para o opera
+    -->top, indica onde o degradê começa e sua direção
+    -->o segundo, #9C8F67, indica qual a cor de início do degradê
+    -->e o terceiro, #C7BE9B, indica a cor que termina o degradê
+    */
+    background: -o-linear-gradient(top, #9C8F67, #C7BE9B 30%);
+    /*configuração de gradiente na borda para o chrome
+    -->top, indica onde o degradê começa e sua direção
+    -->o segundo, #9C8F67, indica qual a cor de início do degradê
+    -->e o terceiro, #C7BE9B, indica a cor que termina o degradê
+    */
+    background: -webkit-linear-gradient(top, #9C8F67, #C7BE9B 30%);
+    /*configuração de gradiente na borda para o Internet Explorer
+    -->top, indica onde o degradê começa e sua direção
+    -->o segundo, #9C8F67, indica qual a cor de início do degradê
+    -->e o terceiro, #C7BE9B, indica a cor que termina o degradê
+    */
+    background: -ms-linear-gradient(top, #9C8F67, #C7BE9B 30%);
+    /*configuração para mexer no ângulo de raio da borda do h2*/
+    border-radius: 15px;
+    /*configuração a borda do objeto*/
+    border: 1px solid black;
+    /*para setar um valor igual para todos os lados, podemos fazer igual a atribuição abaixo comentada
+    ou a forma de baixo que é resumida*/
+    padding: 5px;
+    /*
+    padding-top: 5px;
     padding-left: 5px;
     padding-bottom: 5px;
-    padding-right: 5px;*/
-
-    /*para setar um valor igual para todos os lados, podemos fazer igual a atribuição de cima
-    ou a forma de baixo que é resumida*/
-
-    padding: 5px;
+    padding-right: 5px;
+    */
+    /*configurando a cor de fundo do objeto*/
     color: #FFFFFF;
+}
+
+figure{
+    background-color: #FFFFFF;
+    width: 630px;
+    text-align: center;
+    padding: 15px;
+    font-family: 'Comic Sans MS', cursive;
+    border: 1px solid black;
+    /*configuração de sombra na borda
+    --> o primeiro valor é a distância horizontal da sombra para o elemento
+    --> o segundo é a distância vertical
+    --> o terceiro é um pouco mais complicado, ele configura o tamanho do efeito de falta de nitidez (ou em inglês blur)
+    --> E por fim o último parâmetro é a cor (rgba, que recebe 4 valores: a quantidade de vermelho, depois verde, depois azul e por fim o grau de opacidade. O valor das três cores pode variar de 0 a 255 e a opacidade de 0 a 1)
+    */
+    box-shadow: 5px 5px 3px rgba(0,0,0,0.7);
+    
+}
+
+/*configura a rotação da imagem somente quando passar o mouse por cima dela*/
+figure:hover{
+    /*configuração de rotação de imagem para o mozila/Safari/firefox*/
+    -moz-transform: rotate(-5deg);
+    /*configuração de rotação de imagem para o opera*/
+    -o-transform: rotate(-5deg);
+    /*configuração de rotação de imagem para o chrome*/
+    -webkit-transform: rotate(-5deg);
+    /*configuração de rotação de imagem para o Internet Explorer*/
+    -ms-transform: rotate(-5deg);
+    /*configuração de rotação de imagem*/
+    transform: rotate(-5deg);
 }
 
 /*definindo a cunfiguração para a tabela com id tb-nutriente*/
@@ -58,4 +118,15 @@ nav ul li{
 /*configurando o alinhamento dos itens dentro da section criada com o nome topo*/
 #topo{
     text-align: center;
+}
+
+a{
+    /*muda a configuração do link removendo o sublinhado do mesmo*/
+    color:blue;
+    text-decoration:none;
+}
+
+a:hover{
+    /*habilita o sublinhado quando passar o mouse por cima do link*/
+    text-decoration:underline;
 }
