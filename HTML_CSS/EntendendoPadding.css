@@ -1,0 +1,31 @@
+#section_1 h1{
+    padding: 10px;
+    margin: 0;
+    background-color: yellow;
+    border: 1px solid black;
+    margin-bottom: 2px;
+}
+
+#section_2 h1{
+    padding: 10px 15px;
+    margin: 0;
+    background-color: yellow;
+    border: 1px solid black;
+    margin-bottom: 2px;
+}
+
+#section_3 h1{
+    padding: 10px 15px 20px;
+    margin: 0;
+    background-color: yellow;
+    border: 1px solid black;
+    margin-bottom: 2px;
+}
+
+#section_4 h1{
+    padding: 10px 15px 20px 25px;
+    margin: 0;
+    background-color: yellow;
+    border: 1px solid black;
+    margin-bottom: 2px;
+}
