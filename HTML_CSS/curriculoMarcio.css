@@ -1,0 +1,68 @@
+body{
+    font-family: sans-serif;
+}
+#divPagina{
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#divCabecalho{
+    text-align: center;
+}
+h2{
+    background-color: #5599DD;
+    color: #DDDDDD;
+    padding: 5px;
+}
+#experiencia_anteriores p{
+    text-indent: 50px;
+}
+.email{
+    /*underline, para adicionar uma linha abaixo do texto;*/
+    text-decoration: underline red;;
+    font-style: italic;
+}
+.telefone{
+    /*overline, para adicionar uma linha acima do texto;*/
+    text-decoration: overline wavy red;
+}
+.estadoCivil{
+    /*line-through, para adicionar uma linha ao centro do texto*/
+    text-decoration: line-through;
+}
+.nome{
+    /*blink, para fazer com que o texto fique piscando.*/
+    text-decoration: blink;
+}
+
+#section_1 h1{
+    padding: 10px;
+    margin: 0;
+    background-color: yellow;
+    border: 1px solid black;
+    margin-bottom: 2px;
+}
+
+#section_2 h1{
+    padding: 10px 15px;
+    margin: 0;
+    background-color: yellow;
+    border: 1px solid black;
+    margin-bottom: 2px;
+}
+
+#section_3 h1{
+    padding: 10px 15px 20px;
+    margin: 0;
+    background-color: yellow;
+    border: 1px solid black;
+    margin-bottom: 2px;
+}
+
+#section_4 h1{
+    padding: 10px 15px 20px 25px;
+    margin: 0;
+    background-color: yellow;
+    border: 1px solid black;
+    margin-bottom: 2px;
+}
