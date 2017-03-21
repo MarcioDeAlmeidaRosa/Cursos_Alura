@@ -1,0 +1,14 @@
+h1 {
+    font-size: 60pt;
+    background-color: rgb(120, 30, 60);
+    /*vermelho/verde/azul*/
+    color: rgb(250, 255, 250);
+    /*color: #FAFFFA; = color: rgb(250, 255, 250)*/
+    text-align: center;
+    font-family: "Open Sans", "Arial ", sans-serif;
+}
+
+h2 {
+    font-size: 30pt;
+    font-family: "Open Sans", "Arial ", sans-serif;
+}
