@@ -1,14 +1,23 @@
+body{
+    font-family: "Crimson Text", serif;
+    background-color: #F2FFFC;
+}
+h1, h2{
+    font-family: "Open Sans Condensed", sans-serif;
+}
 h1 {
     font-size: 60pt;
-    background-color: rgb(120, 30, 60);
-    /*vermelho/verde/azul*/
-    color: rgb(250, 255, 250);
-    /*color: #FAFFFA; = color: rgb(250, 255, 250)*/
+    /*background-color: rgb(120, 30, 60); = background-color: #851944*/
+    background-color: #851944;
+    /*           vermelho/verde/azul color: #FAFFFA; = color: rgb(250, 255, 250)*/
+    color: rgb(255, 255, 255);
     text-align: center;
-    font-family: "Open Sans", "Arial ", sans-serif;
 }
 
 h2 {
     font-size: 30pt;
-    font-family: "Open Sans", "Arial ", sans-serif;
+}
+
+p {
+    text-align: justify;
 }
