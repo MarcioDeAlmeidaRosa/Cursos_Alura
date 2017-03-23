@@ -1,41 +1,65 @@
 body{
     font-family: "Crimson Text", serif;
     background-color: #F2FFFC;
+    line-height: 1.5;
 }
+
 main h1, h2{
     font-family: "Open Sans Condensed", sans-serif;
 }
+
 main h1 {
-    font-size: 60pt;
+    font-size: 60px;
     /*background-color: rgb(120, 30, 60); = background-color: #851944*/
     background-color: #851944;
     /*           vermelho/verde/azul color: #FAFFFA; = color: rgb(250, 255, 250)*/
     color: rgb(255, 255, 255);
     text-align: center;
+    padding: 25px;
+    margin: 0;
+    border-bottom: 10px solid black;
+}
+
+main div{
+    width: 720px;
+    text-align: center;
+    box-sizing: 720px;
+    margin: auto;
+    padding: 30px 0;
 }
 
 main h2 {
-    font-size: 30pt;
+    font-size: 30px;
 }
 
 p {
     text-align: justify;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 main a {
     color: #851944;
 }
 
-#image_joao_da_silva{
-    top: 0;
+aside{
+    /*top: 0;
     right: 0;
-    position: fixed;
+    position: fixed;*/
     border: 5px solid black;
     margin: 0;
     background-color: #3C1D3D;
+    text-align: center;
 }
+
 aside h1{
     color: #F2FFFC;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+blockquote, aside, footer{
+    padding: 20px;
 }
 
 aside nav ul{
@@ -54,11 +78,49 @@ aside nav ul li a:hover{
     text-decoration: underline;
 }
 
-blockquote{
-    background-color: #D9E5E3;
-}
-
 footer{
     background-color: black;
     color: white;
 }
+
+blockquote{
+    border: 10px solid #C2CCCA;
+    width: 250px;
+    margin: 20px 40px;
+    box-sizing: border-box;
+    background-color: #D9E5E3;
+
+    /*border: 10px solid #C2CCCA;
+    border-bottom-color: #333;
+    border-right-color: #FFF;*/
+}
+
+/*strong{
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}*/
+/*#triangulo {
+    border-bottom: 30px solid red;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    width: 0;
+}*/
+
+/*#gravata_borboleta {
+    border-left: 30px solid red;
+    border-bottom: 30px solid transparent;
+    border-top: 30px solid transparent;
+    border-right: 30px solid red;
+    width: 0;
+}*/
+
+/*#triangulo_angulo_reto {
+    border-left: 30px solid red;
+    border-bottom: 30px solid red;
+    border-top: 30px solid transparent;
+    border-right: 30px solid transparent;
+    width: 0;
+}*/
