@@ -1,3 +1,9 @@
+/*
+*{
+    display: inline;
+}
+*/
+
 body{
     font-family: "Crimson Text", serif;
     background-color: #F2FFFC;
@@ -50,6 +56,11 @@ aside{
     margin: 0;
     background-color: #3C1D3D;
     text-align: center;
+}
+
+#redes_sociais li{
+    display: inline-block;
+    height: 40px;
 }
 
 aside h1{
