@@ -14,26 +14,6 @@ main h1, h2{
     font-family: "Open Sans Condensed", sans-serif;
 }
 
-main h1 {
-    font-size: 60px;
-    /*background-color: rgb(120, 30, 60); = background-color: #851944*/
-    background-color: #851944;
-    /*           vermelho/verde/azul color: #FAFFFA; = color: rgb(250, 255, 250)*/
-    color: rgb(255, 255, 255);
-    text-align: center;
-    padding: 25px;
-    margin: 0;
-    border-bottom: 10px solid black;
-}
-
-main div{
-    width: 720px;
-    text-align: center;
-    box-sizing: 720px;
-    margin: auto;
-    padding: 30px 0;
-}
-
 main h2 {
     font-size: 30px;
 }
@@ -46,27 +26,6 @@ p {
 
 main a {
     color: #851944;
-}
-
-aside{
-    /*top: 0;
-    right: 0;
-    position: fixed;*/
-    border: 5px solid black;
-    margin: 0;
-    background-color: #3C1D3D;
-    text-align: center;
-}
-
-#redes_sociais li{
-    display: inline-block;
-    height: 40px;
-}
-
-aside h1{
-    color: #F2FFFC;
-    font-size: 30px;
-    margin-bottom: 25px;
 }
 
 blockquote, aside, footer{
@@ -89,12 +48,72 @@ aside nav ul li a:hover{
     text-decoration: underline;
 }
 
-footer{
+.link-leia-mais{
+    font-size: 24px;
+    padding: 8px 0;
+    margin: 16px 0;
+    text-align: center;
+    display: block;    
+    background-color: #E6E7E8;
+}
+
+.artigos_bog{
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.div-main{
+    width: 720px;
+    text-align: center;
+    box-sizing: 720px;
+    margin: auto;
+    padding: 30px 0;
+}
+
+
+.conteudo-secundario{
+    /*top: 0;
+    right: 0;
+    position: fixed;*/
+    border: 5px solid black;
+    margin: 0;
+    background-color: #3C1D3D;
+    text-align: center;
+}
+
+.redes_sociais li{
+    display: inline-block;
+    height: 60px;
+}
+
+.social-rodape{
+    margin: 10px;
+}
+
+.primario-h1 {
+    font-size: 60px;
+    /*background-color: rgb(120, 30, 60); = background-color: #851944*/
+    background-color: #851944;
+    /*           vermelho/verde/azul color: #FAFFFA; = color: rgb(250, 255, 250)*/
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 25px;
+    margin: 0;
+    border-bottom: 10px solid black;
+}
+
+.secundario-h1{
+    color: #F2FFFC;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.footer{
     background-color: black;
     color: white;
 }
 
-blockquote{
+.blockquote-indicacoes{
     border: 10px solid #C2CCCA;
     width: 250px;
     margin: 20px 40px;
