@@ -42,6 +42,7 @@ aside nav ul li a{
     /*inherit = Esse valor faz com que a propriedade assuma o valor que foi definido em seu pai (ou ancestral, de um modo geral) em vez de assumir um outro valor.*/
     color: inherit;
     font-family: "Open Sans Condensed", sans-serif;
+    text-transform: lowercase;
 }
 
 aside nav ul li a:hover{
@@ -100,6 +101,7 @@ aside nav ul li a:hover{
     padding: 25px;
     margin: 0;
     border-bottom: 10px solid black;
+    text-transform: uppercase;
 }
 
 .secundario-h1{
@@ -123,6 +125,26 @@ aside nav ul li a:hover{
     /*border: 10px solid #C2CCCA;
     border-bottom-color: #333;
     border-right-color: #FFF;*/
+}
+
+.redes_sociais a{
+    width: 40px;
+    height: 40px;
+    display: block;
+    /*text-indent: -99999px;*/
+    font-size: 0;
+}
+
+.github{
+    background-image: url(github.png);
+}
+
+.twitter{
+    background-image: url(twitter.png);
+}
+
+.linkedin{
+    background-image: url(linkedin.png);
 }
 
 /*strong{
