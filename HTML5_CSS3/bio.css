@@ -82,10 +82,12 @@ aside nav ul li a:hover{
     /*top: 0;
     right: 0;
     position: fixed;*/
-    border: 5px solid black;
+    border-bottom: 10px solid black;
+    border-left: 10px solid black;
     margin: 0;
     background-color: #3C1D3D;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .redes_sociais li{
@@ -161,6 +163,12 @@ aside nav ul li a:hover{
     background-image: url(linkedin.png);
 }
 
+img {
+    border-bottom: 10px solid black;
+    border-left: 10px solid black;
+    box-sizing: border-box;
+}
+
 img, aside{
     float: right;
     width: 15%;
@@ -168,13 +176,19 @@ img, aside{
 }
 
 aside{
-    clear: right;
+    /*clear: right;*/
     padding: 20px;
     box-sizing: border-box;
 }
 
 footer{
     clear: both;
+}
+
+blockquote cite{
+    text-align: right;
+    font-style: italic;
+    display: block;
 }
 
 /*strong{
