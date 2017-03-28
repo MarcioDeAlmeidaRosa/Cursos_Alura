@@ -10,12 +10,18 @@ body{
     line-height: 1.5;
 }
 
+main{
+    float: left;
+    width: 85%;
+}
+
 main h1, h2{
     font-family: "Open Sans Condensed", sans-serif;
 }
 
 main h2 {
     font-size: 30px;
+    clear: both;
 }
 
 p {
@@ -127,12 +133,20 @@ aside nav ul li a:hover{
     border-right-color: #FFF;*/
 }
 
+.fiat{
+    float: right;
+
+}
+
+.petrobras{
+    float: left;
+}
+
 .redes_sociais a{
     width: 40px;
     height: 40px;
     display: block;
-    /*text-indent: -99999px;*/
-    font-size: 0;
+    text-indent: -99999px;
 }
 
 .github{
@@ -145,6 +159,22 @@ aside nav ul li a:hover{
 
 .linkedin{
     background-image: url(linkedin.png);
+}
+
+img, aside{
+    float: right;
+    width: 15%;
+    
+}
+
+aside{
+    clear: right;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+footer{
+    clear: both;
 }
 
 /*strong{
