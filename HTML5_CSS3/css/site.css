@@ -1,0 +1,191 @@
+/*
+*{
+    display: inline;
+}
+*/
+
+body{
+    font-family: "Crimson Text", serif;
+    background-color: #F2FFFC;
+    line-height: 1.5;
+    max-width: 2000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main{
+    float: left;
+    width: 85%;
+    padding-bottom: 30px;
+}
+
+main h1, h2{
+    font-family: "Open Sans Condensed", sans-serif;
+}
+
+main h2 {
+    font-size: 30px;
+    clear: both;
+}
+
+p {
+    text-align: justify;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+main a {
+    color: #851944;
+}
+
+blockquote, aside, footer{
+    padding: 20px;
+}
+
+aside nav ul{
+    list-style: none;
+    padding-left: 0;
+}
+
+aside nav ul li a{
+    text-decoration: none;
+    /*inherit = Esse valor faz com que a propriedade assuma o valor que foi definido em seu pai (ou ancestral, de um modo geral) em vez de assumir um outro valor.*/
+    color: inherit;
+    font-family: "Open Sans Condensed", sans-serif;
+    text-transform: lowercase;
+}
+
+aside nav ul li a:hover{
+    text-decoration: underline;
+}
+
+.div-main{
+    width: 720px;
+    text-align: center;
+    box-sizing: 720px;
+    margin: auto;
+    padding: 30px 0;
+}
+
+.conteudo-secundario{
+    /*top: 0;
+    right: 0;
+    position: fixed;*/
+    border-bottom: 10px solid black;
+    border-left: 10px solid black;
+    margin: 0;
+    background-color: #3C1D3D;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.redes_sociais li{
+    display: inline-block;
+    height: 60px;
+}
+
+.social-rodape{
+    margin: 10px;
+}
+
+.primario-h1 {
+    font-size: 60px;
+    /*background-color: rgb(120, 30, 60); = background-color: #851944*/
+    background-color: #851944;
+    /*           vermelho/verde/azul color: #FAFFFA; = color: rgb(250, 255, 250)*/
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 25px;
+    margin: 0;
+    border-bottom: 10px solid black;
+    text-transform: uppercase;
+}
+
+.secundario-h1{
+    color: #F2FFFC;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.footer{
+    background-color: black;
+    color: white;
+}
+
+
+.redes_sociais a{
+    width: 40px;
+    height: 40px;
+    display: block;
+    text-indent: -99999px;
+}
+
+.github{
+    background-image: url(../img/github.png);
+}
+
+.twitter{
+    background-image: url(../img/twitter.png);
+}
+
+.linkedin{
+    background-image: url(../img/linkedin.png);
+}
+
+img {
+    border-bottom: 10px solid black;
+    border-left: 10px solid black;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+img, aside{
+    float: right;
+}
+
+aside{
+    padding: 20px;
+    box-sizing: border-box;
+    width: 15%;
+    position: relative;
+    top: 310px;
+}
+
+footer{
+    clear: both;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/*strong{
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}*/
+/*#triangulo {
+    border-bottom: 30px solid red;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    width: 0;
+}*/
+
+/*#gravata_borboleta {
+    border-left: 30px solid red;
+    border-bottom: 30px solid transparent;
+    border-top: 30px solid transparent;
+    border-right: 30px solid red;
+    width: 0;
+}*/
+
+/*#triangulo_angulo_reto {
+    border-left: 30px solid red;
+    border-bottom: 30px solid red;
+    border-top: 30px solid transparent;
+    border-right: 30px solid transparent;
+    width: 0;
+}*/

@@ -1,0 +1,26 @@
+.ul-portfolio ul{
+    list-style: none;
+}
+
+.ul-portfolio li{
+    display: inline-block;
+    width: 45%;
+}
+
+.ul-portfolio li figure{
+    border: 8px solid black;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.ul-portfolio li img{
+    width: 230px;   
+    border: 0;
+    float: none;
+    position: relative;
+    margin: 10px;
+}
+
+.ul-portfolio li a{
+    margin: 10px;
+}
