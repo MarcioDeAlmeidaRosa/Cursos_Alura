@@ -1,6 +1,13 @@
 body{
     margin: auto;
     background-color: rgb(248, 248, 248);
+    padding: 0 10px;
+}
+
+body p{
+    font-family: 'Indie Flower', cursive;
+    text-align: justify;
+    
 }
 
 .body-principal{
@@ -31,6 +38,8 @@ body{
     display: block;
     width: 60%;
     box-sizing: border-box;
+    font-family: 'Indie Flower', cursive;
+    /*font-family: 'Shrikhand', cursive;*/
 }
 
 .header-principal nav{
