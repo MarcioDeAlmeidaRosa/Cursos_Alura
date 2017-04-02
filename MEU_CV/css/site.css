@@ -7,13 +7,55 @@ body{
 body p{
     font-family: 'Indie Flower', cursive;
     text-align: justify;
-    
+    font-size: 14pt;
+    line-height: 1.5;
 }
 
 .body-principal{
     width: 1024px;
     margin-top: 110px;
     margin-bottom: 60px;
+}
+
+.conteudo a{
+    text-decoration: none;
+    font-style: italic;
+    font-weight: bold;
+    color: #696969;
+}
+
+.conteudo h2{
+    text-transform: uppercase;
+    clear: both;
+}
+
+.conteudo a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+
+.meu-sonho p{
+    float: left;
+    text-align: center;
+    width: 60%;
+    line-height: 1.9;
+}
+
+.local-hangar{
+    float: right;
+    width: 30%;
+    text-align: center;
+}
+
+.imagem_hangar_varig_80{
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.iFrame-temporario{
+    width: 1024px;
+    height: 1924px;
+    border: 0;
 }
 
 .header-principal{
