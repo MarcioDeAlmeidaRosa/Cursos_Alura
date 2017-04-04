@@ -35,70 +35,13 @@ body p{
     color: blue;
 }
 
-.meu-sonho p{
-    float: left;
-    text-align: center;
-    width: 60%;
-    line-height: 1.9;
-}
-
-.local-hangar{
-    float: right;
-    width: 30%;
-    text-align: center;
-}
-
-.local-guilhotina{
-    float: left;
-    width: 30%;
-    text-align: center;
-}
-
-.imagem_hangar_varig_80{
-    width: 300px;
-    box-sizing: border-box;
-}
-
-.novos-horizontes-parte-1{
-
-}
-
-.novos-horizontes-parte-2{
-    float: right;
-    width: 60%;
-}
-
-.novos-horizontes-parte-2 p{
-    line-height: 1.9;
-}
-
-.novos-horizontes-parte-3{
-    clear: both;
-}
-
-.imagem_maquina_cortar_grafica{
-    width: 300px;
-    box-sizing: border-box;
-}
-
-.local-dobradeira{
-    text-align: center;
-    margin: auto;
-    width: 30%;
-}
-
-.imagem_maquina_dobrar_grafica{
-    width: 300px;
-    box-sizing: border-box;
-}
-
 .clear-fix{
     clear: both;
 }
 
 .iFrame-temporario{
     width: 1024px;
-    height: 2224px;
+    height: 2500px;
     border: 0;
 }
 
