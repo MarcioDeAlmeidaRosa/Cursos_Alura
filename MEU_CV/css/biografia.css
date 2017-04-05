@@ -5,23 +5,75 @@
     line-height: 1.9;
 }
 
-.local-hangar{
-    float: right;
-    width: 30%;
-    text-align: center;
+/*configurando tempo de abertura de imagem e tamanho máximo para dar o efeito zoom*/
+figure img {
+  max-width: 100%;
+  -moz-transition: all 1.0s;
+  -webkit-transition: all 1.0s;
+  transition: all 1.0s;
 }
 
-.local-guilhotina{
-    float: left;
-    width: 30%;
-    text-align: center;
+/*ativando o zoom das imagens*/
+figure:hover img {
+    /*da efeito esfumaçado na imagem*/
+    box-shadow: 0px 0px 150px #000000;
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(3.0);
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(3.0);
+    transition: all 200ms ease-in;
+    transform: scale(3.0);
 }
 
-.imagem_hangar_varig_80{
+/*configuração das imagens*/
+figure img {
     width: 300px;
+    /*configura a prioridade da imagem*/
+    z-index: 2;
     box-sizing: border-box;
 }
 
+/*configurando tamanho de todas as figuras*/
+figure{
+    width: 30%;
+    text-align: center;
+}
+
+/*configuração do local onde vai a imagem*/
+.local-hangar{
+    float: right;
+}
+
+/*configuração do local onde vai a imagem*/
+.local-guilhotina{
+    float: left;
+}
+
+/*configuração do local onde vai a imagem*/
+.local-dobradeira{
+    float: left;
+    position: relative;
+    top: 52px;
+}
+
+/*configuração do local onde vai a imagem*/
+.local-tipografica-catu{
+    float: right;
+    position: relative;
+    top: 52px;
+}
+
+/*configuração do local onde vai a imagem*/
+.local-davidson-offset{
+    float: right;
+}
+
+/*configuração do local onde vai a imagem*/
+.local-solna-125-offset{
+    float: left;
+}
+
+/*CONFIGURAÇÃO DOS TEXTOS*/
 .novos-horizontes-parte-1{
 
 }
@@ -45,48 +97,6 @@
     line-height: 1.9;
 }
 
-.imagem_maquina_cortar_grafica{
-    width: 300px;
-    box-sizing: border-box;
-}
-
-.local-dobradeira{
-    text-align: center;
-    width: 30%;
-    float: left;
-    position: relative;
-    top: 52px;
-}
-
-.imagem_maquina_dobrar_grafica{
-    width: 300px;
-    box-sizing: border-box;
-}
-
-.local-tipografica-catu{
-    text-align: center;
-    width: 30%;
-    float: right;
-    position: relative;
-    top: 52px;
-}
-
-.imagem_maquina_tipografica_catu_grafica{
-    width: 300px;
-    box-sizing: border-box;
-}
-
-.local-davidson-offset{
-    text-align: center;
-    width: 30%;
-    float: right;
-}
-
-.imagem_maquina_davidsonson_offset_grafica{
-    width: 300px;
-    box-sizing: border-box;
-}
-
 .novos-horizontes-parte-4{
     clear: both;
     float: left;
@@ -105,15 +115,4 @@
     width: 60%;
     position: relative;
     top: 70px;
-}
-
-.local-solna-125-offset{
-    text-align: center;
-    width: 30%;
-    float: left;
-}
-
-.imagem_maquina_solna_125_offset_grafica{
-    width: 300px;
-    box-sizing: border-box;
 }
