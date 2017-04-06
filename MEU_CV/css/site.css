@@ -1,7 +1,7 @@
 * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body{
@@ -59,10 +59,10 @@ body p{
     top: 0;
     left: 0;
     background-color: rgb(55, 89, 85);
-    background: -moz-linear-gradient(top, rgb(55, 89, 85), rgb(55, 100, 100));
-    background: -o-linear-gradient(top, rgb(55, 89, 85), rgb(55, 100, 100));
-    background: -webkit-linear-gradient(top, rgb(55, 89, 85), rgb(55, 100, 100));
-    background: -ms-linear-gradient(top, rgb(55, 89, 85), rgb(55, 100, 100));
+    background: -moz-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164));
+    background: -o-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164));
+    background: -webkit-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164));
+    background: -ms-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164));
     color: white;
 }
 
@@ -116,10 +116,10 @@ body p{
     height: 50px;
     box-sizing: border-box;
     background-color: rgb(55, 89, 85);
-    background: -moz-linear-gradient(top, rgb(55, 89, 85), rgb(55, 100, 100));
-    background: -o-linear-gradient(top, rgb(55, 89, 85), rgb(55, 100, 100));
-    background: -webkit-linear-gradient(top, rgb(55, 89, 85), rgb(55, 100, 100));
-    background: -ms-linear-gradient(top, rgb(55, 89, 85), rgb(55, 100, 100));
+    background: -moz-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164));
+    background: -o-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164));
+    background: -webkit-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164));
+    background: -ms-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164));
     color: white;
 }
 
@@ -169,4 +169,16 @@ body p{
 
 .footer-social-twitter{
     background-image: url(../img/twitter.png);
+}
+
+.borda-eslilizada-1{
+    border: 2px solid black;
+    border-radius: 15px;
+    padding-left: 12px;
+    background-color: #B3A742;
+    background: -moz-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164) 10%);
+    background: -o-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164) 10%);
+    background: -webkit-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164) 10%);
+    background: -ms-linear-gradient(top, rgb(55, 89, 85), rgb(131, 168, 164) 10%);
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
