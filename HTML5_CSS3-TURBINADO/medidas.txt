@@ -1,7 +1,13 @@
 Vimos, então, três novas medidas:
 
-px:  tem cmoo base os pexels da tela do computador. 
+px:  tem cmoo base os pexels da tela do computador (é uma medida absoluta e, por isso, pouco flexível).
 %:   tem como base ou a largura do elemento pai ou o font-size do elemento anterior.
-rem: tem como padrão a fonte do navegador;
-em:  tem como padrão a fonte do elemento pai;
+rem: tem como padrão a fonte do navegador; --> O tamanho de fonte do elemento html ou (html {font-size: 25px;} p {margin: 1rem;}), se não houver tamanho de fonte definido neste elemento, o tamanho de fonte padrão do navegador.
+em:  tem como padrão a fonte do elemento pai; --> O tamanho de fonte do elemento no qual for usada (p {font-size: 20px; margin: 1em;}). Ou seja, os parágrafos terão margem de 20 pixels.
 ch:  tem como base a largura do caractere zero da fonte usada;
+
+
+Temos duas medidas que são relativas ao tamanho de fonte: em e rem. Quais as diferenças entre elas e quando usar uma e quando usar outra?
+
+O tamanho rem possui um valor único para a página inteira, já a medida em varia de acordo com o elemento em que é utilizada. É interessante usarmos em quando queremos que a mudança de tamanho se propague pela página.
+
