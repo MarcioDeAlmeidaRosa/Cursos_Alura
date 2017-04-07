@@ -1,0 +1,7 @@
+Vimos, então, três novas medidas:
+
+px:  tem cmoo base os pexels da tela do computador. 
+%:   tem como base ou a largura do elemento pai ou o font-size do elemento anterior.
+rem: tem como padrão a fonte do navegador;
+em:  tem como padrão a fonte do elemento pai;
+ch:  tem como base a largura do caractere zero da fonte usada;
