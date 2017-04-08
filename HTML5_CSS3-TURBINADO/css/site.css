@@ -1,7 +1,11 @@
+html{
+    /*font-size: 120%;*/
+    font-size: 20px;
+}
+
 body {
     font-family: "Crimson Text", "Times New Roman", serif;
     background-color: #F2FFFC;
-    font-size: 200%;
     line-height: 1.5;
 }
 
@@ -13,19 +17,30 @@ h2,
 
 h1 {
     text-transform: uppercase;
-    font-size: 60px;
+    /*font-size: 60px;*/
 }
 
-.titulo-principal {
+/*.titulo-principal {
+    3 em -> mutilica 3x a fonte do html que agora é 120% da definida no navegador
+    font-size: 3em;
     text-align: center;
     background-color: #851944;
     color: #FFF;
-    padding: 25px;
-    border-bottom: 10px solid #000;
+    padding: 1.25em;
+    border-bottom: 0.5rem solid #000;
+}*/
+
+.titulo-principal {
+    font-size: 300%;
+    text-align: center;
+    background-color: #851944;
+    color: #FFF;
+    padding: 2rem;
+    border-bottom: .5rem solid #000;
 }
 
 .subtitulo-texto {
-    font-size: 30px;
+    font-size: 1.6em;
     clear: both;
 }
 
@@ -35,7 +50,7 @@ main a {
 
 main p {
     text-align: justify;
-    margin: 20px 0;
+    margin: 1.1em 0;
 }
 
 .navegacao-site {
@@ -107,7 +122,7 @@ em {
 }
 
 main {
-    width: 80%;
+    width: 86%;
     float: left;
     padding-bottom: 80px;
 }
@@ -120,7 +135,7 @@ main {
 }
 
 .navegacao-site {
-    width: 20%;
+    width: 14%;
     float: right;
     position: relative;
     top: 300px;

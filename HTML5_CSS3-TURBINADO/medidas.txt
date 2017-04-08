@@ -1,13 +1,26 @@
 Vimos, então, três novas medidas:
 
-px:  tem cmoo base os pexels da tela do computador (é uma medida absoluta e, por isso, pouco flexível).
-%:   tem como base ou a largura do elemento pai ou o font-size do elemento anterior.
-rem: tem como padrão a fonte do navegador; --> O tamanho de fonte do elemento html ou (html {font-size: 25px;} p {margin: 1rem;}), se não houver tamanho de fonte definido neste elemento, o tamanho de fonte padrão do navegador.
-em:  tem como padrão a fonte do elemento pai; --> O tamanho de fonte do elemento no qual for usada (p {font-size: 20px; margin: 1em;}). Ou seja, os parágrafos terão margem de 20 pixels.
-ch:  tem como base a largura do caractere zero da fonte usada;
+px:  tem como base os pexels da tela do computador (é uma medida absoluta e, por isso, pouco flexível).
+%:   tem como base a LARGURA "width" do elemento pai ou "o font-size do elemento anterior". Boa para usar quando você quer configurar uma medida a partir do tamanho do pai do objeto "tamanho do seu container".
+rem: tem como padrão a altura da FONTE DO NAVEGADOR; --> O tamanho de fonte do elemento html ==> (html {font-size: 25px;} p {margin: 1rem;}), se não houver tamanho de fonte definido neste elemento, o tamanho de fonte padrão do navegador.
+exemplo:
+fonte-size: 40px; ==> altura da fonte
+padding: 1.25rem; ==> 40*1.25=50px 
+
+ch:  tem como base a largura do caractere zero da fonte usada na página ou quando não definida, usa a configurada no browser, medida usa para definir larguras de objetos;
+
+em:  tem como padrão a altura da FONTE DO ELEMENTO PAI; --> O tamanho de fonte do elemento no qual for usada (p {font-size: 20px; margin: 1em;}). Ou seja, os parágrafos terão margem de 20 pixels.
+
+
+padding quando usado % para atribuição, pega da larguro do elemento. Podemos usar a medida rem para pegar um percentual do tamanho da fonte.
 
 
 Temos duas medidas que são relativas ao tamanho de fonte: em e rem. Quais as diferenças entre elas e quando usar uma e quando usar outra?
 
 O tamanho rem possui um valor único para a página inteira, já a medida em varia de acordo com o elemento em que é utilizada. É interessante usarmos em quando queremos que a mudança de tamanho se propague pela página.
 
+ENTENDIMENTO GERAL
+
+px é sempre px
+em é com base na medida da fonte do próprio elemento
+rem é com base na medida da fonte padrão do navegador ou se configurar um font-size no elemento html, esse fica como padrão da página.
