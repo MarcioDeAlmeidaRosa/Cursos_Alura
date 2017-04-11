@@ -1,5 +1,9 @@
-body {
+html {
     text-align: center;
+}
+
+main {
+    width: 100%;
 }
 
 .topo {
@@ -58,13 +62,13 @@ body {
     color: red;
 }
 
-section .botao-veja-mais {
+section .botao-link {
     text-align: center;
     width: 100%;
     margin-top: 3em;
 }
 
-.botao-conhece-sobre {
+.botao {
     border: 0.2em solid black;
     padding: 0.5em 2em;
     background-color: #851944;
