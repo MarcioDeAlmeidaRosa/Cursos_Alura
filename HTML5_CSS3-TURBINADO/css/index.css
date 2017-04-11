@@ -1,71 +1,95 @@
-.foto-home {
-    height: 200px;
-}
-.saudacao p {
-    color: #99A;
-    line-height: 1;
-}
-.saudacao-inicio {
-    color: #889;
-}
-.saudacao-ultima-linha {
-    text-align: right;
-    display: block;
-}
-.saudacao strong {
-    color: #000;
-}
-.saudacao em {
-    color: #851944;
-}
-.botao-index {
-    background-color: #851944;
-    color: #FFF;
-    border: .2em solid black;
-    width: 400px;
-    display: block;
+body {
     text-align: center;
 }
-.secao-inicio h2 {
-    text-transform: uppercase;
+
+.topo {
+    background-color: #851944;
+    height: 18em;
+    border-bottom: 0.4em solid black;
+    color: white;
 }
-.trabalhos {
-    background-color: #3C1D3D;
-    border-top: 10px solid #000;
-    border-bottom: 10px solid #000;
+
+.minha-imagem img {
+    height: 200px;
+    margin: 1.25em 0 0.5em 0;
 }
-.trabalhos h2 {
-    color: #FFF;
+
+.titulo-home {
+    font-size: 2em;
+    font-family: sans-serif;
+    font-weight: bold;
 }
-.trabalhos ul {
-    overflow: hidden;
-    border: 10px solid black;
+
+.titulo-sub-titulo {}
+
+.tamanho-section {
+    height: 16em;
 }
-.trabalhos li {
-    float: left;
-    width: 33.333%;
+
+.ola-jose-silva {
+    border-bottom: 0.4em solid black;
+    background-color: inherit;
+    padding-top: 100px;
 }
-.trabalhos img {
-    width: 100%;
+
+.ola-jose-silva p {
+    color: gray;
+    text-align: left;
+    width: 50em;
+}
+
+.ola {
+    font-size: 3em;
+    margin-left: 5ch;
+}
+
+.meu-nome {
+    font-size: 2em;
+    color: black;
+}
+
+.eu-contruo-nova-linha {
     display: block;
+    text-align: right;
 }
-.blog {
-    background-color: #999;
-    color: #FFF;
-    border-bottom: 10px solid #851944;
+
+.qualidade-site {
+    font-size: 3em;
+    color: red;
 }
-.blog li a {
-    color: #FCF;
-}
-footer {
-    background-color: #000;
-    color: #FFF;
-}
-footer a {
-    color: #F99;
-}
-main {
+
+section .botao-veja-mais {
+    text-align: center;
     width: 100%;
-    padding-bottom: 0;
-    float: none;
+    margin-top: 3em;
+}
+
+.botao-conhece-sobre {
+    border: 0.2em solid black;
+    padding: 0.5em 2em;
+    background-color: #851944;
+    color: white;
+}
+
+.trabalhos {
+    border-bottom: 0.4em solid black;
+    background-color: purple;
+}
+
+.trabalhos .trabalho-bmw,
+.trabalho-ibm,
+.trabalho-uol {
+    display: inline;
+}
+
+.blog {
+    border-bottom: 0.4em solid red;
+    background-color: gray;
+}
+
+.vamos-conversar {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+    color: white;
 }
