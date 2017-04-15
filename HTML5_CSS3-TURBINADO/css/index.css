@@ -6,11 +6,20 @@ main {
     width: 100%;
 }
 
+main p{
+    margin:0;
+}
+
+section{
+    height: 23em;
+    box-sizing: border-box;
+}
+
 .topo {
     background-color: #851944;
-    height: 18em;
     border-bottom: 0.4em solid black;
     color: white;
+    height: 18em;
 }
 
 .minha-imagem img {
@@ -26,25 +35,26 @@ main {
 
 .titulo-sub-titulo {}
 
-.tamanho-section {
-    height: 16em;
+.p-link{
+    width: 100%;
+    text-align: center;
+    margin-top: 2.5em;
+    clear: both;
 }
 
-.ola-jose-silva {
+.apresentacao {
     border-bottom: 0.4em solid black;
-    background-color: inherit;
-    padding-top: 100px;
 }
 
-.ola-jose-silva p {
+.apresentacao-texto {
     color: gray;
     text-align: left;
-    width: 50em;
+    padding: 3em;
 }
 
 .ola {
     font-size: 3em;
-    margin-left: 5ch;
+    margin-left: 2em;
 }
 
 .meu-nome {
@@ -52,20 +62,18 @@ main {
     color: black;
 }
 
-.eu-contruo-nova-linha {
+.eu-construo {
+    margin-left: 16em;
+}
+
+.nova-linha {
     display: block;
-    text-align: right;
+    text-align: left;
 }
 
 .qualidade-site {
     font-size: 3em;
-    color: red;
-}
-
-section .botao-link {
-    text-align: center;
-    width: 100%;
-    margin-top: 3em;
+    color: #851944;
 }
 
 .botao {
@@ -73,17 +81,43 @@ section .botao-link {
     padding: 0.5em 2em;
     background-color: #851944;
     color: white;
+    text-align: center;
+    
+    /*width: 100%;
+    margin: 4em;*/
 }
 
 .trabalhos {
     border-bottom: 0.4em solid black;
-    background-color: purple;
+    background-color: #3C1D3D;
 }
 
-.trabalhos .trabalho-bmw,
-.trabalho-ibm,
-.trabalho-uol {
-    display: inline;
+.apresentacao,.trabalhos,.blog,.vamos-conversar p{
+    color: white;
+}
+
+.paragrafo{
+    font-size: 3em;
+    margin-left: 1em;
+}
+
+.sub-paragrafo{
+    font-size: 1em;
+    margin-left: 3em;
+}
+
+.trabalho-img{
+    margin: 0 3em;
+    border: 0.4em solid black;
+    box-sizing: border-box;
+}
+
+.trabalho-img img{
+    /*display: inline;*/
+    width: 33%;
+    /*margin: 0;
+    padding: 0;*/
+    
 }
 
 .blog {
@@ -91,9 +125,29 @@ section .botao-link {
     background-color: gray;
 }
 
+.blog ul{
+    text-align: left;
+    margin-left: 3em;
+    margin-top: 2em;
+    
+}
+
+.blog a{
+    color: #FCF;
+}
+
+.vamos-conversar a{
+    color: #F99;
+}
+
 .vamos-conversar {
     width: 100%;
     height: 200px;
     background-color: black;
     color: white;
+}
+
+.estilo-link{
+    text-decoration: underline;
+    color: #F99;
 }
