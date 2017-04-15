@@ -84,9 +84,6 @@ main p{
     background-color: #851944;
     color: white;
     text-align: center;
-    
-    /*width: 100%;
-    margin: 4em;*/
 }
 
 .trabalhos {
@@ -129,6 +126,7 @@ main p{
 .blog {
     border-bottom: 0.4em solid #851944;
     background-color: #999;
+    position: relative;
 }
 
 .blog ul{
@@ -141,6 +139,17 @@ main p{
 .blog a{
     color: #FCF;
 }
+
+.inicio-post{
+    background-color: #FFF;
+    position: absolute;
+    top: 3em;
+    right: 3em;
+    height: 6em;
+    padding: 1em;
+    color: #000;
+}
+
 
 footer {
     background-color: #000;
