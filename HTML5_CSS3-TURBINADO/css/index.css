@@ -22,6 +22,7 @@ main p{
     border-bottom: 0.4em solid black;
     color: white;
     height: 18em;
+    position: relative;
 }
 
 .minha-imagem img {
@@ -35,7 +36,67 @@ main p{
     font-weight: bold;
 }
 
-.titulo-sub-titulo {}
+.palavra-home {
+    color: #D5447E;
+    font-family: "Shadows Into Light", cursive;
+    font-weight: bold;
+    position: absolute;
+}
+
+.eficiencia {
+    top: 20%;
+    left: 75%;
+}
+
+.boas-praticas{
+    top: 70%;
+    left: 20%;
+}
+
+.codigo-limpo{
+    top: 45%;
+    left: 10%;
+}
+
+.css3{
+    top: 50%;
+    left: 30%;
+}
+
+.html5{
+    top: 33%;
+    left: 80%;
+}
+
+.javascript{
+    top: 10%;
+    left: 63%;
+}
+
+.acessibilidade{
+    top: 33%;
+    left: 25%;
+}
+
+.responsivo{
+    top: 20%;
+    left: 15%;
+}
+
+.otimizacoes{
+    top: 60%;
+    left: 72%;
+}
+
+.agilidade{
+    top: 10%;
+    left: 28%;
+}
+
+.design{
+    top: 33%;
+    left: 68%;
+}
 
 .p-link{
     width: 100%;
