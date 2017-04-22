@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CV Marcio de Almeida Rosa</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+
+    <style type="text/css">
+        #container {
+            width: 200px;
+            height: 300px;
+            border: 1px solid #c30;
+            background: #ffe;
+            position: relative;
+            display: table;
+        }
+        
+        #container p {
+            *position: absolute;
+            top: 50%;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        #container span {
+            display: block;
+            *position: relative;
+            top: -50%;
+        }
+    </style>
+</head>
+
+<div id="container">
+    <p><span>Texto no meio da DIV</span></p>
+</div>
+</html>

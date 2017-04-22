@@ -1,22 +1,112 @@
-.meu-sonho p{
-    float: left;
-    text-align: center;
-    width: 60%;
+/*Início da solução para centralizar verticalmente conteúdo em uma div*/
+
+.container {
+    width: 100%;
+    height: 18.750em;
+    position: relative;
+    display: table;
+}
+
+.container p {
+    *position: absolute;
+    top: 50%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: justify;
     line-height: 1.9;
 }
 
-/*configurando tempo de abertura de imagem e tamanho máximo para dar o efeito zoom*/
-figure img {
-  max-width: 100%;
-  -moz-transition: all 1.0s;
-  -webkit-transition: all 1.0s;
-  transition: all 1.0s;
+.container figure {
+    *position: absolute;
+    top: 50%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
 
+.container span {
+    display: block;
+    *position: relative;
+    top: -50%;
+}
+
+
+/*Fim da solução para centralizar verticalmente conteúdo em uma div*/
+
+.texto-meu-sonho {
+    float: left;
+    width: 60%;
+}
+
+.imagem-meu-sonho {
+    float: right;
+    width: 35%;
+}
+
+.imagem-novos-horizontes-gilhotina {
+    float: left;
+    width: 35%;
+}
+
+.texto-novos-horizontes-gilhotina {
+    float: right;
+    width: 60%;
+}
+
+.imagem-novos-horizontes-dobradeira {
+    float: left;
+    width: 35%;
+    clear: both;
+}
+
+.texto-novos-horizontes-dobradeira {
+    float: left;
+    width: 30%;
+}
+
+.imagem-novos-horizontes-tipografia {
+    float: right;
+    width: 35%;
+}
+
+.texto-novos-horizontes-offset {
+    float: left;
+    width: 60%;
+    clear: both;
+}
+
+.imagem-novos-horizontes-offset {
+    float: right;
+    width: 35%;
+}
+
+.imagem-novos-horizontes-solna {
+    float: left;
+    width: 35%;
+    clear: both;
+}
+
+.texto-novos-horizontes-solna {
+    float: right;
+    width: 60%;
+}
+
+
+/*configurando tempo de abertura de imagem e tamanho máximo para dar o efeito zoom*/
+
+figure img {
+    max-width: 100%;
+    -moz-transition: all 1.0s;
+    -webkit-transition: all 1.0s;
+    transition: all 1.0s;
+}
+
+
 /*ativando o zoom das imagens*/
+
 figure:hover img {
     /*da efeito esfumaçado na imagem*/
-    box-shadow: 0px 0px 150px #000000;
+    box-shadow: 0px 0px 9.375em #000000;
     -moz-transition: all 200ms ease-in;
     -moz-transform: scale(3.0);
     -webkit-transition: all 200ms ease-in;
@@ -25,94 +115,22 @@ figure:hover img {
     transform: scale(3.0);
 }
 
-/*configuração das imagens*/
-figure img {
-    width: 300px;
-    /*configura a prioridade da imagem*/
-    z-index: 2;
-    box-sizing: border-box;
-}
 
 /*configurando tamanho de todas as figuras*/
-figure{
-    width: 30%;
+
+figure {
+    width: 50%;
     text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1em;
 }
+
 
 /*configuração do local onde vai a imagem*/
-.local-hangar{
-    float: right;
-}
 
-/*configuração do local onde vai a imagem*/
-.local-guilhotina{
-    float: left;
-}
-
-/*configuração do local onde vai a imagem*/
-.local-dobradeira{
-    float: left;
-    position: relative;
-    top: 52px;
-}
-
-/*configuração do local onde vai a imagem*/
-.local-tipografica-catu{
-    float: right;
-    position: relative;
-    top: 52px;
-}
-
-/*configuração do local onde vai a imagem*/
-.local-davidson-offset{
-    float: right;
-}
-
-/*configuração do local onde vai a imagem*/
-.local-solna-125-offset{
-    float: left;
-}
-
-/*CONFIGURAÇÃO DOS TEXTOS*/
-.novos-horizontes-parte-1{
-
-}
-
-.novos-horizontes-parte-2{
-    float: right;
-    width: 60%;
-}
-
-.novos-horizontes-parte-2 p{
-    line-height: 1.9;
-}
-
-.novos-horizontes-parte-3{
-    float: right;
-    width: 20%;
-}
-
-.novos-horizontes-parte-3 p{
-    text-align: center;
-    line-height: 1.9;
-}
-
-.novos-horizontes-parte-4{
-    clear: both;
-    float: left;
-    width: 60%;
-    position: relative;
-    top: 40px;
-}
-
-.novos-horizontes-parte-4 p{
-    line-height: 1.9;
-}
-
-.novos-horizontes-parte-5{
-    clear: both;
-    float: right;
-    width: 60%;
-    position: relative;
-    top: 70px;
+.local-img {
+    width: 100%;
+    /*configura a prioridade da imagem*/
+    z-index: 2;
 }

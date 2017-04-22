@@ -1,17 +1,17 @@
-ul{
+ul {
     margin: 0;
     list-style: none;
     display: inline;
 }
 
-nav ul li{
-    margin: 0 0 40px 0;
+nav ul li {
+    margin: 0 0 2.500em 0;
 }
 
-nav ul li ul{
-    margin: 20px 0;
+nav ul li ul {
+    margin: 1.250em 0;
 }
 
-nav ul li ul li{
-    margin: 20px 0;
+nav ul li ul li {
+    margin: 1.250em 0;
 }
