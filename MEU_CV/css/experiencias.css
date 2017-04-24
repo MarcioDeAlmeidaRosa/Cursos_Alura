@@ -1,6 +1,7 @@
 ul {
     margin: 0;
     list-style: none;
+    display: contents;
 }
 
 nav ul li {
