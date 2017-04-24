@@ -250,13 +250,22 @@ footer a {
 }
 
 .sigame {
+    /*configurando link*/
+    width: 14em;
+    line-height: 1;
+    padding: 1em 0;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    background-color: #3C1D3D;
+    color: #FFF;
+    border: .25em solid black;
+    font-size: 1.2em;
+    font-family: "Open Sans Condensed", sans-serif;
+    /*ajustando posicionamento*/
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(80px) translateY(80px) rotate(45deg);
-    border: 2px solid black;
-    background-color: #3C1D3D;
-    color: #FFF;
-    text-decoration: none;
-    padding: 0.600em 5em;
+    transform-origin: 0 0;
+    transform: translate(6.5754em, -2.4749em) rotate(45deg);
 }
