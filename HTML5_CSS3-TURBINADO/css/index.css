@@ -8,11 +8,11 @@ main {
     float: none;
 }
 
-main p{
-    margin:0;
+main p {
+    margin: 0;
 }
 
-.secao{
+.secao {
     height: 23em;
     box-sizing: border-box;
 }
@@ -46,59 +46,79 @@ main p{
 .eficiencia {
     top: 20%;
     left: 75%;
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
 }
 
-.boas-praticas{
+.boas-praticas {
     top: 70%;
     left: 20%;
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
 }
 
-.codigo-limpo{
+.codigo-limpo {
     top: 45%;
     left: 10%;
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
 }
 
-.css3{
+.css3 {
     top: 50%;
     left: 30%;
 }
 
-.html5{
-    top: 33%;
+.html5 {
+    top: 40%;
     left: 80%;
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
 }
 
-.javascript{
+.javascript {
     top: 10%;
-    left: 63%;
+    left: 60%;
+    -webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg);
 }
 
-.acessibilidade{
-    top: 33%;
+.acessibilidade {
+    top: 30%;
     left: 25%;
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
 }
 
-.responsivo{
-    top: 20%;
+.responsivo {
+    top: 15%;
     left: 15%;
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
 }
 
-.otimizacoes{
+.otimizacoes {
     top: 60%;
-    left: 72%;
+    left: 70%;
+    -webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg);
 }
 
-.agilidade{
+.agilidade {
     top: 10%;
-    left: 28%;
+    left: 30%;
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
 }
 
-.design{
-    top: 33%;
-    left: 68%;
+.design {
+    top: 35%;
+    left: 65%;
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
 }
 
-.p-link{
+.p-link {
     width: 100%;
     text-align: center;
     margin-top: 2.5em;
@@ -152,34 +172,36 @@ main p{
     background-color: #3C1D3D;
 }
 
-.apresentacao,.trabalhos,.blog{
+.apresentacao,
+.trabalhos,
+.blog {
     color: white;
 }
 
-.paragrafo{
+.paragrafo {
     font-size: 3em;
     margin-left: 1em;
     text-align: left;
 }
 
-.sub-paragrafo{
+.sub-paragrafo {
     font-size: 1em;
     margin-left: 3em;
     text-align: left;
 }
 
-.trabalho-img{
+.trabalho-img {
     margin: 0 3em;
     border: 0.4em solid black;
     overflow: hidden;
 }
 
-.trabalho-img li{
+.trabalho-img li {
     float: left;
     width: 33.333%;
 }
 
-.trabalho-img img{
+.trabalho-img img {
     width: 100%;
     display: block;
 }
@@ -190,23 +212,22 @@ main p{
     position: relative;
 }
 
-.blog ol{
+.blog ol {
     text-align: left;
     margin-left: 3em;
     margin-top: 2em;
-    
 }
 
-.blog a{
+.blog a {
     color: #FCF;
 }
 
-.selecionado{
+.selecionado {
     background-color: #F2FFFC;
     width: 80%;
 }
 
-.inicio-post{
+.inicio-post {
     background-color: #F2FFFC;
     width: 30em;
     position: absolute;
@@ -217,11 +238,11 @@ main p{
     color: #000;
 }
 
-
 footer {
     background-color: #000;
     color: #FFF;
 }
+
 footer a {
     color: #F99;
 }
