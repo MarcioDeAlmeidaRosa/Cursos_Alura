@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html {
+            /*background-color: purple;*/
+            /*width: 70%;
+            margin: 50px;*/
+        }
+        
+        .bolas {
+            perspective: 4px;
+        }
+        
+        .bola1 {
+            /*As translações positivas trazem o objeto para "perto" da tela e as negativas para longe.*/
+            transform: translateZ(2px);
+            border-radius: 150px;
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            /*float: left;*/
+        }
+        
+        .bola2 {
+            /*As translações positivas trazem o objeto para "perto" da tela e as negativas para longe.*/
+            transform: translateZ(-1px);
+            border-radius: 150px;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            /*float: left;*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bolas">
+        <div class="bola1"></div>
+        <div class="bola2"></div>
+        <div class="bola3"></div>
+    </div>
+
+</body>
+
+</html>

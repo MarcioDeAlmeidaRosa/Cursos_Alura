@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: purple;
+        }
+        
+        .quadrado {
+            background-color: white;
+            border: 10px solid yellow;
+            height: 300px;
+            width: 300px;
+            position: relative;
+            top: 300px;
+            margin: auto;
+            -webkit-transform: rotate(20deg) scale(1.5) skew(20deg) translate(10px, 50px);
+            transform: /*Rotacionar o objeto*/
+            rotate(20deg)
+            /*Aqui o objeto aumenta em 1,5 vezes:*/
+            scale(1.5)
+            /*Aqui os ângulos do objeto crescem ou diminuem em 20 graus:*/
+            skew(20deg)
+            /*Aqui o objeto foi transladado 10 pixeis para a direita e 50 para cima:*/
+            translate(10px, 50px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quadrado"></div>
+</body>
+
+</html>
