@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cubo</title>
+    <style>
+        .cubo {
+            transform-style: preserve-3d;
+            width: 200px;
+            height: 200px;
+            position: relative;
+            top: 100px;
+            left: 100px;
+            transform: rotateX(10deg) rotateY(10deg);
+        }
+        
+        .face {
+            display: block;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .frente {
+            background-color: red;
+            transform: translateZ(100px);
+        }
+        
+        .direito {
+            background-color: blue;
+            transform: translateX(100px) rotateY(90deg);
+        }
+        
+        .esquerdo {
+            background-color: green;
+            transform: translateX(-100px) rotateY(-90deg);
+        }
+        
+        .cima {
+            background-color: yellow;
+            transform: translateY(100px) rotateX(90deg);
+        }
+        
+        .baixo {
+            background-color: magenta;
+            transform: translateY(-100px) rotateX(-90deg);
+        }
+        
+        .fundo {
+            background-color: cyan;
+            transform: translateZ(-100px) rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cubo">
+        <div class="face frente"></div>
+        <div class="face direito"></div>
+        <div class="face esquerdo"></div>
+        <div class="face cima"></div>
+        <div class="face baixo"></div>
+        <div class="face fundo"></div>
+    </div>
+</body>
+
+</html>
