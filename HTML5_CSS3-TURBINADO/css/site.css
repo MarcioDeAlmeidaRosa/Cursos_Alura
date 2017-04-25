@@ -1,8 +1,3 @@
-html, body {
-    height: 100%;
-    overflow-x: hidden;
-}
-
 html {
     /*font-size: 120%;*/
     font-size: 20px;
@@ -12,8 +7,6 @@ body {
     font-family: "Crimson Text", "Times New Roman", serif;
     background-color: #F2FFFC;
     line-height: 1.5;
-    perspective: 6px;
-    perspective-origin: 50% 11em;
 }
 
 h1,
@@ -80,8 +73,8 @@ main p {
 }
 
 .rodape-pagina {
-    background-color: #000;
-    color: #F2FFFC;
+    background-color: rgba(0, 0, 0, .1);
+    color: #FFF;
     padding: 20px;
     clear: both;
     position: fixed;

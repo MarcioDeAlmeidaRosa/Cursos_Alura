@@ -1,5 +1,16 @@
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
 html {
     text-align: center;
+}
+
+body {
+    perspective: 6px;
+    perspective-origin: 50% 11em;
 }
 
 main {
@@ -29,12 +40,14 @@ main p {
     height: 200px;
     margin: 1.25em 0 0.5em 0;
     border-radius: 150px;
+    box-shadow: 0 0 1em #000;
 }
 
 .titulo-home {
     font-size: 2em;
     font-family: sans-serif;
     font-weight: bold;
+    text-shadow: 5px 5px #000;
 }
 
 .palavra-home {
@@ -48,6 +61,7 @@ main p {
     top: 30%;
     left: 35%;
     transform: translate(-50%, -50%) rotate(-5deg) translateZ(3px) scale(0.25);
+    opacity: .8;
 }
 
 .responsivo {
@@ -84,6 +98,7 @@ main p {
     top: 15%;
     left: 60%;
     transform: translate(-50%, -50%) rotate(-5deg) translateZ(1px) scale(0.25);
+    opacity: .3;
 }
 
 .html5 {
@@ -159,6 +174,7 @@ main p {
     background-color: #851944;
     color: white;
     text-align: center;
+    box-shadow: 0 0 1em #000, inset 0 0 .5em #FFF;
 }
 
 .trabalhos {
@@ -176,6 +192,7 @@ main p {
     font-size: 3em;
     margin-left: 1em;
     text-align: left;
+    text-shadow: 2px 2px #000;
 }
 
 .sub-paragrafo {
@@ -262,7 +279,8 @@ footer a {
     transform: translate(6.5754em, -2.4749em) rotate(45deg);
 }
 
-.palavras-3D, .topo {
+.palavras-3D,
+.topo {
     transform-style: preserve-3d;
 }
 
