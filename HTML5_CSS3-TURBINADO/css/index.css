@@ -262,8 +262,12 @@ footer a {
     transform: translate(6.5754em, -2.4749em) rotate(45deg);
 }
 
+.palavras-3D, .topo {
+    transform-style: preserve-3d;
+}
+
 .palavras-3D {
-    perspective: 6px;
+    /*perspective: 6px;*/
     position: absolute;
     top: 0;
     left: 0;
