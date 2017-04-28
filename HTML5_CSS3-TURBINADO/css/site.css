@@ -1,5 +1,4 @@
 html {
-    /*font-size: 120%;*/
     font-size: 20px;
 }
 
@@ -17,19 +16,7 @@ h2,
 
 h1 {
     text-transform: uppercase;
-    /*font-size: 60px;*/
 }
-
-
-/*.titulo-principal {
-    3 em -> mutilica 3x a fonte do html que agora é 120% da definida no navegador
-    font-size: 3em;
-    text-align: center;
-    background-color: #851944;
-    color: #FFF;
-    padding: 1.25em;
-    border-bottom: 0.5rem solid #000;
-}*/
 
 .titulo-principal {
     font-size: 300%;

@@ -68,30 +68,35 @@ main p {
     top: 40%;
     left: 40%;
     transform: translate(-50%, -50%) rotate(10deg) translateZ(3px) scale(0.25);
+    opacity: .9;
 }
 
 .codigo-limpo {
     top: 45%;
     left: 25%;
     transform: translate(-50%, -50%) rotate(-10deg) translateZ(2px) scale(0.25);
+    opacity: .6;
 }
 
 .css3 {
     top: 55%;
     left: 35%;
     transform: translate(-50%, -50%) rotate(5deg) translateZ(2px) scale(0.25);
+    opacity: .5;
 }
 
 .boas-praticas {
     top: 70%;
     left: 20%;
     transform: translate(-50%, -50%) rotate(10deg) translateZ(1px) scale(0.25);
+    opacity: .5;
 }
 
 .agilidade {
     top: 75%;
     left: 35%;
     transform: translate(-50%, -50%) rotate(5deg) translateZ(1px) scale(0.25);
+    opacity: .4;
 }
 
 .javascript {
@@ -105,24 +110,28 @@ main p {
     top: 30%;
     left: 65%;
     transform: translate(-50%, -50%) rotate(10deg) translateZ(2px) scale(0.25);
+    opacity: .8;
 }
 
 .design {
     top: 40%;
     left: 60%;
     transform: translate(-50%, -50%) rotate(10deg) translateZ(2px) scale(0.25);
+    opacity: .6;
 }
 
 .eficiencia {
     top: 50%;
     left: 60%;
     transform: translate(-50%, -50%) rotate(-5deg) translateZ(4px) scale(0.25);
+    opacity: .9;
 }
 
 .otimizacoes {
     top: 70%;
     left: 65%;
     transform: translate(-50%, -50%) rotate(-5deg) translateZ(2px) scale(0.25);
+    opacity: .7;
 }
 
 .p-link {
@@ -285,7 +294,6 @@ footer a {
 }
 
 .palavras-3D {
-    /*perspective: 6px;*/
     position: absolute;
     top: 0;
     left: 0;
