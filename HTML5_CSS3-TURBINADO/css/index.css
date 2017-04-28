@@ -68,7 +68,7 @@ main p {
     top: 40%;
     left: 40%;
     transform: translate(-50%, -50%) rotate(10deg) translateZ(3px) scale(0.25);
-    opacity: .9;
+    opacity: .8;
 }
 
 .codigo-limpo {
@@ -82,21 +82,21 @@ main p {
     top: 55%;
     left: 35%;
     transform: translate(-50%, -50%) rotate(5deg) translateZ(2px) scale(0.25);
-    opacity: .5;
+    opacity: .6;
 }
 
 .boas-praticas {
     top: 70%;
     left: 20%;
     transform: translate(-50%, -50%) rotate(10deg) translateZ(1px) scale(0.25);
-    opacity: .5;
+    opacity: .3;
 }
 
 .agilidade {
     top: 75%;
     left: 35%;
     transform: translate(-50%, -50%) rotate(5deg) translateZ(1px) scale(0.25);
-    opacity: .4;
+    opacity: .3;
 }
 
 .javascript {
@@ -110,7 +110,7 @@ main p {
     top: 30%;
     left: 65%;
     transform: translate(-50%, -50%) rotate(10deg) translateZ(2px) scale(0.25);
-    opacity: .8;
+    opacity: .6;
 }
 
 .design {
@@ -131,7 +131,7 @@ main p {
     top: 70%;
     left: 65%;
     transform: translate(-50%, -50%) rotate(-5deg) translateZ(2px) scale(0.25);
-    opacity: .7;
+    opacity: .6;
 }
 
 .p-link {
