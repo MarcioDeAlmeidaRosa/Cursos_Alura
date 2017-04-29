@@ -60,7 +60,6 @@ main p {
 }
 
 .rodape-pagina {
-    background-color: rgba(0, 0, 0, .1);
     color: #FFF;
     padding: 20px;
     clear: both;
@@ -69,6 +68,10 @@ main p {
     left: 0;
     width: 100%;
     box-sizing: border-box;
+    text-shadow: 1px 1px 2px black;
+    background-image: radial-gradient(ellipse at left bottom, rgba(60, 29, 61, 0.8) 65%, black 65%, black 70%, transparent 70%);
+    background-repeat: no-repeat;
+    background-size: 25% 100%;
 }
 
 .container {
