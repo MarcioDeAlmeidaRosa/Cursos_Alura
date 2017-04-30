@@ -1,0 +1,215 @@
+Definições de seletores citados abaixo, porém a melho definição será usando classes.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Quando queremos aplicar um estilo em uma determinada classe em todos os pontos do html utilizamos:
+
+"tag"
+
+Exemplo:
+
+<body>
+    <p>...</p>
+    <p>...</p>
+    <p>...</p>
+    <p>...</p>
+    <h1></h1>
+</body>
+
+p {
+    margin-top: 1em;
+}
+
+--> Seleciona todos as tags de parágrafo (p) e aplicada o estilo definido no css.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Quando queremos aplicar um estilo a um unico objeto e não queremos que ocorra possibilidade de ser aplicado em outro utilizamos:
+
+id
+
+Exemplo:
+
+<body>
+    <p id="paragrafo-unico">...</p>
+    <p>...</p>
+    <p>...</p>
+    <p>...</p>
+    <h1></h1>
+</body>
+
+#paragrafo-unico{
+    margin-top: 1em;
+}
+
+--> Seleciona somente a tag com o id = "paragrafo-unico" e aplica o estilo definido no css.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Quando queremos aplicar um estilo a mais de um objeto tem tenham que ter o mesmo comportamento utilizamos:
+
+classe
+
+Exemplo:
+
+<body>
+    <p class="paragrafo-modificado">...</p>
+    <p>...</p>
+    <p>...</p>
+    <p>...</p>
+    <h1></h1>
+</body>
+
+.paragrafo-modificado{
+    margin-top: 1em;
+}
+
+--> Seleciona todas as tags com a classe = "paragrafo-modificado" e aplica o estilo definido no css.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Quando queremos que um estilo seja aplicado somente ao segundo elemento de uma sequencia de tag utilizamos:
+
+"~" (til)
+
+Exemplo: 
+
+<ul>
+    <li> Item 1</li>
+    <li> Item 2</li>
+    <li> Item 3</li>
+</ul>
+
+li ~ li {
+    margin-top: 1em;
+}
+
+--> Seleciona todos os elementos depois de outros elementos. 
+    Será desconsiderado o primeiro li e selecionado do segundo em diante para aplicar o estilo definido.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Quando queremos que o primeiro elemento após outro elemento seja aplicado um determinado estilo utilizamos:
+
+ "+" (mais)
+
+ Exemplo:
+
+<img>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+
+img + p {
+    text-ident: 0;
+}
+
+--> Seleciona o primeiro elemento (p) logo na sequência do elemento informado (img).
+    Será aplicado o estilo ao primeiro parágrafo logo abaixo da imagem, os demais parágrafos na sequência serão desconsiderados.
+    Caso a estrutura mude para  <img><div><p>...</p><p>...</p><p>...</p></div>, nesse caso o (p)) está dentro de um elemento (div) 
+    que está depois da imagem (img) e o seletor será aplicado na div inteira. Ele funciona hierarquicamente entre elementos "irmãos".
+    Esse seletor também pode ser aproveitado como cascata no exemplo abaixo, do segundo (p) em diante será aplicado o estilo, semelhante a p ~ p:
+
+    <article>
+        <h1>Um artigo importantíssimo</h1>
+        <p>Texto texto texto...</p>
+        <p>Texto texto texto...</p>
+        <p>Texto texto texto...</p>
+    </article>
+
+    p + p {
+        text-ident: 0;
+    }
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Quando queremos aplicar o estilo apenas ao primeiro grau da hierarquia utilizamos:
+
+">" (maior)
+
+Exemplo:
+
+<div>
+    <p>...</p>
+    <blockquote>
+        <p>...</p>
+    </blockquotes>
+    <p>...</p>
+</div>
+
+div > p {
+    text-ident: 0;
+}
+
+--> Seleciona apenas elemento (p) de primeiro grau da hierarquia do elemento determinado (div),
+    sendo assim, aplicando somente aos parágrafos dentro da div e não aplicando ao parágrafo dentro do blockquote.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Quando queremos combinar os seletores para conseguimos alcançar resultados esperados utilizamos:
+
+"elemento|classe" > "elemento|classe" + "elemento|classe"
+
+Exemplo:
+<div class="noticia">
+    <h1>...</h1>
+    <p>...</p>
+    <blockquote>
+        <p>...</p>
+    </blockquotes>
+    <p>...</p>
+</div>
+
+.noticia > h1 + p 
+    text-ident: 0;
+}
+
+--> Seleciona o primeiro parágrafo logo após a um h1 que esta dentro de uma classe noticia.
+    Nesse caso a configuração aplicada a (p) será aplicada somente ao primeiro parágrafo, desconsiderando os demais (p) dentro da (div).
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Quando queremos selecionar uma tag por atributo utiizamos:
+
+
+[href="http://www.alura.com.br"]
+
+Exemplo:
+
+<a href="http://www.alura.com.br">
+
+[href="http://www.alura.com.br"]{
+    border: 1px solid black;
+}
+
+--> O seletor de atributo é bem poderoso! Podemos, além de selecionar pelo valor inteiro do atributo, selecionar apenas por uma parte 
+    dele ou simplesmente pela presença dele.
+
+
+Por exemplo, se quisermos selecionar todas as imagens com a extensão .jpg de uma página, podemos usar o seletor:
+
+[src$=".jpg"]
+
+O cifrão representa que queremos que o atributo termine com um valor.
+
+
+Se quisermos selecionar todos os links que começam com http://, podemos usar o seletor:
+
+[href^="http://"]
+
+
+Ou, se quisermos selecionar todos os elementos da página que tenham qualquer classe, basta usar o seletor [class]. 
+Repare que é só o nome do atributo; se ele estiver presente, não importa seu valor, selecionamos ele.
+
+
+Tendo em vista o exemplo abaixo:
+
+<img src="foto.jpg" alt="Foto bonita" class="foto-destaque">
+
+Podemos acessa-lo das seguintes formas:
+
+.foto-destaque
+
+[src$=".jpg"]
+
+[alt$="bonita"]
+
+[class="foto-destaque"]
+
+[alt]
+
+[class^="foto"]
