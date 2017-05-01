@@ -49,3 +49,15 @@
         margin-right: .2ch;
         line-height: 1;
     }
+    
+    .citacao-bio::before {
+        content: '"';
+        font-size: 10em;
+        color: #bbb;
+        position: absolute;
+        line-height: .7;
+    }
+    
+    .citacao-bio>p {
+        position: relative;
+    }
