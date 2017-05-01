@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplicando Pseudoclasses</title>
+    <style>
+        table {
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            border: 1px solid black;
+        }
+        
+        p:first-child {
+            color: red;
+            text-align: center;
+            font-size: 250%;
+            text-shadow: 3px 3px 2px black;
+        }
+        
+        p:last-child {
+            font-size: 400%;
+            text-align: right;
+            text-shadow: .2em .2em .1em red;
+        }
+        
+        table thead :first-child {
+            background-color: rgba(0, 0, 0, .3);
+        }
+        
+        table tfoot :first-child {
+            background-color: rgba(255, 0, 255, .1);
+        }
+        
+        table tbody tr:nth-child(odd) {
+            background-color: rgba(135, 206, 250, 0.2);
+        }
+        
+        table tbody tr:nth-child(even) {
+            background-color: rgba(0, 255, 0, 0.1);
+        }
+        
+        button {
+            position: relative;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 100px;
+            border: 8px solid purple;
+        }
+        
+        button:hover {
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Parágrafo 1 - Aplicando "p:first-child" </p>
+    <p>Parágrafo 2</p>
+    <table>
+        <thead>
+            <th>Cabeçalho linha</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Linha 1</td>
+            </tr>
+            <tr>
+                <td>Linha 2</td>
+            </tr>
+            <tr>
+                <td>Linha 3</td>
+            </tr>
+            <tr>
+                <td>Linha 4</td>
+            </tr>
+            <tr>
+                <td>Linha 5</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <th>Rodapé da tabela</th>
+        </tfoot>
+    </table>
+    <p>Parágrafo 3</p>
+    <button>Aperte aqui</button>
+    <p>Parágrafo 4 - Aplicando "p:last-child" </p>
+</body>
+
+</html>

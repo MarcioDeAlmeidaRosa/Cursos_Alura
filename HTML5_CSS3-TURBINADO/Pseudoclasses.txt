@@ -1,0 +1,55 @@
+As pseudoclasses são chamadas com os ":" (dois pontos):
+
+:odd    
+:even
+
+----------------------------------------------------------------------------------------------------------
+
+Na linguagem que estamos usando, generalizamos essas pseudoclasses com ":nth-child()". 
+Dessa maneira, podemos estilizar não só as linhas pares ou ímpares:
+
+    :nth-child(odd) - linhas ímpares;
+    :nth-child(even) - linhas pares;
+    :nth-child(3) - terceira linha;
+    :first-child - primeira linha;
+    :last-child - última linha.
+
+----------------------------------------------------------------------------------------------------------
+
+Não confunda o agrupamento de seletores, que é específico para o mesmo elemento e são escritos juntos:
+
+table:first-child (a tabela que é o primeiro filho)
+
+Com os seletores funcionando em nível hierárquico (elementos diferentes), escritos separadamente:
+
+tr :first-child (a tabela é pai e "first-child" é seu primeiro filho)
+
+----------------------------------------------------------------------------------------------------------
+
+Também podemos inserir fórmulas dentro do :nth-child() como nth-child(2n) que nada mais é do que as linhas pares. 
+Ou nth-child(2n+1), que são as ímpares.
+
+Generalizando: :nth-child(xn + c)
+
+Em que:
+
+    x é a periodicidade, de quantos em quantos elementos será aplicado o estilo;
+    c é o ponto de partida;
+    n é a variável, que começa em 0 (zero).
+
+----------------------------------------------------------------------------------------------------------
+
+Pseudoclasses Estruturais
+:first-child (Aplica o estilo ao primeiro filho a partir da "tag/classe" determinanda na frente da pseudoclasses)
+:last-child  (Aplica o estilo ao ultimo filho a partir da "tag/classe" determinanda na frente da pseudoclasses)
+:nth-child   (Aplica o estilo a(s) tags que contemplarem a expressão passada a função desta pseudoclasses, quando passada condições pares/impares, é considerado todos os objetos do html na contagem de par/impar )
+:nth-of-type (Aplica o estilo a(s) tags que contemplarem a expressão passada a função desta pseudoclasses, quando passada condições pares/impares, é considerado apenas o objeto passado antes da pseudoclasses na contagem de par/impar )
+
+
+Pseudoclasses Dinâmicas
+:hover
+:focus
+:active
+:checked
+
+----------------------------------------------------------------------------------------------------------
