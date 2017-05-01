@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplicando Pseudoclasses</title>
+    <style>
+        /*
+        p:nth-of-type(n+2) {
+            font-weight: bold;
+        }
+        p~p {
+            font-weight: bold;
+        }
+        p:nth-of-type(n+2) {
+            font-weight: bold;
+        }
+        */
+        
+        p:nth-of-type(n+2) {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <article>
+        <h1>Título do artigo</h1>
+        <p>por Ana</p>
+        <p>Texto do artigo</p>
+        <p>Mais texto</p>
+        <figure>
+            <img src="foto.jpg" alt="Foto">
+            <figcaption>Legenda</figcaption>
+        </figure>
+        <p>Mais texto ainda</p>
+    </article>
+</body>
+
+</html>
