@@ -150,3 +150,22 @@ footer a:focus {
 .navegacao-site a:focus {
     text-shadow: 0 0 2px pink;
 }
+
+.icones-redes-sociais a {
+    position: relative;
+}
+
+.icones-redes-sociais a:hover::after,
+.icones-redes-sociais a:focus::after {
+    content: attr(data-legenda);
+    text-align: center;
+    color: #FFF;
+    background-color: #000;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    text-indent: 0;
+    line-height: 2;
+    font-size: .75em;
+    z-index: 999;
+}
