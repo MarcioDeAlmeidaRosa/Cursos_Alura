@@ -251,11 +251,6 @@ main p {
     color: #FCF;
 }
 
-.selecionado {
-    background-color: #F2FFFC;
-    width: 80%;
-}
-
 .inicio-post {
     background-color: #F2FFFC;
     width: 30em;
@@ -265,6 +260,7 @@ main p {
     height: 6em;
     padding: 1em;
     color: #000;
+    display: none;
 }
 
 footer {
@@ -317,3 +313,45 @@ footer a {
 .palavras-3D li {
     font-size: 400%;
 }
+
+.blog li:hover,
+.blog li:focus {
+    background-color: #F2FFFC;
+    width: 80%;
+}
+
+.blog li:hover a,
+.blog li:focus a {
+    color: red;
+}
+
+
+/*Início - forma com mais código e fixa*/
+
+.blog li:nth-of-type(1):hover .inicio-post:nth-of-type(1),
+.blog li:nth-of-type(1):focus .inicio-post:nth-of-type(1) {
+    display: block;
+}
+
+.blog li:nth-of-type(2):hover .inicio-post:nth-of-type(1),
+.blog li:nth-of-type(2):focus .inicio-post:nth-of-type(1) {
+    display: block;
+}
+
+.blog li:nth-of-type(3):hover .inicio-post:nth-of-type(1),
+.blog li:nth-of-type(3):focus .inicio-post:nth-of-type(1) {
+    display: block;
+}
+
+
+/*Fim - forma com mais código e fixa*/
+
+
+/*
+Forma mais fáci de fazer e genérica, podendo adicionar quantos elementos for, 
+o comportamento será o mesmo.
+.blog a:hover+.inicio-post,
+.blog a:focus+.inicio-post {
+    display: block;
+}
+*/
