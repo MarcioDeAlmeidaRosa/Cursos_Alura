@@ -1,0 +1,27 @@
+Quando queremos deixar a primeira letra do primeiro parágrafo maior que as outras, 
+a Letra capitular:
+
+p:first-letter(CSS2)
+p:first-letter {
+    font-size: 3em;
+}
+
+p::first-letter(CSS3)
+p::first-letter {
+    font-size: 3em;
+}
+
+
+
+Um outro caso em que os pseudoelementos nos ajuda é quando queremos dar um toque 
+estético nas block-quotes.
+O problema é que o navegador não traduz diretamente isso como a inserção de aspas. 
+Para ele poderia ser qualquer elemento, incluindo imagens. 
+Então devemos inseri-las via CSS com a propriedade "content":
+
+blockquote:before{
+    content: '"';
+}
+blockquote:after{
+    content: '"';
+}

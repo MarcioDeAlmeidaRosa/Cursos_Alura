@@ -1,0 +1,8 @@
+tag
+#id
+.classe
+ancestral descendente
+irmão ~ irmão
+irmão + irmão seguinte
+pai > filho
+li:nth-child(oddd)
