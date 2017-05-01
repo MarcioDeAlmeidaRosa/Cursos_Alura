@@ -157,12 +157,31 @@ footer a:focus {
 
 .icones-redes-sociais a:hover::after,
 .icones-redes-sociais a:focus::after {
+    content: "";
+    width: 1em;
+    height: 1em;
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
+    background-color: #FFF;
+    position: absolute;
+    transform: rotate(45deg);
+    top: -30%;
+    right: 25%;
+    z-index: 9999;
+}
+
+.icones-redes-sociais a:hover::before,
+.icones-redes-sociais a:focus::before {
     content: attr(data-legenda);
     text-align: center;
-    color: #FFF;
-    background-color: #000;
+    color: #000;
+    border: 2px solid black;
+    width: 110px;
+    height: 90px;
+    border-radius: 10px;
+    background-color: #FFF;
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     right: 0;
     text-indent: 0;
     line-height: 2;
