@@ -1,0 +1,40 @@
+form {
+    width: 30em;
+    margin: auto;
+}
+
+
+/*form input {
+    width: 30em;
+}*/
+
+fieldset legend {
+    text-shadow: 0 0 2px black;
+}
+
+fieldset label {
+    font-weight: bold;
+}
+
+.outros-assuntos-field {
+    display: inline;
+}
+
+.field {
+    border: .1em solid black;
+    padding: .2em;
+    margin: 3px;
+}
+
+.field .assunto {}
+
+.field .outros-assuntos-field {
+    border: .01em solid black;
+}
+
+
+/*pega o primeiro field e para o segundo label aplica regra*/
+
+.field:nth-child(1)>label~label {
+    /*display: inline-block;*/
+}

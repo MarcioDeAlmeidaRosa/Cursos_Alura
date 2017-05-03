@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/site.css">
     <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/contato.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700">
 </head>
@@ -17,26 +18,33 @@
         <h1 class="titulo-principal">Contato</h1>
 
         <form>
-            <fieldset>
+            <fieldset class="field">
                 <legend>Dados pessoais</legend>
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" placeholder="José da Silva" required autofocus>
+                <input type="text" id="nome" name="nome-contato" placeholder="José da Silva" required autofocus>
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="jose.silva@seudominio.com" required>
+                <input type="email" id="email" name="email-contato" placeholder="jose.silva@seudominio.com" required>
             </fieldset>
-            <fieldset>
+            <fieldset class="field">
                 <legend>Assunto</legend>
-                <input type="radio" id="consult" name="assunto" value="consult">
-                <label for="consult">Consutoria </label>
-                <input type="radio" id="blog" name="assunto" value="blog">
-                <label for="blog">Blog </label>
-                <input type="radio" id="outros" name="assunto" value="outros">
-                <label for="outros">Outros </label>
-                <input type="text" id="descricao_outros" name="descricao_outros" placeholder="Informar quando outros">
-                <label for="mensagem">Mensagem</label>
-                <textarea rows="6" cols="60" id="mensagem" name="mensagem" placeholder="Digite aqui sua mensagem" required></textarea>
+                <fieldset class="field">
+                    <input type="radio" id="consult" name="assunto" value="consult">
+                    <label for="consult">Consutoria</label>
+                    <input type="radio" id="blog" name="assunto" value="blog">
+                    <label for="blog">Blog</label>
+                    <fieldset class="field outros-assuntos-field">
+                        <input type="radio" id="outros" name="assunto" value="outros">
+                        <label for="outros">Outros</label>
+                        <input type="text" id="outros-assuntos" name="outros-assuntos" placeholder="Informar outros assuntos">
+                    </fieldset>
+                </fieldset>
+                <fieldset>
+                    <legend><label for="mensagem">Mensagem</label></legend>
+                    <textarea rows="6" cols="60" id="mensagem" name="mensagem" placeholder="Digite aqui sua mensagem" required></textarea>
+                </fieldset>
             </fieldset>
-            <button type="submit">Enviar <strong>para mim</strong></button>
+
+            <button type="submit">Enviar mensagem</button>
 
         </form>
     </main>
