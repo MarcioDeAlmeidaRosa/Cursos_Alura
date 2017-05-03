@@ -19,28 +19,31 @@
 
         <form>
             <fieldset class="field">
-                <legend>Dados pessoais</legend>
-                <label for="nome">Nome completo</label>
-                <input type="text" id="nome" name="nome-contato" placeholder="José da Silva" pattern="[A-z '\u00C0-\u017e]{4,}" title="O nome precisa ter pelo menos 4 caracteres" required autofocus>
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email-contato" placeholder="jose.silva@seudominio.com" required>
+                <legend>Seus dados</legend>
+                <label for="nome" class="nova-linha">Nome completo</label>
+                <span class="usuario-contato img-input"></span>
+                <input class="input-img input" type="text" id="nome" name="nome-contato" placeholder="José da Silva" pattern="[A-z '\u00C0-\u017e]{4,}" title="O nome precisa ter pelo menos 4 caracteres" required autofocus>
+                <label for="email" class="nova-linha">E-mail</label>
+                <span class="email-contato img-input"></span>
+                <input class="input-img input" type="email" id="email" name="email-contato" placeholder="jose.silva@seudominio.com" title="Digite um e-mail válido" required>
             </fieldset>
             <fieldset class="field">
-                <legend><label for="assunto">Assunto</label></legend>
-                <select name="assunto" id="assunto">
-                    <option value="" disabled selected>Selecione um assunto para a mensagem</option>
-                    <option value="consult">Consultoria</option>
-                    <option value="blog">Blog</option>
-                    <option value="outros">Outros</option>
-                </select>
+                <legend><label for="blog">Assunto</label></legend>
+                <input type="radio" name="assunto" id="blog">
+                <label for="blog">Blog</label>
+                <input type="radio" name="assunto" id="servico">
+                <label for="servico">Serviço</label>
+                <fieldset class="outros-assuntos-field">
+                    <input type="radio" name="assunto" id="outro">
+                    <label for="outro">Outro</label>
+                    <input class="input-outros" type="text" id="outro-assunto" name="outro-assunto" placeholder="Digite outro assunto">
+                </fieldset>
                 <fieldset>
                     <legend><label for="mensagem">Mensagem</label></legend>
-                    <textarea rows="6" cols="60" id="mensagem" name="mensagem" placeholder="Digite aqui sua mensagem" required></textarea>
+                    <textarea class="input" rows="6" cols="60" id="mensagem" name="mensagem" placeholder="Digite aqui sua mensagem" required></textarea>
                 </fieldset>
             </fieldset>
-
             <button type="submit">Enviar mensagem</button>
-
         </form>
     </main>
     <img src="imagens/eu.jpg" alt="Minha foto" class="minha-foto">
