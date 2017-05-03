@@ -1,136 +1,54 @@
-form {
-    width: 600px;
-    margin: auto;
-    position: relative;
-}
-
-.nova-linha {
-    display: block;
-    clear: both;
-}
-
-
-/* Selecionamos apenas os campos de texto */
-
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%;
-    box-shadow: 0 0 1px gray;
-    line-height: 2em;
-    /* Força o navegador a usar a mesma fonte da página */
-    font-family: inherit;
-    /* Inclusive o tamanho dela */
-}
-
-
-/* deixar só esse campo sem ocupar a tela toda */
-
-input[name="outro-assunto"] {
-    width: auto;
-}
-
-input:invalid {
-    box-shadow: 0 0 3px red;
-}
-
-input:focus,
-textarea:focus {
-    background-color: rgba(248, 235, 125, 0.3);
-}
-
 legend,
 label[for="mensagem"] {
     font-weight: bold;
     margin-top: 1em;
 }
-
-fieldset label {
-    font-weight: bold;
+label[for],
+button {
+    display: block;
 }
-
-
-/* alguns ajustes para o campo "Outro": deixar ele na mesma linha dos outros assuntos */
-
-fieldset>fieldset {
-    display: inline;
+input[type="text"],
+input[type="email"],
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    padding: .25em .5em;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
 }
-
-.field {
-    padding: .2em;
-    margin: 3px;
+button {
+    border: 0;
+    padding: .5em 1em;
+    font-family: "Open Sans Condensed", sans-serif;
+    background-color: #3C1D3D;
+    color: white;
+    font-size: 1.2em;
+    margin-left: auto;
+    margin-top: 1em;
 }
-
-select:invalid {
-    color: gray;
+input:invalid {
+    box-shadow: 0 0 3px red;
 }
-
-button:hover,
+input:focus,
+textarea:focus {
+    background-color: #FFD;
+}
 button:focus {
     background-color: #8C1D3D;
 }
-
-button {
-    position: absolute;
-    text-align: center;
-    right: 0;
-    font-family: "Open Sans Condensed", sans-serif;
-    background-color: #3C1D3D;
-    width: 250px;
-    height: 60px;
-    color: #FFF;
-    font-weight: bold;
-    font-size: 1.2em;
-    border: 0;
+fieldset > fieldset {
+    display: inline;
 }
-
-textarea {
-    resize: none;
+label[for="outro"] {
+    display: inline;
 }
-
-fieldset:nth-child(1) label~label {
-    margin-top: 2px;
+input[name="outro-assunto"] {
+    width: auto;
 }
-
-input[type="text"],
-input[type="email"] {
-    width: calc(100% - 3em);
-    position: relative;
-    left: 3em;
-}
-
-label[for="nome"],
-label[for="email"] {
-    position: relative;
-}
-
-label[for="nome"]:after,
-label[for="email"]:after {
-    content: "";
-    top: 100%;
-    left: 0;
-    width: 2em;
-    height: 1.8em;
-    background-size: 50% 50%;
-    position: absolute;
-    background-color: #851944;
-    background-size: 20px 20px;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-label[for="nome"]:after {
-    background-image: url(../imagens/usuario.png);
-}
-
-label[for="email"]:after {
-    background-image: url(../imagens/email.png);
-}
-
-input[id="outro-assunto"] {
+input[value="Outro"] ~ input {
     display: none;
 }
-
-input[value="outro"]:checked~input {
+input[value="Outro"]:checked ~ input {
     display: inline;
 }

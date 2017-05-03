@@ -1,48 +1,50 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <title>Blog - João da Silva</title>
+    <title>João da Silva - Contato</title>
     <link rel="icon" href="imagens/favicon.png">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/site.css">
-    <link rel="stylesheet" href="css/blog.css">
     <link rel="stylesheet" href="css/contato.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700">
 </head>
-
 <body>
     <main>
         <h1 class="titulo-principal">Contato</h1>
-
-        <form>
-            <fieldset class="field">
-                <legend>Seus dados</legend>
-                <label for="nome" class="nova-linha">Nome completo</label>
-                <input type="text" id="nome" name="nome-contato" placeholder="José da Silva" pattern="[A-z '\u00C0-\u017e]{4,}" title="O nome precisa ter pelo menos 4 caracteres" required autofocus>
-                <label for="email" class="nova-linha">E-mail</label>
-                <input type="email" id="email" name="email-contato" placeholder="jose.silva@seudominio.com" title="Digite um e-mail válido" required>
-            </fieldset>
-            <fieldset class="field">
-                <legend><label for="blog">Assunto</label></legend>
-                <input type="radio" name="assunto" id="blog" value="blog">
-                <label for="blog">Blog</label>
-                <input type="radio" name="assunto" id="servico" value="servico">
-                <label for="servico">Serviço</label>
+        <div class="container">
+            <form>
                 <fieldset>
-                    <input type="radio" name="assunto" id="outro" value="outro">
-                    <label for="outro">Outro</label>
-                    <input type="text" id="outro-assunto" name="outro-assunto" placeholder="Digite outro assunto">
+                    <legend>Seus dados</legend>
+                    <label for="nome">Nome completo</label>
+                    <input id="nome" type="text" name="nome" required autofocus pattern="[A-Za-z ']{4,}" title="O nome precisa ter pelo menos 4 caracteres">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="email" name="email" required placeholder="seu@email.com">
                 </fieldset>
                 <fieldset>
-                    <label for="mensagem">Mensagem</label>
-                    <textarea rows="6" cols="60" id="mensagem" name="mensagem" placeholder="Digite aqui sua mensagem" required></textarea>
+                    <legend>Assunto</legend>
+                    <label>
+                        <input type="radio" name="assunto" value="Blog">
+                        Blog
+                    </label>
+                    <label>
+                        <input type="radio" name="assunto" value="Serviço">
+                        Serviço
+                    </label>
+                    <fieldset>
+                        <input type="radio" name="assunto" value="Outro" id="outro">
+                        <label for="outro">
+                            Outro
+                        </label>
+                        <input type="text" name="outro-assunto">
+                    </fieldset>
                 </fieldset>
-            </fieldset>
-            <button type="submit">Enviar mensagem</button>
-        </form>
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" cols="60" rows="10" placeholder="Digite aqui sua mensagem"></textarea>
+                <button type="submit">Enviar mensagem</button>
+            </form>
+        </div>
     </main>
     <img src="imagens/eu.jpg" alt="Minha foto" class="minha-foto">
     <aside class="navegacao-site">
@@ -58,17 +60,17 @@
         </nav>
         <ul class="icones-redes-sociais">
             <li>
-                <a href="https://github.com/joaodasilva" class="github" data-legenda="Veja meus projetos opensource">
+                <a href="https://github.com/joaodasilva" class="github" data-tooltip="Veja meus projetos opensource">
                     Github
                 </a>
             </li>
             <li>
-                <a href="https://twitter.com/joaodasilva" class="twitter" data-legenda="Veja meu perfil no twitter">
+                <a href="https://twitter.com/joaodasilva" class="twitter" data-tooltip="Siga-me no Twitter">
                     Twitter
                 </a>
             </li>
             <li>
-                <a href="https://br.linkedin.com/pub/joão-da-silva/32/4/508" class="linkedin" data-legenda="Veja meu perfil profissional">
+                <a href="https://br.linkedin.com/pub/joão-da-silva/32/4/508" class="linkedin" data-tooltip="Veja meu currículo">
                     LinkedIn
                 </a>
             </li>
@@ -78,5 +80,4 @@
         &copy; João da Silva 2014
     </footer>
 </body>
-
 </html>

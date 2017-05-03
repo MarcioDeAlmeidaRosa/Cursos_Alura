@@ -1,357 +1,264 @@
-html,
-body {
-    height: 100%;
-    overflow-x: hidden;
+.foto-home {
+    height: 200px;
+    border-radius: 50%;
 }
-
-html {
+.saudacao p {
+    font-size: 1.5em;
+    color: #99A;
+    line-height: 1;
+    padding: 2em;
+}
+.saudacao-inicio {
+    font-size: 3em;
+    color: #889;
+}
+.saudacao-ultima-linha {
+    text-align: right;
+    display: block;
+}
+.saudacao strong {
+    font-size: 2em;
+    color: #000;
+}
+.saudacao em {
+    color: #851944;
+    font-size: 4em;
+    -webkit-transform: rotate(-5deg) skew(-10deg);
+            transform: rotate(-5deg) skew(-10deg);
+    display: inline-block;
+}
+.botao-index {
+    font-size: 1.25em;
+    background-color: #851944;
+    color: #FFF;
+    padding: .5em;
+    border: .2em solid black;
+    width: 40ch;
+    margin: 2em auto;
+    display: block;
     text-align: center;
 }
-
-body {
-    perspective: 6px;
-    perspective-origin: 50% 11em;
+.secao-inicio {
+    padding: 2em;
 }
-
+.secao-inicio h2 {
+    font-size: 3em;
+    text-transform: uppercase;
+    margin-bottom: .5em;
+    text-shadow: 2px 2px #000;
+}
+.trabalhos {
+    background-color: #3C1D3D;
+    border-top: .5em solid #000;
+    border-bottom: .5em solid #000;
+    background-image: linear-gradient(135deg, transparent, transparent 14px, rgba(0,0,0,.1) 14px, rgba(0,0,0,.1) 15px, transparent 15px, transparent);
+    background-size: 20px 20px;
+    background-attachment: fixed;
+}
+.trabalhos h2 {
+    color: #FFF;
+}
+.trabalhos ul {
+    overflow: hidden;
+    border: .5em solid black;
+}
+.trabalhos li {
+    float: left;
+    width: 33.333%;
+}
+.trabalhos img {
+    width: 100%;
+    display: block;
+}
+.blog {
+    background-color: #999;
+    position: relative;
+    background-image: linear-gradient(45deg, transparent, transparent 14px, rgba(255,255,255,.1) 14px, rgba(255,255,255,.1) 15px, transparent 15px, transparent);
+    background-size: 20px 20px;
+    background-attachment: fixed;
+    color: #FFF;
+    border-bottom: .5em solid #851944;
+}
+.blog small {
+    position: relative;
+    top: -2em;
+}
+.blog li {
+    width: 30%;
+}
+.blog li a {
+    color: #FCF;
+    padding: .5em;
+    display: block;
+}
+footer {
+    background-color: #000;
+    color: #FFF;
+    padding: 2em;
+}
+footer h2 {
+    font-size: 3em;
+}
+footer a {
+    color: #F99;
+}
 main {
     width: 100%;
     padding-bottom: 0;
     float: none;
 }
-
-main p {
-    margin: 0;
+html,body {
+    overflow-x: hidden;
+    height: 100%;
 }
-
-.secao {
-    height: 23em;
-    box-sizing: border-box;
+body {
+    -webkit-perspective: 6px;
+            perspective: 6px;
+    -webkit-perspective-origin: 50% 160px;
+            perspective-origin: 50% 160px;
 }
-
-.topo {
-    background-color: #851944;
-    border-bottom: 0.4em solid black;
-    color: white;
-    height: 18em;
-    position: relative;
+.palavras-home {
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
 }
-
-.minha-imagem img {
-    height: 200px;
-    margin: 1.25em 0 0.5em 0;
-    border-radius: 150px;
-    box-shadow: 0 0 1em #000;
-}
-
-.titulo-home {
-    font-size: 2em;
-    font-family: sans-serif;
-    font-weight: bold;
-    text-shadow: 5px 5px #000;
-}
-
 .palavra-home {
-    color: #D5447E;
     font-family: "Shadows Into Light", cursive;
     font-weight: bold;
+    font-size: 400%;
+    color: rgba(255, 127, 127, .5);
     position: absolute;
 }
-
-.acessibilidade {
-    top: 30%;
-    left: 35%;
-    transform: translate(-50%, -50%) rotate(-5deg) translateZ(3px) scale(0.25);
-    opacity: .8;
-}
-
-.responsivo {
-    top: 40%;
-    left: 40%;
-    transform: translate(-50%, -50%) rotate(10deg) translateZ(3px) scale(0.25);
-    opacity: .8;
-}
-
-.codigo-limpo {
-    top: 45%;
-    left: 25%;
-    transform: translate(-50%, -50%) rotate(-10deg) translateZ(2px) scale(0.25);
-    opacity: .6;
-}
-
-.css3 {
-    top: 55%;
-    left: 35%;
-    transform: translate(-50%, -50%) rotate(5deg) translateZ(2px) scale(0.25);
-    opacity: .6;
-}
-
-.boas-praticas {
-    top: 70%;
-    left: 20%;
-    transform: translate(-50%, -50%) rotate(10deg) translateZ(1px) scale(0.25);
-    opacity: .3;
-}
-
-.agilidade {
-    top: 75%;
-    left: 35%;
-    transform: translate(-50%, -50%) rotate(5deg) translateZ(1px) scale(0.25);
-    opacity: .3;
-}
-
-.javascript {
-    top: 15%;
-    left: 60%;
-    transform: translate(-50%, -50%) rotate(-5deg) translateZ(1px) scale(0.25);
-    opacity: .3;
-}
-
-.html5 {
-    top: 30%;
-    left: 65%;
-    transform: translate(-50%, -50%) rotate(10deg) translateZ(2px) scale(0.25);
-    opacity: .6;
-}
-
-.design {
-    top: 40%;
-    left: 60%;
-    transform: translate(-50%, -50%) rotate(10deg) translateZ(2px) scale(0.25);
-    opacity: .6;
-}
-
 .eficiencia {
     top: 50%;
     left: 60%;
-    transform: translate(-50%, -50%) rotate(-5deg) translateZ(4px) scale(0.25);
-    opacity: .9;
+    -webkit-transform: translate(-50%, -50%) translateZ(4px) rotate(-5deg) scale(.25);
+            transform: translate(-50%, -50%) translateZ(4px) rotate(-5deg) scale(.25);
 }
-
+.boas-praticas {
+    top: 70%;
+    left: 20%;
+    -webkit-transform: translate(-50%, -50%) translateZ(1px) rotate(10deg) scale(.25);
+            transform: translate(-50%, -50%) translateZ(1px) rotate(10deg) scale(.25);
+    opacity: .3;
+}
+.codigo-limpo {
+    top: 45%;
+    left: 25%;
+    -webkit-transform: translate(-50%, -50%) translateZ(2px) rotate(-10deg) scale(.25);
+            transform: translate(-50%, -50%) translateZ(2px) rotate(-10deg) scale(.25);
+    opacity: .6;
+}
+.css3 {
+    top: 55%;
+    left: 35%;
+    -webkit-transform: translate(-50%, -50%) translateZ(2px) rotate(5deg) scale(.25);
+            transform: translate(-50%, -50%) translateZ(2px) rotate(5deg) scale(.25);
+    opacity: .6;
+}
+.html5 {
+    top: 30%;
+    left: 65%;
+    -webkit-transform: translate(-50%, -50%) translateZ(2px) rotate(10deg) scale(.25);
+            transform: translate(-50%, -50%) translateZ(2px) rotate(10deg) scale(.25);
+    opacity: .6;
+}
+.javascript {
+    top: 15%;
+    left: 60%;
+    -webkit-transform: translate(-50%, -50%) translateZ(1px) rotate(-5deg) scale(.25);
+            transform: translate(-50%, -50%) translateZ(1px) rotate(-5deg) scale(.25);
+}
+.acessibilidade {
+    top: 30%;
+    left: 35%;
+    -webkit-transform: translate(-50%, -50%) translateZ(3px) rotate(-5deg) scale(.25);
+            transform: translate(-50%, -50%) translateZ(3px) rotate(-5deg) scale(.25);
+    opacity: .8;
+}
+.responsivo {
+    top: 40%;
+    left: 40%;
+    -webkit-transform: translate(-50%, -50%) translateZ(3px) rotate(10deg) scale(.25);
+            transform: translate(-50%, -50%) translateZ(3px) rotate(10deg) scale(.25);
+    opacity: .8;
+}
 .otimizacoes {
     top: 70%;
     left: 65%;
-    transform: translate(-50%, -50%) rotate(-5deg) translateZ(2px) scale(0.25);
+    -webkit-transform: translate(-50%, -50%) translateZ(2px) rotate(-5deg) scale(.25);
+            transform: translate(-50%, -50%) translateZ(2px) rotate(-5deg) scale(.25);
     opacity: .6;
 }
-
-.p-link {
-    width: 100%;
-    text-align: center;
-    margin-top: 2.5em;
-    clear: both;
+.agilidade {
+    top: 75%;
+    left: 35%;
+    -webkit-transform: translate(-50%, -50%) translateZ(1px) rotate(5deg) scale(.25);
+            transform: translate(-50%, -50%) translateZ(1px) rotate(5deg) scale(.25);
+    opacity: .3;
 }
-
-.apresentacao {
-    border-bottom: 0.4em solid black;
+.design {
+    top: 40%;
+    left: 60%;
+    -webkit-transform: translate(-50%, -50%) translateZ(2px) rotate(10deg) scale(.25);
+            transform: translate(-50%, -50%) translateZ(2px) rotate(10deg) scale(.25);
+    opacity: .6;
 }
-
-.apresentacao-texto {
-    color: gray;
-    text-align: left;
-    padding: 3em;
-}
-
-.ola {
-    font-size: 3em;
-    margin-left: 2em;
-}
-
-.meu-nome {
-    font-size: 2em;
-    color: black;
-}
-
-.eu-construo {
-    margin-left: 16em;
-}
-
-.nova-linha {
-    display: block;
-    text-align: left;
-}
-
-.qualidade-site {
-    font-size: 4em;
-    color: #851944;
-    display: inline-block;
-    transform: rotate(-5deg) skew(-10deg);
-}
-
-.botao {
-    border: 0.2em solid black;
-    padding: 0.5em 2em;
-    background-color: #851944;
-    color: white;
-    text-align: center;
-    box-shadow: 0 0 1em #000, inset 0 0 .5em #FFF;
-}
-
-.trabalhos {
-    border-bottom: 0.4em solid black;
-    background-color: #3C1D3D;
-    background-image: linear-gradient(135deg, transparent, transparent 14px, rgba(0, 0, 0, 0.1) 14px, rgba(0, 0, 0, 0.1) 15px, transparent 15px, transparent);
-    background-size: 20px 20px;
-    background-attachment: fixed;
-}
-
-.blog {
-    background-image: linear-gradient(45deg, transparent, transparent 14px, rgba(255, 255, 255, 0.1) 14px, rgba(255, 255, 255, 0.1) 15px, transparent 15px, transparent);
-    background-size: 20px 20px;
-    background-attachment: fixed;
-}
-
-.apresentacao,
-.trabalhos,
-.blog {
-    color: white;
-}
-
-.paragrafo {
-    font-size: 3em;
-    margin-left: 1em;
-    text-align: left;
-    text-shadow: 2px 2px #000;
-}
-
-.sub-paragrafo {
-    font-size: 1em;
-    margin-left: 3em;
-    text-align: left;
-}
-
-.trabalho-img {
-    margin: 0 3em;
-    border: 0.4em solid black;
-    overflow: hidden;
-}
-
-.trabalho-img li {
-    float: left;
-    width: 33.333%;
-}
-
-.trabalho-img img {
-    width: 100%;
-    display: block;
-}
-
-.blog {
-    border-bottom: 0.4em solid #851944;
-    background-color: #999;
+.titulo-principal {
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
     position: relative;
 }
-
-.blog ol {
-    text-align: left;
-    margin-left: 3em;
-    margin-top: 2em;
-}
-
-.blog a {
-    color: #FCF;
-}
-
-.inicio-post {
-    background-color: #F2FFFC;
-    width: 30em;
+.banner-twitter {
     position: absolute;
-    top: 5em;
-    right: 3em;
-    height: 6em;
-    padding: 1em;
-    color: #000;
-    display: none;
-}
+    top: 0;
+    right: 0;
 
-footer {
-    background-color: #000;
-    color: #FFF;
-}
-
-footer a {
-    color: #F99;
-}
-
-.sigame {
-    /*configurando link*/
-    width: 14em;
     line-height: 1;
+
+    /* largura = 14em */
+    /* altura = 3.5em */
+    /* tx = .707 * h - .707 * w + w */
+    /* ty = -.707 * h */
+    -webkit-transform: translate(6.5765em, -2.4745em) rotate(45deg);
+            transform: translate(6.5765em, -2.4745em) rotate(45deg);
+    -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+
+    width: 14em;
     padding: 1em 0;
     box-sizing: border-box;
+
     text-align: center;
     text-decoration: none;
     background-color: #3C1D3D;
-    color: #FFF;
+    color: white;
     border: .25em solid black;
+
     font-size: 1.2em;
     font-family: "Open Sans Condensed", sans-serif;
-    /*ajustando posicionamento*/
+}
+.blog .inicio-post {
     position: absolute;
-    top: 0;
-    right: 0;
-    transform-origin: 0 0;
-    transform: translate(6.5754em, -2.4749em) rotate(45deg);
-}
-
-.palavras-3D,
-.topo {
-    transform-style: preserve-3d;
-}
-
-.palavras-3D {
-    position: absolute;
-    top: 0;
-    left: 0;
-    /*forma tradicional para ocupar 100% do espaço*/
-    /*width: 100%;
-    height: 100%;*/
-    /*outr forma para não usar largura e altura*/
-    bottom: 0;
-    right: 0;
-}
-
-.palavras-3D li {
-    font-size: 400%;
-}
-
-.blog li:hover,
-.blog li:focus {
+    top: 4em;
+    height: 8em;
+    left: 30%;
+    right: 4em;
     background-color: #F2FFFC;
-    width: 80%;
+    color: #000;
+    padding: 1.5em;
+    display: none;
 }
-
-.blog li:hover a,
-.blog li:focus a {
-    color: red;
-}
-
-
-/*Início - forma com mais código e fixa*/
-
-.blog li:nth-of-type(1):hover .inicio-post:nth-of-type(1),
-.blog li:nth-of-type(1):focus .inicio-post:nth-of-type(1) {
+.blog a:hover + .inicio-post,
+.blog a:focus + .inicio-post {
     display: block;
 }
-
-.blog li:nth-of-type(2):hover .inicio-post:nth-of-type(1),
-.blog li:nth-of-type(2):focus .inicio-post:nth-of-type(1) {
-    display: block;
+.blog a:hover,
+.blog a:focus {
+    background-color: #F2FFFC;
+    color: #F26;
 }
-
-.blog li:nth-of-type(3):hover .inicio-post:nth-of-type(1),
-.blog li:nth-of-type(3):focus .inicio-post:nth-of-type(1) {
-    display: block;
-}
-
-
-/*Fim - forma com mais código e fixa*/
-
-
-/*
-Forma mais fáci de fazer e genérica, podendo adicionar quantos elementos for, 
-o comportamento será o mesmo.
-.blog a:hover+.inicio-post,
-.blog a:focus+.inicio-post {
-    display: block;
-}
-*/
