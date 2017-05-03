@@ -119,3 +119,11 @@ fieldset:nth-child(1) label~label {
     width: 93%;
     float: left;
 }
+
+input[id="outro-assunto"] {
+    display: none;
+}
+
+input[value="outro"]:checked~input {
+    display: inline;
+}
