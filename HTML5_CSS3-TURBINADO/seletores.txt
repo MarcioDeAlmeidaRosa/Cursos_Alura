@@ -213,3 +213,7 @@ Podemos acessa-lo das seguintes formas:
 [alt]
 
 [class^="foto"]
+
+input[type="text"],
+input[type="email"]
+label[for] 
