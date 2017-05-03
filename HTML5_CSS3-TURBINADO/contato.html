@@ -20,24 +20,19 @@
         <form>
             <fieldset class="field">
                 <legend>Dados pessoais</legend>
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome-contato" placeholder="José da Silva" required autofocus>
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" name="nome-contato" placeholder="José da Silva" pattern="[A-z '\u00C0-\u017e]{4,}" title="O nome precisa ter pelo menos 4 caracteres" required autofocus>
                 <label for="email">E-mail</label>
                 <input type="email" id="email" name="email-contato" placeholder="jose.silva@seudominio.com" required>
             </fieldset>
             <fieldset class="field">
-                <legend>Assunto</legend>
-                <fieldset class="field">
-                    <input type="radio" id="consult" name="assunto" value="consult">
-                    <label for="consult">Consutoria</label>
-                    <input type="radio" id="blog" name="assunto" value="blog">
-                    <label for="blog">Blog</label>
-                    <fieldset class="field outros-assuntos-field">
-                        <input type="radio" id="outros" name="assunto" value="outros">
-                        <label for="outros">Outros</label>
-                        <input type="text" id="outros-assuntos" name="outros-assuntos" placeholder="Informar outros assuntos">
-                    </fieldset>
-                </fieldset>
+                <legend><label for="assunto">Assunto</label></legend>
+                <select name="assunto" id="assunto">
+                    <option value="" disabled selected>Selecione um assunto para a mensagem</option>
+                    <option value="consult">Consultoria</option>
+                    <option value="blog">Blog</option>
+                    <option value="outros">Outros</option>
+                </select>
                 <fieldset>
                     <legend><label for="mensagem">Mensagem</label></legend>
                     <textarea rows="6" cols="60" id="mensagem" name="mensagem" placeholder="Digite aqui sua mensagem" required></textarea>

@@ -3,6 +3,10 @@ form {
     margin: auto;
 }
 
+form legend {
+    display: block;
+}
+
 
 /*form input {
     width: 30em;
@@ -21,20 +25,14 @@ fieldset label {
 }
 
 .field {
-    border: .1em solid black;
     padding: .2em;
     margin: 3px;
 }
-
-.field .assunto {}
 
 .field .outros-assuntos-field {
     border: .01em solid black;
 }
 
-
-/*pega o primeiro field e para o segundo label aplica regra*/
-
-.field:nth-child(1)>label~label {
-    /*display: inline-block;*/
+select:invalid {
+    color: gray;
 }
