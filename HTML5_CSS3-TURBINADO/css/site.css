@@ -80,12 +80,7 @@ main p {
     box-sizing: border-box;
     background-repeat: no-repeat;
     text-shadow: 1px 1px black;
-    background-image: radial-gradient(ellipse at left bottom,
-        rgba(60, 29, 61, 0.8),
-        rgba(60, 29, 61, 0.8) 65%,
-        black 65%,
-        black 70%,
-        transparent 70%);
+    background-image: radial-gradient(ellipse at left bottom, rgba(60, 29, 61, 0.8), rgba(60, 29, 61, 0.8) 65%, black 65%, black 70%, transparent 70%);
     background-size: 25% 100%;
 }
 
@@ -128,7 +123,7 @@ em {
 }
 
 main {
-    width: 80%;
+    width: calc(100% - 0.9 * 300px);
     float: left;
     padding-bottom: 4em;
 }
@@ -141,7 +136,7 @@ main {
 }
 
 .navegacao-site {
-    width: 20%;
+    width: calc(0.9 * 300px);
     float: right;
     position: relative;
     top: 300px;
