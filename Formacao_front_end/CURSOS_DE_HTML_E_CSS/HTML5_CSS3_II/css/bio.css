@@ -1,3 +1,26 @@
+h1 {
+    -webkit-animation: aparecer 2s;
+    animation: aparecer 2s;
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes aparecer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .citacao-bio {
     background-color: #D9E5E3;
     border: .5em solid #C2CCCA;
@@ -5,6 +28,55 @@
     margin: 1em 2em;
     width: 30ch;
     box-sizing: border-box;
+    /*controles aplicados para a transiçao da animação*/
+    -webkit-transition: transform 1s linear, box-shadow 2s ease-in;
+    transition: transform 1s linear, box-shadow 2s ease-in;
+    -webkit-transition-delay: 0s, 1s;
+    transition-delay: 0s, 1s;
+    /*fim*/
+    /*configurando animação automatica agora*/
+    position: relative;
+    -webkit-animation: quica 1s infinite;
+    animation: quica 1s infinite;
+    /*fim*/
+    /*configurando para quando chegar no final da animação, executar ela reversa*/
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+    /*fim*/
+    /*configurando a aceleração da alternância*/
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    /*fim*/
+}
+
+@keyframes quica {
+    from {
+        top: 0;
+    }
+    90% {
+        transform: rotate(-2deg);
+    }
+    95% {
+        transform: rotate(2deg);
+    }
+    to {
+        top: 1em;
+    }
+}
+
+@-webkit-keyframes quica {
+    from {
+        top: 0;
+    }
+    90% {
+        transform: rotate(-2deg);
+    }
+    95% {
+        transform: rotate(2deg);
+    }
+    to {
+        top: 1em;
+    }
 }
 
 .citacao-bio:nth-of-type(even) {
@@ -25,6 +97,10 @@
 .citacao-bio:nth-of-type(odd):hover,
 .citacao-bio:nth-of-type(odd):focus {
     transform: scale(1.2) rotate(5deg);
+    /*pausando a animação quando o elemento ganha o foco*/
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+    /*fim*/
 }
 
 .citacao-bio:nth-of-type(even):hover,
