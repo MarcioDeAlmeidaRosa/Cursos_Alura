@@ -54,9 +54,8 @@
 }
 
 .container>table {
-    margin: 1em auto;
+    margin: auto;
     width: 90%;
-    empty-cells: hide;
     border-collapse: separate;
     border-spacing: 0.25em;
 }
@@ -66,7 +65,7 @@
     padding: 1em;
 }
 
-.container table tbody th {
+.container table th {
     background-color: #851944;
     color: #FFF;
     font-weight: bold;
@@ -74,8 +73,6 @@
 
 .container table thead th {
     background-color: #3C1D3D;
-    color: #FFF;
-    font-weight: bold;
 }
 
 .container table tbody td {
