@@ -19,7 +19,7 @@
 
 .citacao-bio:hover,
 .citacao-bio:focus {
-    box-shadow: 0 0 0 99999px rgba(0,0,0,.8);
+    box-shadow: 0 0 0 99999px rgba(0, 0, 0, .8);
 }
 
 .citacao-bio:nth-of-type(odd):hover,
@@ -32,7 +32,7 @@
     transform: scale(1.2) rotate(-5deg);
 }
 
-.container > p::first-letter {
+.container>p::first-letter {
     font-size: 200%;
     font-weight: bold;
     color: #3C1D3D;
@@ -49,6 +49,36 @@
     color: #bbb;
 }
 
-.citacao-bio > p {
+.citacao-bio>p {
     position: relative;
+}
+
+.container>table {
+    margin: 1em auto;
+    width: 90%;
+    empty-cells: hide;
+    border-collapse: separate;
+    border-spacing: 0.25em;
+}
+
+.container table td,
+.container table th {
+    padding: 1em;
+}
+
+.container table tbody th {
+    background-color: #851944;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.container table thead th {
+    background-color: #3C1D3D;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.container table tbody td {
+    background-color: #EEE;
+    font: inherit;
 }
