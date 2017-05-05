@@ -54,7 +54,7 @@
 }
 
 .container>table {
-    margin: auto;
+    margin: 1em auto;
     width: 90%;
     border-collapse: separate;
     border-spacing: 0.25em;
