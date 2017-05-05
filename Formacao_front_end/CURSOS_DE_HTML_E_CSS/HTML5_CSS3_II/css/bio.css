@@ -29,10 +29,10 @@ h1 {
     width: 30ch;
     box-sizing: border-box;
     /*controles aplicados para a transiçao da animação*/
-    -webkit-transition: transform 1s linear, box-shadow 2s ease-in;
-    transition: transform 1s linear, box-shadow 2s ease-in;
+    -webkit-transition: transform 1s, box-shadow 1s;
+    transition: transform 1s, box-shadow 1s;
     -webkit-transition-delay: 0s, 1s;
-    transition-delay: 0s, 1s;
+    transition-delay: 1s, 0s;
     /*fim*/
     /*configurando animação automatica agora*/
     position: relative;
@@ -47,6 +47,12 @@ h1 {
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
     /*fim*/
+}
+
+.citacao-bio:hover,
+.citacao-bio:focus {
+    /* vale quando o usuário começou a interagir */
+    transition-delay: 0s, 1s;
 }
 
 @keyframes quica {
