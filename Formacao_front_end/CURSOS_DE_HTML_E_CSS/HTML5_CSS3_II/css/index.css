@@ -303,3 +303,15 @@ body {
     background-color: #F2FFFC;
     color: #F26;
 }
+
+.botao-index:hover,
+.botao-index:focus {
+    box-shadow: 0 0 1em #FA9;
+    color: #FFF;
+    background-color: #C54974;
+}
+
+.botao-index {
+    -webkit-transition: .5s;
+    transition: .5s;
+}
