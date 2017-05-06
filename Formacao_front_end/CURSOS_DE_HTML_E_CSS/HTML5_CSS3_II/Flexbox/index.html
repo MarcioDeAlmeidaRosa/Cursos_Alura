@@ -3,35 +3,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Usando Flexbox</title>
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <style>
         body {
-            width: 80%;
+            width: 100%;
         }
         
-        section {
+        fieldset {
+            border: .1em solid black;
+            margin: 1em;
+            padding: 1em;
+        }
+        
+        section:nth-child(2) {
+            border: .1em solid red;
+            /*
+               display: flex ---> Faz com que o container se comporte como flexbox, ele passa a controlar o layout dos filhos dele seguindo o comportamento padrão
+                 * tendo a mesma altura e alinha eles ao lado esquerdo da tela
+            */
             display: flex;
             /*
-              baseline   = alinha filho no topo do pai
-              center     = alinha filho ao centro do pai
-              flex-end   = alinha filho no rodapé do pai
-              flex-start = alinha filho no topo do pai
-              inherit    = altera altura do fiho ao tamanho do pai
-              stretch    = altera altura do fiho ao tamanho do pai
-              unset      = altera altura do fiho ao tamanho do pai
+              Alinha verticalmente o filho com base no pai (align-items)
+              baseline   = alinha filho verticalmente no topo do pai e mantém o tamanho original do fillho
+              center     = alinha filho verticalmente ao centro do pai e mantém o tamanho original do fillho
+              flex-end   = alinha filho verticalmente no rodapé do pai e mantém o tamanho original do fillho
+              flex-start = alinha filho verticalmente no topo do pai e mantém o tamanho original do fillho
+              inherit    = altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai
+              stretch    = altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai
+              unset      = altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai
             */
             align-items: center;
+            /*
+              Alinha horizontal o filho com base no pai (justify-content)
+              Ajusta a distribuição da largura do filho para ocupar o pai, calculando igualmente o tamanho dos fihos dentro dele
+              center        = caso os filhos não ocupem todo o pai, alinha os dois ao centro mantendo a largura original do filho
+              flex-end      = caso os filhos não ocupem todo o pai, alinha os dois à direita mantendo a largura original do filho
+              flex-start    = caso os filhos não ocupem todo o pai, alinha os dois à esquerda mantendo a largura original do filho
+              inherit       = caso os filhos não ocupem todo o pai, alinha os dois à esquerda mantendo a largura original do filho
+              initial       = caso os filhos não ocupem todo o pai, alinha os dois à esquerda mantendo a largura original do filho
+              space-around  = caso os filhos não ocupem todo o pai, separa os filhos mantendo o mesmo espaçamentos da esquerda quanto da direita para os dois deixando espaço entre o pai e o filho mantendo a largura original do filho
+              space-between = caso os filhos não ocupem todo o pai, separa os filhos mantendo um em cada extremidade do pai mantendo a largura original do filho
+            */
             justify-content: space-between;
         }
         
         div {
             border: .1em solid black;
             margin: 1em;
-            /*text-align: center;*/
-            width: 500px;
+            text-align: center;
+            width: 200px;
             padding: 1em;
         }
         
@@ -51,10 +72,62 @@
             width: 70%;
             font-size: 120%;
         }
+        
+        input[value="baseline"]:checked section:nth-child(2) {
+            align-items: baseline;
+        }
+        
+        input[value="center"]:checked section:nth-child(2) {
+            align-items: center;
+        }
+        
+        input[value="flex-end"]:checked section:nth-child(2) {
+            align-items: flex-end;
+        }
+        
+        input[value="flex-start"]:checked section:nth-child(2) {
+            align-items: flex-start;
+        }
+        
+        input[value="inherit"]:checked section:nth-child(2) {
+            align-items: inherit;
+        }
+        
+        input[value="stretch"]:checked section:nth-child(2) {
+            align-items: stretch;
+        }
+        
+        input[value="unset"]:checked section:nth-child(2) {
+            align-items: unset;
+        }
     </style>
 </head>
 
 <body>
+    <section>
+        <fieldset>
+            <legend>Aplicando (align-items)</legend>
+            <label><input type="radio" name="align-items" value="baseline" title="Alinha filho verticalmente no topo do pai e mantém o tamanho original do fillho"> Baseline</label>
+            <label><input type="radio" name="align-items" value="center" title="Alinha filho verticalmente ao centro do pai e mantém o tamanho original do fillho" checked> Center</label>
+            <label><input type="radio" name="align-items" value="flex-end" title="Alinha filho verticalmente no rodapé do pai e mantém o tamanho original do fillho"> Flex-end</label>
+            <label><input type="radio" name="align-items" value="flex-start" title="Alinha filho verticalmente no topo do pai e mantém o tamanho original do fillho"> Flex-start</label>
+            <label><input type="radio" name="align-items" value="inherit" title="Altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai"> Inherit</label>
+            <label><input type="radio" name="align-items" value="stretch" title="Altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai"> Stretch</label>
+            <label><input type="radio" name="align-items" value="unset" title="Altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai"> Unset</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Aplicando (justify-content)</legend>
+            <label><input type="radio" name="justify-content" value="center" title="Caso os filhos não ocupem todo o pai, alinha os dois ao centro mantendo a largura original do filho" > Center</label>
+            <label><input type="radio" name="justify-content" value="flex-end" title="Caso os filhos não ocupem todo o pai, alinha os dois à direita mantendo a largura original do filho"> Flex-end</label>
+            <label><input type="radio" name="justify-content" value="flex-start" title="Caso os filhos não ocupem todo o pai, alinha os dois à esquerda mantendo a largura original do filho"> Flex-start</label>
+            <label><input type="radio" name="justify-content" value="flex-start" title="Caso os filhos não ocupem todo o pai, alinha os dois à esquerda mantendo a largura original do filho"> Inherit</label>
+            <label><input type="radio" name="justify-content" value="initial" title="Caso os filhos não ocupem todo o pai, alinha os dois à esquerda mantendo a largura original do filho"> Initial</label>
+            <label><input type="radio" name="justify-content" value="space-around" title="Caso os filhos não ocupem todo o pai, separa os filhos mantendo o mesmo espaçamentos da esquerda quanto da direita para os dois deixando espaço entre o pai e o filho mantendo a largura original do filho"> Space-around</label>
+            <label><input type="radio" name="justify-content" value="space-between"  title="Caso os filhos não ocupem todo o pai, separa os filhos mantendo um em cada extremidade do pai mantendo a largura original do filho" checked> Space-between</label>
+        </fieldset>
+
+    </section>
 
     <section>
         <div>
@@ -69,12 +142,12 @@
         </div>
         <div>
             <h1>Evento Tuiuti</h1>
-            <p>Nosso autódromo dispoe de uma infra muito boa onde você pode trazer seus familiares tornando seu treino um evento de família.</p>
+            <p>Nosso autódromo dispõe de uma infra muito boa onde você pode trazer seus familiares tornando seu treino um evento de família.</p>
             <button>Saber mais</button>
         </div>
         <div>
-            <h1>Evento Interlago</h1>
-            <p>Nosso autódromo exigirá muito de você, venha correr no templo da velociade.</p>
+            <h1>Evento Interlagos</h1>
+            <p>Nosso autódromo exigirá muito de você, venha correr no templo da velocidade.</p>
             <button>Saber mais</button>
         </div>
     </section>
