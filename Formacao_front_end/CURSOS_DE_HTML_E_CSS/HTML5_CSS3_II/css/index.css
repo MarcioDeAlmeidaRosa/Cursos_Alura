@@ -342,4 +342,6 @@ body {
     animation: aparece 0.5s;
     -webkit-animation-delay: 2s;
     animation-delay: 2s;
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards;
 }
