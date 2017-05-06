@@ -338,6 +338,8 @@ body {
 }
 
 .banner-twitter {
-    -webkit-animation: aparece 2s;
-    animation: aparece 2s;
+    -webkit-animation: aparece 0.5;
+    animation: aparece 0.5s;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
 }
