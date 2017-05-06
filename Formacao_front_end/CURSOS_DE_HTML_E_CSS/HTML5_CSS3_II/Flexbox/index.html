@@ -14,6 +14,15 @@
         
         section {
             display: flex;
+            /*
+              baseline   = alinha filho no topo do pai
+              center     = alinha filho ao centro do pai
+              flex-end   = alinha filho no rodapé do pai
+              flex-start = alinha filho no topo do pai
+              inherit    = altera altura do fiho ao tamanho do pai
+              stretch    = altera altura do fiho ao tamanho do pai
+              unset      = altera altura do fiho ao tamanho do pai
+            */
             align-items: center;
             justify-content: space-between;
         }
@@ -21,7 +30,7 @@
         div {
             border: .1em solid black;
             margin: 1em;
-            text-align: center;
+            /*text-align: center;*/
             width: 500px;
             padding: 1em;
         }
