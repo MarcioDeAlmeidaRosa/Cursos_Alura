@@ -18,11 +18,13 @@
         
         section:nth-child(2) {
             border: .1em solid red;
+            margin: 1em;
             /*
                display: flex ---> Faz com que o container se comporte como flexbox, ele passa a controlar o layout dos filhos dele seguindo o comportamento padrão
                  * tendo a mesma altura e alinha eles ao lado esquerdo da tela
             */
             display: flex;
+            flex-wrap: wrap;
             /*
               Alinha verticalmente o filho com base no pai (align-items)
               baseline   = alinha filho verticalmente no topo do pai e mantém o tamanho original do fillho
@@ -67,8 +69,13 @@
         
         div:nth-child(1),
         div:nth-child(2),
-        div:nth-child(3) {
+        div:nth-child(3),
+        div:nth-child(5) {
             order: 2;
+        }
+        
+        div:nth-child(5) {
+            flex-basis: 100%;
         }
         
         div p {
@@ -89,6 +96,7 @@
         
         button {
             width: 70%;
+            height: 3em;
             margin: auto;
             font-size: 120%;
         }
@@ -163,6 +171,11 @@
         <div>
             <h1>Evento Tuiuti</h1>
             <p>Nosso autódromo dispõe de uma infra muito boa onde você pode trazer seus familiares tornando seu treino um evento de família.</p>
+            <button>Saber mais</button>
+        </div>
+        <div>
+            <h1>Evento Velo Cittá</h1>
+            <p>Autódromo usado ela equipe do acelerados para testes de carro e moto, imagina quanta diversão você terá aqui...</p>
             <button>Saber mais</button>
         </div>
         <div>
