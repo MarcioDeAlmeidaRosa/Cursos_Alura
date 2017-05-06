@@ -122,24 +122,36 @@ em {
     background-image: url(../imagens/linkedin.png);
 }
 
+body {
+    display: flex;
+    /*suporte a quebra de linhas*/
+    flex-wrap: wrap;
+}
+
 main {
-    width: calc(100% - 0.9 * 300px);
-    float: left;
+    flex-grow: 1;
     padding-bottom: 4em;
 }
 
 .minha-foto,
 .navegacao-site {
     border-left: .5em solid black;
-    border-bottom: .5em solid black;
     box-sizing: border-box;
 }
 
+.minha-foto {
+    border-bottom: .5em solid black;
+}
+
 .navegacao-site {
-    width: calc(0.9 * 300px);
+    width: 270px;
     float: right;
-    position: relative;
-    top: 300px;
+    padding-top: calc(300px + 1em);
+}
+
+.navegacao-site {
+    /* removemos position e top, além do float, já removido acima */
+    padding-top: calc(300px + 1em);
 }
 
 .minha-foto {
@@ -147,6 +159,7 @@ main {
     top: 0;
     right: 0;
     height: 300px;
+    z-index: 99999;
 }
 
 .icones-redes-sociais a {

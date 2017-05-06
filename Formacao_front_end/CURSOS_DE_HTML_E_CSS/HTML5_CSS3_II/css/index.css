@@ -365,3 +365,11 @@ body {
         top: 5px;
     }
 }
+
+
+/*ajuste necessário por conta do flexbox incluido nas páginas*/
+
+body {
+    /* sobrescreve o site.css */
+    display: block;
+}
