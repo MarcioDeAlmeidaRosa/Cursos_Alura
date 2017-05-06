@@ -33,7 +33,7 @@
               stretch    = altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai
               unset      = altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai
             */
-            align-items: center;
+            align-items: inherit;
             /*
               Alinha horizontal o filho com base no pai (justify-content)
               Ajusta a distribuição da largura do filho para ocupar o pai, calculando igualmente o tamanho dos fihos dentro dele
@@ -71,6 +71,10 @@
             order: 2;
         }
         
+        div p {
+            flex: 1;
+        }
+        
         h1 {
             text-transform: uppercase;
             font-weight: bold;
@@ -85,6 +89,7 @@
         
         button {
             width: 70%;
+            margin: auto;
             font-size: 120%;
         }
         
@@ -123,10 +128,10 @@
         <fieldset>
             <legend>Aplicando (align-items)</legend>
             <label><input type="radio" name="align-items" value="baseline" title="Alinha filho verticalmente no topo do pai e mantém o tamanho original do fillho"> Baseline</label>
-            <label><input type="radio" name="align-items" value="center" title="Alinha filho verticalmente ao centro do pai e mantém o tamanho original do fillho" checked> Center</label>
+            <label><input type="radio" name="align-items" value="center" title="Alinha filho verticalmente ao centro do pai e mantém o tamanho original do fillho"> Center</label>
             <label><input type="radio" name="align-items" value="flex-end" title="Alinha filho verticalmente no rodapé do pai e mantém o tamanho original do fillho"> Flex-end</label>
             <label><input type="radio" name="align-items" value="flex-start" title="Alinha filho verticalmente no topo do pai e mantém o tamanho original do fillho"> Flex-start</label>
-            <label><input type="radio" name="align-items" value="inherit" title="Altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai"> Inherit</label>
+            <label><input type="radio" name="align-items" value="inherit" title="Altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai" checked> Inherit</label>
             <label><input type="radio" name="align-items" value="stretch" title="Altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai"> Stretch</label>
             <label><input type="radio" name="align-items" value="unset" title="Altera altura do fiho para o mesmo tamanho do pai, deixando ele centralizado verticalmente ao pai"> Unset</label>
         </fieldset>
