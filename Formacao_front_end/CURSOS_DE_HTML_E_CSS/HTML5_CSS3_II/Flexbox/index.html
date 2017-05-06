@@ -6,14 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Usando Flexbox</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <style>
         body {
-            width: 800px;
+            width: 80%;
+        }
+        
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
         div {
-            border: 1px solid black;
-            margin: 1px;
+            border: .1em solid black;
+            margin: 1em;
+            text-align: center;
+            width: 500px;
+            padding: 1em;
+        }
+        
+        h1 {
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 1em;
+            font-size: 120%;
+        }
+        
+        p {
+            margin: 1em;
+            font-size: 110%;
+        }
+        
+        button {
+            width: 70%;
+            font-size: 120%;
         }
     </style>
 </head>
