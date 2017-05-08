@@ -57,3 +57,21 @@ header {
         font-size: 1.25em;
     }
 }
+
+.secao {
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .secao {
+        width: 50%;
+        /*float: left;*/
+    }
+}
+
+@media (min-width: 1000px) {
+    .secao {
+        width: 33.333%;
+        /*float: left;*/
+    }
+}
