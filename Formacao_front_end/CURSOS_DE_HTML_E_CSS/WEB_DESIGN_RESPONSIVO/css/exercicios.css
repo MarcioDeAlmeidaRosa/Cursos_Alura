@@ -107,6 +107,16 @@ header {
         width: 30px;
         height: 27px;
     }
+    .menu-ativo:after {
+        content: "";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.4);
+    }
 }
 
 @media not all and (max-width: 600px) {
