@@ -95,6 +95,18 @@ header {
         padding: 1em 0;
         width: 100%;
     }
+    .menu-abrir,
+    .menu-fechar {
+        margin: 1em;
+        border: 0;
+        background: transparent;
+        background-image: url(../img/burger1.png);
+        background-repeat: no-repeat;
+        background-position: 25%;
+        background-size: 100px;
+        width: 30px;
+        height: 27px;
+    }
 }
 
 @media not all and (max-width: 600px) {
