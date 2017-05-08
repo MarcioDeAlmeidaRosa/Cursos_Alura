@@ -33,3 +33,15 @@ img {
 .menu-principal li {
     float: left;
 }
+
+header {
+    padding: 0.5em 0;
+}
+
+.destaques {
+    margin-top: 1em;
+}
+
+.barra-nav {
+    margin: 0.4em 0;
+}
