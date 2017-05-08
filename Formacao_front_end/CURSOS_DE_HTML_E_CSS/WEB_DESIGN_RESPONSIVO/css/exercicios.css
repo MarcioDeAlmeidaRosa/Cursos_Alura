@@ -73,3 +73,33 @@ header {
         width: 33.333%;
     }
 }
+
+@media (max-width600px) {
+    .barra-nav {
+        background: #f0f0f0;
+        padding: 1em;
+        margin: 0;
+        width: 90%;
+        height: 100%;
+        max-width: 320px;
+        top: 0;
+        position: fixed;
+        left: 0;
+        z-index: 1;
+        transition: left 0.3s ease-out;
+    }
+    .menu-ativo .barra-nav {
+        left: 0;
+    }
+    .menu-principal li {
+        padding: 1em 0;
+        width: 100%;
+    }
+}
+
+@media not all and (max-width:600px) {
+    .menu-abrir,
+    .menu-fechar {
+        display: none;
+    }
+}
