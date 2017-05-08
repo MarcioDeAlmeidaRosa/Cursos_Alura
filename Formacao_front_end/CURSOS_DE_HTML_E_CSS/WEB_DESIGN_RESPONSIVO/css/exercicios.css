@@ -95,18 +95,38 @@ header {
         padding: 1em 0;
         width: 100%;
     }
+    /*estilizando botão de abrir e fechar*/
     .menu-abrir,
     .menu-fechar {
-        margin: 1em;
+        background: none;
         border: 0;
-        background: transparent;
-        background-image: url(../img/burger1.png);
-        background-repeat: no-repeat;
-        background-position: 25%;
-        background-size: 100px;
-        width: 30px;
-        height: 27px;
+        outline: 0;
+        -webkit-appearance: none;
+        font-size: 1.6em;
+        text-indent: -999em;
     }
+    .menu-abrir {
+        height: 0;
+        width: .75em;
+        padding-top: .125em;
+        border-top: .375em double #000;
+        border-bottom: .125em solid red;
+        vertical-align: middle;
+        margin: 0.5em;
+    }
+    .menu-fechar {
+        position: relative;
+        height: 1em;
+        width: 1em;
+    }
+    .menu-fechar:before {
+        content: '\00D7';
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-indent: 0;
+    }
+    /*termino estilizando botão de abrir e fechar*/
     .menu-ativo:after {
         content: "";
         display: block;
