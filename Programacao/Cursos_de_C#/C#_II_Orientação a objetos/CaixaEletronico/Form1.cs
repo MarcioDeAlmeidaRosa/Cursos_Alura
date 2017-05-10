@@ -139,5 +139,44 @@ namespace CaixaEletronico
 
             MessageBox.Show(sb.ToString());
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Conta[] contas = new Conta[2];
+            contas[0] = new Conta();
+            contas[0].Deposita(100);
+            contas[1] = new Conta();
+            contas[1].Deposita(1000);
+
+            foreach(Conta conta in contas){
+                MessageBox.Show("O saldo da conta e: " + conta.Saldo);
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Banco banco = new Banco();
+            banco.Adicionar(
+                new Conta
+                {
+                    Agencia = 1,
+                    Numero = 123,
+                    TipoConta = 0,
+                    Titular = new Cliente("Marcio")
+                }
+                );
+
+            banco.Adicionar(
+                new Conta
+                {
+                    Agencia = 2,
+                    Numero = 6598,
+                    TipoConta = 1,
+                    Titular = new Cliente("Ronaldo")
+                }
+                );
+
+            MessageBox.Show("Total de contas incluídas: " + banco.Contas.Length);
+        }
     }
 }
