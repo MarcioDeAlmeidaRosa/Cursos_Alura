@@ -59,5 +59,10 @@ namespace CaixaEletronico
 
             return rendimento;
         }
+
+        public virtual void Atualiza(double taxa)
+        {
+            this.Saldo += this.Saldo * taxa;
+        }
     }
 }

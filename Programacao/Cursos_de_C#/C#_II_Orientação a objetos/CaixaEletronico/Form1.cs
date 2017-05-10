@@ -96,5 +96,48 @@ namespace CaixaEletronico
             umaConta.Agencia = 1;
             MessageBox.Show(umaConta.Titular.Nome + " - " + umaConta.Titular.Cpf + " - " + umaConta.Agencia + " - " + umaConta.Saldo);
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Conta c1 = new Conta(); ;
+            c1.Deposita(10);
+
+            ContaPoupanca c2 = new ContaPoupanca();
+            c2.Deposita(100);
+
+            TotalizadorDeContas t = new TotalizadorDeContas();
+            t.Adiciona(c1); ;
+            t.Adiciona(c2);
+
+            MessageBox.Show("Total de conta: " + t.Saldo);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Conta c = new Conta();
+            ContaCorrente cc = new ContaCorrente();
+            ContaPoupanca cp = new ContaPoupanca();
+
+            c.Deposita(1000.0);
+            cc.Deposita(1000.0);
+            cp.Deposita(1000.0);
+
+            AtualizadorDeContas atualizador = new AtualizadorDeContas(0.01);
+            atualizador.Roda(c);
+            atualizador.Roda(cc);
+            atualizador.Roda(cp);
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("conta  = " + c.Saldo);
+            sb.AppendLine("conta corrente = " + cc.Saldo);
+            sb.AppendLine("conta poupança = " + cp.Saldo);
+            
+            //conta  = 1010
+
+            //conta corrente = 1030
+
+            //conta poupança = 1020
+
+            MessageBox.Show(sb.ToString());
+        }
     }
 }

@@ -12,10 +12,15 @@ namespace CaixaEletronico
         {
             if (this.Saldo >= valorASerSacado && valorASerSacado >= 0)
             {
-                this.Saldo -= valorASerSacado + 0.1;
+                this.Saldo -= valorASerSacado + 0.10;
                 return true;
             }
             return false;
+        }
+
+        public override void Atualiza(double taxa)
+        {
+            base.Atualiza(3 * taxa);
         }
     }
 }
