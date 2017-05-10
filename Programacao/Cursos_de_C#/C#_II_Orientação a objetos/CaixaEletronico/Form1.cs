@@ -81,5 +81,20 @@ namespace CaixaEletronico
             textoSaldo.Text = Convert.ToString(conta.Saldo);
             textoNumero.Text = Convert.ToString(conta.Numero);
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ContaPoupanca umaConta = new ContaPoupanca();
+            umaConta.Numero = 1;
+            umaConta.Titular = new Cliente("Joaquim José");
+            //umaConta.Titular.Nome = "Joaquim José";
+            umaConta.Titular.Idade = 12;
+            umaConta.Titular.RgTitular = "45.639.789-9";
+            umaConta.Titular.EnderecoTitular = "Avenida Paulista";
+            //umaConta.Saldo = 2000.0;
+            umaConta.Titular.Cpf = "263.963.854-56";
+            umaConta.Agencia = 1;
+            MessageBox.Show(umaConta.Titular.Nome + " - " + umaConta.Titular.Cpf + " - " + umaConta.Agencia + " - " + umaConta.Saldo);
+        }
     }
 }
