@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CaixaEletronico
 {
-    public class Conta
+    public abstract class Conta
     {
         public int Numero { get; set; }
         public double Saldo{get; protected set;}
@@ -14,18 +14,7 @@ namespace CaixaEletronico
         public int TipoConta { get; set; }
 
 
-        public virtual bool Saca(double valorASerSacado)
-        {
-            if (this.Saldo >= valorASerSacado && valorASerSacado >= 0)
-            {
-                if (valorASerSacado > 200)
-                    if (!this.Titular.EhMaiorDeIdade)
-                        return false;
-                this.Saldo -= valorASerSacado;
-                return true;
-            }
-            return false;
-        }
+        public abstract bool Saca(double valorASerSacado);
 
         public void Deposita(double valorASerDepositado)
         {

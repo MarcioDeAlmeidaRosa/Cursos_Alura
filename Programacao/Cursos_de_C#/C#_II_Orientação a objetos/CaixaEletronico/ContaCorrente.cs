@@ -12,5 +12,18 @@ namespace CaixaEletronico
         {
             base.Atualiza( 2 * taxa);
         }
+
+        public override bool Saca(double valorASerSacado)
+        {
+            if (this.Saldo >= valorASerSacado && valorASerSacado >= 0)
+            {
+                if (valorASerSacado > 200)
+                    if (!this.Titular.EhMaiorDeIdade)
+                        return false;
+                this.Saldo -= valorASerSacado;
+                return true;
+            }
+            return false;
+        }
     }
 }

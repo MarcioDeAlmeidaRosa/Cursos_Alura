@@ -21,7 +21,7 @@ namespace CaixaEletronico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Conta umaConta = new Conta();
+            Conta umaConta = new ContaCorrente();
             umaConta.Numero = 1;
             umaConta.Titular = new Cliente("Joaquim José");
             //umaConta.Titular.Nome = "Joaquim José";
@@ -33,7 +33,7 @@ namespace CaixaEletronico
             umaConta.Agencia = 1;
 
 
-            Conta outraConta = new Conta();
+            Conta outraConta = new ContaPoupanca();
             outraConta.Numero = 2;
             outraConta.Titular = new Cliente("Silva Xavier");
             //outraConta.Titular.Nome = "Silva Xavier";
@@ -55,7 +55,7 @@ namespace CaixaEletronico
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            conta = new Conta();
+            conta = new ContaCorrente();
             conta.Titular = new Cliente("Marcio de Almeida Rosa");
             conta.Deposita(250.0);
             conta.Numero = 2369;
@@ -100,7 +100,7 @@ namespace CaixaEletronico
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Conta c1 = new Conta(); ;
+            Conta c1 = new ContaCorrente(); ;
             c1.Deposita(10);
 
             ContaPoupanca c2 = new ContaPoupanca();
@@ -115,7 +115,7 @@ namespace CaixaEletronico
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Conta c = new Conta();
+            Conta c = new ContaPoupanca();
             ContaCorrente cc = new ContaCorrente();
             ContaPoupanca cp = new ContaPoupanca();
 
@@ -144,9 +144,9 @@ namespace CaixaEletronico
         private void button7_Click(object sender, EventArgs e)
         {
             Conta[] contas = new Conta[2];
-            contas[0] = new Conta();
+            contas[0] = new ContaCorrente();
             contas[0].Deposita(100);
-            contas[1] = new Conta();
+            contas[1] = new ContaPoupanca();
             contas[1].Deposita(1000);
 
             foreach (Conta conta in contas)
@@ -159,7 +159,7 @@ namespace CaixaEletronico
         {
             banco = new Banco();
             banco.Adicionar(
-                new Conta
+                new ContaCorrente
                 {
                     Agencia = 1,
                     Numero = 123,
@@ -176,7 +176,7 @@ namespace CaixaEletronico
                 );
 
             banco.Adicionar(
-                new Conta
+                new ContaPoupanca
                 {
                     Agencia = 2,
                     Numero = 6598,
