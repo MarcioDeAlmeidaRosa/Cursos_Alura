@@ -6,26 +6,21 @@ using System.Threading.Tasks;
 
 namespace CaixaEletronico
 {
-    public class ContaPoupanca : Conta, ITributavel
+    public class ContaInvestimento : Conta, ITributavel
     {
         public override bool Saca(double valorASerSacado)
         {
             if (this.Saldo >= valorASerSacado && valorASerSacado >= 0)
             {
-                this.Saldo -= valorASerSacado + 0.10;
+                this.Saldo -= valorASerSacado;
                 return true;
             }
             return false;
         }
 
-        public override void Atualiza(double taxa)
-        {
-            base.Atualiza(3 * taxa);
-        }
-
         public double CalculaTributo()
         {
-            return this.Saldo * 0.02;
+            return this.Saldo * 0.03;
         }
     }
 }

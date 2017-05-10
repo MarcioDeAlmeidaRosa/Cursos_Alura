@@ -164,10 +164,10 @@ namespace CaixaEletronico
                     Agencia = 1,
                     Numero = 123,
                     TipoConta = 0,
-                    Titular = new Cliente("Marcio") 
+                    Titular = new Cliente("Marcio")
                     {
-                        Cpf = "236.852.963-45", 
-                        EnderecoTitular = "Avenida Paulista" ,
+                        Cpf = "236.852.963-45",
+                        EnderecoTitular = "Avenida Paulista",
                         Idade = 25,
                         RgTitular = "56.963.789-2"
                     }
@@ -191,9 +191,25 @@ namespace CaixaEletronico
                 }
                 );
 
+            banco.Adicionar(
+               new ContaInvestimento
+               {
+                   Agencia = 3,
+                   Numero = 56322,
+                   TipoConta = 1,
+                   Titular = new Cliente("Marcelo")
+                   {
+                       Cpf = "562.741.695-52",
+                       EnderecoTitular = "Avenida Brigadeiro",
+                       Idade = 55,
+                       RgTitular = "42.852.369-9"
+                   }
+               }
+               );
+
             for (int i = 0; i < banco.Contas.Length; i++)
             {
-                banco.Contas[i].Deposita((i+1) * 100);
+                banco.Contas[i].Deposita((i + 1) * 100);
             }
             MessageBox.Show("Total de contas incluídas: " + banco.Contas.Length);
         }
@@ -228,6 +244,20 @@ namespace CaixaEletronico
             {
                 MessageBox.Show("Selecione conta origem e conta destino para a transferência e valor da transferência");
             }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            button8_Click(sender, e);
+
+            GerenciadorDeImposto tt = new GerenciadorDeImposto();
+            foreach (Conta conta in banco.Contas)
+            {
+                if (conta is ITributavel)
+                    tt.Acumula((ITributavel)conta);
+            }
+            tt.Acumula(new SeguroDeVida());
+            MessageBox.Show("Total de tributos calculado: " + tt.Total);
         }
     }
 }

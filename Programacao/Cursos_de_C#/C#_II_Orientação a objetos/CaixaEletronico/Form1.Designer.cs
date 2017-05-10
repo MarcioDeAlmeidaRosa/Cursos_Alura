@@ -52,6 +52,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textoValorTransderencia = new System.Windows.Forms.TextBox();
+            this.button11 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -269,11 +270,22 @@
             this.textoValorTransderencia.Size = new System.Drawing.Size(242, 20);
             this.textoValorTransderencia.TabIndex = 22;
             // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(458, 226);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(130, 23);
+            this.button11.TabIndex = 24;
+            this.button11.Text = "Calcule Tributos";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 373);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textoValorTransderencia);
             this.Controls.Add(this.label6);
@@ -333,6 +345,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textoValorTransderencia;
+        private System.Windows.Forms.Button button11;
     }
 }
 
