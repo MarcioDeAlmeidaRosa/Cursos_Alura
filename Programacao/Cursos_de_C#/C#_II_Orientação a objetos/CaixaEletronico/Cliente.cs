@@ -17,6 +17,7 @@ namespace CaixaEletronico
         public string RgTitular { get; set; }
         public int Idade { get; set; }
         public string EnderecoTitular { get; set; }
+        public string Documentos { get; set; }
 
         public bool EhMaiorDeIdade
         {
@@ -29,6 +30,16 @@ namespace CaixaEletronico
         public Cliente(string nome)
         {
             this.Nome = nome;
+        }
+
+        public bool PodeAbrirContaSozinho
+        {
+            get
+            {
+                return (this.Idade >= 18 ||
+                this.Documentos.Contains("emancipacao")) &&
+                !string.IsNullOrEmpty(this.cpf);
+            }
         }
     }
 }
