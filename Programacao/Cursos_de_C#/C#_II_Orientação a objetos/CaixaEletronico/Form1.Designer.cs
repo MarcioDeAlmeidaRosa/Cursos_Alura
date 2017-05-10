@@ -44,6 +44,14 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.comboCotas = new System.Windows.Forms.ComboBox();
+            this.destinoDaTransferencia = new System.Windows.Forms.ComboBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textoValorTransderencia = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -190,11 +198,90 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(458, 197);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(132, 23);
+            this.button9.TabIndex = 16;
+            this.button9.Text = "Carregar Combos";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // comboCotas
+            // 
+            this.comboCotas.FormattingEnabled = true;
+            this.comboCotas.Location = new System.Drawing.Point(74, 240);
+            this.comboCotas.Name = "comboCotas";
+            this.comboCotas.Size = new System.Drawing.Size(242, 21);
+            this.comboCotas.TabIndex = 17;
+            this.comboCotas.SelectedIndexChanged += new System.EventHandler(this.comboCotas_SelectedIndexChanged);
+            // 
+            // destinoDaTransferencia
+            // 
+            this.destinoDaTransferencia.FormattingEnabled = true;
+            this.destinoDaTransferencia.Location = new System.Drawing.Point(74, 279);
+            this.destinoDaTransferencia.Name = "destinoDaTransferencia";
+            this.destinoDaTransferencia.Size = new System.Drawing.Size(242, 21);
+            this.destinoDaTransferencia.TabIndex = 18;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(74, 332);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(242, 23);
+            this.button10.TabIndex = 19;
+            this.button10.Text = "Transferir conta Origem para Destino";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(71, 224);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Conta Origem";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(71, 264);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Conta Destinon";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 313);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Valor transf.";
+            // 
+            // textoValorTransderencia
+            // 
+            this.textoValorTransderencia.Location = new System.Drawing.Point(74, 306);
+            this.textoValorTransderencia.Name = "textoValorTransderencia";
+            this.textoValorTransderencia.Size = new System.Drawing.Size(242, 20);
+            this.textoValorTransderencia.TabIndex = 22;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 250);
+            this.ClientSize = new System.Drawing.Size(644, 373);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textoValorTransderencia);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.destinoDaTransferencia);
+            this.Controls.Add(this.comboCotas);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -238,6 +325,14 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.ComboBox comboCotas;
+        private System.Windows.Forms.ComboBox destinoDaTransferencia;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textoValorTransderencia;
     }
 }
 

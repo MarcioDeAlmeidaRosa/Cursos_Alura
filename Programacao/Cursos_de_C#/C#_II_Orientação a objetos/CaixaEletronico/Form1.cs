@@ -13,6 +13,7 @@ namespace CaixaEletronico
     public partial class Form1 : Form
     {
         private Conta conta;
+        private Banco banco;
         public Form1()
         {
             InitializeComponent();
@@ -30,13 +31,13 @@ namespace CaixaEletronico
             //umaConta.Saldo = 2000.0;
             umaConta.Titular.Cpf = "263.963.854-56";
             umaConta.Agencia = 1;
-            
+
 
             Conta outraConta = new Conta();
             outraConta.Numero = 2;
             outraConta.Titular = new Cliente("Silva Xavier");
             //outraConta.Titular.Nome = "Silva Xavier";
-            outraConta.Titular.Idade =21;
+            outraConta.Titular.Idade = 21;
             outraConta.Titular.RgTitular = "45.852.741-6";
             outraConta.Titular.EnderecoTitular = "Avenida Vergueiro";
             //outraConta.Saldo = 1500.0;
@@ -53,7 +54,7 @@ namespace CaixaEletronico
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             conta = new Conta();
             conta.Titular = new Cliente("Marcio de Almeida Rosa");
             conta.Deposita(250.0);
@@ -66,20 +67,20 @@ namespace CaixaEletronico
         private void button2_Click(object sender, EventArgs e)
         {
             conta.Deposita(Convert.ToDouble(textoValor.Text));
-            MostraConta();
+            MostraConta(conta);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             conta.Saca(Convert.ToDouble(textoValor.Text));
-            MostraConta();
+            MostraConta(conta);
         }
 
-        private void MostraConta()
+        private void MostraConta(Conta contaAtual)
         {
-            textoTitular.Text = conta.Titular.Nome;
-            textoSaldo.Text = Convert.ToString(conta.Saldo);
-            textoNumero.Text = Convert.ToString(conta.Numero);
+            textoTitular.Text = contaAtual.Titular.Nome;
+            textoSaldo.Text = Convert.ToString(contaAtual.Saldo);
+            textoNumero.Text = Convert.ToString(contaAtual.Numero);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -130,7 +131,7 @@ namespace CaixaEletronico
             sb.AppendLine("conta  = " + c.Saldo);
             sb.AppendLine("conta corrente = " + cc.Saldo);
             sb.AppendLine("conta poupança = " + cp.Saldo);
-            
+
             //conta  = 1010
 
             //conta corrente = 1030
@@ -148,21 +149,29 @@ namespace CaixaEletronico
             contas[1] = new Conta();
             contas[1].Deposita(1000);
 
-            foreach(Conta conta in contas){
+            foreach (Conta conta in contas)
+            {
                 MessageBox.Show("O saldo da conta e: " + conta.Saldo);
             }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Banco banco = new Banco();
+            banco = new Banco();
             banco.Adicionar(
                 new Conta
                 {
                     Agencia = 1,
                     Numero = 123,
                     TipoConta = 0,
-                    Titular = new Cliente("Marcio")
+                    Titular = new Cliente("Marcio") 
+                    {
+                        Cpf = "236.852.963-45", 
+                        EnderecoTitular = "Avenida Paulista" ,
+                        Idade = 25,
+                        RgTitular = "56.963.789-2"
+                    }
+
                 }
                 );
 
@@ -173,10 +182,52 @@ namespace CaixaEletronico
                     Numero = 6598,
                     TipoConta = 1,
                     Titular = new Cliente("Ronaldo")
+                    {
+                        Cpf = "256.845.769-69",
+                        EnderecoTitular = "Avenida Vergueiro",
+                        Idade = 63,
+                        RgTitular = "74.321.796-8"
+                    }
                 }
                 );
 
+            for (int i = 0; i < banco.Contas.Length; i++)
+            {
+                banco.Contas[i].Deposita((i+1) * 100);
+            }
             MessageBox.Show("Total de contas incluídas: " + banco.Contas.Length);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            comboCotas.Items.Clear();
+            button8_Click(sender, e);
+            foreach (Conta conta in banco.Contas)
+            {
+                comboCotas.Items.Add(conta.Titular.Nome);
+                destinoDaTransferencia.Items.Add(conta.Titular.Nome);
+            }
+        }
+
+        private void comboCotas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboCotas.SelectedIndex >= 0)
+            {
+                conta = banco.Contas[comboCotas.SelectedIndex];
+                MostraConta(conta);
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if ((comboCotas.SelectedIndex >= 0) && (destinoDaTransferencia.SelectedIndex >= 0) && (!string.IsNullOrWhiteSpace(textoValorTransderencia.Text)))
+            {
+                banco.Contas[comboCotas.SelectedIndex].Transferencia(Convert.ToDouble(textoValorTransderencia.Text), banco.Contas[destinoDaTransferencia.SelectedIndex]);
+            }
+            else
+            {
+                MessageBox.Show("Selecione conta origem e conta destino para a transferência e valor da transferência");
+            }
         }
     }
 }
