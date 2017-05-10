@@ -28,5 +28,21 @@ namespace Caelum.CaixaEletronico
 
             Contas = auxiliar;
         }
+
+        public void Remove(Conta conta)
+        {
+            var novasContas = new Conta[Contas.Length - 1];
+            var linhaAplicada = 0;
+            for (int i = 0; i < Contas.Length; i++)
+            {
+                if (!conta.Equals(Contas[i]))
+                {
+                    novasContas[linhaAplicada] = Contas[1];
+                    linhaAplicada++;
+                }
+                    
+            }
+            Contas = novasContas;
+        }
     }
 }

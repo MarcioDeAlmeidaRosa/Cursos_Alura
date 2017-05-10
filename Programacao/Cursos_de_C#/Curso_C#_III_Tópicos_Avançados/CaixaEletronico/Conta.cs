@@ -50,5 +50,19 @@ namespace Caelum.CaixaEletronico.Contas
         {
             this.Saldo += this.Saldo * taxa;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Conta)
+            {
+                var conta = (Conta)obj;
+                return ((this.Numero == conta.Numero) && 
+                        (this.Saldo == conta.Saldo) && 
+                        (this.TipoConta == conta.TipoConta)
+                       );
+            }
+                
+            return false;
+        }
     }
 }

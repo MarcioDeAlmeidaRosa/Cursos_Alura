@@ -47,6 +47,12 @@
   <ItemGroup>
     <Compile Include="AtualizadorDeContas.cs" />
     <Compile Include="Banco.cs" />
+    <Compile Include="CadastroConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroConta.Designer.cs">
+      <DependentUpon>CadastroConta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cliente.cs" />
     <Compile Include="Conta.cs" />
     <Compile Include="ContaCorrente.cs" />
@@ -67,6 +73,9 @@
     <Compile Include="GerenciadorDeImposto.cs" />
     <Compile Include="ITributavel.cs" />
     <Compile Include="ValorNegativoException.cs" />
+    <EmbeddedResource Include="CadastroConta.resx">
+      <DependentUpon>CadastroConta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

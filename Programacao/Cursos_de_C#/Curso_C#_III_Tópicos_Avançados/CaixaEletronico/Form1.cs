@@ -75,14 +75,60 @@ namespace Caelum.CaixaEletronico
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            banco = new Banco();
+            banco.Adicionar(
+                new ContaCorrente
+                {
+                    Agencia = 1,
+                    Numero = 123,
+                    TipoConta = 0,
+                    Titular = new Cliente("Marcio")
+                    {
+                        Cpf = "236.852.963-45",
+                        EnderecoTitular = "Avenida Paulista",
+                        Idade = 25,
+                        RgTitular = "56.963.789-2"
+                    }
 
-            conta = new ContaCorrente();
-            conta.Titular = new Cliente("Marcio de Almeida Rosa");
-            conta.Deposita(250.0);
-            conta.Numero = 2369;
-            textoTitular.Text = conta.Titular.Nome;
-            textoSaldo.Text = Convert.ToString(conta.Saldo);
-            textoNumero.Text = Convert.ToString(conta.Numero);
+                }
+                );
+
+            banco.Adicionar(
+                new ContaPoupanca
+                {
+                    Agencia = 2,
+                    Numero = 6598,
+                    TipoConta = 1,
+                    Titular = new Cliente("Ronaldo")
+                    {
+                        Cpf = "256.845.769-69",
+                        EnderecoTitular = "Avenida Vergueiro",
+                        Idade = 63,
+                        RgTitular = "74.321.796-8"
+                    }
+                }
+                );
+
+            banco.Adicionar(
+               new ContaInvestimento
+               {
+                   Agencia = 3,
+                   Numero = 56322,
+                   TipoConta = 1,
+                   Titular = new Cliente("Marcelo")
+                   {
+                       Cpf = "562.741.695-52",
+                       EnderecoTitular = "Avenida Brigadeiro",
+                       Idade = 55,
+                       RgTitular = "42.852.369-9"
+                   }
+               }
+               );
+
+            for (int i = 0; i < banco.Contas.Length; i++)
+            {
+                banco.Contas[i].Deposita((i + 1) * 100);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -118,9 +164,18 @@ namespace Caelum.CaixaEletronico
 
         private void MostraConta(Conta contaAtual)
         {
-            textoTitular.Text = contaAtual.Titular.Nome;
-            textoSaldo.Text = Convert.ToString(contaAtual.Saldo);
-            textoNumero.Text = Convert.ToString(contaAtual.Numero);
+            if (contaAtual != null)
+            {
+                textoTitular.Text = contaAtual.Titular.Nome;
+                textoSaldo.Text = Convert.ToString(contaAtual.Saldo);
+                textoNumero.Text = Convert.ToString(contaAtual.Numero);
+            }
+            else
+            {
+                textoTitular.Text = string.Empty;
+                textoSaldo.Text = string.Empty;
+                textoNumero.Text = string.Empty;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -195,92 +250,37 @@ namespace Caelum.CaixaEletronico
             }
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            banco = new Banco();
-            banco.Adicionar(
-                new ContaCorrente
-                {
-                    Agencia = 1,
-                    Numero = 123,
-                    TipoConta = 0,
-                    Titular = new Cliente("Marcio")
-                    {
-                        Cpf = "236.852.963-45",
-                        EnderecoTitular = "Avenida Paulista",
-                        Idade = 25,
-                        RgTitular = "56.963.789-2"
-                    }
-
-                }
-                );
-
-            banco.Adicionar(
-                new ContaPoupanca
-                {
-                    Agencia = 2,
-                    Numero = 6598,
-                    TipoConta = 1,
-                    Titular = new Cliente("Ronaldo")
-                    {
-                        Cpf = "256.845.769-69",
-                        EnderecoTitular = "Avenida Vergueiro",
-                        Idade = 63,
-                        RgTitular = "74.321.796-8"
-                    }
-                }
-                );
-
-            banco.Adicionar(
-               new ContaInvestimento
-               {
-                   Agencia = 3,
-                   Numero = 56322,
-                   TipoConta = 1,
-                   Titular = new Cliente("Marcelo")
-                   {
-                       Cpf = "562.741.695-52",
-                       EnderecoTitular = "Avenida Brigadeiro",
-                       Idade = 55,
-                       RgTitular = "42.852.369-9"
-                   }
-               }
-               );
-
-            for (int i = 0; i < banco.Contas.Length; i++)
-            {
-                banco.Contas[i].Deposita((i + 1) * 100);
-            }
-            MessageBox.Show("Total de contas incluídas: " + banco.Contas.Length);
-        }
-
         private void button9_Click(object sender, EventArgs e)
         {
-            comboCotas.Items.Clear();
-            button8_Click(sender, e);
+            CarregarLista();
+        }
+
+        private void CarregarLista()
+        {
+            comboContas.Items.Clear();
             foreach (Conta conta in banco.Contas)
             {
-                comboCotas.Items.Add(conta.Titular.Nome);
+                comboContas.Items.Add(conta.Titular.Nome);
                 destinoDaTransferencia.Items.Add(conta.Titular.Nome);
             }
         }
 
         private void comboCotas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboCotas.SelectedIndex >= 0)
+            if (comboContas.SelectedIndex >= 0)
             {
-                conta = banco.Contas[comboCotas.SelectedIndex];
+                conta = banco.Contas[comboContas.SelectedIndex];
                 MostraConta(conta);
             }
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            if ((comboCotas.SelectedIndex >= 0) && (destinoDaTransferencia.SelectedIndex >= 0) && (!string.IsNullOrWhiteSpace(textoValorTransderencia.Text)))
+            if ((comboContas.SelectedIndex >= 0) && (destinoDaTransferencia.SelectedIndex >= 0) && (!string.IsNullOrWhiteSpace(textoValorTransderencia.Text)))
             {
                 try
                 {
-                    banco.Contas[comboCotas.SelectedIndex].Transferencia(Convert.ToDouble(textoValorTransderencia.Text), banco.Contas[destinoDaTransferencia.SelectedIndex]);
+                    banco.Contas[comboContas.SelectedIndex].Transferencia(Convert.ToDouble(textoValorTransderencia.Text), banco.Contas[destinoDaTransferencia.SelectedIndex]);
                 }
                 catch (ValorNegativoException ex)
                 {
@@ -303,8 +303,6 @@ namespace Caelum.CaixaEletronico
 
         private void button11_Click(object sender, EventArgs e)
         {
-            button8_Click(sender, e);
-
             GerenciadorDeImposto tt = new GerenciadorDeImposto();
             foreach (Conta conta in banco.Contas)
             {
@@ -322,6 +320,26 @@ namespace Caelum.CaixaEletronico
             MessageBox.Show("Cliente 1 é igual a cliente 2 = " + c1.Equals(c2));
 
             MessageBox.Show("Cliente 1.ToString() " + c1.ToString());
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            CadastroConta novaConta = new CadastroConta(this);
+            novaConta.ShowDialog();
+        }
+
+        public void AdicionarConta(Conta conta)
+        {
+            banco.Adicionar(conta);
+            CarregarLista();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            banco.Remove(banco.Contas[comboContas.SelectedIndex]);
+            comboContas.Text = string.Empty;
+            MostraConta(null);
+            CarregarLista();
         }
     }
 }

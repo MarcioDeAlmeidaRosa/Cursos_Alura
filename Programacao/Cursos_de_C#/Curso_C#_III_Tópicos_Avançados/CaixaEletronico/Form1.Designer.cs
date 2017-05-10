@@ -43,9 +43,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.comboCotas = new System.Windows.Forms.ComboBox();
+            this.comboContas = new System.Windows.Forms.ComboBox();
             this.destinoDaTransferencia = new System.Windows.Forms.ComboBox();
             this.button10 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -54,6 +53,8 @@
             this.textoValorTransderencia = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -190,19 +191,9 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(324, 163);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(133, 23);
-            this.button8.TabIndex = 15;
-            this.button8.Text = "Adicionar Contas";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(325, 192);
+            this.button9.Location = new System.Drawing.Point(325, 166);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(133, 23);
             this.button9.TabIndex = 16;
@@ -210,14 +201,14 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // comboCotas
+            // comboContas
             // 
-            this.comboCotas.FormattingEnabled = true;
-            this.comboCotas.Location = new System.Drawing.Point(74, 240);
-            this.comboCotas.Name = "comboCotas";
-            this.comboCotas.Size = new System.Drawing.Size(242, 21);
-            this.comboCotas.TabIndex = 17;
-            this.comboCotas.SelectedIndexChanged += new System.EventHandler(this.comboCotas_SelectedIndexChanged);
+            this.comboContas.FormattingEnabled = true;
+            this.comboContas.Location = new System.Drawing.Point(74, 240);
+            this.comboContas.Name = "comboContas";
+            this.comboContas.Size = new System.Drawing.Size(242, 21);
+            this.comboContas.TabIndex = 17;
+            this.comboContas.SelectedIndexChanged += new System.EventHandler(this.comboCotas_SelectedIndexChanged);
             // 
             // destinoDaTransferencia
             // 
@@ -273,7 +264,7 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(325, 221);
+            this.button11.Location = new System.Drawing.Point(325, 195);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(133, 23);
             this.button11.TabIndex = 24;
@@ -283,7 +274,7 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(325, 250);
+            this.button12.Location = new System.Drawing.Point(325, 224);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(133, 23);
             this.button12.TabIndex = 25;
@@ -291,11 +282,33 @@
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(325, 254);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(133, 23);
+            this.button8.TabIndex = 26;
+            this.button8.Text = "Nova Conta Corrente";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(325, 283);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(133, 23);
+            this.button13.TabIndex = 27;
+            this.button13.Text = "Remover Conta Corrente";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 373);
+            this.Controls.Add(this.button13);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.label7);
@@ -304,9 +317,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.destinoDaTransferencia);
-            this.Controls.Add(this.comboCotas);
+            this.Controls.Add(this.comboContas);
             this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -348,9 +360,8 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.ComboBox comboCotas;
+        private System.Windows.Forms.ComboBox comboContas;
         private System.Windows.Forms.ComboBox destinoDaTransferencia;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label5;
@@ -359,6 +370,8 @@
         private System.Windows.Forms.TextBox textoValorTransderencia;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button13;
     }
 }
 
