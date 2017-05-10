@@ -53,11 +53,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textoValorTransderencia = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(457, 23);
+            this.button1.Location = new System.Drawing.Point(324, 18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 23);
             this.button1.TabIndex = 0;
@@ -151,7 +152,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(458, 52);
+            this.button4.Location = new System.Drawing.Point(325, 47);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(133, 23);
             this.button4.TabIndex = 11;
@@ -161,7 +162,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(457, 81);
+            this.button5.Location = new System.Drawing.Point(325, 76);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(133, 23);
             this.button5.TabIndex = 12;
@@ -171,9 +172,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(455, 110);
+            this.button6.Location = new System.Drawing.Point(325, 105);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(134, 23);
+            this.button6.Size = new System.Drawing.Size(133, 23);
             this.button6.TabIndex = 13;
             this.button6.Text = "Atualizar Saldo";
             this.button6.UseVisualStyleBackColor = true;
@@ -181,9 +182,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(457, 139);
+            this.button7.Location = new System.Drawing.Point(324, 134);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(132, 23);
+            this.button7.Size = new System.Drawing.Size(133, 23);
             this.button7.TabIndex = 14;
             this.button7.Text = "Array de contas";
             this.button7.UseVisualStyleBackColor = true;
@@ -191,9 +192,9 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(457, 168);
+            this.button8.Location = new System.Drawing.Point(324, 163);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(131, 23);
+            this.button8.Size = new System.Drawing.Size(133, 23);
             this.button8.TabIndex = 15;
             this.button8.Text = "Adicionar Contas";
             this.button8.UseVisualStyleBackColor = true;
@@ -201,9 +202,9 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(458, 197);
+            this.button9.Location = new System.Drawing.Point(325, 192);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(132, 23);
+            this.button9.Size = new System.Drawing.Size(133, 23);
             this.button9.TabIndex = 16;
             this.button9.Text = "Carregar Combos";
             this.button9.UseVisualStyleBackColor = true;
@@ -257,7 +258,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 313);
+            this.label7.Location = new System.Drawing.Point(6, 313);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 23;
@@ -272,19 +273,30 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(458, 226);
+            this.button11.Location = new System.Drawing.Point(325, 221);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(130, 23);
+            this.button11.Size = new System.Drawing.Size(133, 23);
             this.button11.TabIndex = 24;
             this.button11.Text = "Calcule Tributos";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(325, 250);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(133, 23);
+            this.button12.TabIndex = 25;
+            this.button12.Text = "Comparar Objetos";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 373);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textoValorTransderencia);
@@ -346,6 +358,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textoValorTransderencia;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
     }
 }
 

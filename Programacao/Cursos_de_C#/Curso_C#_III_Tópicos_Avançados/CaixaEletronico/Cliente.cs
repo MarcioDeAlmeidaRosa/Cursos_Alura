@@ -41,5 +41,26 @@ namespace Caelum.CaixaEletronico.Usuarios
                 !string.IsNullOrEmpty(this.cpf);
             }
         }
+
+        /// <summary>
+        /// Comparar 2 instâncias de objetos
+        /// </summary>
+        /// <param name="obj">Objeto ao qual desejamos comprar com nosso objeto em questão</param>
+        /// <returns>True/False dependendo regra aplicada no metodo</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj is Cliente)
+                return this.Cpf.Equals(((Cliente)obj).Cpf);
+            return false;
+        }
+
+        /// <summary>
+        /// Transformar uma classe em string
+        /// </summary>
+        /// <returns>Representação em string do objeto em questão</returns>
+        public override string ToString()
+        {
+            return this.Cpf;
+        }
     }
 }

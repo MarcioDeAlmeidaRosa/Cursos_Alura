@@ -314,5 +314,14 @@ namespace Caelum.CaixaEletronico
             tt.Acumula(new SeguroDeVida());
             MessageBox.Show("Total de tributos calculado: " + tt.Total);
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Cliente c1 = new Cliente("Manoel") { Cpf = "236.952.785-50" };
+            Cliente c2 = new Cliente("Manoel") { Cpf = "236.952.785-50" };
+            MessageBox.Show("Cliente 1 é igual a cliente 2 = " + c1.Equals(c2));
+
+            MessageBox.Show("Cliente 1.ToString() " + c1.ToString());
+        }
     }
 }
