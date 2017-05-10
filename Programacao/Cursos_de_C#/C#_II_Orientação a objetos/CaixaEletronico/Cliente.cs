@@ -25,5 +25,10 @@ namespace CaixaEletronico
                 return this.Idade >= 18;
             }
         }
+
+        public Cliente(string nome)
+        {
+            this.Nome = nome;
+        }
     }
 }
