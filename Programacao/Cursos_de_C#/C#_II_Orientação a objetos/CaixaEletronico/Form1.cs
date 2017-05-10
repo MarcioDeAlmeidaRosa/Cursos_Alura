@@ -12,6 +12,7 @@ namespace CaixaEletronico
 {
     public partial class Form1 : Form
     {
+        private Conta conta;
         public Form1()
         {
             InitializeComponent();
@@ -49,6 +50,36 @@ namespace CaixaEletronico
             MessageBox.Show(outraConta.Titular.Nome + " - " + outraConta.Titular.Cpf + " - " + outraConta.Agencia + " - " + outraConta.Saldo);
 
         }
-        
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+            conta = new Conta();
+            conta.Titular = new Cliente("Marcio de Almeida Rosa");
+            conta.Deposita(250.0);
+            conta.Numero = 2369;
+            textoTitular.Text = conta.Titular.Nome;
+            textoSaldo.Text = Convert.ToString(conta.Saldo);
+            textoNumero.Text = Convert.ToString(conta.Numero);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            conta.Deposita(Convert.ToDouble(textoValor.Text));
+            MostraConta();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            conta.Saca(Convert.ToDouble(textoValor.Text));
+            MostraConta();
+        }
+
+        private void MostraConta()
+        {
+            textoTitular.Text = conta.Titular.Nome;
+            textoSaldo.Text = Convert.ToString(conta.Saldo);
+            textoNumero.Text = Convert.ToString(conta.Numero);
+        }
     }
 }
