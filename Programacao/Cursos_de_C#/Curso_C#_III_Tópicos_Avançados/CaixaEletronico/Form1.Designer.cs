@@ -1,4 +1,4 @@
-﻿namespace CaixaEletronico
+﻿namespace Caelum.CaixaEletronico
 {
     partial class Form1
     {

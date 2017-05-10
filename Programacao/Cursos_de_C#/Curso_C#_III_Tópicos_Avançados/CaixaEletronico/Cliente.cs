@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CaixaEletronico
+namespace Caelum.CaixaEletronico.Usuarios
 {
     public class Cliente
     {

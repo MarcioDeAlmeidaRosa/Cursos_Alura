@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Caelum.CaixaEletronico.Usuarios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CaixaEletronico
+namespace Caelum.CaixaEletronico.Contas
 {
     public abstract class Conta
     {
