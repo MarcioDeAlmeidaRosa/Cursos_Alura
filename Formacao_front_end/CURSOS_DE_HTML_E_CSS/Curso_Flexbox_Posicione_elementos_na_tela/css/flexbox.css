@@ -81,6 +81,7 @@
 @media(max-width: 768px) {
     /*iniciando layout responsivo para celular - Início*/
     /*https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes*/
+    /*https://css-tricks.com/snippets/css/a-guide-to-flexbox/*/
     .cabecalhoPrincipal-nav {
         flex-direction: column;
     }
@@ -115,6 +116,9 @@
     }
     .rodapePrincipal-contatoForm-fieldset {
         justify-content: center;
+    }
+    .cabecalhoPrincipal-nav-link-app {
+        order: -1;
     }
     /*iniciando layout responsivo para celular - Fim*/
 }
