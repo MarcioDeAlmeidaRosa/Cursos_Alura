@@ -78,15 +78,43 @@
 
 /*ajuste conteúdo principal - fim*/
 
-
-/*iniciando layout responsivo para celular*/
-
-.cabecalhoPrincipal-nav {
-    flex-direction: column;
-}
-
-.cabecalhoPrincipal .container {
-    flex-direction: column;
-    align-items: initial;
-    text-align: center;
+@media(max-width: 768px) {
+    /*iniciando layout responsivo para celular - Início*/
+    /*https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes*/
+    .cabecalhoPrincipal-nav {
+        flex-direction: column;
+    }
+    .cabecalhoPrincipal .container {
+        flex-direction: column;
+        align-items: initial;
+        text-align: center;
+    }
+    .conteudoPrincipal-cursos {
+        flex-direction: column;
+    }
+    .conteudoPrincipal-cursos-link {
+        width: 100%;
+    }
+    .conteudoPrincipal-cursos-link:nth-child(4n) {
+        margin: 1%;
+    }
+    .conteudoPrincipal-cursos-link:nth-child(4n+1) {
+        margin: 1%;
+    }
+    .rodapePrincipal-navMap-list {
+        height: auto;
+    }
+    .rodapePrincipal-patrocinadores .container {
+        flex-direction: column;
+    }
+    .rodapePrincipal-patrocinadores-list {
+        width: 100%;
+    }
+    .rodapePrincipal-contatoForm {
+        width: 100%;
+    }
+    .rodapePrincipal-contatoForm-fieldset {
+        justify-content: center;
+    }
+    /*iniciando layout responsivo para celular - Fim*/
 }
