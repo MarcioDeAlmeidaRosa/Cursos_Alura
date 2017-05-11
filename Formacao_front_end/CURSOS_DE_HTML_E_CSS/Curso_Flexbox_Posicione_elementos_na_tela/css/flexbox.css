@@ -53,3 +53,21 @@
 
 
 /*ajuste rodapé principal - fim*/
+
+
+/*ajuste conteúdo principal - início*/
+
+.conteudoPrincipal-cursos {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: space-between;
+}
+
+.conteudoPrincipal-cursos-link {
+    width: 23%;
+    padding-bottom: 1%;
+}
+
+
+/*ajuste conteúdo principal - fim*/
