@@ -75,6 +75,32 @@
     margin-left: 0;
 }
 
+.videoSobre .container {
+    display: flex;
+}
+
+.videoSobre-video {
+    /*iframe contendo o vídeo*/
+    flex-grow: 1;
+}
+
+.videoSobre-sobre {
+    /*vantagens do alurinha*/
+    text-align: center;
+    /*fez com que todos elementos tivessem o mesmo tamanho verticalmente*/
+    display: flex;
+    /*mudou a direção do flex, fazendo com que todos os elementos ganhace o mesmo tamanho horizontalmente*/
+    flex-direction: column;
+    /*faz com que o componente ocupe todo o restante do espaço que esta sobrando do seu lado direito*/
+    flex-grow: 2;
+}
+
+.videoSobre-sobre-list {
+    /*texto*/
+    /*faz com que a lista cresça, assim ocupando o espaço que sobrava dentro do seu container*/
+    flex-grow: 1;
+}
+
 
 /*ajuste conteúdo principal - fim*/
 
