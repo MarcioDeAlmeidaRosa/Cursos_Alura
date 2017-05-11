@@ -82,6 +82,8 @@
 .videoSobre-video {
     /*iframe contendo o vídeo*/
     flex-grow: 1;
+    /*configurando que ao diminuir a tela, esse objeto vai diminuir 2 vezes mais que os demais itens do mesmo pai*/
+    flex-shrink: 2;
 }
 
 .videoSobre-sobre {
@@ -145,6 +147,12 @@
     }
     .cabecalhoPrincipal-nav-link-app {
         order: -1;
+    }
+    .videoSobre .container {
+        flex-direction: column;
+    }
+    .videoSobre-video {
+        margin: auto;
     }
     /*iniciando layout responsivo para celular - Fim*/
 }
