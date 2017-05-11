@@ -60,6 +60,7 @@
 .conteudoPrincipal-cursos {
     display: flex;
     flex-flow: row wrap;
+    align-items: center;
 }
 
 .conteudoPrincipal-cursos-link {
