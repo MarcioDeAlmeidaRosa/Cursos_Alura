@@ -60,12 +60,11 @@
 .conteudoPrincipal-cursos {
     display: flex;
     flex-flow: row wrap;
-    align-items: center;
 }
 
 .conteudoPrincipal-cursos-link {
     width: 23%;
-    padding: 1%;
+    margin: 1%;
 }
 
 .conteudoPrincipal-cursos-link:nth-child(4n) {
