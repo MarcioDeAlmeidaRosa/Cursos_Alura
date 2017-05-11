@@ -1,3 +1,5 @@
+/*ajuste cabeçalho - início*/
+
 .cabecalhoPrincipal .container {
     display: flex;
     align-items: center;
@@ -7,6 +9,12 @@
 .cabecalhoPrincipal-nav {
     display: flex;
 }
+
+
+/*ajuste cabeçalho - fim*/
+
+
+/*ajuste rodapé patrocinadores - início*/
 
 .rodapePrincipal-patrocinadores .container {
     display: flex;
@@ -28,3 +36,19 @@
 .rodapePrincipal-contatoForm-fieldset {
     display: flex;
 }
+
+
+/*ajuste rodapé patrocinadores - fim*/
+
+
+/*ajuste rodapé principal - início*/
+
+.rodapePrincipal-navMap-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 250px;
+}
+
+
+/*ajuste rodapé principal - fim*/
