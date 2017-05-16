@@ -1,0 +1,13 @@
+//imagem base
+FROM ubuntu 
+
+//executa a instrução de instalação do Apache
+RUN apt-get update && apt-get install -y apache2 
+
+//Para liberar uma porta usamos a instrução EXPOSE. Além disso fazemos
+EXPOSE 80
+
+//Essa instrução executa o Apache. 
+//Então quando criarmos um container com essa imagem, 
+//não mais precisaremos inserir aquela instrução enorme.
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]

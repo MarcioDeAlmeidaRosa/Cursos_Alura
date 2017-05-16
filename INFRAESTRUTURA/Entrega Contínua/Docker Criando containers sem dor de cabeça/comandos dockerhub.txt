@@ -1,0 +1,170 @@
+Para ver a lista de portas abertas no Windows:
+netstat -an
+------------------------------------------------------------------------------------------------
+Lista containers por id
+docker ps -a -q
+------------------------------------------------------------------------------------------------
+para todos os containers com auxílio de função $()
+docker stop $(docker ps -a -q)
+
+PS.: O código de saída dele será 0 por que foi encerrado
+------------------------------------------------------------------------------------------------
+para um determinado containers por id
+docker stop a9068caf7abf
+
+PS.: O código de saída dele será 0 por que foi encerrado
+------------------------------------------------------------------------------------------------
+para um determinado containers por nome
+docker stop database
+
+PS.: O código de saída dele será 0 por que foi encerrado
+------------------------------------------------------------------------------------------------
+remove todos os containers --> aplicação tem que estar parada
+docker rm $(docker ps -a -q)
+------------------------------------------------------------------------------------------------
+removendo container pelo id --> aplicação tem que estar parada
+docker rm d0e4058afbff
+------------------------------------------------------------------------------------------------
+removendo container pelo nome--> aplicação tem que estar parada
+docker rm suspicious_noether
+------------------------------------------------------------------------------------------------
+removendo imagens por nome
+docker rmi ubuntu
+------------------------------------------------------------------------------------------------
+removendo imagens por id
+docker rmi 434d6fc941ea
+------------------------------------------------------------------------------------------------
+removendo todas imagens 
+docker rmi $(docker images -a -q)
+------------------------------------------------------------------------------------------------
+fazer download de imagem
+docker pull mysql
+------------------------------------------------------------------------------------------------
+Iniciar um container parado
+docker start amazing_goodall
+------------------------------------------------------------------------------------------------
+cria container do MySQL e executa
+docker run --name database -e MYSQL_ROOT_PASSWORD=teste123 -d mysql
+------------------------------------------------------------------------------------------------
+cria container do WordPPress e executa
+docker run --name blog-alura --link database:mysql -e WORDPRESS_DB_PASSWORD=teste123 -p 8080:80 -d wordpress
+------------------------------------------------------------------------------------------------
+Executar comandos em um container de fora dele -> dessa forma o conteúdo que seria apresentado dentro do container, é apresentado no prompt principal
+docker exec -it amazing_goodall ps aux
+------------------------------------------------------------------------------------------------
+Matar um container por ID quando por algum motivo ele trava
+docker kill d5787ed33ece
+
+PS.: O código de saída dele será 137 por que foi matado
+------------------------------------------------------------------------------------------------
+Matar um container por nome quando por algum motivo ele trava
+docker kill database
+
+PS.: O código de saída dele será 137 por que foi matado
+------------------------------------------------------------------------------------------------
+Para criar container não gerenciaveis, só criado para executar algo e pode ser descartado (container  descartáveis)
+
+docker run --rm -it ubuntu bash
+
+Apos executar o comando acima, executo um update do apache
+
+root@8d8b03c51c9a:/# apt-get update & appt-get install -y apache2
+
+verificando se a atualização ocorreu com sucesso
+root@8d8b03c51c9a:/# whereis apache2
+
+saindo do container 
+root@8d8b03c51c9a:/# exit
+
+
+PS.: Ao sair do container, automaticamente ele se remove
+
+------------------------------------------------------------------------------------------------
+Lista todos os precessos da maquina local
+ps aux
+------------------------------------------------------------------------------------------------
+Conta todos os precessos da maquina local
+ps aux | wc -l
+------------------------------------------------------------------------------------------------
+Executa entrada no Container que esta em execução passando parâmetros
+-i             == garante interatividade com o shell nativo de dentro do contauner que será acessado
+-t             == é que essa interação vai acontecer pelo terminal,-> simula o TTY (onde funciona o shell dentro do Container)
+blog-alura     == nome do Container que será acessado
+bash           == o que você quer executar dentro do Container
+
+--> docker exec -i -t blog-alura bash    ou  docker exec -it blog-alura bash
+ou 
+--> docker run -i -t ubuntu bash         ou  docker run -it ubuntu bash
+
+O pronpt vai mudar para => root@a9068caf7abf:/var/www/html#
+Onde podemos executar comandos: 
+ls
+ps aux
+ps aux | wc -l
+exit
+------------------------------------------------------------------------------------------------
+Criando um commit da imagem criada e salvando no dockerhub
+-m                => mensagem de descrição do commit
+zealous_ramanujan => nome do container
+ubuntu            => imagem usada para o container ( se udado, sobresquevemos a imagem padrão, usar quando tiver certeza)
+ubuntu/apache     => cria uma nova imagem derivada do ubuntu, porém já com o apache instalado
+
+docker commit -m "Instalação do apache2" zealous_ramanujan ubuntu/apache
+
+Depois do commit, podemos criar containes com base na nova imagem personalizada
+docker run -it ubuntu/apache
+
+root@711abaae25da:/# whereis apache2
+
+root@711abaae25da:/# ps aux
+
+root@711abaae25da:/# apache2ctl start
+
+root@711abaae25da:/# ps aux
+
+------------------------------------------------------------------------------------------------
+Trabalhando com portas
+docker run -it -p 8080:80 ubuntu/apache bash
+------------------------------------------------------------------------------------------------
+Executando arquivos dockerfile
+-t            => nome da tag
+ubuntu/apache => definição do nome da tag
+"caminho"     => caminho onde esta o arquivo dockerfile --> dockerfile sem extensão
+
+docker build -t ubuntu/apache "caminho"
+
+docker build -t mysql/wordpress "C:\Users\Marcio Rosa\Documents\GIT\Cursos_Alura\INFRAESTRUTURA\Entrega Contínua\Docker Criando containers sem dor de cabeça"
+------------------------------------------------------------------------------------------------
+Criando imagem a partir de docker compose
+docker-compose => nome do arquivo sem a extensão
+up             => comando para executar
+
+docker-compose up
+------------------------------------------------------------------------------------------------
+Verificar criação depois de rodar o compose
+docker-compose ps
+------------------------------------------------------------------------------------------------
+Inspecionar informação do container
+
+mysql => nome do container que deseja inspecionar
+
+docker inspect mysql
+------------------------------------------------------------------------------------------------
+atualiza os pacotes de instalação
+apt-get update
+------------------------------------------------------------------------------------------------
+Instalar cliente do mysql server
+apt-get install -y mysql-client
+------------------------------------------------------------------------------------------------
+Conectando no banco de dados usando o cliente
+mysql -h 172.17.0.2 -u root -p
+
+------------------------------------------------------------------------------------------------
+
+Chamando Helps
+docker help
+docker run --help
+docker ps --help
+docker exec --help
+docker commit --help
+------------------------------------------------------------------------------------------------
