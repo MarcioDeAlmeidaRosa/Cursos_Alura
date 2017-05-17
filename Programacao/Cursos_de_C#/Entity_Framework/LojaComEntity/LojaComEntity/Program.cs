@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
 
 namespace LojaComEntity
 {
@@ -12,35 +6,24 @@ namespace LojaComEntity
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Rodou");
-            //Console.ReadLine();
-            //IDbConnection con = new SqlConnection("");
-            //IDbCommand command = con.CreateCommand();
-            //command.CommandText = "select * from usuario";
-            //command.CommandType = CommandType.Text;
-            //IDataReader leitor = command.ExecuteReader();
-
-            //while (leitor.Read())
-            //{
-            //    int id = Convert.ToInt32( leitor["id"]);
-            //    string nome = Convert.ToString(leitor["id"]);
-            //}
-
-            EntidadeContext contexto = new EntidadeContext();
-
-            var usuario = new Entidades.Usuario()
+            var dao = new UsuarioDao();
+            var renato = new Entidades.Usuario()
             {
-                Nome = "Marcio",
-                Senha = "123"
+                Nome = "Marcelo",
+                Senha = "523"
             };
-
-            contexto.Usuarios.Add(usuario);
-            contexto.SaveChanges();
-            contexto.Dispose();
-
+            dao.Salva(renato);
             Console.WriteLine("Salvou o usuário");
-            Console.ReadLine();
+            var usuario = dao.BuscaPorId(2);
+            Console.WriteLine("Usuário recuperado " + usuario.Nome);
 
+            dao.Remove(usuario);
+            Console.WriteLine("Usuário removido com sucesso.");
+
+
+
+
+            Console.ReadLine();
         }
     }
 }

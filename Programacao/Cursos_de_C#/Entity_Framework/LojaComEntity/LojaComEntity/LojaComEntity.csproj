@@ -113,6 +113,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>lojaDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioDao.cs" />
     <Compile Include="Migrations\20170517010928_criaUsuario.cs" />
     <Compile Include="Migrations\20170517010928_criaUsuario.designer.cs">
       <DependentUpon>20170517010928_criaUsuario.cs</DependentUpon>
