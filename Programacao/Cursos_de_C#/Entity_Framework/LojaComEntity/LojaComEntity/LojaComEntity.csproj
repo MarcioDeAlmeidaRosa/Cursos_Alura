@@ -106,6 +106,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categoria.cs" />
     <Compile Include="EntidadeContext.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="lojaDataSet.Designer.cs">
@@ -113,6 +114,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>lojaDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20170517021651_criaProdutoCategoria.cs" />
+    <Compile Include="Migrations\20170517021651_criaProdutoCategoria.designer.cs">
+      <DependentUpon>20170517021651_criaProdutoCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produto.cs" />
     <Compile Include="UsuarioDao.cs" />
     <Compile Include="Migrations\20170517010928_criaUsuario.cs" />
     <Compile Include="Migrations\20170517010928_criaUsuario.designer.cs">
