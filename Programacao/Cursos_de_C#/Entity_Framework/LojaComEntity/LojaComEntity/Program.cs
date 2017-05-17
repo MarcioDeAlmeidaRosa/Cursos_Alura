@@ -41,6 +41,7 @@ namespace LojaComEntity
             Venda venda = contexto
                 .Vendas
                 .Include(v => v.ProdutoVenda)
+                .ThenInclude(produtoVenda => produtoVenda.Produto)
                 .FirstOrDefault(v => v.ID == 1);
 
             foreach(var produtoVenda in venda.ProdutoVenda)
