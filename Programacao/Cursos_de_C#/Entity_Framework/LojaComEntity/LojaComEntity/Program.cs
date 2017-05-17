@@ -38,6 +38,9 @@ namespace LojaComEntity
             contexto.SaveChanges();
             contexto.Dispose();
 
+            Console.WriteLine("Salvou o usuário");
+            Console.ReadLine();
+
         }
     }
 }
