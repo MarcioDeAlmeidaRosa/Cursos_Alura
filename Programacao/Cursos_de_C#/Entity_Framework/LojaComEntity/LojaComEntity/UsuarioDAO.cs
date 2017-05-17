@@ -19,6 +19,12 @@ namespace LojaComEntity
             //contexto.Dispose();
         }
 
+        public void SaveChanges(Usuario usuario)
+        {
+            contexto.SaveChanges();
+            //contexto.Dispose();
+        }
+
         public Usuario BuscaPorId(int id)
         {
             var usuario = contexto.Usuarios.FirstOrDefault(u => u.ID == id);
@@ -31,6 +37,7 @@ namespace LojaComEntity
         {
             contexto.Usuarios.Remove(usuario);
             contexto.SaveChanges();
+            //contexto.Dispose();
         }
     }
 }

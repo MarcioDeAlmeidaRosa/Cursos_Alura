@@ -14,15 +14,12 @@ namespace LojaComEntity
             };
             dao.Salva(renato);
             Console.WriteLine("Salvou o usuário");
-            var usuario = dao.BuscaPorId(2);
-            Console.WriteLine("Usuário recuperado " + usuario.Nome);
-
-            dao.Remove(usuario);
-            Console.WriteLine("Usuário removido com sucesso.");
-
-
-
-
+            //Unchanged
+            var usuario = dao.BuscaPorId(1);
+            //Modified
+            usuario.Nome = "Marcio de Almeida Rosa";
+            dao.SaveChanges(usuario);
+            Console.WriteLine("Usuário salvo com sucesso.");
             Console.ReadLine();
         }
     }
