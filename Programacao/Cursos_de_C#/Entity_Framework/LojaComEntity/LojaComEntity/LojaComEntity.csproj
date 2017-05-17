@@ -107,10 +107,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Categoria.cs" />
-    <Compile Include="CategoriaDao.cs" />
+    <Compile Include="Entidades\Categoria.cs" />
+    <Compile Include="DAO\CategoriaDao.cs" />
     <Compile Include="EntidadeContext.cs" />
+    <Compile Include="Entidades\ProdutoVenda.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Entidades\Venda.cs" />
     <Compile Include="lojaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,9 +122,13 @@
     <Compile Include="Migrations\20170517021651_criaProdutoCategoria.designer.cs">
       <DependentUpon>20170517021651_criaProdutoCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Produto.cs" />
-    <Compile Include="ProdutoDao.cs" />
-    <Compile Include="UsuarioDao.cs" />
+    <Compile Include="Entidades\Produto.cs" />
+    <Compile Include="Migrations\20170517135428_criaVenda.cs" />
+    <Compile Include="Migrations\20170517135428_criaVenda.designer.cs">
+      <DependentUpon>20170517135428_criaVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\ProdutoDao.cs" />
+    <Compile Include="DAO\UsuarioDao.cs" />
     <Compile Include="Migrations\20170517010928_criaUsuario.cs" />
     <Compile Include="Migrations\20170517010928_criaUsuario.designer.cs">
       <DependentUpon>20170517010928_criaUsuario.cs</DependentUpon>

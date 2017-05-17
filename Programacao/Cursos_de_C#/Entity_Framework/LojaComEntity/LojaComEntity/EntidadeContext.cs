@@ -9,6 +9,8 @@ namespace LojaComEntity
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
+        public DbSet<ProdutoVenda> ProdutoVenda { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -16,6 +18,12 @@ namespace LojaComEntity
 
             optionsBuilder.UseSqlServer(stringConexao);
             base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProdutoVenda>().HasKey(pv => new { pv.VendaID, pv.ProdutoID });
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

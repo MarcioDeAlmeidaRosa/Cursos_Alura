@@ -16,7 +16,7 @@ namespace LojaComEntity.Migrations
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("LojaComEntity.Categoria", b =>
+            modelBuilder.Entity("LojaComEntity.Entidades.Categoria", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -24,6 +24,31 @@ namespace LojaComEntity.Migrations
                     b.Property<string>("Nome");
 
                     b.HasKey("ID");
+                });
+
+            modelBuilder.Entity("LojaComEntity.Entidades.Produto", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CategoriaID");
+
+                    b.Property<string>("Nome");
+
+                    b.Property<decimal>("Preco");
+
+                    b.Property<int?>("UsuarioID");
+
+                    b.HasKey("ID");
+                });
+
+            modelBuilder.Entity("LojaComEntity.Entidades.ProdutoVenda", b =>
+                {
+                    b.Property<int>("VendaID");
+
+                    b.Property<int>("ProdutoID");
+
+                    b.HasKey("VendaID", "ProdutoID");
                 });
 
             modelBuilder.Entity("LojaComEntity.Entidades.Usuario", b =>
@@ -38,25 +63,43 @@ namespace LojaComEntity.Migrations
                     b.HasKey("ID");
                 });
 
-            modelBuilder.Entity("LojaComEntity.Produto", b =>
+            modelBuilder.Entity("LojaComEntity.Entidades.Venda", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CategoriaID");
-
-                    b.Property<string>("Nome");
-
-                    b.Property<decimal>("Preco");
+                    b.Property<int>("ClienteID");
 
                     b.HasKey("ID");
                 });
 
-            modelBuilder.Entity("LojaComEntity.Produto", b =>
+            modelBuilder.Entity("LojaComEntity.Entidades.Produto", b =>
                 {
-                    b.HasOne("LojaComEntity.Categoria")
+                    b.HasOne("LojaComEntity.Entidades.Categoria")
                         .WithMany()
                         .HasForeignKey("CategoriaID");
+
+                    b.HasOne("LojaComEntity.Entidades.Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioID");
+                });
+
+            modelBuilder.Entity("LojaComEntity.Entidades.ProdutoVenda", b =>
+                {
+                    b.HasOne("LojaComEntity.Entidades.Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoID");
+
+                    b.HasOne("LojaComEntity.Entidades.Venda")
+                        .WithMany()
+                        .HasForeignKey("VendaID");
+                });
+
+            modelBuilder.Entity("LojaComEntity.Entidades.Venda", b =>
+                {
+                    b.HasOne("LojaComEntity.Entidades.Usuario")
+                        .WithMany()
+                        .HasForeignKey("ClienteID");
                 });
         }
     }
