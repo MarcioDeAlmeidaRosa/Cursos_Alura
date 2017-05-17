@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categoria.cs" />
+    <Compile Include="CategoriaDao.cs" />
     <Compile Include="EntidadeContext.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="lojaDataSet.Designer.cs">
@@ -119,6 +120,7 @@
       <DependentUpon>20170517021651_criaProdutoCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="Produto.cs" />
+    <Compile Include="ProdutoDao.cs" />
     <Compile Include="UsuarioDao.cs" />
     <Compile Include="Migrations\20170517010928_criaUsuario.cs" />
     <Compile Include="Migrations\20170517010928_criaUsuario.designer.cs">

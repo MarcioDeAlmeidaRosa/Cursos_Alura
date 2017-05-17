@@ -1,40 +1,40 @@
-﻿using LojaComEntity.Entidades;
+﻿using Microsoft.Data.Entity;
 using System.Linq;
 
 namespace LojaComEntity
 {
-    public class UsuarioDao
+    public class ProdutoDao
     {
         private EntidadeContext contexto;
 
-        public UsuarioDao()
+        public ProdutoDao()
         {
             contexto = new EntidadeContext();
         }
 
-        public void Salva(Usuario usuario)
+        public void Salva(Produto produto)
         {
-            contexto.Usuarios.Add(usuario);
+            contexto.Produtos.Add(produto);
             contexto.SaveChanges();
             //contexto.Dispose();
         }
 
-        public void SaveChanges(Usuario usuario)
+        public void SaveChanges(Produto produto)
         {
             contexto.SaveChanges();
             //contexto.Dispose();
         }
 
-        public Usuario BuscaPorId(int id)
+        public Produto BuscaPorId(int id)
         {
-            var usuario = contexto.Usuarios.FirstOrDefault(u => u.ID == id);
+            var produto = contexto.Produtos.Include(pr=> pr.Categoria).FirstOrDefault(u => u.ID == id);
             //contexto.Dispose();
-            return usuario;
+            return produto;
         }
 
-        public void Remove(Usuario usuario)
+        public void Remove(Produto produto)
         {
-            contexto.Usuarios.Remove(usuario);
+            contexto.Produtos.Remove(produto);
             contexto.SaveChanges();
             //contexto.Dispose();
         }
