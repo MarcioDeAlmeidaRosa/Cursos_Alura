@@ -10,7 +10,6 @@ namespace LojaComEntity.Entidades
         //Navigation Property
         public virtual Categoria Categoria { get; set; }
         public int CategoriaID { get; set; }
-
-        public IList<ProdutoVenda> ProdutoVenda { get; set; }
+        public virtual IList<ProdutoVenda> ProdutoVenda { get; set; }
     }
 }

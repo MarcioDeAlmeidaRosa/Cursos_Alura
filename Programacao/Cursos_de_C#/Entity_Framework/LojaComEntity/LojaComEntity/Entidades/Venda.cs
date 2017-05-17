@@ -7,7 +7,6 @@ namespace LojaComEntity.Entidades
         public int ID { get; set; }
         public virtual Usuario Cliente { get; set; }
         public int ClienteID { get; set; }
-
-        public IList<ProdutoVenda> ProdutoVenda { get; set; }
+        public virtual IList<ProdutoVenda> ProdutoVenda { get; set; }
     }
 }
