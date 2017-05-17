@@ -11,20 +11,15 @@ namespace LojaComEntity
         {
             EntidadeContext contexto = new EntidadeContext();
 
-            decimal precoMinimo = 60;
+            decimal precoMinimo = 100;
+            string nome = string.Empty;
+            string categoria = string.Empty;
+            categoria = "Roupas";
 
-            var busca = from p 
-                           in contexto.Produtos
-                            //where p.Preco > precoMinimo
-                            //where p.Categoria.Nome == "Roupas"
-                        where p.Categoria.Nome == "Roupas" && 
-                              p.Preco > precoMinimo
-                        orderby p.Preco
-                       select p;
+            var prodDAO = new ProdutoDao();
+            var busca = prodDAO.BuscaPorPrecoNomeCategoria(precoMinimo , nome, categoria);
 
-            var resultado = busca.ToList();
-
-            foreach(var produto in resultado)
+            foreach(var produto in busca)
             {
                 Console.WriteLine(produto.Nome + " - R$" + produto.Preco );
             }
