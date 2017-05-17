@@ -56,11 +56,18 @@ namespace LojaComEntity.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Nome");
 
                     b.Property<string>("Senha");
 
                     b.HasKey("ID");
+
+                    b.HasAnnotation("Relational:DiscriminatorProperty", "Discriminator");
+
+                    b.HasAnnotation("Relational:DiscriminatorValue", "Usuario");
                 });
 
             modelBuilder.Entity("LojaComEntity.Entidades.Venda", b =>
@@ -71,6 +78,24 @@ namespace LojaComEntity.Migrations
                     b.Property<int>("ClienteID");
 
                     b.HasKey("ID");
+                });
+
+            modelBuilder.Entity("LojaComEntity.Entidades.PessoaFisica", b =>
+                {
+                    b.HasBaseType("LojaComEntity.Entidades.Usuario");
+
+                    b.Property<string>("Cpf");
+
+                    b.HasAnnotation("Relational:DiscriminatorValue", "PessoaFisica");
+                });
+
+            modelBuilder.Entity("LojaComEntity.Entidades.PessoaJuridica", b =>
+                {
+                    b.HasBaseType("LojaComEntity.Entidades.Usuario");
+
+                    b.Property<string>("Cnpj");
+
+                    b.HasAnnotation("Relational:DiscriminatorValue", "PessoaJuridica");
                 });
 
             modelBuilder.Entity("LojaComEntity.Entidades.Produto", b =>

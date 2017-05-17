@@ -107,9 +107,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\VendaDao.cs" />
     <Compile Include="Entidades\Categoria.cs" />
     <Compile Include="DAO\CategoriaDao.cs" />
     <Compile Include="EntidadeContext.cs" />
+    <Compile Include="Entidades\PessoaFisica.cs" />
+    <Compile Include="Entidades\PessoaJuridica.cs" />
     <Compile Include="Entidades\ProdutoVenda.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Venda.cs" />
@@ -132,6 +135,10 @@
     <Compile Include="Migrations\20170517010928_criaUsuario.cs" />
     <Compile Include="Migrations\20170517010928_criaUsuario.designer.cs">
       <DependentUpon>20170517010928_criaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20170517154253_tiposUsuario.cs" />
+    <Compile Include="Migrations\20170517154253_tiposUsuario.designer.cs">
+      <DependentUpon>20170517154253_tiposUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EntidadeContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />

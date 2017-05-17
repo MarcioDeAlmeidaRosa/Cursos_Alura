@@ -7,6 +7,8 @@ namespace LojaComEntity
     public class EntidadeContext : DbContext
     {
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<PessoaJuridica> PessoasJuridica { get; set; }
+        public DbSet<PessoaFisica> PessoasFisica { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Venda> Vendas { get; set; }

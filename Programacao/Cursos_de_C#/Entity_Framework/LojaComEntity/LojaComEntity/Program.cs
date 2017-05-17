@@ -14,40 +14,36 @@ namespace LojaComEntity
         {
             EntidadeContext contexto = new EntidadeContext();
 
-            //var usuarioDAO = new UsuarioDao();
-            //var usuario = usuarioDAO.BuscaPorId(1);
+            ////Incluindo venda
+            //var vendaDao = new VendaDao();
+            //var produtos = new List<Produto>();
+            //produtos.Add(contexto.Produtos.FirstOrDefault(p => p.ID == 3));
+            //produtos.Add(contexto.Produtos.FirstOrDefault(p => p.ID == 4));
+            //vendaDao.IncluirVenda(new UsuarioDao().BuscaPorId(1), produtos);
 
 
-            //Venda venda = new Venda()
+
+            //Venda venda = vendaDao.RecuperaVenda(2);
+
+            //foreach(var produtoVenda in venda.ProdutoVenda)
             //{
-            //    Cliente = usuario
-            //};
+            //    Console.WriteLine(string.Format("Produto vendido: {0}", produtoVenda.Produto.Nome));
+            //}
 
-            //venda.ProdutoVenda = new List<ProdutoVenda>();
-            //venda.ProdutoVenda.Add(new ProdutoVenda
-            //{
-            //    Produto = contexto.Produtos.FirstOrDefault(p => p.ID == 1),
-            //    Venda = venda
-            //});
-            //venda.ProdutoVenda.Add(new ProdutoVenda
-            //{
-            //    Produto = contexto.Produtos.FirstOrDefault(p => p.ID == 2),
-            //    Venda = venda
-            //});
-
-            //contexto.Vendas.Add(venda);
-            //contexto.SaveChanges();
-
-            Venda venda = contexto
-                .Vendas
-                .Include(v => v.ProdutoVenda)
-                .ThenInclude(produtoVenda => produtoVenda.Produto)
-                .FirstOrDefault(v => v.ID == 1);
-
-            foreach(var produtoVenda in venda.ProdutoVenda)
+            contexto.PessoasFisica.Add(new PessoaFisica
             {
-                Console.WriteLine(string.Format("Produto vendido: {0}", produtoVenda.Produto.Nome));
-            }
+                Nome = "Guilherme",
+                Cpf = "236.96",
+                Senha = "123"
+            });
+            contexto.SaveChanges();
+            contexto.PessoasJuridica.Add(new PessoaJuridica
+            {
+                Nome = "Aura",
+                Cnpj = "6366",
+                Senha = "563"
+            });
+            contexto.SaveChanges();
 
             Console.ReadLine();
         }
