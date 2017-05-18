@@ -175,6 +175,8 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+
+            //Filtro forma 1 - Filtros LINQ (SINTAXE DE CONSULTA)
             using(var contexto = new AluraTunesEntities())
             {
                 var textoBusca = "Led";
@@ -187,7 +189,19 @@ namespace AluraTunes
                     Console.WriteLine("Artista {0} - {1}", artista.ArtistaId, artista.Nome);
                 Console.WriteLine("--------------------------------------------------");
             }
-            
+
+
+            //Filtro forma 2 - Função (SINTAXE DE MÉTODO) => (LANBIDA)
+            using (var contexto = new AluraTunesEntities())
+            {
+                var textoBusca = "Led";
+
+                var queryArtista = contexto.Artistas.Where(a => a.Nome.Contains(textoBusca));
+                foreach (var artista in queryArtista)
+                    Console.WriteLine("Artista {0} - {1}", artista.ArtistaId, artista.Nome);
+                Console.WriteLine("--------------------------------------------------");
+            }
+
             Console.WriteLine("--------------------------------------------------");
             #endregion LINQ TO ENTITIES
             Console.WriteLine("--------------------------------------------------");
