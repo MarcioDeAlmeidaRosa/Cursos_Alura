@@ -354,6 +354,24 @@ namespace AluraTunes
             #endregion
 
             Console.WriteLine("--------------------------------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                var query = from nf in contexto.NotasFiscais
+                            orderby nf.Total descending, nf.Cliente.PrimeiroNome + " " + nf.Cliente.Sobrenome 
+                            select new
+                            {
+                                Data = nf.DataNotaFiscal,
+                                Cliente = nf.Cliente.PrimeiroNome + " " + nf.Cliente.Sobrenome,
+                                Total = nf.Total
+                            };
+                foreach (var nf in query)
+                {
+                    Console.WriteLine("{0}\t{1}\t{2}", nf.Data.ToString("dd/MM/yyyy"), nf.Cliente.PadRight(40), nf.Total);
+                }
+            }
+            Console.WriteLine("--------------------------------------------------");
+
+            Console.WriteLine("--------------------------------------------------");
 
             Console.ReadLine();
         }
