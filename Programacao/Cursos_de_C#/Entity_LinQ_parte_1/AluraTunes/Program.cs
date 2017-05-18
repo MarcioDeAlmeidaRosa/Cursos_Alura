@@ -53,6 +53,36 @@ namespace AluraTunes
                 Console.WriteLine("ID {0}\tmúsica {1}\tgênero{2}", musica.m.ID, musica.m.Nome, musica.g.Nome);
             }
 
+
+
+
+
+            List<Genero> generos1 = new List<Genero>
+        {
+            new Genero { ID = 1, Nome = "Rock" },
+            new Genero { ID = 2, Nome = "Reggae" },
+            new Genero { ID = 3, Nome = "Rock Progressivo" },
+            new Genero { ID = 4, Nome = "Jazz" },
+            new Genero { ID = 5, Nome = "Punk Rock" },
+            new Genero { ID = 6, Nome = "Classica" }
+        };
+
+            List<Musica> musicas1 = new List<Musica>
+        {
+            new Musica { ID = 1, Nome = "Sweet Child O'Mine", GeneroID = 1 },
+            new Musica { ID = 2, Nome = "I Shot The Sheriff", GeneroID = 2 },
+            new Musica { ID = 3, Nome = "Danúbio Azul", GeneroID = 6 }
+        };
+
+            //Crie uma consulta para listar os nomes das músicas cujo gênero tenha o nome "Reggae".
+
+            //var query = ??? 
+            var itens = from gg in generos1 join mm in musicas1 on gg.ID equals mm.GeneroID select new { gg.Nome };
+            foreach (var item in itens)
+            {
+                Console.WriteLine(item);
+            }
+
             Console.ReadLine();
         }
     }
