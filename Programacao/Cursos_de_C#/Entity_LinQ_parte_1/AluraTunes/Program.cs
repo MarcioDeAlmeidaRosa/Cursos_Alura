@@ -27,10 +27,31 @@ namespace AluraTunes
             //forma 2
             foreach (var genero in (from g in generos where g.Nome.Contains("Rock") select g))
             {
-                if (genero.Nome.Contains("Rock"))
-                    Console.WriteLine("ID {0}\tgênero {1}", genero.ID, genero.Nome);
+                Console.WriteLine("ID {0}\tgênero {1}", genero.ID, genero.Nome);
             }
-
+            Console.WriteLine("--------------------------------------------------");
+            //listar músicas do sistema
+            var musicas = new List<Musica>
+            {
+                new Musica{ ID = 1 , Nome = "Sweet ChildO'Mine" , GeneroID= 1},
+                new Musica{ ID = 2 , Nome = "I shot The Sheriff" , GeneroID= 2},
+                new Musica{ ID = 3 , Nome = "Danúbio Azul" , GeneroID= 5}
+            };
+            //Forma 1
+            foreach (var musica in (from m in musicas select m))
+            {
+                Console.WriteLine("ID {0}\tmúsica {1}\tgênero {2}", musica.ID, musica.Nome, musica.GeneroID);
+            }
+            Console.WriteLine("--------------------------------------------------");
+            //Forma 2
+            var musicaGenero = from m 
+                                 in musicas
+                                 join g in generos on m.GeneroID equals g.ID
+                             select new { m , g};
+            foreach (var musica in (from m in musicaGenero select m))
+            {
+                Console.WriteLine("ID {0}\tmúsica {1}\tgênero{2}", musica.m.ID, musica.m.Nome, musica.g.Nome);
+            }
 
             Console.ReadLine();
         }
