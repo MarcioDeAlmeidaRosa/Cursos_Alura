@@ -373,7 +373,7 @@ namespace AluraTunes
             #endregion
             Console.WriteLine("--------------------------------------------------");
 
-            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("-------------------------Ordenando Consultas Linq - Sintaxe de Método-------------------------");
             using(var contexto = new AluraTunesEntities())
             {
                 var query1 = from alb in contexto.Albums select alb;
@@ -382,6 +382,22 @@ namespace AluraTunes
 
                 foreach(var item in query2)
                     Console.WriteLine(item.Titulo);
+            }
+            Console.WriteLine("--------------------------------------------------");
+
+            Console.WriteLine("----------------------Ordenação Decrescente - Sintaxe de Método----------------------------");
+            using(var contexto = new AluraTunesEntities())
+            {
+                var querySentaxeQuery = from nf in contexto.NotasFiscais
+                            orderby nf.Total descending, nf.Cliente.PrimeiroNome + " " + nf.Cliente.Sobrenome
+                            select nf;
+
+                foreach (var item in querySentaxeQuery)
+                    Console.WriteLine("{0}\t{1}", item.Cliente.PrimeiroNome.PadRight(40), item.Total);
+
+                var querySitaxeMetodo = contexto.NotasFiscais.OrderByDescending(o => o.Total).ThenBy(o=> o.Cliente.PrimeiroNome + " " + o.Cliente.Sobrenome);
+                foreach (var item in querySitaxeMetodo)
+                    Console.WriteLine("{0}\t{1}", item.Cliente.PrimeiroNome.PadRight(40), item.Total);
             }
             Console.WriteLine("--------------------------------------------------");
 
