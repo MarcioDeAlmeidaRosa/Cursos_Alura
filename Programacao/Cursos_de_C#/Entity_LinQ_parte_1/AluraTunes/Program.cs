@@ -8,6 +8,13 @@ namespace AluraTunes
 {
     class Program
     {
+        private static string caminhoPrograma = string.Empty;
+
+        static Program()
+        {
+            caminhoPrograma = System.AppDomain.CurrentDomain.BaseDirectory.ToString().Replace(@"bin\Debug\", "");
+        }
+
         static void Main(string[] args)
         {
             //listar os gêneros rock
@@ -89,9 +96,10 @@ namespace AluraTunes
             Console.WriteLine("--------------------------------------------------");
             #endregion
 
+            #region
             //Variável que vai representar a raiz do XML
             //no=> AluraTunes
-            XElement root = XElement.Load(string.Format("{0}{1}", System.AppDomain.CurrentDomain.BaseDirectory.ToString().Replace(@"bin\Debug\",""), @"\Data\AluraTunes.xml"));
+            XElement root = XElement.Load(string.Format("{0}{1}", caminhoPrograma, @"\Data\AluraTunes.xml"));
             //Definir consulta linq para acessar o dado xml
             //no=> Generos , subno => Genero
             var qyeryXMLGenero = from g in root.Element("Generos").Elements("Genero") select g;
@@ -114,6 +122,22 @@ namespace AluraTunes
             {
                 Console.WriteLine("{0}\t{1}", item.Musica, item.Genero);
             }
+            Console.WriteLine("--------------------------------------------------");
+            #endregion
+
+            XElement xmlRootAutomovel = XElement.Load(string.Format("{0}{1}", caminhoPrograma, @"\Data\Automoveis.xml"));
+
+            var queryAutomovel = from fabricantes in xmlRootAutomovel.Element("Fabricantes").Elements("Fabricante")
+                                 join modelos in xmlRootAutomovel.Element("Modelos").Elements("Modelo")
+                                 on fabricantes.Element("FabricanteId").Value equals modelos.Element("FabricanteId").Value
+                                 select new { Fabricante = fabricantes.Element("Nome").Value , Modelo = modelos.Element("Nome").Value };
+
+            foreach (var item in queryAutomovel)
+            {
+                Console.WriteLine("{0}\t{1}", item.Fabricante, item.Modelo);
+            }
+
+            Console.WriteLine("--------------------------------------------------");
             Console.WriteLine("--------------------------------------------------");
 
             Console.ReadLine();

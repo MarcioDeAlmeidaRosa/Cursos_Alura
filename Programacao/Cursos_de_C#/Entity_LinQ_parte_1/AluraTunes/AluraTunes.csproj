@@ -53,6 +53,7 @@
   <ItemGroup>
     <Content Include="Data\AluraTunes.sql" />
     <Content Include="Data\AluraTunes.xml" />
+    <Content Include="Data\Automoveis.xml" />
     <Content Include="Data\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
