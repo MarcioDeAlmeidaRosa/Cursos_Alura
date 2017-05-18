@@ -280,8 +280,21 @@ namespace AluraTunes
                 foreach (var artista in querySintaxeMetodo2)
                     Console.WriteLine("ArtistaId {0} - Nome {1}", artista.ArtistaId, artista.Nome);
                 Console.WriteLine("--------------------------------------------------");
+            }
 
-
+            Console.WriteLine("--------------------------------------------------");
+            using(var contexto = new AluraTunesEntities())
+            {
+                Console.WriteLine("---------------------EXEMPLO SINTAXE DE MÉTODO-----------------------------");
+                var querySintaxeMetodo2 = contexto.Generos.Where(g => g.Nome == "Rock");
+                foreach (var artista in querySintaxeMetodo2)
+                    Console.WriteLine("GeneroId {0} - Nome {1}", artista.GeneroId, artista.Nome);
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine("---------------------EXEMPLO SINTAXE DE CONSULTA-----------------------------");
+                var querySintaxeMetodo3 = from g in contexto.Generos where g.Nome == "Rock" select g;
+                foreach (var artista in querySintaxeMetodo3)
+                    Console.WriteLine("GeneroId {0} - Nome {1}", artista.GeneroId, artista.Nome);
+                Console.WriteLine("--------------------------------------------------");
             }
 
             Console.WriteLine("--------------------------------------------------");
