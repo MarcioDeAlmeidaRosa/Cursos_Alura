@@ -353,7 +353,8 @@ namespace AluraTunes
             }
             #endregion
 
-            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("----------------------EXERCÍCIO DECRESCENTE----------------------------");
+            #region EXERCÍCIO DECRESCENTE
             using (var contexto = new AluraTunesEntities())
             {
                 var query = from nf in contexto.NotasFiscais
@@ -369,8 +370,19 @@ namespace AluraTunes
                     Console.WriteLine("{0}\t{1}\t{2}", nf.Data.ToString("dd/MM/yyyy"), nf.Cliente.PadRight(40), nf.Total);
                 }
             }
+            #endregion
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("--------------------------------------------------");
+            using(var contexto = new AluraTunesEntities())
+            {
+                var query1 = from alb in contexto.Albums select alb;
+
+                var query2 = query1.OrderBy(o => o.Artista.Nome).ThenBy(o => o.Titulo);
+
+                foreach(var item in query2)
+                    Console.WriteLine(item.Titulo);
+            }
             Console.WriteLine("--------------------------------------------------");
 
             Console.ReadLine();
