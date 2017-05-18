@@ -1,4 +1,5 @@
-﻿using AluraTunes.Entidades;
+﻿using AluraTunes.Data;
+using AluraTunes.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,12 @@ namespace AluraTunes
         {
             //listar os gêneros rock
             #region LINQ TO OBJECT
-            var generos = new List<Genero>() {
-                new Genero { ID = 1 , Nome = "Rock" },
-                new Genero { ID = 2, Nome = "Raggae" },
-                new Genero { ID = 3, Nome = "Rock Progressivo" },
-                new Genero { ID = 4, Nome = "Punk Rock" },
-                new Genero { ID = 5, Nome = "Clássica" }
+            var generos = new List<Entidades.Genero>() {
+                new Entidades.Genero { ID = 1 , Nome = "Rock" },
+                new Entidades.Genero { ID = 2, Nome = "Raggae" },
+                new Entidades.Genero { ID = 3, Nome = "Rock Progressivo" },
+                new Entidades.Genero { ID = 4, Nome = "Punk Rock" },
+                new Entidades.Genero { ID = 5, Nome = "Clássica" }
             };
             //forma 1
             foreach (var genero in generos)
@@ -63,17 +64,17 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
             
-            List<Genero> generos1 = new List<Genero>()
+            List<Entidades.Genero> generos1 = new List<Entidades.Genero>()
             {
-                new Genero { ID = 1, Nome = "Rock" },
-                new Genero { ID = 2, Nome = "Reggae" },
-                new Genero { ID = 3, Nome = "Rock Progressivo" },
-                new Genero { ID = 4, Nome = "Jazz" },
-                new Genero { ID = 5, Nome = "Punk Rock" },
-                new Genero { ID = 6, Nome = "Classica" }
+                new Entidades.Genero { ID = 1, Nome = "Rock" },
+                new Entidades.Genero { ID = 2, Nome = "Reggae" },
+                new Entidades.Genero { ID = 3, Nome = "Rock Progressivo" },
+                new Entidades.Genero { ID = 4, Nome = "Jazz" },
+                new Entidades.Genero { ID = 5, Nome = "Punk Rock" },
+                new Entidades.Genero { ID = 6, Nome = "Classica" }
             };
 
-            List<Musica> musicas1 = new List<Musica>()
+            List<Entidades.Musica> musicas1 = new List<Entidades.Musica>()
             {
                 new Musica { ID = 1, Nome = "Sweet Child O'Mine", GeneroID = 1 },
                 new Musica { ID = 2, Nome = "I Shot The Sheriff", GeneroID = 2 },
@@ -143,9 +144,36 @@ namespace AluraTunes
                 Console.WriteLine("ID música {0} - Nome música {1} - Gênero {2}", musica.MusicaID, musica.MusicaNome, musica.GeneroNome);
             #endregion
 
+            #region LINQ TO ENTITIES
+            //Criamos o banco de dados AluraTunes.mdf
+            Console.WriteLine("--------------------------------------------------");
+            using(var contexto = new AluraTunesEntities())
+            {
+                //definição de consulta
+                var queryGeneros = from listaGeneros in contexto.Generos select listaGeneros;
+                //imprimir consulta no console
+                foreach (var genero in queryGeneros)
+                    Console.WriteLine("Gênero {0} - {1}", genero.GeneroId, genero.Nome);
+                Console.WriteLine("--------------------------------------------------");
 
+                var queryFaixasGeneros = from faixas in contexto.Faixas
+                                         join listaGeneros in queryGeneros
+                                         on faixas.GeneroId equals listaGeneros.GeneroId
+                                         select new { faixas, listaGeneros };
+
+                //Aplicando paginação - limitando 10 linha de retorno
+                //Aplicando filtro limitando a 10, será aplicado direto na pesquisa no momento do uso "foreach"
+                queryFaixasGeneros = queryFaixasGeneros.Take(10);
+
+                foreach (var faixaGenero in queryFaixasGeneros)
+                    Console.WriteLine("Faixa {0} - Gênero {1}", faixaGenero.faixas.Nome, faixaGenero.listaGeneros.Nome);
+
+                Console.WriteLine("--------------------------------------------------");
+            }
             Console.WriteLine("--------------------------------------------------");
+            
             Console.WriteLine("--------------------------------------------------");
+            #endregion LINQ TO ENTITIES
             Console.WriteLine("--------------------------------------------------");
 
             Console.ReadLine();
