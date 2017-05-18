@@ -298,6 +298,33 @@ namespace AluraTunes
             }
 
             Console.WriteLine("--------------------------------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                var textoBusca = "Led";
+                Console.WriteLine("---------------------EXEMPLO SINTAXE DE CONSULTA-----------------------------");
+                var queryArtistaAlbum = from artista in contexto.Artistas
+                                        join alb in contexto.Albums on artista.ArtistaId equals alb.ArtistaId
+                                        where artista.Nome.Contains(textoBusca)
+                                        select new
+                                        {
+                                            NomeArtista = artista.Nome,
+                                            NomeAlbum = alb.Titulo
+                                        };
+                foreach (var item in queryArtistaAlbum)
+                    Console.WriteLine("Artista: {0} - Album: {1}", item.NomeArtista, item.NomeAlbum);
+                Console.WriteLine("---------------------EXEMPLO SINTAXE DE CONSULTA SEM JOIN-----------------------------");
+                var queryArtistaAlbum2 = from albums in contexto.Albums
+                                         where albums.Artista.Nome.Contains(textoBusca)
+                                         select new
+                                         {
+                                             NomeArtista = albums.Artista.Nome,
+                                             NomeAlbum = albums.Titulo
+                                         };
+                foreach (var item in queryArtistaAlbum2)
+                    Console.WriteLine("Artista: {0} - Album: {1}", item.NomeArtista, item.NomeAlbum);
+                Console.WriteLine("--------------------------------------------------");
+            }
+            Console.WriteLine("--------------------------------------------------");
 
             #endregion LINQ TO ENTITIES
             Console.WriteLine("--------------------------------------------------");
