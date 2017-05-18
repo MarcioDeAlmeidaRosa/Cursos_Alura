@@ -125,6 +125,7 @@ namespace AluraTunes
             Console.WriteLine("--------------------------------------------------");
             #endregion
 
+            #region
             XElement xmlRootAutomovel = XElement.Load(string.Format("{0}{1}", caminhoPrograma, @"\Data\Automoveis.xml"));
 
             var queryAutomovel = from fabricantes in xmlRootAutomovel.Element("Fabricantes").Elements("Fabricante")
@@ -136,8 +137,20 @@ namespace AluraTunes
             {
                 Console.WriteLine("{0}\t{1}", item.Fabricante, item.Modelo);
             }
+            #endregion
 
             Console.WriteLine("--------------------------------------------------");
+
+            XElement rootMusica = XElement.Load(caminhoPrograma + @"data/AluraTunesCompleto.xml");
+
+            var queryMusica = from musicasLista 
+                                in rootMusica.Element("Musicas").Elements("Musica")
+                              join generosLista in rootMusica.Element("Generos").Elements("Genero")
+                              on musicasLista.Element("GeneroId").Value equals generosLista.Element("GeneroId").Value
+                              select new { MusicaID = musicasLista.Element("MusicaId").Value , MusicaNome = musicasLista.Element("Nome").Value, GeneroNome = generosLista.Element("Nome").Value  };
+            foreach(var musica in queryMusica)
+                Console.WriteLine("ID música {0} - Nome música {1} - Gênero {2}", musica.MusicaID, musica.MusicaNome, musica.GeneroNome);
+
             Console.WriteLine("--------------------------------------------------");
 
             Console.ReadLine();

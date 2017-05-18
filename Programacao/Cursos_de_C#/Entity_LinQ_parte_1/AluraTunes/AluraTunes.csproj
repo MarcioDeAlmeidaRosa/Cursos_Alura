@@ -51,6 +51,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\AluraTunesCompleto.xml" />
     <Content Include="Data\AluraTunes.sql" />
     <Content Include="Data\AluraTunes.xml" />
     <Content Include="Data\Automoveis.xml" />
