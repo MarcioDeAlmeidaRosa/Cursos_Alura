@@ -174,6 +174,19 @@ namespace AluraTunes
                 Console.WriteLine("--------------------------------------------------");
             }
             Console.WriteLine("--------------------------------------------------");
+
+            using(var contexto = new AluraTunesEntities())
+            {
+                var textoBusca = "Led";
+
+                var queryArtista = from artistas 
+                              in contexto.Artistas
+                            where artistas.Nome.Contains(textoBusca)
+                            select artistas;
+                foreach (var artista in queryArtista)
+                    Console.WriteLine("Artista {0} - {1}", artista.ArtistaId, artista.Nome);
+                Console.WriteLine("--------------------------------------------------");
+            }
             
             Console.WriteLine("--------------------------------------------------");
             #endregion LINQ TO ENTITIES
