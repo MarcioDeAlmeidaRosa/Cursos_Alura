@@ -206,6 +206,65 @@ namespace AluraTunes
             }
 
             Console.WriteLine("--------------------------------------------------");
+
+
+            using(var context = new AluraTunesEntities())
+            {
+                //SINTAXE DE MÉTODO
+                //=================
+                Console.WriteLine("---------------------EXEMPLO SINTAXE DE MÉTODO-----------------------------");
+                var querySitaxeMetodo = context.Faixas
+                    .Join(context.Generos, f => f.GeneroId, g => g.GeneroId, (f, c) => new { f, c })
+                    .Join(context.TipoMidias, fm => fm.f.TipoMidiaId, tm => tm.TipoMidiaId, (fm, tm) => new { fm.c, fm.f, tm })
+                    .Where(cftm=> cftm.f.Nome.Contains("Balls "))
+                    .Select(cftm => new
+                    {
+                        FaixaID = cftm.f.GeneroId,
+                        FaixaNome = cftm.f.Nome,
+                        GeneroID = cftm.c.GeneroId,
+                        GeneroNome = cftm.c.Nome,
+                        TipoMediaID = cftm.tm.TipoMidiaId,
+                        TipoMediaNome = cftm.tm.Nome
+                    });
+                foreach (var artista in querySitaxeMetodo)
+                    Console.WriteLine("FaixaID {0} - FaixaNome {1} - GeneroID {2} - GeneroNome {3} - TipoMediaID {4} - TipoMediaNome {5}"
+                        , artista.FaixaID
+                        , artista.FaixaNome
+                        , artista.GeneroID
+                        , artista.GeneroNome
+                        , artista.TipoMediaID
+                        , artista.TipoMediaNome
+                        );
+                Console.WriteLine("--------------------------------------------------");
+
+                //SINTAXE DE CONSULTA
+                //===================
+                Console.WriteLine("---------------------EXEMPLO SINTAXE DE CONSULTA-----------------------------");
+                var querySitaxeConsulta = from listaFaixas in context.Faixas
+                                          join listaGeneros in context.Generos on listaFaixas.GeneroId equals listaGeneros.GeneroId
+                                          join listaTipoMedias in context.TipoMidias on listaFaixas.TipoMidiaId equals listaTipoMedias.TipoMidiaId
+                                          where listaFaixas.Nome.Contains("Balls ")
+                                          select new
+                                          {
+                                              FaixaID = listaFaixas.GeneroId,
+                                              FaixaNome = listaFaixas.Nome,
+                                              GeneroID = listaGeneros.GeneroId,
+                                              GeneroNome = listaGeneros.Nome,
+                                              TipoMediaID = listaTipoMedias.TipoMidiaId,
+                                              TipoMediaNome = listaTipoMedias.Nome
+                                          };
+                foreach (var artista in querySitaxeMetodo)
+                    Console.WriteLine("FaixaID {0} - FaixaNome {1} - GeneroID {2} - GeneroNome {3} - TipoMediaID {4} - TipoMediaNome {5}"
+                        , artista.FaixaID
+                        , artista.FaixaNome
+                        , artista.GeneroID
+                        , artista.GeneroNome
+                        , artista.TipoMediaID
+                        , artista.TipoMediaNome
+                        );
+                Console.WriteLine("--------------------------------------------------");
+            }
+
             #endregion LINQ TO ENTITIES
             Console.WriteLine("--------------------------------------------------");
 
