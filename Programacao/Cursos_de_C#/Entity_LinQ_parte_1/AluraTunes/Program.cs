@@ -20,6 +20,7 @@ namespace AluraTunes
         {
             //listar os gêneros rock
             #region LINQ TO OBJECT
+            Console.WriteLine("#####################LINQ TO OBJECT###############################");
             var generos = new List<Entidades.Genero>() {
                 new Entidades.Genero { ID = 1 , Nome = "Rock" },
                 new Entidades.Genero { ID = 2, Nome = "Raggae" },
@@ -94,6 +95,7 @@ namespace AluraTunes
             #endregion LINQ TO OBJECT
 
             #region LINQ TO XML
+            Console.WriteLine("#####################LINQ TO XML###############################");
             //Variável que vai representar a raiz do XML
             //no=> AluraTunes
             XElement root = XElement.Load(string.Format("{0}{1}", caminhoPrograma, @"\Data\AluraTunes.xml"));
@@ -145,6 +147,7 @@ namespace AluraTunes
             #endregion
 
             #region LINQ TO ENTITIES
+            Console.WriteLine("#####################LINQ TO ENTITIES###############################");
             //Criamos o banco de dados AluraTunes.mdf
             Console.WriteLine("--------------------------------------------------");
             using(var contexto = new AluraTunesEntities())
