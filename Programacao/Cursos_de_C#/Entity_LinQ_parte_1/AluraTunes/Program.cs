@@ -327,9 +327,40 @@ namespace AluraTunes
             Console.WriteLine("--------------------------------------------------");
 
             #endregion LINQ TO ENTITIES
+
+            #region LINQ COM FILTROS DINÂMICOS
+            Console.WriteLine("#####################LINQ COM FILTROS DINÂMICOS###############################");
+            using (var contexto = new AluraTunesEntities())
+            {
+                string nomeArtista = string.Empty;
+                string album = string.Empty;
+
+                nomeArtista = "Led Zeppelin";
+                GetFaixas(contexto, nomeArtista, album);
+                Console.WriteLine("--------------------------------------------------");
+                album = "Graffiti";
+                GetFaixas(contexto, nomeArtista, album);
+                Console.WriteLine("--------------------------------------------------");
+            }
+            #endregion
+
             Console.WriteLine("--------------------------------------------------");
 
             Console.ReadLine();
+        }
+
+        private static void GetFaixas(AluraTunesEntities contexto, string nomeArtista, string album)
+        {
+            var queryFiltroDinamico = from f in contexto.Faixas select f;
+
+            if (!string.IsNullOrEmpty(nomeArtista))
+                queryFiltroDinamico = queryFiltroDinamico.Where(f => f.Album.Artista.Nome.Contains(nomeArtista));
+
+            if (!string.IsNullOrWhiteSpace(album))
+                queryFiltroDinamico = queryFiltroDinamico.Where(f => f.Album.Titulo.Contains(album));
+
+            foreach (var faixa in queryFiltroDinamico)
+                Console.WriteLine("{0}\t{1}", faixa.Album.Titulo.PadRight(40), faixa.Nome);
         }
     }
 }
