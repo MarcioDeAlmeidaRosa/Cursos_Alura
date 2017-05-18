@@ -165,6 +165,9 @@ namespace AluraTunes
                 //Aplicando filtro limitando a 10, será aplicado direto na pesquisa no momento do uso "foreach"
                 queryFaixasGeneros = queryFaixasGeneros.Take(10);
 
+                //Aplicando condifuração para aplicar o log
+                contexto.Database.Log = Console.WriteLine;
+
                 foreach (var faixaGenero in queryFaixasGeneros)
                     Console.WriteLine("Faixa {0} - Gênero {1}", faixaGenero.faixas.Nome, faixaGenero.listaGeneros.Nome);
 
