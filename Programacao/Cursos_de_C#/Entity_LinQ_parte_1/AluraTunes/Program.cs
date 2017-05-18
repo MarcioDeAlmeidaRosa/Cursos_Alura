@@ -332,11 +332,20 @@ namespace AluraTunes
             Console.WriteLine("#####################LINQ COM FILTROS DINÂMICOS###############################");
             using (var contexto = new AluraTunesEntities())
             {
+                //Atribuição de log
+                contexto.Database.Log = Console.WriteLine;
+
                 string nomeArtista = string.Empty;
                 string album = string.Empty;
 
                 nomeArtista = "Led Zeppelin";
                 GetFaixas(contexto, nomeArtista, album);
+                Console.WriteLine("--------------------------------------------------");
+                album = "Graffiti";
+                GetFaixas(contexto, nomeArtista, album);
+                Console.WriteLine("--------------------------------------------------");
+                album = string.Empty;
+                GetFaixasSintaxeQuery(contexto, nomeArtista, album);
                 Console.WriteLine("--------------------------------------------------");
                 album = "Graffiti";
                 GetFaixas(contexto, nomeArtista, album);
@@ -358,6 +367,21 @@ namespace AluraTunes
 
             if (!string.IsNullOrWhiteSpace(album))
                 queryFiltroDinamico = queryFiltroDinamico.Where(f => f.Album.Titulo.Contains(album));
+
+            queryFiltroDinamico = queryFiltroDinamico.OrderBy(o => o.Album.Titulo).ThenBy(o=> o.Nome);
+
+            foreach (var faixa in queryFiltroDinamico)
+                Console.WriteLine("{0}\t{1}", faixa.Album.Titulo.PadRight(40), faixa.Nome);
+        }
+
+        private static void GetFaixasSintaxeQuery(AluraTunesEntities contexto, string nomeArtista, string album)
+        {
+            var queryFiltroDinamico = from f
+                                        in contexto.Faixas
+                                      where (!string.IsNullOrEmpty(nomeArtista) ? f.Album.Artista.Nome.Contains(nomeArtista) : true)
+                                      && (!string.IsNullOrEmpty(album) ? f.Album.Titulo.Contains(album) : true)
+                                      orderby f.Nome, f.Album.Titulo
+                                      select f;
 
             foreach (var faixa in queryFiltroDinamico)
                 Console.WriteLine("{0}\t{1}", faixa.Album.Titulo.PadRight(40), faixa.Nome);
