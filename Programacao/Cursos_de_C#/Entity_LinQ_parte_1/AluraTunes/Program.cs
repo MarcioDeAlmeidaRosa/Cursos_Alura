@@ -207,8 +207,8 @@ namespace AluraTunes
 
             Console.WriteLine("--------------------------------------------------");
 
-
-            using(var context = new AluraTunesEntities())
+            Console.WriteLine("---------------------EXEMPLO SINTAXE DE MÉTODO  X  EXEMPLO SINTAXE DE CONSULTA-----------------------------");
+            using (var context = new AluraTunesEntities())
             {
                 //SINTAXE DE MÉTODO
                 //=================
@@ -264,6 +264,27 @@ namespace AluraTunes
                         );
                 Console.WriteLine("--------------------------------------------------");
             }
+
+            using(var contexto = new AluraTunesEntities())
+            {
+                Console.WriteLine("---------------------EXEMPLO SINTAXE DE CONSULTA-----------------------------");
+                var querySintaxeConsulta1 = from a in contexto.Artistas
+                            where a.Nome.Contains("Led")
+                            select a;
+                foreach (var artista in querySintaxeConsulta1)
+                    Console.WriteLine("ArtistaId {0} - Nome {1}", artista.ArtistaId, artista.Nome);
+                Console.WriteLine("--------------------------------------------------");
+
+                Console.WriteLine("---------------------EXEMPLO SINTAXE DE MÉTODO-----------------------------");
+                var querySintaxeMetodo2 = contexto.Artistas.Where(a=> a.Nome.Contains("Led"));
+                foreach (var artista in querySintaxeMetodo2)
+                    Console.WriteLine("ArtistaId {0} - Nome {1}", artista.ArtistaId, artista.Nome);
+                Console.WriteLine("--------------------------------------------------");
+
+
+            }
+
+            Console.WriteLine("--------------------------------------------------");
 
             #endregion LINQ TO ENTITIES
             Console.WriteLine("--------------------------------------------------");
