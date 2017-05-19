@@ -441,6 +441,24 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------3 - Linq to entities groupby----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                var queryItemNF = from i
+                                  in contexto.ItemNotasFiscais
+                                  where i.Faixa.Album.Artista.Nome == "Led Zeppelin"
+                                  group i by i.Faixa.Album into agrupado
+                                  orderby agrupado.Sum(agru => agru.PrecoUnitario * agru.Quantidade) descending
+                                  select new
+                                  {
+                                      TituloDoAlbum = agrupado.Key.Titulo,
+                                      TotalPorAlbum = agrupado.Sum(agru => agru.PrecoUnitario * agru.Quantidade)
+                                  };
+                foreach(var agrupado in queryItemNF)
+                    Console.WriteLine("{0}\t{1}", agrupado.TituloDoAlbum.PadRight(40), agrupado.TotalPorAlbum);
+            }
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
         }
 
