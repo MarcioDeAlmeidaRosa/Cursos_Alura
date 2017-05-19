@@ -365,7 +365,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 4 - Remoção de elementos após a definição de uma consulta
                 Console.WriteLine("----------------------4 - Remoção de elementos após a definição de uma consulta----------------------------");
@@ -381,6 +381,31 @@ namespace AluraTunes
                     ////pela linha numeros.Clear();
                     foreach (var numero in query)
                         Console.WriteLine(numero);
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 5 - Execução adiada
+                Console.WriteLine("----------------------5 - Execução adiada----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    var palavras = new List<string>() { "ALURA", "CURSOS" };
+
+                    var maiusculas = palavras
+                      .Select(p => p.ToLower());
+
+                    palavras.Clear();
+
+                    //Porque a consulta maiusculas havia sido declarada, mas ainda não havia 
+                    //sido executada. Ela só é executada na linha foreach(var palavra in maiusculas), 
+                    //e nesse momento a origem de dados palavras já tinha sido esvaziada pela linha palavras.Clear();.
+                    foreach (var palavra in maiusculas)
+                        Console.WriteLine(palavra);
+
+                    Console.WriteLine("A consulta trouxe {0} elementos.", maiusculas.Count());
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
