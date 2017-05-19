@@ -512,6 +512,30 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------1 - Linq to entities min max avg----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                contexto.Database.Log = Console.WriteLine;
+                var queryMaiorVemnda = contexto.NotasFiscais.Max(nf=> nf.Total);
+                Console.WriteLine("Maior venda é de R${0}", queryMaiorVemnda);
+                var queryMenorVemnda = contexto.NotasFiscais.Min(nf => nf.Total);
+                Console.WriteLine("Menor venda é de R${0}", queryMenorVemnda);
+                var queryMmediaVemnda = contexto.NotasFiscais.Average(nf => nf.Total);
+                Console.WriteLine("Média de venda é de R${0}", queryMmediaVemnda);
+                Console.WriteLine("--------------------------------------------------");
+                var calculoTotal = (from nf
+                                     in contexto.NotasFiscais
+                                   group nf by 1 into agrupadorNf
+                                   select new
+                                   {
+                                       ValorMaximo = agrupadorNf.Max(nf => nf.Total),
+                                       ValorMinimo = agrupadorNf.Min(nf => nf.Total),
+                                       ValorMedio = agrupadorNf.Average(nf => nf.Total)
+                                   }).Single();
+                    Console.WriteLine("R${0} valor máximo \nR${1} valor mínimo\nR${2} valor médio", calculoTotal.ValorMaximo, calculoTotal.ValorMinimo, calculoTotal.ValorMedio);
+            }
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
         }
 
