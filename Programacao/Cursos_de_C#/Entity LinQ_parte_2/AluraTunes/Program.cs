@@ -230,7 +230,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 4 - Consulta para análise de afinidade
                 Console.WriteLine("----------------------4 - Consulta para análise de afinidade----------------------------");
@@ -257,7 +257,64 @@ namespace AluraTunes
                     {
                         Console.WriteLine("{0}\t{1}\t{2}", item.NotaFiscalId, item.Faixa.Nome.PadRight(80), item.FaixaId);
                     }
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
 
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 1 - Execucao tardia - Execucao imediata
+                Console.WriteLine("----------------------1 - Execucao tardia - Execucao imediata----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    Console.WriteLine("-----------------------RELATÓRIO DE ANIVERSARIANTES DO MÊS---------------------------");
+                    var mesAniversario = 1;
+
+                    Console.WriteLine("------------------------EXEMPLO DE CONSULTA TARDIA--------------------------");
+                    while (mesAniversario <= 12)
+                    {
+                        Console.WriteLine("--------------------------------------------------");
+                        Console.WriteLine("Mês {0}", mesAniversario);
+                        //Exemlo de consulta tardia, pois na linnha de baixo nó só criamos uma query
+                        //e na primeira vez que executar esse código, o valor de mesAniversario = 1
+                        //É armazenada a referência desta consulta na memória
+                        var queryFuncionario = from f
+                                                 in contexto.Funcionarios
+                                               where f.DataNascimento.Value.Month == mesAniversario
+                                               orderby f.DataNascimento.Value.Month, f.DataNascimento.Value.Day
+                                               select f;
+                        //Não sequencia nós incrementamos a variáve mesAniversario que irá asssumir 2
+                        mesAniversario++;
+                        //Nesse momento que a consulta é executada, sendo assim
+                        //no momento eem que nós incrementamos o vallor da variável mesAniversario
+                        //foi atualizado a reverência da memória, trocando o valor 1 que foi passsado
+                        //inicialmente ara o valor 2
+                        //com isso, o primeiro Console.WriteLine imprimiu o valor da variável como 1
+                        //porém a pesquisa efetivou a busca com o valor 2
+                        foreach (var funcionario in queryFuncionario)
+                            Console.WriteLine("{0:dd/MM}\t{1} {2}", funcionario.DataNascimento, funcionario.PrimeiroNome, funcionario.Sobrenome);
+                    }
+
+                    mesAniversario = 1;
+
+                    Console.WriteLine("-------------------------EXEMPLO DE EXECUÇÃO IMEDIATA-------------------------");
+                    while (mesAniversario <= 12)
+                    {
+                        Console.WriteLine("--------------------------------------------------");
+                        Console.WriteLine("Mês {0}", mesAniversario);
+
+                        var listaFuncionario = (from f
+                                                 in contexto.Funcionarios
+                                               where f.DataNascimento.Value.Month == mesAniversario
+                                               orderby f.DataNascimento.Value.Month, f.DataNascimento.Value.Day
+                                               select f).ToList();
+
+                        mesAniversario++;
+
+                        foreach (var funcionario in listaFuncionario)
+                            Console.WriteLine("{0:dd/MM}\t{1} {2}", funcionario.DataNascimento, funcionario.PrimeiroNome, funcionario.Sobrenome);
+                    }
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
