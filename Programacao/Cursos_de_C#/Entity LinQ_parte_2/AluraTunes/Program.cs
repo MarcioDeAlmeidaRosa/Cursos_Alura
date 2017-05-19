@@ -3,9 +3,13 @@ using AluraTunes.Entidades;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Xml.Linq;
+using ZXing;
 
 namespace AluraTunes
 {
@@ -411,7 +415,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 5 - Execução adiada
                 Console.WriteLine("----------------------5 - Execução adiada----------------------------");
@@ -430,6 +434,89 @@ namespace AluraTunes
                     //iniciais. Depois que a lista maiusculas é criada, ela não é mais afetada pelo esvaziamento da lista palavras. 
                     foreach (var palavra in maiusculas)
                         Console.WriteLine(palavra);
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 1- Linq to entities - Linq paralelo
+                Console.WriteLine("----------------------1- Linq to entities - Linq paralelo----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    Console.WriteLine("---------------------PROMOÇÃO - CÓDIGO QRCODE-----------------------------");
+                    //INSTALAR BIBLIOTECA ZXING
+                    // Install-Package ZXing.net
+                    //Precisa também instalar o --> System.Drawing
+                    //Site que lê qr-cod
+                    //https://webqr.com/
+
+
+                    BarcodeWriter barcodeWriter = new BarcodeWriter();
+                    barcodeWriter.Format = BarcodeFormat.QR_CODE;
+                    barcodeWriter.Options = new ZXing.Common.EncodingOptions
+                    {
+                        Width = 100,
+                        Height = 100
+                    };
+                    var caminhoImagem = string.Format("{0}Imagens", caminhoPrograma);
+                    if (!Directory.Exists(caminhoImagem))
+                        Directory.CreateDirectory(caminhoImagem);
+
+                    //Atribuindo valor para o código e Salvando imagem
+                    barcodeWriter.Write("meu primeiro teste de qr-code").Save(string.Format(@"{0}\{1}", caminhoImagem, "meu-teste-qr-cod.jpg"), ImageFormat.Jpeg);
+
+                    barcodeWriter.Write("https://marciodealmeidarosa.github.io/").Save(string.Format(@"{0}\{1}", caminhoImagem, "meu-site.jpg"), ImageFormat.Jpeg);
+                    Console.WriteLine("----------------------QR-CODE GERADO----------------------------");
+
+
+                    var queryFaixas = from f 
+                                        in contexto.Faixas
+                                    select f;
+
+                    var listaFaixasMemoria = queryFaixas.ToList();
+
+                    #region [PROCESSAMENTO SEM PARALELISMO]
+                    Console.WriteLine("----------------------PROCESSAMENTO SEM PARALELISMO----------------------------");
+                    //Cria timer para contar o tempo
+                    var stopwatch = Stopwatch.StartNew();
+                    var queryCodigos = listaFaixasMemoria.Select(f => new
+                    {
+                        NomeArquivo = string.Format("{0}\\{1}.jpg", caminhoImagem, f.FaixaId),
+                        Imagem = barcodeWriter.Write(string.Format("www.aluratunes.com/faixa/{0}", f.FaixaId))
+                    });
+                    //Cria variável para o contador
+                    var contagem = queryCodigos.Count();
+                    stopwatch.Stop();
+                    Console.WriteLine("Carregamentoo de {0} imagems levou {1} ms", contagem, stopwatch.ElapsedMilliseconds);
+                    Console.WriteLine("Carregamentoo de {0} imagems levou {1} s", contagem, stopwatch.ElapsedMilliseconds/1000.0);
+                    //Carregamentoo de 3503 imagems levou 2290 ms
+                    //Carregamentoo de 3503 imagems levou 2,29 s
+                    #endregion
+
+                    #region [PROCESSAMENTO COM PARALELISMO]
+                    Console.WriteLine("----------------------PROCESSAMENTO COM PARALELISMO----------------------------");
+                    //Cria timer para contar o tempo
+                    stopwatch = Stopwatch.StartNew();
+                    queryCodigos = listaFaixasMemoria.AsParallel().Select(f => new
+                    {
+                        NomeArquivo = string.Format("{0}\\{1}.jpg", caminhoImagem, f.FaixaId),
+                        Imagem = barcodeWriter.Write(string.Format("www.aluratunes.com/faixa/{0}", f.FaixaId))
+                    });
+                    //Cria variável para o contador
+                    contagem = queryCodigos.Count();
+                    stopwatch.Stop();
+                    Console.WriteLine("Carregamentoo de {0} imagems levou {1} ms", contagem, stopwatch.ElapsedMilliseconds);
+                    Console.WriteLine("Carregamentoo de {0} imagems levou {1} s", contagem, stopwatch.ElapsedMilliseconds / 1000.0);
+                    //Carregamentoo de 3503 imagems levou 561 ms
+                    //Carregamentoo de 3503 imagems levou 0,561 s
+                    #endregion
+
+                    foreach (var faixa in queryCodigos)
+                    {
+                        faixa.Imagem.Save(faixa.NomeArquivo,ImageFormat.Jpeg);
+                    }
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
