@@ -262,7 +262,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 1 - Execucao tardia - Execucao imediata
                 Console.WriteLine("----------------------1 - Execucao tardia - Execucao imediata----------------------------");
@@ -315,6 +315,30 @@ namespace AluraTunes
                         foreach (var funcionario in listaFuncionario)
                             Console.WriteLine("{0:dd/MM}\t{1} {2}", funcionario.DataNascimento, funcionario.PrimeiroNome, funcionario.Sobrenome);
                     }
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 2 - Adicionando elementos após a definição de uma consulta
+                Console.WriteLine("----------------------2 - Adicionando elementos após a definição de uma consulta----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    Console.WriteLine("-----------------------ANÁLISE DE AFINIDADE---------------------------");
+                    var numeros = new List<int>();
+                    numeros.Add(1);
+
+                    var query
+                        = numeros.Select(n => n * 10);
+
+                    numeros.Add(2);
+                    //CORRETO: a consulta query referencia a variável numeros. A definição de consulta 
+                    ///query só é avaliada quando a consulta é enumerada pela instrução foreach na linha 
+                    /////foreach (var numero in query), então nesse momento a lista numeros já contém 2 elementos.
+                    foreach (var numero in query)
+                        Console.WriteLine(numero);
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
