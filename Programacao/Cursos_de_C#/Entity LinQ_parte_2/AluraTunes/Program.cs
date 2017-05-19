@@ -20,10 +20,59 @@ namespace AluraTunes
 
         static void Main(string[] args)
         {
-            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("----------------------2 - Linq to entities paginado----------------------------");
+            using(var contexto = new AluraTunesEntities())
+            {
+                //Configurando geração de log
+                //contexto.Database.Log = Console.WriteLine;
+
+                //limita a quantidade de registro na página
+                const int NUMEROTOTALREGISTROPORPAGINA = 10;
+                int numeroTotalRegistro = contexto.NotasFiscais.Count();
+
+                //Metodo matemático que arredonda a conta pra cima para não quebrar o calculo de número de páginas
+                var totalDePaginas = Math.Ceiling((decimal)numeroTotalRegistro / NUMEROTOTALREGISTROPORPAGINA);
+
+                for (var pagina = 1; pagina <= totalDePaginas; pagina++)
+                    ImprimirPagina(contexto, NUMEROTOTALREGISTROPORPAGINA, pagina);
+            }
             Console.WriteLine("--------------------------------------------------");
 
             Console.ReadLine();
+        }
+
+        private static void ImprimirPagina(AluraTunesEntities contexto, int NUMEROTOTALREGISTROPORPAGINA, int numeorDaPagina)
+        {
+            var queryNFs = from nf
+                                             in contexto.NotasFiscais
+                           orderby nf.NotaFiscalId
+                           select new
+                           {
+                               Numero = nf.NotaFiscalId,
+                               Data = nf.DataNotaFiscal,
+                               Cliente = nf.Cliente.PrimeiroNome + " " + nf.Cliente.Sobrenome,
+                               Total = nf.Total
+                           };
+
+            //Define o 
+            var numeroDePulos = (numeorDaPagina - 1) * NUMEROTOTALREGISTROPORPAGINA;
+
+            //OBS: tive que colocar o Skip antes do Take por que ao contrário não estava trazendo registro 
+
+            //Move para a segunda página
+            //Skip --> precisa ter ordenação da query para funcionar
+            queryNFs = queryNFs.Skip(numeroDePulos);
+
+
+            // Make Uppercase, ou pressione CTRL+SHIFT+u.
+            //Transformar em minúsculas, ou pressione CTRL+u.
+
+            queryNFs = queryNFs.Take(NUMEROTOTALREGISTROPORPAGINA);
+
+
+            Console.WriteLine("----------------------Página " + numeorDaPagina + "----------------------------");
+            foreach (var nf in queryNFs)
+                Console.WriteLine(string.Format("{0}\t{1}\t{2}\t{3}", nf.Numero, nf.Data, nf.Cliente.PadRight(40), nf.Total));
         }
 
         private static void ComandosAntigos()
