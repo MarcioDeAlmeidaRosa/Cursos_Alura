@@ -425,7 +425,7 @@ namespace AluraTunes
             using (var contexto = new AluraTunesEntities())
             {
                 var queryItemNf = from i 
-                                  in contexto.ItemNotasFiscais
+                                  in contexto.ItensNotasFiscais
                                   where i.Faixa.Album.Artista.Nome == "Led Zeppelin"
                                   select i;
                 foreach(var item in queryItemNf)
@@ -445,7 +445,7 @@ namespace AluraTunes
             using (var contexto = new AluraTunesEntities())
             {
                 var queryItemNF = from i
-                                  in contexto.ItemNotasFiscais
+                                  in contexto.ItensNotasFiscais
                                   where i.Faixa.Album.Artista.Nome == "Led Zeppelin"
                                   group i by i.Faixa.Album into agrupado
                                   let totalPorAlbum = agrupado.Sum(agru => agru.PrecoUnitario * agru.Quantidade)
@@ -491,6 +491,24 @@ namespace AluraTunes
                                   select new { Artista = nomeArtista, TotalTitulo = totalTitulo };
                 foreach (var item in agrupamento)
                     Console.WriteLine("{0} tem {1} título{2}", item.Artista.PadRight(60), item.TotalTitulo, item.TotalTitulo > 1 ? "s" : "");
+            }
+            Console.WriteLine("--------------------------------------------------");
+
+            Console.WriteLine("----------------------8 - Evitando Repetição de Expressões----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                var query =
+                             from inf in contexto.ItensNotasFiscais
+                             where inf.Faixa.Album.Artista.Nome == "Led Zeppelin"
+                             group inf by inf.Faixa.Album into agrupado
+                             let totalSomatoria = agrupado.Sum(a => a.PrecoUnitario * a.Quantidade)
+                             orderby totalSomatoria descending
+                             select new
+                             {
+                                 Album = agrupado.Key.Titulo,
+                                 Valor = totalSomatoria,
+                                 NumeroVendas = agrupado.Count()
+                             };
             }
             Console.WriteLine("--------------------------------------------------");
 
