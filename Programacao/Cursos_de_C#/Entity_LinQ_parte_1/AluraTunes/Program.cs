@@ -3,6 +3,7 @@ using AluraTunes.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Xml.Linq;
 
 namespace AluraTunes
@@ -64,7 +65,7 @@ namespace AluraTunes
                 Console.WriteLine("ID {0}\tmúsica {1}\tgênero{2}", musica.m.ID, musica.m.Nome, musica.g.Nome);
             }
             Console.WriteLine("--------------------------------------------------");
-            
+
             List<Entidades.Genero> generos1 = new List<Entidades.Genero>()
             {
                 new Entidades.Genero { ID = 1, Nome = "Rock" },
@@ -103,7 +104,7 @@ namespace AluraTunes
             //no=> Generos , subno => Genero
             var qyeryXMLGenero = from g in root.Element("Generos").Elements("Genero") select g;
 
-            foreach(XElement genefo in qyeryXMLGenero)
+            foreach (XElement genefo in qyeryXMLGenero)
             {
                 Console.WriteLine("Genero: " + genefo.Element("GeneroId").Value + " Nome: " + genefo.Element("Nome").Value);
             }
@@ -128,7 +129,7 @@ namespace AluraTunes
             var queryAutomovel = from fabricantes in xmlRootAutomovel.Element("Fabricantes").Elements("Fabricante")
                                  join modelos in xmlRootAutomovel.Element("Modelos").Elements("Modelo")
                                  on fabricantes.Element("FabricanteId").Value equals modelos.Element("FabricanteId").Value
-                                 select new { Fabricante = fabricantes.Element("Nome").Value , Modelo = modelos.Element("Nome").Value };
+                                 select new { Fabricante = fabricantes.Element("Nome").Value, Modelo = modelos.Element("Nome").Value };
 
             foreach (var item in queryAutomovel)
             {
@@ -137,12 +138,12 @@ namespace AluraTunes
 
             Console.WriteLine("--------------------------------------------------");
             XElement rootMusica = XElement.Load(caminhoPrograma + @"data/AluraTunesCompleto.xml");
-            var queryMusica = from musicasLista 
+            var queryMusica = from musicasLista
                                 in rootMusica.Element("Musicas").Elements("Musica")
                               join generosLista in rootMusica.Element("Generos").Elements("Genero")
                               on musicasLista.Element("GeneroId").Value equals generosLista.Element("GeneroId").Value
-                              select new { MusicaID = musicasLista.Element("MusicaId").Value , MusicaNome = musicasLista.Element("Nome").Value, GeneroNome = generosLista.Element("Nome").Value  };
-            foreach(var musica in queryMusica)
+                              select new { MusicaID = musicasLista.Element("MusicaId").Value, MusicaNome = musicasLista.Element("Nome").Value, GeneroNome = generosLista.Element("Nome").Value };
+            foreach (var musica in queryMusica)
                 Console.WriteLine("ID música {0} - Nome música {1} - Gênero {2}", musica.MusicaID, musica.MusicaNome, musica.GeneroNome);
             #endregion
 
@@ -150,7 +151,7 @@ namespace AluraTunes
             Console.WriteLine("#####################LINQ TO ENTITIES###############################");
             //Criamos o banco de dados AluraTunes.mdf
             Console.WriteLine("--------------------------------------------------");
-            using(var contexto = new AluraTunesEntities())
+            using (var contexto = new AluraTunesEntities())
             {
                 //definição de consulta
                 var queryGeneros = from listaGeneros in contexto.Generos select listaGeneros;
@@ -180,14 +181,14 @@ namespace AluraTunes
 
 
             //Filtro forma 1 - Filtros LINQ (SINTAXE DE CONSULTA)
-            using(var contexto = new AluraTunesEntities())
+            using (var contexto = new AluraTunesEntities())
             {
                 var textoBusca = "Led";
 
-                var queryArtista = from artistas 
+                var queryArtista = from artistas
                               in contexto.Artistas
-                            where artistas.Nome.Contains(textoBusca)
-                            select artistas;
+                                   where artistas.Nome.Contains(textoBusca)
+                                   select artistas;
                 foreach (var artista in queryArtista)
                     Console.WriteLine("Artista {0} - {1}", artista.ArtistaId, artista.Nome);
                 Console.WriteLine("--------------------------------------------------");
@@ -216,7 +217,7 @@ namespace AluraTunes
                 var querySitaxeMetodo = context.Faixas
                     .Join(context.Generos, f => f.GeneroId, g => g.GeneroId, (f, c) => new { f, c })
                     .Join(context.TipoMidias, fm => fm.f.TipoMidiaId, tm => tm.TipoMidiaId, (fm, tm) => new { fm.c, fm.f, tm })
-                    .Where(cftm=> cftm.f.Nome.Contains("Balls "))
+                    .Where(cftm => cftm.f.Nome.Contains("Balls "))
                     .Select(cftm => new
                     {
                         FaixaID = cftm.f.GeneroId,
@@ -265,25 +266,25 @@ namespace AluraTunes
                 Console.WriteLine("--------------------------------------------------");
             }
 
-            using(var contexto = new AluraTunesEntities())
+            using (var contexto = new AluraTunesEntities())
             {
                 Console.WriteLine("---------------------EXEMPLO SINTAXE DE CONSULTA-----------------------------");
                 var querySintaxeConsulta1 = from a in contexto.Artistas
-                            where a.Nome.Contains("Led")
-                            select a;
+                                            where a.Nome.Contains("Led")
+                                            select a;
                 foreach (var artista in querySintaxeConsulta1)
                     Console.WriteLine("ArtistaId {0} - Nome {1}", artista.ArtistaId, artista.Nome);
                 Console.WriteLine("--------------------------------------------------");
 
                 Console.WriteLine("---------------------EXEMPLO SINTAXE DE MÉTODO-----------------------------");
-                var querySintaxeMetodo2 = contexto.Artistas.Where(a=> a.Nome.Contains("Led"));
+                var querySintaxeMetodo2 = contexto.Artistas.Where(a => a.Nome.Contains("Led"));
                 foreach (var artista in querySintaxeMetodo2)
                     Console.WriteLine("ArtistaId {0} - Nome {1}", artista.ArtistaId, artista.Nome);
                 Console.WriteLine("--------------------------------------------------");
             }
 
             Console.WriteLine("--------------------------------------------------");
-            using(var contexto = new AluraTunesEntities())
+            using (var contexto = new AluraTunesEntities())
             {
                 Console.WriteLine("---------------------EXEMPLO SINTAXE DE MÉTODO-----------------------------");
                 var querySintaxeMetodo2 = contexto.Generos.Where(g => g.Nome == "Rock");
@@ -358,7 +359,7 @@ namespace AluraTunes
             using (var contexto = new AluraTunesEntities())
             {
                 var query = from nf in contexto.NotasFiscais
-                            orderby nf.Total descending, nf.Cliente.PrimeiroNome + " " + nf.Cliente.Sobrenome 
+                            orderby nf.Total descending, nf.Cliente.PrimeiroNome + " " + nf.Cliente.Sobrenome
                             select new
                             {
                                 Data = nf.DataNotaFiscal,
@@ -374,65 +375,65 @@ namespace AluraTunes
             Console.WriteLine("--------------------------------------------------");
 
             Console.WriteLine("-------------------------Ordenando Consultas Linq - Sintaxe de Método-------------------------");
-            using(var contexto = new AluraTunesEntities())
+            using (var contexto = new AluraTunesEntities())
             {
                 var query1 = from alb in contexto.Albums select alb;
 
                 var query2 = query1.OrderBy(o => o.Artista.Nome).ThenBy(o => o.Titulo);
 
-                foreach(var item in query2)
+                foreach (var item in query2)
                     Console.WriteLine(item.Titulo);
             }
             Console.WriteLine("--------------------------------------------------");
 
             Console.WriteLine("----------------------Ordenação Decrescente - Sintaxe de Método----------------------------");
-            using(var contexto = new AluraTunesEntities())
+            using (var contexto = new AluraTunesEntities())
             {
                 var querySentaxeQuery = from nf in contexto.NotasFiscais
-                            orderby nf.Total descending, nf.Cliente.PrimeiroNome + " " + nf.Cliente.Sobrenome
-                            select nf;
+                                        orderby nf.Total descending, nf.Cliente.PrimeiroNome + " " + nf.Cliente.Sobrenome
+                                        select nf;
 
                 foreach (var item in querySentaxeQuery)
                     Console.WriteLine("{0}\t{1}", item.Cliente.PrimeiroNome.PadRight(40), item.Total);
 
-                var querySitaxeMetodo = contexto.NotasFiscais.OrderByDescending(o => o.Total).ThenBy(o=> o.Cliente.PrimeiroNome + " " + o.Cliente.Sobrenome);
+                var querySitaxeMetodo = contexto.NotasFiscais.OrderByDescending(o => o.Total).ThenBy(o => o.Cliente.PrimeiroNome + " " + o.Cliente.Sobrenome);
                 foreach (var item in querySitaxeMetodo)
                     Console.WriteLine("{0}\t{1}", item.Cliente.PrimeiroNome.PadRight(40), item.Total);
             }
             Console.WriteLine("--------------------------------------------------");
 
             Console.WriteLine("----------------------Linq to entities count----------------------------");
-            using(var contexto = new AluraTunesEntities())
+            using (var contexto = new AluraTunesEntities())
             {
                 var queryTotalFaixa = from f
                                       in contexto.Faixas
                                       where f.Album.Artista.Nome == "Led Zeppelin"
                                       select f;
 
-                
-                foreach(var faixa in queryTotalFaixa)
+
+                foreach (var faixa in queryTotalFaixa)
                 {
-                    Console.WriteLine("{0}",faixa.Nome);
+                    Console.WriteLine("{0}", faixa.Nome);
                 }
 
                 Console.WriteLine("Led Zeppelin tem {0} no banco de dados", queryTotalFaixa.Count());
                 Console.WriteLine("Total de faixas no banco {0}", contexto.Faixas.Count());
-                Console.WriteLine("Led Zeppelin tem {0} no banco de dados", contexto.Faixas.Count(c=> c.Album.Artista.Nome == "Led Zeppelin"));
+                Console.WriteLine("Led Zeppelin tem {0} no banco de dados", contexto.Faixas.Count(c => c.Album.Artista.Nome == "Led Zeppelin"));
             }
             Console.WriteLine("--------------------------------------------------");
 
             Console.WriteLine("----------------------2 - Linq to entities Sum----------------------------");
             using (var contexto = new AluraTunesEntities())
             {
-                var queryItemNf = from i 
+                var queryItemNf = from i
                                   in contexto.ItensNotasFiscais
                                   where i.Faixa.Album.Artista.Nome == "Led Zeppelin"
                                   select i;
-                foreach(var item in queryItemNf)
+                foreach (var item in queryItemNf)
                     Console.WriteLine("Faixa {0} - quantidade {1} - preço unitário {2}", item.Faixa.Nome, item.Quantidade, item.PrecoUnitario);
 
                 var queryItemNfTotal = from inf in queryItemNf
-                              select new { totalDosItens = inf.Quantidade * inf.PrecoUnitario };
+                                       select new { totalDosItens = inf.Quantidade * inf.PrecoUnitario };
 
                 foreach (var item in queryItemNfTotal)
                     Console.WriteLine("Total do item R${0}", item.totalDosItens);
@@ -455,7 +456,7 @@ namespace AluraTunes
                                       TituloDoAlbum = agrupado.Key.Titulo,
                                       TotalPorAlbum = totalPorAlbum
                                   };
-                foreach(var agrupado in queryItemNF)
+                foreach (var agrupado in queryItemNF)
                     Console.WriteLine("{0}\t{1}", agrupado.TituloDoAlbum.PadRight(40), agrupado.TotalPorAlbum);
             }
             Console.WriteLine("--------------------------------------------------");
@@ -473,13 +474,13 @@ namespace AluraTunes
             Console.WriteLine("----------------------7 - Agrupando Valores de Consultas Linq----------------------------");
             using (var contexto = new AluraTunesEntities())
             {
-                var artistaEalbumQuery = from alb 
+                var artistaEalbumQuery = from alb
                                            in contexto.Albums
-                                        select new
-                                        {
-                                            Artista = alb.Artista.Nome,
-                                            Titulo = alb.Titulo
-                                        };
+                                         select new
+                                         {
+                                             Artista = alb.Artista.Nome,
+                                             Titulo = alb.Titulo
+                                         };
                 foreach (var item in artistaEalbumQuery)
                     Console.WriteLine("{0}\t{1}", item.Artista, item.Titulo);
 
@@ -516,7 +517,7 @@ namespace AluraTunes
             using (var contexto = new AluraTunesEntities())
             {
                 contexto.Database.Log = Console.WriteLine;
-                var queryMaiorVemnda = contexto.NotasFiscais.Max(nf=> nf.Total);
+                var queryMaiorVemnda = contexto.NotasFiscais.Max(nf => nf.Total);
                 Console.WriteLine("Maior venda é de R${0}", queryMaiorVemnda);
                 var queryMenorVemnda = contexto.NotasFiscais.Min(nf => nf.Total);
                 Console.WriteLine("Menor venda é de R${0}", queryMenorVemnda);
@@ -525,14 +526,14 @@ namespace AluraTunes
                 Console.WriteLine("--------------------------------------------------");
                 var calculoTotal = (from nf
                                      in contexto.NotasFiscais
-                                   group nf by 1 into agrupadorNf
-                                   select new
-                                   {
-                                       ValorMaximo = agrupadorNf.Max(nf => nf.Total),
-                                       ValorMinimo = agrupadorNf.Min(nf => nf.Total),
-                                       ValorMedio = agrupadorNf.Average(nf => nf.Total)
-                                   }).Single();
-                    Console.WriteLine("R${0} valor máximo \nR${1} valor mínimo\nR${2} valor médio", calculoTotal.ValorMaximo, calculoTotal.ValorMinimo, calculoTotal.ValorMedio);
+                                    group nf by 1 into agrupadorNf
+                                    select new
+                                    {
+                                        ValorMaximo = agrupadorNf.Max(nf => nf.Total),
+                                        ValorMinimo = agrupadorNf.Min(nf => nf.Total),
+                                        ValorMedio = agrupadorNf.Average(nf => nf.Total)
+                                    }).Single();
+                Console.WriteLine("R${0} valor máximo \nR${1} valor mínimo\nR${2} valor médio", calculoTotal.ValorMaximo, calculoTotal.ValorMinimo, calculoTotal.ValorMedio);
             }
             Console.WriteLine("--------------------------------------------------");
 
@@ -549,7 +550,7 @@ namespace AluraTunes
                 //Calculando a mediana
                 var totalNf = queryNF.Count();
                 //Ordena a lista por conta do Skip
-                var queryNFOrdenada = queryNF.OrderBy(total=> total);
+                var queryNFOrdenada = queryNF.OrderBy(total => total);
                 //Skip precisa que a lista precisa estar ordenada
                 var elementoCentral = queryNFOrdenada.Skip(totalNf / 2).First();
 
@@ -560,7 +561,40 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------3 - Linq métodos extensão - Calculo de mediana----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                contexto.Database.Log = Console.WriteLine;
+
+                var vendaMedia = contexto.NotasFiscais.Average(nf => nf.Total);
+                Console.WriteLine("Venda média: {0}", vendaMedia);
+
+                var queryNF = from nf in contexto.NotasFiscais select nf.Total;
+                decimal mediana = Mediana(queryNF);
+
+                Console.WriteLine("Mediana por função {0}", mediana);
+
+                decimal vendaMediana = contexto.NotasFiscais.Mediana(m => m.Total);
+
+                Console.WriteLine("Mediana por método de extensão {0}", mediana);
+            }
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
+        }
+
+        private static decimal Mediana(IQueryable<decimal> queryNF)
+        {
+            //Calculando a mediana
+            var totalNf = queryNF.Count();
+            //Ordena a lista por conta do Skip
+            var queryNFOrdenada = queryNF.OrderBy(total => total);
+            //Skip precisa que a lista precisa estar ordenada
+            var elementoCentral1 = queryNFOrdenada.Skip(totalNf / 2).First();
+            var elementoCentral2 = queryNFOrdenada.Skip((totalNf - 1) / 2).First();
+
+            var mediana = (elementoCentral1 + elementoCentral2) / 2;
+            return mediana;
         }
 
         private static void GetFaixas(AluraTunesEntities contexto, string nomeArtista, string album)
@@ -573,7 +607,7 @@ namespace AluraTunes
             if (!string.IsNullOrWhiteSpace(album))
                 queryFiltroDinamico = queryFiltroDinamico.Where(f => f.Album.Titulo.Contains(album));
 
-            queryFiltroDinamico = queryFiltroDinamico.OrderBy(o => o.Album.Titulo).ThenBy(o=> o.Nome);
+            queryFiltroDinamico = queryFiltroDinamico.OrderBy(o => o.Album.Titulo).ThenBy(o => o.Nome);
 
             foreach (var faixa in queryFiltroDinamico)
                 Console.WriteLine("{0}\t{1}", faixa.Album.Titulo.PadRight(40), faixa.Nome);
@@ -590,6 +624,28 @@ namespace AluraTunes
 
             foreach (var faixa in queryFiltroDinamico)
                 Console.WriteLine("{0}\t{1}", faixa.Album.Titulo.PadRight(40), faixa.Nome);
+        }
+    }
+
+    static class LinqExtension
+    {
+        public static decimal Mediana<TSource>(this IQueryable<TSource> source, Expression<Func<TSource, decimal>> selector)
+        {
+            //Calculando a mediana
+            var totalNf = source.Count();
+
+            var funcSeletor = selector.Compile();
+
+            //Ordena a lista por conta do Skip
+            var queryNFOrdenada = source.Select(funcSeletor).OrderBy(total => total);
+            //Skip precisa que a lista precisa estar ordenada
+            var elementoCentral1 = queryNFOrdenada.Skip(totalNf / 2).First();
+            var elementoCentral2 = queryNFOrdenada.Skip((totalNf - 1) / 2).First();
+
+            if ((totalNf % 2) == 0)//caso par, considera os 2 medianos
+                return (elementoCentral1 + elementoCentral2) / 2;
+            //Caso impar, consideram somente o valor da primeira
+            return elementoCentral1  / 2;
         }
     }
 }
