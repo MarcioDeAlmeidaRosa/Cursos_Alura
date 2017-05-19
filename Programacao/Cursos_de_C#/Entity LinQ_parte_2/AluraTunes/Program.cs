@@ -65,7 +65,7 @@ namespace AluraTunes
                                  in contexto.NotasFiscais
                                  where nf.Total > queryMedia
                                  orderby nf.Total descending
-                                select new
+                                 select new
                                  {
                                      Numero = nf.NotaFiscalId,
                                      Data = nf.DataNotaFiscal,
@@ -168,9 +168,9 @@ namespace AluraTunes
                                 select new { c.ClienteId, Nome = c.PrimeiroNome + " " + c.Sobrenome };
 
                     var pos = 9;
-                    query = query.Skip(pos-1).Take(pos);
+                    query = query.Skip(pos - 1).Take(pos);
 
-                    
+
                     foreach (var cliente in query)
                     {
                         Console.WriteLine("{0}\t{1}", pos++, cliente.Nome);
@@ -217,14 +217,14 @@ namespace AluraTunes
                     //Filtra todos os itens de notas fiscais relacionados as faixas encontrada com base no nome do filtro
                     var queryItensNotas = from comprouItem
                                             in contexto.ItensNotasFiscais
-                                            //usando selfjoin
-                                          join comprouTambem in contexto.ItensNotasFiscais 
-                                            on comprouItem.NotaFiscalId equals comprouTambem.NotaFiscalId 
+                                              //usando selfjoin
+                                          join comprouTambem in contexto.ItensNotasFiscais
+                                            on comprouItem.NotaFiscalId equals comprouTambem.NotaFiscalId
                                           where faixasIDs.Contains(comprouItem.FaixaId)
                                              && comprouItem.FaixaId != comprouTambem.FaixaId
                                           select comprouTambem;
 
-                    foreach(var item in queryItensNotas)
+                    foreach (var item in queryItensNotas)
                     {
                         Console.WriteLine("{0}\t{1}", item.NotaFiscalId, item.Faixa.Nome);
                     }
@@ -246,7 +246,7 @@ namespace AluraTunes
                     /*
                      * Desenvolva uma consulta LINQ para trazer um relatório de análise de afinidade para um produto com FaixaId == 1.
                      */
-                     //Variável que esta armazenando o id da faixa que esta sendo comprada pelo cliente
+                    //Variável que esta armazenando o id da faixa que esta sendo comprada pelo cliente
                     var faixaId = 1;
 
                     var queryAfinidade = from itensComprados
@@ -310,9 +310,9 @@ namespace AluraTunes
 
                         var listaFuncionario = (from f
                                                  in contexto.Funcionarios
-                                               where f.DataNascimento.Value.Month == mesAniversario
-                                               orderby f.DataNascimento.Value.Month, f.DataNascimento.Value.Day
-                                               select f).ToList();
+                                                where f.DataNascimento.Value.Month == mesAniversario
+                                                orderby f.DataNascimento.Value.Month, f.DataNascimento.Value.Day
+                                                select f).ToList();
 
                         mesAniversario++;
 
@@ -471,9 +471,9 @@ namespace AluraTunes
                     Console.WriteLine("----------------------QR-CODE GERADO----------------------------");
 
 
-                    var queryFaixas = from f 
+                    var queryFaixas = from f
                                         in contexto.Faixas
-                                    select f;
+                                      select f;
 
                     var listaFaixasMemoria = queryFaixas.ToList();
 
@@ -490,7 +490,7 @@ namespace AluraTunes
                     var contagem = queryCodigos.Count();
                     stopwatch.Stop();
                     Console.WriteLine("Carregamentoo de {0} imagems levou {1} ms", contagem, stopwatch.ElapsedMilliseconds);
-                    Console.WriteLine("Carregamentoo de {0} imagems levou {1} s", contagem, stopwatch.ElapsedMilliseconds/1000.0);
+                    Console.WriteLine("Carregamentoo de {0} imagems levou {1} s", contagem, stopwatch.ElapsedMilliseconds / 1000.0);
                     //Carregamentoo de 3503 imagems levou 2290 ms
                     //Carregamentoo de 3503 imagems levou 2,29 s
                     #endregion
@@ -515,7 +515,7 @@ namespace AluraTunes
 
                     foreach (var faixa in queryCodigos)
                     {
-                        faixa.Imagem.Save(faixa.NomeArquivo,ImageFormat.Jpeg);
+                        faixa.Imagem.Save(faixa.NomeArquivo, ImageFormat.Jpeg);
                     }
                 }
                 Console.WriteLine("--------------------------------------------------");
@@ -546,7 +546,7 @@ namespace AluraTunes
 
                     var listaFaixasMemoria = queryFaixas.ToList();
 
-                    
+
                     Console.WriteLine("----------------------PROCESSAMENTO COM PARALELISMO----------------------------");
                     //Cria timer para contar o tempo
                     var stopwatch = Stopwatch.StartNew();
@@ -589,7 +589,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 1 - Linq to entities stores procedure
                 Console.WriteLine("----------------------1 - Linq to entities stores procedure----------------------------");
@@ -612,10 +612,117 @@ namespace AluraTunes
                                                Total = agrupado.Sum(a => a.PrecoUnitario * a.Quantidade)
                                            };
 
-                    foreach(var venda in vendasPorCliente)
+                    foreach (var venda in vendasPorCliente)
                     {
                         Console.WriteLine("{0}\t{1}\t{2}", venda.Ano, venda.Mes, venda.Total);
                     }
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 5 - Agrupando consultas LINQ por mais de uma propriedade
+                Console.WriteLine("----------------------5 - Agrupando consultas LINQ por mais de uma propriedade----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    var alunos = new List<Aluno>
+                    {
+                        new Aluno{ AnoLetivo = "2016" , Curso= "C#" , Escola= "Caelum" , Nome = "Marcos"},
+                        new Aluno{ AnoLetivo = "2016" , Curso= "F#" , Escola= "Caelum" , Nome = "Marcos"},
+                        new Aluno{ AnoLetivo = "2016" , Curso= "Java" , Escola= "Caelum" , Nome = "Marcos"},
+
+                        new Aluno{ AnoLetivo = "2017" , Curso= "F#" , Escola= "Alura" , Nome = "Marcos"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "C#" , Escola= "Alura" , Nome = "Marcos"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "Java" , Escola= "Alura" , Nome = "Marcos"},
+
+                        new Aluno{ AnoLetivo = "2017" , Curso= "C#" , Escola= "Alura" , Nome = "Renato"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "F#" , Escola= "Alura" , Nome = "Renato"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "Java" , Escola= "Alura" , Nome = "Renato"},
+
+                        new Aluno{ AnoLetivo = "2017" , Curso= "C#" , Escola= "Alura" , Nome = "Gustavo"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "F#" , Escola= "Alura" , Nome = "Gustavo"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "Java" , Escola= "Alura" , Nome = "Gustavo"},
+
+                        new Aluno{ AnoLetivo = "2017" , Curso= "C#" , Escola= "Alura" , Nome = "Rodrigo"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "F#" , Escola= "Alura" , Nome = "Rodrigo"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "Java" , Escola= "Alura" , Nome = "Rodrigo"},
+
+                        new Aluno{ AnoLetivo = "2017" , Curso= "C#" , Escola= "Alura" , Nome = "Robsom"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "F#" , Escola= "Alura" , Nome = "Robsom"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "Java" , Escola= "Alura" , Nome = "Robsom"},
+
+                        new Aluno{ AnoLetivo = "2016" , Curso= "C#" , Escola= "Caelum" , Nome = "Anderson"},
+                        new Aluno{ AnoLetivo = "2016" , Curso= "F#" , Escola= "Caelum" , Nome = "Anderson"},
+                        new Aluno{ AnoLetivo = "2016" , Curso= "Java" , Escola= "Caelum" , Nome = "Anderson"},
+
+                        //--
+
+                        new Aluno{ AnoLetivo = "2016" , Curso= "C#" , Escola= "Ka Solution" , Nome = "Guilherme"},
+                        new Aluno{ AnoLetivo = "2016" , Curso= "F#" , Escola= "Ka Solution" , Nome = "Guilherme"},
+                        new Aluno{ AnoLetivo = "2016" , Curso= "Java" , Escola= "Ka Solution" , Nome = "Guilherme"},
+
+                        new Aluno{ AnoLetivo = "2017" , Curso= "F#" , Escola= "Ka Solution" , Nome = "Ronaldo"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "C#" , Escola= "Ka Solution" , Nome = "Ronaldo"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "Java" , Escola= "Ka Solution" , Nome = "Ronaldo"},
+
+                        new Aluno{ AnoLetivo = "2017" , Curso= "C#" , Escola= "Ka Solution" , Nome = "Marcio"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "F#" , Escola= "Ka Solution" , Nome = "Marcio"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "Java" , Escola= "Ka Solution" , Nome = "Marcio"},
+
+                        new Aluno{ AnoLetivo = "2017" , Curso= "C#" , Escola= "Bras Figueiredo" , Nome = "Angela"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "F#" , Escola= "Bras Figueiredo" , Nome = "Angela"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "Java" , Escola= "Bras Figueiredo" , Nome = "Angela"},
+
+                        new Aluno{ AnoLetivo = "2017" , Curso= "C#" , Escola= "Bras Figueiredo" , Nome = "Marcela"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "F#" , Escola= "Bras Figueiredo" , Nome = "Marcela"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "Java" , Escola= "Bras Figueiredo" , Nome = "Marcela"},
+
+                        new Aluno{ AnoLetivo = "2017" , Curso= "C#" , Escola= "Bras Figueiredo" , Nome = "Rafaela"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "F#" , Escola= "Bras Figueiredo" , Nome = "Rafaela"},
+                        new Aluno{ AnoLetivo = "2017" , Curso= "Java" , Escola= "Bras Figueiredo" , Nome = "Rafaela"}
+                    };
+
+
+                    //Desenvolva uma nova consulta LINQ sobre a mesma lista de alunos, que traga um resultado agregado, contendo:
+                    //O nome da escola,
+                    //O nome do curso
+                    //O ano letivo,
+
+                    var alunosQuery =
+                                    from a in alunos
+                                    orderby a.AnoLetivo , a.Curso , a.Escola , a.Nome
+                                    select new
+                                    {
+                                        Escola = a.Escola,
+                                        Curso = a.Curso,
+                                        AnoLetivo = a.AnoLetivo,
+                                        Nome = a.Nome
+                                    };
+                    foreach(var aluno in alunosQuery)
+                        Console.WriteLine("{0}\t{1}\t{2}\t{3}", aluno.AnoLetivo , aluno.Curso , aluno.Escola.PadRight(30) , aluno.Nome);
+
+                    Console.WriteLine("--------------------------------------------------");
+                    //Uma lista dos alunos que frequentam a mesma escola, no mesmo curso, no mesmo ano letivo
+                    var lista = from l
+                                  in alunosQuery
+                                group l by new { l.AnoLetivo, l.Escola, l.Curso } into agrupado
+                                orderby agrupado.Key.AnoLetivo, agrupado.Key.Escola, agrupado.Key.Curso
+                                select new
+                                {
+                                    AnoLetivo = agrupado.Key.AnoLetivo,
+                                    Escola = agrupado.Key.Escola,
+                                    Curso = agrupado.Key.Curso,
+                                    Alunos = agrupado.ToList()
+                                };
+
+                    foreach (var aluno in lista) {
+                        Console.WriteLine("{0}\t{1}\t{2}", aluno.AnoLetivo, aluno.Curso, aluno.Escola.PadRight(30));
+                        foreach(var cursando in aluno.Alunos)
+                            Console.WriteLine("\t\t\t\t{0}", cursando.Nome);
+                    }
+
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
@@ -1430,5 +1537,13 @@ namespace AluraTunes
     class TipoSanguineo
     {
         public string Codigo { get; set; }
+    }
+
+    public class Aluno
+    {
+        public string Escola { get; set; }
+        public string Curso { get; set; }
+        public string AnoLetivo { get; set; }
+        public string Nome { get; set; }
     }
 }
