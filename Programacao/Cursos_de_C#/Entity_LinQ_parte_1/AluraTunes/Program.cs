@@ -636,6 +636,32 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------7 - Calculando Maior Valor----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                contexto.Database.Log = Console.WriteLine;
+
+                //Qual alternativa calcula a maior resistência entre os pokemons cujo nome NÃO começa com a letra "P"?
+                var pokemons = new[]
+                {
+                    new { Nome = "Pidgey", HP = 14 },
+                    new { Nome = "Ratata", HP = 21 },
+                    new { Nome = "Pidgeotto", HP = 52 },
+                    new { Nome = "Zubat", HP = 25 },
+                    new { Nome = "Pikachu", HP = 33 }
+                };
+
+                var media = pokemons.Where(p=> !p.Nome.StartsWith("P")).Select(p => p.HP).Max();
+                var resistenciaMedia = pokemons.Where(p => !p.Nome.StartsWith("P")).Max(p => p.HP);
+                /*
+                 * CORRETO: a cláusula Where está filtrando a consulta para trazer somente os pokemons cujo nome não 
+                 * comece com a letra "P", e o método Max especifica a propriedade cujo valor máximo deve ser encontrado.
+                 */
+                Console.WriteLine("Maior de HP é {0}", media);
+                Console.WriteLine("Maior de HP é {0}", resistenciaMedia);
+            }
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
         }
 
