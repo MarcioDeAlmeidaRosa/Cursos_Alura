@@ -439,7 +439,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 1- Linq to entities - Linq paralelo
                 Console.WriteLine("----------------------1- Linq to entities - Linq paralelo----------------------------");
@@ -517,6 +517,73 @@ namespace AluraTunes
                     {
                         faixa.Imagem.Save(faixa.NomeArquivo,ImageFormat.Jpeg);
                     }
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 2- Linq to entities - Linq paralelo parte 2
+                Console.WriteLine("----------------------2- Linq to entities - Linq paralelo parte 2----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    Console.WriteLine("---------------------PROMOÇÃO - CÓDIGO QRCODE-----------------------------");
+                    BarcodeWriter barcodeWriter = new BarcodeWriter();
+                    barcodeWriter.Format = BarcodeFormat.QR_CODE;
+                    barcodeWriter.Options = new ZXing.Common.EncodingOptions
+                    {
+                        Width = 100,
+                        Height = 100
+                    };
+                    var caminhoImagem = string.Format("{0}Imagens", caminhoPrograma);
+                    if (!Directory.Exists(caminhoImagem))
+                        Directory.CreateDirectory(caminhoImagem);
+
+                    var queryFaixas = from f
+                                        in contexto.Faixas
+                                      select f;
+
+                    var listaFaixasMemoria = queryFaixas.ToList();
+
+                    
+                    Console.WriteLine("----------------------PROCESSAMENTO COM PARALELISMO----------------------------");
+                    //Cria timer para contar o tempo
+                    var stopwatch = Stopwatch.StartNew();
+                    var queryCodigos = listaFaixasMemoria.AsParallel().Select(f => new
+                    {
+                        NomeArquivo = string.Format("{0}\\{1}.jpg", caminhoImagem, f.FaixaId),
+                        Imagem = barcodeWriter.Write(string.Format("www.aluratunes.com/faixa/{0}", f.FaixaId))
+                    });
+                    //Cria variável para o contador
+                    var contagem = queryCodigos.Count();
+                    stopwatch.Stop();
+                    Console.WriteLine("Carregamentoo de {0} imagems levou {1} ms", contagem, stopwatch.ElapsedMilliseconds);
+                    Console.WriteLine("Carregamentoo de {0} imagems levou {1} s", contagem, stopwatch.ElapsedMilliseconds / 1000.0);
+
+                    #region [GERAÇÃO SEM PARALELISMO]
+                    stopwatch = Stopwatch.StartNew();
+                    foreach (var faixa in queryCodigos)
+                    {
+                        faixa.Imagem.Save(faixa.NomeArquivo, ImageFormat.Jpeg);
+                    }
+                    stopwatch.Stop();
+                    Console.WriteLine("Geração da {0} imagems levou {1} ms", contagem, stopwatch.ElapsedMilliseconds);
+                    Console.WriteLine("Geração da {0} imagems levou {1} s", contagem, stopwatch.ElapsedMilliseconds / 1000.0);
+                    //Geraçao da 3503 imagems levou 13380 ms
+                    //Geraçao da 3503 imagems levou 13,38 s
+                    #endregion [GERAÇÃO SEM PARALELISMO]
+
+                    #region [GERAÇÃO SEM PARALELISMO]
+                    stopwatch = Stopwatch.StartNew();
+                    queryCodigos.ForAll(arq => arq.Imagem.Save(arq.NomeArquivo, ImageFormat.Jpeg));
+                    stopwatch.Stop();
+                    Console.WriteLine("Geração da {0} imagems levou {1} ms", contagem, stopwatch.ElapsedMilliseconds);
+                    Console.WriteLine("Geração da {0} imagems levou {1} s", contagem, stopwatch.ElapsedMilliseconds / 1000.0);
+                    //Geraçao da 3503 imagems levou 3701 ms
+                    //Geraçao da 3503 imagems levou 3,701 s
+                    #endregion [GERAÇÃO SEM PARALELISMO]
+
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
