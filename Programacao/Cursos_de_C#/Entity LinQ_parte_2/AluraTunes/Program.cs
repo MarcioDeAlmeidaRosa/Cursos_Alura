@@ -152,7 +152,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 08 - Obtendo uma sequência de elementos a partir de uma posição
                 Console.WriteLine("----------------------08 - Obtendo uma sequência de elementos a partir de uma posição----------------------------");
@@ -172,6 +172,23 @@ namespace AluraTunes
                         Console.WriteLine("{0}\t{1}", pos++, cliente.Nome);
                     }
                     Console.WriteLine();
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 09 - Desenvolvendo algoritmo de paginação
+                Console.WriteLine("----------------------09 - Desenvolvendo algoritmo de paginação----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    var totalRegistro = contexto.NotasFiscais.Count();
+                    const int TOTAL_POR_PAGINA = 5;
+                    var totalPagina = Math.Ceiling((decimal)totalRegistro / TOTAL_POR_PAGINA);
+
+                    for (var pagina = 1; pagina <= totalPagina; pagina++)
+                        ImprimirPagina(contexto, TOTAL_POR_PAGINA, pagina);
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
