@@ -421,6 +421,26 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------2 - Linq to entities Sum----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                var queryItemNf = from i 
+                                  in contexto.ItemNotasFiscais
+                                  where i.Faixa.Album.Artista.Nome == "Led Zeppelin"
+                                  select i;
+                foreach(var item in queryItemNf)
+                    Console.WriteLine("Faixa {0} - quantidade {1} - preço unitário {2}", item.Faixa.Nome, item.Quantidade, item.PrecoUnitario);
+
+                var queryItemNfTotal = from inf in queryItemNf
+                              select new { totalDosItens = inf.Quantidade * inf.PrecoUnitario };
+
+                foreach (var item in queryItemNfTotal)
+                    Console.WriteLine("Total do item R${0}", item.totalDosItens);
+
+                Console.WriteLine("Total do artista R${0}", queryItemNfTotal.Sum(i => i.totalDosItens));
+            }
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
         }
 
