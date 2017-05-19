@@ -621,7 +621,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 5 - Agrupando consultas LINQ por mais de uma propriedade
                 Console.WriteLine("----------------------5 - Agrupando consultas LINQ por mais de uma propriedade----------------------------");
