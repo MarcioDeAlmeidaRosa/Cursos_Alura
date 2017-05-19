@@ -522,7 +522,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 2- Linq to entities - Linq paralelo parte 2
                 Console.WriteLine("----------------------2- Linq to entities - Linq paralelo parte 2----------------------------");
@@ -584,6 +584,38 @@ namespace AluraTunes
                     //Geraçao da 3503 imagems levou 3,701 s
                     #endregion [GERAÇÃO SEM PARALELISMO]
 
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 1 - Linq to entities stores procedure
+                Console.WriteLine("----------------------1 - Linq to entities stores procedure----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    contexto.Database.Log = Console.WriteLine;
+                    Console.WriteLine("----------------------RELATÓRIO VENDAS POR CLIENTE AGRUPADA POR ANO E POR MÊS----------------------------");
+
+                    int clienteID = 15;
+
+                    var vendasPorCliente = from c
+                                         in contexto.ps_Itens_Por_Cliente(clienteID)
+                                           group c by new { c.DataNotaFiscal.Year, c.DataNotaFiscal.Month }
+                                         into agrupado
+                                           orderby agrupado.Key.Year, agrupado.Key.Month
+                                           select new
+                                           {
+                                               Ano = agrupado.Key.Year,
+                                               Mes = agrupado.Key.Month,
+                                               Total = agrupado.Sum(a => a.PrecoUnitario * a.Quantidade)
+                                           };
+
+                    foreach(var venda in vendasPorCliente)
+                    {
+                        Console.WriteLine("{0}\t{1}\t{2}", venda.Ano, venda.Mes, venda.Total);
+                    }
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
