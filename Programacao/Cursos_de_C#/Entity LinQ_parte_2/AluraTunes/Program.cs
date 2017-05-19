@@ -46,7 +46,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 3 - Subconsulta
                 Console.WriteLine("----------------------2 - Linq to entities paginado----------------------------");
@@ -73,6 +73,52 @@ namespace AluraTunes
                         Console.WriteLine(string.Format("{0}\t{1}\t{2}\t{3}", nf.Numero, nf.Data, nf.Cliente.PadRight(40), nf.Valor));
 
                     Console.WriteLine("-----------------------A média é {0}---------------------------", queryMedia);
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 4 - Clientes compraram produto mais vendido
+                Console.WriteLine("----------------------4 - Clientes compraram produto mais vendido----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    Console.WriteLine("-----------------------CLIENTES QUE COMPRARAM OS PRODUTOS MAIS VENDIDOS---------------------------");
+                    //Configurando geração de log
+                    //contexto.Database.Log = Console.WriteLine;
+
+                    var queryMaisVendidas = from f
+                                              in contexto.Faixas
+                                            where f.ItemNotaFiscals.Count() > 0//Elimina faixas que não tem venda vinculada
+                                            let totalDeVendas = f.ItemNotaFiscals.Sum(nf => nf.PrecoUnitario * nf.Quantidade)
+                                            orderby totalDeVendas descending
+                                            select new
+                                            {
+                                                FaixaID = f.FaixaId,
+                                                NomeFaixa = f.Nome,
+                                                TotalVendido = totalDeVendas
+                                            };
+
+                    foreach (var faixa in queryMaisVendidas)
+                        Console.WriteLine(string.Format("{0}\t{1}\t{2}", faixa.FaixaID, faixa.NomeFaixa.PadRight(40), faixa.TotalVendido));
+
+                    //Depois de organizar as faixas com seus totais de venda, recupero a mais vendida
+                    var produtoMaisVendido = queryMaisVendidas.First();
+                    Console.WriteLine("---------------------Produto mais vendido-----------------------------");
+                    Console.WriteLine(string.Format("{0}\t{1}\t{2}", produtoMaisVendido.FaixaID, produtoMaisVendido.NomeFaixa.PadRight(40), produtoMaisVendido.TotalVendido));
+
+                    var queryCliente = from inf
+                                       in contexto.ItensNotasFiscais
+                                       where inf.FaixaId == produtoMaisVendido.FaixaID
+                                       select new
+                                       {
+                                           NomeCliente = inf.NotaFiscal.Cliente.PrimeiroNome + " " + inf.NotaFiscal.Cliente.Sobrenome
+                                       };
+
+                    Console.WriteLine("---------------------Compradores dos produtos mais vendidos-----------------------------");
+                    foreach (var cliente in queryCliente)
+                        Console.WriteLine(string.Format("{0}", cliente.NomeCliente));
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
