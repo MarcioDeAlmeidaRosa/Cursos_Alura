@@ -1,6 +1,7 @@
 ﻿using AluraTunes.Data;
 using AluraTunes.Entidades;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -662,6 +663,48 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------8 - Métodos de Extensão - Teoria----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                contexto.Database.Log = Console.WriteLine;
+
+                //Qual alternativa calcula a maior resistência entre os pokemons cujo nome NÃO começa com a letra "P"?
+                var pokemons = new[]
+                {
+                    new { Nome = "Pidgey", HP = 14 },
+                    new { Nome = "Ratata", HP = 21 },
+                    new { Nome = "Pidgeotto", HP = 52 },
+                    new { Nome = "Zubat", HP = 25 },
+                    new { Nome = "Pikachu", HP = 33 }
+                };
+
+                var media = pokemons.Where(p => !p.Nome.StartsWith("P")).Select(p => p.HP).Max();
+                var resistenciaMedia = pokemons.Where(p => !p.Nome.StartsWith("P")).Max(p => p.HP);
+                /*
+                 * CORRETO: a cláusula Where está filtrando a consulta para trazer somente os pokemons cujo nome não 
+                 * comece com a letra "P", e o método Max especifica a propriedade cujo valor máximo deve ser encontrado.
+                 */
+                Console.WriteLine("Maior de HP é {0}", media);
+                Console.WriteLine("Maior de HP é {0}", resistenciaMedia);
+            }
+            Console.WriteLine("--------------------------------------------------");
+
+
+            Console.WriteLine("----------------------9 - Métodos de Extensão - Prática----------------------------");
+            var tiposSanguineos = new List<TipoSanguineo>
+            {
+                new TipoSanguineo { Codigo = "A" },
+                new TipoSanguineo { Codigo = "B" },
+                new TipoSanguineo { Codigo = "AB" },
+                new TipoSanguineo { Codigo = "O" },
+            };
+
+            Console.WriteLine("Primeiro da lista {0}", tiposSanguineos.First().Codigo);
+            Console.WriteLine("Segundo da lista {0}", tiposSanguineos.Second1().Codigo);
+            Console.WriteLine("Segundo da lista {0}", tiposSanguineos.Second2().Codigo);
+            Console.WriteLine("Segundo da lista {0}", tiposSanguineos.Second3().Codigo);
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
         }
 
@@ -729,5 +772,25 @@ namespace AluraTunes
             //Caso impar, consideram somente o valor da primeira
             return elementoCentral1  / 2;
         }
+
+        public static TSource Second1<TSource>(this IEnumerable<TSource> source)
+        {
+            return source.Skip(1).First();
+        }
+
+        public static TSource Second2<TSource>(this IEnumerable<TSource> source)
+        {
+            return source.ElementAt(1);
+        }
+
+        public static TSource Second3<TSource>(this IEnumerable<TSource> source)
+        {
+            return source.ToArray()[1];
+        }
+    }
+
+    class TipoSanguineo
+    {
+        public string Codigo { get; set; }
     }
 }
