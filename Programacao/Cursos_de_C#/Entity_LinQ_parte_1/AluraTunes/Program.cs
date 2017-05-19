@@ -470,6 +470,30 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------7 - Agrupando Valores de Consultas Linq----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                var artistaEalbumQuery = from alb 
+                                           in contexto.Albums
+                                        select new
+                                        {
+                                            Artista = alb.Artista.Nome,
+                                            Titulo = alb.Titulo
+                                        };
+                foreach (var item in artistaEalbumQuery)
+                    Console.WriteLine("{0}\t{1}", item.Artista, item.Titulo);
+
+                var agrupamento = from g in artistaEalbumQuery
+                                  group g by g.Artista into total
+                                  let totalTitulo = total.Count()
+                                  let nomeArtista = total.Key
+                                  orderby nomeArtista
+                                  select new { Artista = nomeArtista, TotalTitulo = totalTitulo };
+                foreach (var item in agrupamento)
+                    Console.WriteLine("{0} tem {1} título{2}", item.Artista.PadRight(60), item.TotalTitulo, item.TotalTitulo > 1 ? "s" : "");
+            }
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
         }
 
