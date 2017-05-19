@@ -343,7 +343,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 3 - Modificando variáveis de uma consulta em tempo de execução
                 Console.WriteLine("----------------------3 - Modificando variáveis de uma consulta em tempo de execução----------------------------");
@@ -360,6 +360,27 @@ namespace AluraTunes
                         Console.WriteLine(numero);
 
                     Console.WriteLine("A consulta trouxe {0} elementos.", query.Count());
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 4 - Remoção de elementos após a definição de uma consulta
+                Console.WriteLine("----------------------4 - Remoção de elementos após a definição de uma consulta----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    var numeros = new List<int>() { 1, 2 };
+
+                    var query = numeros.Select(n => n * 10);
+
+                    numeros.Clear();
+                    //CORRETO: somente na linha foreach(var numero in query) a consulta query é avaliada, 
+                    ///e nesse ponto todos os elementos da origem de dados numeros já tinham sido removidos 
+                    ////pela linha numeros.Clear();
+                    foreach (var numero in query)
+                        Console.WriteLine(numero);
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
