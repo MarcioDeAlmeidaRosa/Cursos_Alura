@@ -78,7 +78,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 4 - Clientes compraram produto mais vendido
                 Console.WriteLine("----------------------4 - Clientes compraram produto mais vendido----------------------------");
@@ -120,6 +120,35 @@ namespace AluraTunes
                     foreach (var cliente in queryCliente)
                         Console.WriteLine(string.Format("{0}", cliente.NomeCliente));
                 }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 07 - Acessando elementos de uma página
+                Console.WriteLine("----------------------07 - Acessando elementos de uma página----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    var query = from nf in contexto.NotasFiscais
+                                orderby nf.NotaFiscalId
+                                select new
+                                {
+                                    Numero = nf.NotaFiscalId,
+                                    Data = nf.DataNotaFiscal,
+                                    Cliente = nf.Cliente.PrimeiroNome + " " + nf.Cliente.Sobrenome,
+                                    Total = nf.Total
+                                };
+
+                    //Qual o código necessário para obter os elementos da terceira página de um relatório sobre a consulta acima, considerando que cada página contém 20 elementos.
+                    query = query.Skip(40).Take(20);
+
+                    foreach (var nf in query)
+                    {
+                        Console.WriteLine("{0}\t{1}\t{2}\t{3}", nf.Numero, nf.Data, nf.Cliente, nf.Total);
+                    }
+                }
+
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
             }
