@@ -12,6 +12,8 @@ namespace AluraTunes
     class Program
     {
         private static string caminhoPrograma = string.Empty;
+        private const bool EXECUTAR_TODOS_EXERCICIOS = false;
+        private const bool EXECUTAR_EXERCICIO_ATUAL = true;
 
         static Program()
         {
@@ -20,23 +22,61 @@ namespace AluraTunes
 
         static void Main(string[] args)
         {
-            Console.WriteLine("----------------------2 - Linq to entities paginado----------------------------");
-            using(var contexto = new AluraTunesEntities())
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
-                //Configurando geração de log
-                //contexto.Database.Log = Console.WriteLine;
+                #region 2 - Linq to entities paginado
+                Console.WriteLine("----------------------2 - Linq to entities paginado----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    Console.WriteLine("-----------------------LISTAGEM DE NOTAS FISCAIS---------------------------");
+                    //Configurando geração de log
+                    //contexto.Database.Log = Console.WriteLine;
 
-                //limita a quantidade de registro na página
-                const int NUMEROTOTALREGISTROPORPAGINA = 10;
-                int numeroTotalRegistro = contexto.NotasFiscais.Count();
+                    //limita a quantidade de registro na página
+                    const int NUMEROTOTALREGISTROPORPAGINA = 10;
+                    int numeroTotalRegistro = contexto.NotasFiscais.Count();
 
-                //Metodo matemático que arredonda a conta pra cima para não quebrar o calculo de número de páginas
-                var totalDePaginas = Math.Ceiling((decimal)numeroTotalRegistro / NUMEROTOTALREGISTROPORPAGINA);
+                    //Metodo matemático que arredonda a conta pra cima para não quebrar o calculo de número de páginas
+                    var totalDePaginas = Math.Ceiling((decimal)numeroTotalRegistro / NUMEROTOTALREGISTROPORPAGINA);
 
-                for (var pagina = 1; pagina <= totalDePaginas; pagina++)
-                    ImprimirPagina(contexto, NUMEROTOTALREGISTROPORPAGINA, pagina);
+                    for (var pagina = 1; pagina <= totalDePaginas; pagina++)
+                        ImprimirPagina(contexto, NUMEROTOTALREGISTROPORPAGINA, pagina);
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
             }
-            Console.WriteLine("--------------------------------------------------");
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 3 - Subconsulta
+                Console.WriteLine("----------------------2 - Linq to entities paginado----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    Console.WriteLine("-----------------------NOTAS ACIMA DA MÉDIA---------------------------");
+                    //Configurando geração de log
+                    contexto.Database.Log = Console.WriteLine;
+
+                    decimal queryMedia = contexto.NotasFiscais.Average(n => n.Total);
+                    var queryC = from nf
+                                 in contexto.NotasFiscais
+                                 where nf.Total > queryMedia
+                                 orderby nf.Total descending
+                                select new
+                                 {
+                                     Numero = nf.NotaFiscalId,
+                                     Data = nf.DataNotaFiscal,
+                                     Cliente = nf.Cliente.PrimeiroNome + " " + nf.Cliente.Sobrenome,
+                                     Valor = nf.Total
+                                 };
+
+                    foreach (var nf in queryC)
+                        Console.WriteLine(string.Format("{0}\t{1}\t{2}\t{3}", nf.Numero, nf.Data, nf.Cliente.PadRight(40), nf.Valor));
+
+                    Console.WriteLine("-----------------------A média é {0}---------------------------", queryMedia);
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
 
             Console.ReadLine();
         }
