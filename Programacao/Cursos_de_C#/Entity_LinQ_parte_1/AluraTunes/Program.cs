@@ -460,6 +460,16 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------6 - Calculando Quantidades Com Projeção de Dados----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                var quantidadeSintaxeMetodo = contexto.Faixas.Where(f => f.Album.Artista.Nome == "Led Zeppelin").Count();
+                Console.WriteLine("Quantidade de faixas (SintaxeMetodo) {0}", quantidadeSintaxeMetodo);
+                var quantidadeSintaxeMetodo2 = contexto.Faixas.Count(f => f.Album.Artista.Nome == "Led Zeppelin");
+                Console.WriteLine("Quantidade de faixas (SintaxeMetodo) {0}", quantidadeSintaxeMetodo2);
+            }
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
         }
 
