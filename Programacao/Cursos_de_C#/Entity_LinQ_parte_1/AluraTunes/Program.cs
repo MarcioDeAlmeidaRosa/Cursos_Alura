@@ -608,6 +608,34 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------6 - Calculando a Média----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                contexto.Database.Log = Console.WriteLine;
+
+                //Marque o trecho de código que seleciona a resistência média dos pokemons:
+                var pokemons = new[]
+                {
+                    new { Nome = "Pidgey", HP = 14 },
+                    new { Nome = "Ratata", HP = 21 },
+                    new { Nome = "Pidgeotto", HP = 52 },
+                    new { Nome = "Zubat", HP = 25 },
+                    new { Nome = "Pikachu", HP = 33 }
+                };
+
+                var media = pokemons.Select(p => p.HP).Average();
+                var resistenciaMedia = pokemons.Average(p => p.HP);
+                /*
+                 * CORRETO: o método Average está sendo usado para obter a média da propriedade HP da lista de pokemons.
+                 */
+                Console.WriteLine("Média de HP é {0}", media);
+                Console.WriteLine("Média de HP é {0}", resistenciaMedia);
+
+
+
+            }
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
         }
 
