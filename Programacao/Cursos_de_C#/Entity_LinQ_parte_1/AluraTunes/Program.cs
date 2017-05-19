@@ -580,6 +580,34 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------5 - Calculando Menor Valor----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                contexto.Database.Log = Console.WriteLine;
+
+                //Marque o trecho de código que seleciona o(s) pokemon(s) menos resistente(s):
+                var pokemons = new[]
+                {
+                    new { Nome = "Pidgey", HP = 14 },
+                    new { Nome = "Ratata", HP = 21 },
+                    new { Nome = "Pidgeotto", HP = 52 },
+                    new { Nome = "Zubat", HP = 25 },
+                    new { Nome = "Pikachu", HP = 33 }
+                };
+
+                var menorHP = pokemons.Select(p => p.HP).Min();
+                var pokemon = pokemons.Where(p => p.HP == menorHP);
+                /*
+                 * CORRETO: primeiro o valor do menor HP (menor resistência) é calculado, e em seguida obtem-se o(s) pokemon(s) que possuem o menor HP.
+                 */
+                foreach (var pok in pokemon)
+                    Console.WriteLine("Pokemon com menor HP é {0} {1}", pok.Nome, pok.HP);
+
+
+
+            }
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
         }
 
