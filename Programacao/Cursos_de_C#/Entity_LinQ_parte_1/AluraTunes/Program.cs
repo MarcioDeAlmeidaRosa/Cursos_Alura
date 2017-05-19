@@ -401,6 +401,26 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------Linq to entities count----------------------------");
+            using(var contexto = new AluraTunesEntities())
+            {
+                var queryTotalFaixa = from f
+                                      in contexto.Faixas
+                                      where f.Album.Artista.Nome == "Led Zeppelin"
+                                      select f;
+
+                
+                foreach(var faixa in queryTotalFaixa)
+                {
+                    Console.WriteLine("{0}",faixa.Nome);
+                }
+
+                Console.WriteLine("Led Zeppelin tem {0} no banco de dados", queryTotalFaixa.Count());
+                Console.WriteLine("Total de faixas no banco {0}", contexto.Faixas.Count());
+                Console.WriteLine("Led Zeppelin tem {0} no banco de dados", contexto.Faixas.Count(c=> c.Album.Artista.Nome == "Led Zeppelin"));
+            }
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
         }
 
