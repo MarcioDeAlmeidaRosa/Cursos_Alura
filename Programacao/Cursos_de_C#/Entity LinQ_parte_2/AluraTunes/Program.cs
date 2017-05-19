@@ -386,7 +386,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 5 - Execução adiada
                 Console.WriteLine("----------------------5 - Execução adiada----------------------------");
@@ -406,6 +406,30 @@ namespace AluraTunes
                         Console.WriteLine(palavra);
 
                     Console.WriteLine("A consulta trouxe {0} elementos.", maiusculas.Count());
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 5 - Execução adiada
+                Console.WriteLine("----------------------5 - Execução adiada----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    var palavras = new List<string>() { "alura", "cursos" };
+
+                    var maiusculas = palavras
+                      .Select(p => p.ToUpper())
+                      .ToList();
+
+                    palavras.Clear();
+                    //Porque a instrução Console.WriteLine() dentro do laço foreach está imprimindo 
+                    //os elementos da lista maiusculas, que é uma lista em memória (e não uma variável de 
+                    //consulta) que foi instanciada no momento em que a lista palavras ainda continha os dados 
+                    //iniciais. Depois que a lista maiusculas é criada, ela não é mais afetada pelo esvaziamento da lista palavras. 
+                    foreach (var palavra in maiusculas)
+                        Console.WriteLine(palavra);
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
