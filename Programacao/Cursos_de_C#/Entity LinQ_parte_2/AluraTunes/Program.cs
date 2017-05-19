@@ -194,7 +194,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 1 - Comprou tambem
                 Console.WriteLine("----------------------1 - Comprou tambem----------------------------");
@@ -223,6 +223,39 @@ namespace AluraTunes
                     foreach(var item in queryItensNotas)
                     {
                         Console.WriteLine("{0}\t{1}", item.NotaFiscalId, item.Faixa.Nome);
+                    }
+
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 4 - Consulta para análise de afinidade
+                Console.WriteLine("----------------------4 - Consulta para análise de afinidade----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    Console.WriteLine("-----------------------ANÁLISE DE AFINIDADE---------------------------");
+                    //ANÁLISE DE AFINIDADE --> verifica outros itens comrados por outras pessoas relacionado ao item que você esta comprado
+                    //estimular venda casada
+                    /*
+                     * Desenvolva uma consulta LINQ para trazer um relatório de análise de afinidade para um produto com FaixaId == 1.
+                     */
+                     //Variável que esta armazenando o id da faixa que esta sendo comprada pelo cliente
+                    var faixaId = 1;
+
+                    var queryAfinidade = from itensComprados
+                                         in contexto.ItensNotasFiscais
+                                         join comprouTambem in contexto.ItensNotasFiscais on itensComprados.NotaFiscalId equals comprouTambem.NotaFiscalId
+                                         where itensComprados.FaixaId == faixaId
+                                           && itensComprados.FaixaId != comprouTambem.FaixaId
+                                         orderby comprouTambem.FaixaId
+                                         select comprouTambem;
+
+                    foreach (var item in queryAfinidade)
+                    {
+                        Console.WriteLine("{0}\t{1}\t{2}", item.NotaFiscalId, item.Faixa.Nome.PadRight(80), item.FaixaId);
                     }
 
                 }
