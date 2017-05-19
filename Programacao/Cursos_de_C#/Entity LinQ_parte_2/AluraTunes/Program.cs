@@ -177,7 +177,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 09 - Desenvolvendo algoritmo de paginação
                 Console.WriteLine("----------------------09 - Desenvolvendo algoritmo de paginação----------------------------");
@@ -189,6 +189,42 @@ namespace AluraTunes
 
                     for (var pagina = 1; pagina <= totalPagina; pagina++)
                         ImprimirPagina(contexto, TOTAL_POR_PAGINA, pagina);
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 1 - Comprou tambem
+                Console.WriteLine("----------------------1 - Comprou tambem----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    Console.WriteLine("-----------------------ANÁLISE DE AFINIDADE---------------------------");
+                    //ANÁLISE DE AFINIDADE --> verifica outros itens comrados por outras pessoas relacionado ao item que você esta comprado
+                    //estimular venda casada
+
+                    //Nome da música que esta sendo comprada
+                    var nomeDaMusica = "Smells Like Teen Spirit";
+
+                    //Lista um range de faixas de música com este nome
+                    var faixasIDs = contexto.Faixas.Where(f => f.Nome == nomeDaMusica).Select(f => f.FaixaId);
+
+                    //Filtra todos os itens de notas fiscais relacionados as faixas encontrada com base no nome do filtro
+                    var queryItensNotas = from comprouItem
+                                            in contexto.ItensNotasFiscais
+                                            //usando selfjoin
+                                          join comprouTambem in contexto.ItensNotasFiscais 
+                                            on comprouItem.NotaFiscalId equals comprouTambem.NotaFiscalId 
+                                          where faixasIDs.Contains(comprouItem.FaixaId)
+                                             && comprouItem.FaixaId != comprouTambem.FaixaId
+                                          select comprouTambem;
+
+                    foreach(var item in queryItensNotas)
+                    {
+                        Console.WriteLine("{0}\t{1}", item.NotaFiscalId, item.Faixa.Nome);
+                    }
+
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
