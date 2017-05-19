@@ -124,7 +124,7 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 07 - Acessando elementos de uma página
                 Console.WriteLine("----------------------07 - Acessando elementos de uma página----------------------------");
@@ -148,7 +148,31 @@ namespace AluraTunes
                         Console.WriteLine("{0}\t{1}\t{2}\t{3}", nf.Numero, nf.Data, nf.Cliente, nf.Total);
                     }
                 }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
 
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 08 - Obtendo uma sequência de elementos a partir de uma posição
+                Console.WriteLine("----------------------08 - Obtendo uma sequência de elementos a partir de uma posição----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+
+                    var query = from c in contexto.Clientes
+                                orderby c.ClienteId
+                                select new { c.ClienteId, Nome = c.PrimeiroNome + " " + c.Sobrenome };
+
+                    var pos = 9;
+                    query = query.Skip(pos-1).Take(pos);
+
+                    
+                    foreach (var cliente in query)
+                    {
+                        Console.WriteLine("{0}\t{1}", pos++, cliente.Nome);
+                    }
+                    Console.WriteLine();
+                }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
             }
