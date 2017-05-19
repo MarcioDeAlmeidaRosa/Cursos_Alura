@@ -536,6 +536,30 @@ namespace AluraTunes
             }
             Console.WriteLine("--------------------------------------------------");
 
+            Console.WriteLine("----------------------2 - Linq métodos extensão - Calculo de mediana----------------------------");
+            using (var contexto = new AluraTunesEntities())
+            {
+                contexto.Database.Log = Console.WriteLine;
+
+                var vendaMedia = contexto.NotasFiscais.Average(nf => nf.Total);
+                Console.WriteLine("Venda média: {0}", vendaMedia);
+
+                var queryNF = from nf in contexto.NotasFiscais select nf.Total;
+
+                //Calculando a mediana
+                var totalNf = queryNF.Count();
+                //Ordena a lista por conta do Skip
+                var queryNFOrdenada = queryNF.OrderBy(total=> total);
+                //Skip precisa que a lista precisa estar ordenada
+                var elementoCentral = queryNFOrdenada.Skip(totalNf / 2).First();
+
+                var mediana = elementoCentral;
+
+
+                Console.WriteLine("Mediana {0}", mediana);
+            }
+            Console.WriteLine("--------------------------------------------------");
+
             Console.ReadLine();
         }
 
