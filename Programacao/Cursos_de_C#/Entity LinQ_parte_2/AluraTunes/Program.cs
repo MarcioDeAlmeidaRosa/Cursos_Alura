@@ -320,13 +320,12 @@ namespace AluraTunes
                 #endregion
             }
 
-            if (EXECUTAR_EXERCICIO_ATUAL)
+            if (EXECUTAR_TODOS_EXERCICIOS)
             {
                 #region 2 - Adicionando elementos após a definição de uma consulta
                 Console.WriteLine("----------------------2 - Adicionando elementos após a definição de uma consulta----------------------------");
                 using (var contexto = new AluraTunesEntities())
                 {
-                    Console.WriteLine("-----------------------ANÁLISE DE AFINIDADE---------------------------");
                     var numeros = new List<int>();
                     numeros.Add(1);
 
@@ -339,6 +338,28 @@ namespace AluraTunes
                     /////foreach (var numero in query), então nesse momento a lista numeros já contém 2 elementos.
                     foreach (var numero in query)
                         Console.WriteLine(numero);
+                }
+                Console.WriteLine("--------------------------------------------------");
+                #endregion
+            }
+
+            if (EXECUTAR_EXERCICIO_ATUAL)
+            {
+                #region 3 - Modificando variáveis de uma consulta em tempo de execução
+                Console.WriteLine("----------------------3 - Modificando variáveis de uma consulta em tempo de execução----------------------------");
+                using (var contexto = new AluraTunesEntities())
+                {
+                    int[] numeros = { 1, 2 };
+
+                    int fator = 10;
+                    IEnumerable<int> query = numeros.Select(n => n * fator);
+
+                    fator = 20;
+                    //CORRETO: os dois elementos da origem de dados (1, 2) devem ser multiplicados pelo fator 20.
+                    foreach (var numero in query)
+                        Console.WriteLine(numero);
+
+                    Console.WriteLine("A consulta trouxe {0} elementos.", query.Count());
                 }
                 Console.WriteLine("--------------------------------------------------");
                 #endregion
