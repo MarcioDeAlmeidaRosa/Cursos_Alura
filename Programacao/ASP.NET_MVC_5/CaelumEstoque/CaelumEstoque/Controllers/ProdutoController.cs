@@ -29,9 +29,9 @@ namespace CaelumEstoque.Controllers
         //public ActionResult Adiciona(string nome, float preco, int quantidade, string descricao, int categoriaId)
         public ActionResult Adiciona(Produto produto)//<- Model Binder faz a criação do produto no cliente antes de enviar para o servidor
         {
-            int idDeInformatica = 1;
-            if (produto.CategoriaId.Equals(idDeInformatica) && produto.Preco < 100)
-                ModelState.AddModelError("produto.invalido", "Produto de informática sendo cadastrado com valor menor que R$100,00");
+            //int idDeInformatica = 1;
+            //if (produto.CategoriaId.Equals(idDeInformatica) && produto.Preco < 100)
+            //    ModelState.AddModelError("produto.invalido", "Produto de informática sendo cadastrado com valor menor que R$100,00");
 
             if (ModelState.IsValid)
             {
