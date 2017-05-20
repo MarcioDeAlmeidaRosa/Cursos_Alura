@@ -12,6 +12,7 @@ namespace CaelumEstoque.Controllers
     {
         // GET: Produto
         [HttpGet]
+        [Route("produtos", Name ="ListaProdutos")]
         public ActionResult Index()
         {
             return View(new ProdutosDAO().Lista());
@@ -52,6 +53,7 @@ namespace CaelumEstoque.Controllers
         }
 
         [HttpGet]
+        [Route("produtos/{id}", Name = "VisualizaProduto")]
         public ActionResult Visualiza(int id)
         {
             return View(new ProdutosDAO().BuscaPorId(id));

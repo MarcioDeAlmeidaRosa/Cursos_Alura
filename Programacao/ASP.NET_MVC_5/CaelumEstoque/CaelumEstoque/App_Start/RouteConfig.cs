@@ -11,6 +11,10 @@ namespace CaelumEstoque
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            //Habilita checagem da parametrização do Route em cima de cada método 
+            //quando quisermos um nome diferente do da action
+            routes.MapMvcAttributeRoutes();
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
