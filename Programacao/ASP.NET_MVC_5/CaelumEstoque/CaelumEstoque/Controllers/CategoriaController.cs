@@ -1,4 +1,5 @@
 ﻿using CaelumEstoque.DAO;
+using CaelumEstoque.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,19 @@ namespace CaelumEstoque.Controllers
             CategoriasDAO dao = new CategoriasDAO();
             ViewBag.Categorias = dao.Lista();
             return View();
+        }
+
+        public ActionResult Form()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Adiciona(CategoriaDoProduto categoria)
+        {
+            CategoriasDAO dao = new CategoriasDAO();
+            dao.Adiciona(categoria);
+            return RedirectToAction("Index");
         }
     }
 }
