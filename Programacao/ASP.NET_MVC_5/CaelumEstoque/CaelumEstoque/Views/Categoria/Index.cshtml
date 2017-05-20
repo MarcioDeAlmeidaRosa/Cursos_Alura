@@ -1,4 +1,4 @@
-﻿
+﻿@model IList<CaelumEstoque.Models.CategoriaDoProduto>
 @{
     Layout = null;
 }
@@ -21,11 +21,11 @@
                 </tr>
             </tbody>
             <tbody>
-                @foreach(var categoria in ViewBag.Categorias)
+                @foreach(var categoria in Model)
                 {
                     <tr>
                         <td>@categoria.Id</td>
-                        <td>@categoria.Nome</td>
+                        <td>@Html.ActionLink(@categoria.Nome, "Visualizar", new { id = @categoria.Id })</td>
                         <td>@categoria.Descricao</td>
                     </tr>
                 }
