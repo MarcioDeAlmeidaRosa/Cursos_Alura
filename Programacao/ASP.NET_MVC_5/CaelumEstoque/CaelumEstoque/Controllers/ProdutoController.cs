@@ -54,7 +54,6 @@ namespace CaelumEstoque.Controllers
             produto.Quantidade--;
             dao.Atualiza(produto);
             return Json(produto);
-            //return RedirectToAction("Index");
         }
     }
 }
