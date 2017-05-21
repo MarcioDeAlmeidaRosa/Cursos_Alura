@@ -1,0 +1,12 @@
+﻿@model CaelumEstoque.Models.Usuario
+<form action="/Usuario/Adicionar" method="post">
+    <label for="Nome">Nome:</label>
+    <input class="form-control" type="text" id="Nome" name="Nome" value="@Model.Nome" />
+    @Html.ValidationMessage("Nome")
+
+    <label for="Senha">Senha:</label>
+    <input class="form-control" type="password" id="Senha" name="Senha" value="@Model.Senha" />
+    @Html.ValidationMessage("Senha")
+    <br />
+    <input type="submit" value="Cadastrar" />
+</form>
