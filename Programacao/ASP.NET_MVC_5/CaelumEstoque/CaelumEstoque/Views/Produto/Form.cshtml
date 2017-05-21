@@ -1,6 +1,7 @@
 ﻿@model CaelumEstoque.Models.Produto
 <div>
     <form action="/Produto/Adiciona" method="post">
+        @Html.AntiForgeryToken()
         <label for="nome">Nome:</label>
         <input class="form-control" id="nome" name="produto.Nome" value="@Model.Nome" />
         @Html.ValidationMessage("produto.Nome")

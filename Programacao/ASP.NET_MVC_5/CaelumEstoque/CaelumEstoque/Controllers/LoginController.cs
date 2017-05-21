@@ -8,15 +8,19 @@ using System.Web.Mvc;
 
 namespace CaelumEstoque.Controllers
 {
+    
     public class LoginController : Controller
     {
         // GET: Login
         [HttpGet]
+        //[AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
+        [HttpPost]
+        //[AllowAnonymous]
         public ActionResult Autentica(string login, string senha)
         {
             var dao = new UsuariosDAO();

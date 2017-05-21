@@ -1,4 +1,5 @@
 ﻿using CaelumEstoque.DAO;
+using CaelumEstoque.Filtros;
 using CaelumEstoque.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace CaelumEstoque.Controllers
 {
+    [AltorizacaoFilter]
     public class CategoriaController : Controller
     {
         // GET: Categoria
