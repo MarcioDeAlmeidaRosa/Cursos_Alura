@@ -8,13 +8,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var produto in Model)
+            @foreach (var usuario in Model)
             {
                 <tr>
-                    <td>@produto.Id</td>
-                    @*<td><a href="/Produto/Visualiza/@produto.Id">@produto.Nome</a></td>*@
-                    @*<td>@Html.ActionLink(produto.Nome, "Visualiza", new { id = produto.Id })</td>*@
-                    <td>@Html.RouteLink(produto.Nome, "VisualizaProduto", new { id = produto.Id })</td>
+                    <td>@usuario.Id</td>
+                    @*<td><a href="/Usuario/Visualiza/@produto.Id">@usuario.Nome</a></td>*@
+                    @*<td>@Html.ActionLink(usuario.Nome, "VisualizarUsuario", new { id = produto.Id })</td>*@
+                    <td>@Html.RouteLink(usuario.Nome, "VisualizarUsuario", new { id = usuario.Id })</td>
                 </tr>
             }
         </tbody>

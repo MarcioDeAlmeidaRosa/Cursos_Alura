@@ -1,26 +1,27 @@
-﻿<div>
+﻿@model CaelumEstoque.Models.Produto
+<div>
     <form action="/Produto/Adiciona" method="post">
         <label for="nome">Nome:</label>
-        <input class="form-control" id="nome" name="produto.Nome" value="@ViewBag.Produto.Nome" />
+        <input class="form-control" id="nome" name="produto.Nome" value="@Model.Nome" />
         @Html.ValidationMessage("produto.Nome")
         <label for="preco">Preço:</label>
-        <input class="form-control" id="preco" name="produto.Preco" value="@ViewBag.Produto.Preco" />
+        <input class="form-control" id="preco" name="produto.Preco" value="@Model.Preco" />
         @Html.ValidationMessage("produto.Preco")
         @Html.ValidationMessage("produto.invalido")
 
         <label for="quantidade">Quantidade:</label>
-        <input class="form-control" id="quantidade" name="produto.Quantidade" value="@ViewBag.Produto.Quantidade" />
+        <input class="form-control" id="quantidade" name="produto.Quantidade" value="@Model.Quantidade" />
         @Html.ValidationMessage("produto.Quantidade")
 
         <label for="descricao">Descrição:</label>
-        <input class="form-control" id="descricao" name="produto.Descricao" value="@ViewBag.Produto.Descricao" />
+        <input class="form-control" id="descricao" name="produto.Descricao" value="@Model.Descricao" />
         @Html.ValidationMessage("produto.Descricao")
 
         <label for="categoria">Categoria:</label>
         <select class="form-control" id="categoria" name="produto.CategoriaId">
             @foreach (var cateforia in ViewBag.Categorias)
             {
-                <option value="@cateforia.Id" selected="@cateforia.Id.Equals(ViewBag.Produto.CategoriaId)"> @cateforia.Nome</option>
+                <option value="@cateforia.Id" selected="@cateforia.Id.Equals(Model.CategoriaId)"> @cateforia.Nome</option>
             }
         </select>
         <br />

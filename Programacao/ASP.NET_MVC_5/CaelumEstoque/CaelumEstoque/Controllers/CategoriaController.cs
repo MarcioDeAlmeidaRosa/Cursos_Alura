@@ -20,15 +20,19 @@ namespace CaelumEstoque.Controllers
         [HttpGet]
         public ActionResult Form()
         {
-            return View();
+            return View(new CategoriaDoProduto());
         }
 
         [HttpPost]
         public ActionResult Adiciona(CategoriaDoProduto categoria)
         {
-            CategoriasDAO dao = new CategoriasDAO();
-            dao.Adiciona(categoria);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                CategoriasDAO dao = new CategoriasDAO();
+                dao.Adiciona(categoria);
+                return RedirectToAction("Index");
+            }
+            return View("Form", categoria);
         }
 
         [HttpGet]

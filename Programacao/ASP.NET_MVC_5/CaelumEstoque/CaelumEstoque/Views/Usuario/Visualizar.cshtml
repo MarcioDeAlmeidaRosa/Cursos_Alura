@@ -1,0 +1,8 @@
+﻿@model CaelumEstoque.Models.Usuario
+<div>
+    <p>Nome: @Model.Nome</p>
+    <p>Senha: @Model.Senha</p>
+    @*<a href="/Produto">Voltar para a lista</a>*@
+    @*@Html.ActionLink("Voltar para a lista de produto", "Index", "Produto")*@
+    @Html.RouteLink("Voltar para a lista de produto", "ListarUsuarios")
+</div>

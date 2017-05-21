@@ -12,6 +12,7 @@ namespace CaelumEstoque.Controllers
     {
         // GET: Usuario
         [HttpGet]
+        [Route("Usuarios", Name = "ListarUsuarios")]
         public ActionResult Index()
         {
             return View(new UsuariosDAO().Lista());
@@ -31,8 +32,14 @@ namespace CaelumEstoque.Controllers
                 new UsuariosDAO().Adiciona(usuario);
                 return RedirectToAction("Index");
             }
+            return View("Form", usuario);
+        }
 
-            return RedirectToAction("Form", usuario);
+        [HttpGet]
+        [Route("Usuarios/{id}", Name = "VisualizarUsuario")]
+        public ActionResult Visualizar(int id)
+        {
+            return View(new UsuariosDAO().BuscaPorId(id));
         }
     }
 }

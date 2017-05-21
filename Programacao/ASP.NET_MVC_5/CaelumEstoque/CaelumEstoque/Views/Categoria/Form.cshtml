@@ -1,10 +1,13 @@
-﻿<div>
+﻿@model CaelumEstoque.Models.CategoriaDoProduto
+<div>
     <form action="/Categoria/Adiciona">
-        <label for="nome">Nome:</label>
-        <input  class="form-control" id="nome" name="Nome" />
+        <label for="Nome">Nome:</label>
+        <input  class="form-control" id="Nome" name="Nome" value="@Model.Nome" />
+        @Html.ValidationMessage("Nome")
 
-        <label for="descricao">Descrição:</label>
-        <input  class="form-control" id="descricao" name="descricao" />
+        <label for="Descricao">Descrição:</label>
+        <input  class="form-control" id="Descricao" name="Descricao" value="@Model.Descricao" />
+        @Html.ValidationMessage("Descricao")
         <br />
         <input type="submit" value="Cadastrar" />
     </form>
