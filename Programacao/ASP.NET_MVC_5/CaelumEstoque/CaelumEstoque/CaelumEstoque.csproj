@@ -91,7 +91,24 @@
     <Content Include="App_Data\DBEstoque_log.ldf">
       <DependentUpon>DBEstoque.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\css\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\css\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\css\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\css\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\css\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\css\bootstrap\js\npm.js" />
+    <Content Include="Content\css\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Content\css\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\css\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\css\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\css\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\css\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\css\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\css\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\css\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -133,6 +150,8 @@
     <Content Include="Views\Categoria\Form.cshtml" />
     <Content Include="Views\Produto\Visualiza.cshtml" />
     <Content Include="Views\Categoria\Visualizar.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -140,9 +159,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

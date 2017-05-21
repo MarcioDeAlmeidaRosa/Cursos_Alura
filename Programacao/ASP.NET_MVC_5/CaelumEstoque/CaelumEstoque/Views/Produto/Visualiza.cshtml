@@ -1,25 +1,10 @@
-﻿@model CaelumEstoque.Models.Produto
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Visualiza</title>
-</head>
-<body>
-    <div> 
-        <p>Nome: @Model.Nome</p>
-        <p>Preço: @Model.Preco</p>
-        <p>Descrição: @Model.Descricao</p>
-        <p>Quantidade: @Model.Quantidade</p>
-        <p>Categoria: @Model.Categoria.Nome</p>
-        @*<a href="/Produto">Voltar para a lista</a>*@
-        @*@Html.ActionLink("Voltar para a lista de produto", "Index", "Produto")*@
-        @Html.RouteLink("Voltar para a lista de produto", "ListaProdutos")
-    </div>
-</body>
-</html>
+﻿<div>
+    <p>Nome: @Model.Nome</p>
+    <p>Preço: @Model.Preco</p>
+    <p>Descrição: @Model.Descricao</p>
+    <p>Quantidade: @Model.Quantidade</p>
+    <p>Categoria: @Model.Categoria.Nome</p>
+    @*<a href="/Produto">Voltar para a lista</a>*@
+    @*@Html.ActionLink("Voltar para a lista de produto", "Index", "Produto")*@
+    @Html.RouteLink("Voltar para a lista de produto", "ListaProdutos")
+</div>

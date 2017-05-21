@@ -1,21 +1,6 @@
 ﻿@model CaelumEstoque.Models.CategoriaDoProduto
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Visualizar</title>
-</head>
-<body>
-    <div> 
-        <p>Nome: @Model.Nome</p>
-        <p>Descrição: @Model.Descricao</p>
-        @Html.ActionLink("Voltar para a lista de categoria", "Index", "Categoria")
-    </div>
-</body>
-</html>
+<div>
+    <p>Nome: @Model.Nome</p>
+    <p>Descrição: @Model.Descricao</p>
+    @Html.ActionLink("Voltar para a lista de categoria", "Index", "Categoria")
+</div>
