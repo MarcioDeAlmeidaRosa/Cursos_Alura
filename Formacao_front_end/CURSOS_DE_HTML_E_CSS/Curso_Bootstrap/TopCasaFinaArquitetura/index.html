@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
     <title>Document</title>
 </head>
 
@@ -15,14 +16,40 @@
         <figure>
             <img class="img-responsive" src="Content/img/empresa.jpg" alt="Imagem da minha empresa">
         </figure>
-        <h2 data-toggle="collapse" data-target="#primerio-paragrafo">Desde 1935</h2>
-        <p id="primerio-paragrafo" class="collapse">A TopCasaFina Arquitetura esta no mercado desde 1935 trazendo uma série de projetos de qualidade para seus clientes e mundando suas vidas para sempre. Nossa empresa construiu o palácio Dionisio para Don Padro IX que ninguém nunca ouviu falar.</p>
-
-        <h2 data-toggle="collapse" data-target="#segundo-paragrafo">Preços acessíveis</h2>
-        <p id="segundo-paragrafo" class="collapse">A TopCasaFina Arquitetura esta no mercado desde 1935 trazendo uma série de projetos de qualidade para seus clientes e mundando suas vidas para sempre. Nossa empresa construiu o palácio Dionisio para Don Padro IX que ninguém nunca ouviu falar.</p>
-
-        <h2 data-toggle="collapse" data-target="#terceiro-paragrafo">Aligria em colaborar para um mundo mais bonito</h2>
-        <p id="terceiro-paragrafo" class="collapse">A TopCasaFina Arquitetura esta no mercado desde 1935 trazendo uma série de projetos de qualidade para seus clientes e mundando suas vidas para sempre. Nossa empresa construiu o palácio Dionisio para Don Padro IX que ninguém nunca ouviu falar.</p>
+        <div class="panel-group" id="paineis-sobre">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title" data-toggle="collapse" data-target="#primerio-paragrafo" data-parent="#paineis-sobre">Desde 1935</h2>
+                </div>
+                <div id="primerio-paragrafo" class="collapse in">
+                    <div class="panel-body">
+                        <p>A TopCasaFina Arquitetura esta no mercado desde 1935 trazendo uma série de projetos de qualidade para seus clientes e mundando suas vidas para sempre. Nossa empresa construiu o palácio Dionisio para Don Padro IX que ninguém nunca
+                            ouviu falar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title" data-toggle="collapse" data-target="#segundo-paragrafo" data-parent="#paineis-sobre">Preços acessíveis</h2>
+                </div>
+                <div id="segundo-paragrafo" class="collapse">
+                    <div class="panel-body">
+                        <p>Preços a partir de R$ 1.000,00.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title" data-toggle="collapse" data-target="#terceiro-paragrafo" data-parent="#paineis-sobre">Aligria em colaborar para um mundo mais bonito</h2>
+                </div>
+                <div id="terceiro-paragrafo" class="collapse">
+                    <div class="panel-body">
+                        <p>Trazendo alegria para a vida das pessoas que tem dinheiro para gastar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="js/JQuery/jquery-1.12.1.js"></script>
