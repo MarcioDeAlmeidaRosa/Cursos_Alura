@@ -85,7 +85,11 @@ página-->
         var itens = $(".item-total");
         var total = 0;
         for (var i = 0; i < itens.length; i++) {
-            var item = $(itens[i]); //Recuperando o td e tranformando em um objeto jQeury
+            //Recuperando o td e tranformando em um objeto jQeury
+            var item = $(itens[i]);
+            // gera uma nova variável com a conversào do 
+            //texto para ponto flutuante para poder 
+            //fazer o calculo.
             var valor = parseFloat(item.text());
             total += valor;
         }
@@ -97,6 +101,7 @@ página-->
     //jQuery só vai ser executada após o total 
     //carregamento da página
     $(aposInicializado);
+    $(alert('Outras bibliotecas javascript: Prototype, Ext JS, JQuery UI, Mustache, Prime UI'));
 </script>
 
 </html>
