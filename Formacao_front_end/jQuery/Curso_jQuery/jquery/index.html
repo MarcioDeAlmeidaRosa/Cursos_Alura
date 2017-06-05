@@ -1,74 +1,102 @@
 <html>
+
 <head>
-	<link rel="stylesheet" type="text/css" href="carrinho.css">
+    <link rel="stylesheet" type="text/css" href="carrinho.css">
 </head>
+
 <body>
-	<div class="carrinho">
-		<h2>Carrinho entrega em Sao Paulo</h2>
-		<table>
-			<thead>
-				<tr>
-					<td></td>
-					<td>Nome</td>
-					<td>Quantidade</td>
-					<td>Valor</td>
-					<td>Total</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><img src="imagens/tablet.jpg"></td>
-					<td>Tablet miPad 18</td>
-					<td>1</td>
-					<td>499.99</td>
-					<td>499.99</td>
-				</tr>
-				<tr>
-					<td><img src="imagens/telefone.png"></td>
-					<td>Telefone miPhone 18</td>
-					<td>2</td>
-					<td>199.99</td>
-					<td>399.98</td>
-				</tr>
-				<tr>
-					<td><img src="imagens/sapato.jpg"></td>
-					<td>Sapato</td>
-					<td>1</td>
-					<td>99.99</td>
-					<td>99.99</td>
-				</tr>
-				<tr>
-					<td><img src="imagens/monitor.jpg"></td>
-					<td>Monitor Sam 21</td>
-					<td>1</td>
-					<td>299.00</td>
-					<td>299.00</td>
-				</tr>
-				<tr>
-					<td><img src="imagens/teclado.jpg"></td>
-					<td>Teclado com fio preto </td>
-					<td>1</td>
-					<td>100.00</td>
-					<td>100.00</td>
-				</tr>
-				<tr>
-					<td><img src="imagens/mouse.jpg"></td>
-					<td>Mouse wireless</td>
-					<td>1</td>
-					<td>199.00</td>
-					<td>199.00</td>
-				</tr>
-				<tr>
-					<td><img src="imagens/camiseta.jpg"></td>
-					<td>Camiseta G</td>
-					<td>1</td>
-					<td>25.00</td>
-					<td>25.00</td>
-				</tr>
-			</tbody>
-		</table>
-	
-	</div>
+    <div class="carrinho">
+        <h2>Carrinho entrega em Sao Paulo</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>Nome</td>
+                    <td>Quantidade</td>
+                    <td>Valor</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="imagens/tablet.jpg"></td>
+                    <td>Tablet miPad 18</td>
+                    <td>1</td>
+                    <td>499.99</td>
+                    <td class="item-total">499.99</td>
+                </tr>
+                <tr>
+                    <td><img src="imagens/telefone.png"></td>
+                    <td>Telefone miPhone 18</td>
+                    <td>2</td>
+                    <td>199.99</td>
+                    <td class="item-total">399.98</td>
+                </tr>
+                <tr>
+                    <td><img src="imagens/sapato.jpg"></td>
+                    <td>Sapato</td>
+                    <td>1</td>
+                    <td>99.99</td>
+                    <td class="item-total">99.99</td>
+                </tr>
+                <tr>
+                    <td><img src="imagens/monitor.jpg"></td>
+                    <td>Monitor Sam 21</td>
+                    <td>1</td>
+                    <td>299.00</td>
+                    <td class="item-total">299.00</td>
+                </tr>
+                <tr>
+                    <td><img src="imagens/teclado.jpg"></td>
+                    <td>Teclado com fio preto </td>
+                    <td>1</td>
+                    <td>100.00</td>
+                    <td class="item-total">100.00</td>
+                </tr>
+                <tr>
+                    <td><img src="imagens/mouse.jpg"></td>
+                    <td>Mouse wireless</td>
+                    <td>1</td>
+                    <td>199.00</td>
+                    <td class="item-total">199.00</td>
+                </tr>
+                <tr>
+                    <td><img src="imagens/camiseta.jpg"></td>
+                    <td>Camiseta G</td>
+                    <td>1</td>
+                    <td>25.00</td>
+                    <td class="item-total">25.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 
 </body>
+<div>
+    Valor total: R$<span id="valor-total">0</span> <br> Total de itens: <span id="total-itens">0</span>
+</div>
+<!--deixar sempre o carregamento dos scripts para o final da página, 
+assim ao executar os códigos abaixo, náo bloqueia a escrita da 
+página-->
+<script src="scripts/jQuery/jquery-2.0.3.min.js"></script>
+<script>
+    var aposInicializado = function() {
+        var itens = $(".item-total");
+        var total = 0;
+        for (var i = 0; i < itens.length; i++) {
+            var item = $(itens[i]); //Recuperando o td e tranformando em um objeto jQeury
+            var valor = parseFloat(item.text());
+            total += valor;
+        }
+        console.log("Valor total: " + total);
+        $("#valor-total").text(total);
+        $("#total-itens").text(itens.length);
+    };
+    //Toda função passada desta forma para o 
+    //jQuery só vai ser executada após o total 
+    //carregamento da página
+    $(aposInicializado);
+</script>
+
 </html>
