@@ -26,7 +26,7 @@ var atualizaDados = function() {
     console.log("Valor total: " + total);
     $("#valor-total").text(total);
     $("#total-itens").text(itens.length);
-}
+};
 
 var removeItem = function(event) {
     // remove marcação ds itens que foram recuperados anteriormente
@@ -107,17 +107,12 @@ var removeItem = function(event) {
     $("#valor-total").text(precoFinal);
 };
 
-
-
 var undo = function() {
     //alert('undo');
     removeMarcacaoUndo();
     //Recupera somente os trs que estão com a classe hidden ativada
-    var trs = $("tr:hidden");
-    //Adiciona classe dinamicamente
-    trs.addClass("recuperado");
-    //trs
-    trs.show();
+    //e adiciona classe dinamicamente
+    $("tr:hidden").addClass("recuperado").show();
     //Configura para ser executado 1 vez 
     //para remover automático a classe nos itens 
     //que foram retornados para a tela
