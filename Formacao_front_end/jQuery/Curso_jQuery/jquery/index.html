@@ -15,6 +15,7 @@
                     <td>Quantidade</td>
                     <td>Valor</td>
                     <td>Total</td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,7 @@
                     <td>1</td>
                     <td>499.99</td>
                     <td class="item-total">499.99</td>
+                    <td><a class="remove-item" href="">(Remover)</a></td>
                 </tr>
                 <tr>
                     <td><img src="imagens/telefone.png"></td>
@@ -31,6 +33,7 @@
                     <td>2</td>
                     <td>199.99</td>
                     <td class="item-total">399.98</td>
+                    <td><a class="remove-item" href="">(Remover)</a></td>
                 </tr>
                 <tr>
                     <td><img src="imagens/sapato.jpg"></td>
@@ -38,6 +41,7 @@
                     <td>1</td>
                     <td>99.99</td>
                     <td class="item-total">99.99</td>
+                    <td><a class="remove-item" href="">(Remover)</a></td>
                 </tr>
                 <tr>
                     <td><img src="imagens/monitor.jpg"></td>
@@ -45,6 +49,7 @@
                     <td>1</td>
                     <td>299.00</td>
                     <td class="item-total">299.00</td>
+                    <td><a class="remove-item" href="">(Remover)</a></td>
                 </tr>
                 <tr>
                     <td><img src="imagens/teclado.jpg"></td>
@@ -52,6 +57,7 @@
                     <td>1</td>
                     <td>100.00</td>
                     <td class="item-total">100.00</td>
+                    <td><a class="remove-item" href="">(Remover)</a></td>
                 </tr>
                 <tr>
                     <td><img src="imagens/mouse.jpg"></td>
@@ -59,6 +65,7 @@
                     <td>1</td>
                     <td>199.00</td>
                     <td class="item-total">199.00</td>
+                    <td><a class="remove-item" href="">(Remover)</a></td>
                 </tr>
                 <tr>
                     <td><img src="imagens/camiseta.jpg"></td>
@@ -66,6 +73,7 @@
                     <td>1</td>
                     <td>25.00</td>
                     <td class="item-total">25.00</td>
+                    <td><a class="remove-item" href="">(Remover)</a></td>
                 </tr>
             </tbody>
         </table>
@@ -81,6 +89,30 @@ assim ao executar os códigos abaixo, náo bloqueia a escrita da
 página-->
 <script src="scripts/jQuery/jquery-2.0.3.min.js"></script>
 <script>
+    var removeItem = function(event) {
+        //parâmetro enviado no click
+        //podemos executar a função preventDefault
+        //que privine o comportamente default
+        //que é enviar para alguma página depois de clicar no link
+        event.preventDefault();
+        //Quado uma função é invocada, via callback é passado
+        //para a função, e essa refência é o this
+        //o this aqui é o link
+        var self = $(this);
+        //para remover a linha da tabela, precisamos chegar 
+        //no pai dele, para isso precisamos chegar ele pela função parent
+        //self.parent().parent().remove();
+
+        //Não é trivial sair acessando parent após parent
+        //para isso temos o seletor closest
+        //que sai navegando na arvore, procurando a primeira 
+        //incidência do seletor passado
+        self.closest("tr").remove();
+
+        var totalItem = parseInt($("#total-itens").text());
+        var novaQtd = totalItem - 1;
+        $("#total-itens").text(novaQtd);
+    };
     var aposInicializado = function() {
         var itens = $(".item-total");
         var total = 0;
@@ -96,6 +128,8 @@ página-->
         console.log("Valor total: " + total);
         $("#valor-total").text(total);
         $("#total-itens").text(itens.length);
+        $(".remove-item").click(removeItem);
+
     };
     //Toda função passada desta forma para o 
     //jQuery só vai ser executada após o total 
