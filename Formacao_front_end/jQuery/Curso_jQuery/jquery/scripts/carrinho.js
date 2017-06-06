@@ -4,34 +4,41 @@ Nos seletores do jQuery
 - Nomes de tags (tr, table, etc...)                  --> compatível com CSS
 - .classes, #ids e [value='Undo'] atributos/valores  --> compatível com CSS
 - Extensóes (visible, hidden)                        --> compatível com jQuery
+
+id = tem que ser único
+
 */
-var removeMarcacaoUndo = function() {
+var removeMarcacaoUndo = function(objeto) {
+    //alert(objeto);
     //Remove classe dinamicamente
-    $("tr:visible").removeClass("recuperado");
+    $(objeto).closest(".carrinho").find("tr:visible").removeClass("recuperado");
 };
 
 var atualizaDados = function() {
-    var itens = $(".item-total:visible");
-    var total = 0;
-    for (var i = 0; i < itens.length; i++) {
-        //Recuperando o td e tranformando em um objeto jQeury
-        var item = $(itens[i]);
-        // gera uma nova variável com a conversào do 
-        //texto para ponto flutuante para poder 
-        //fazer o calculo.
-        //debugger;
-        var valor = parseFloat(item.text());
-        total += valor;
-    }
-    console.log("Valor total: " + total);
-    $("#valor-total").text(total);
-    $("#total-itens").text(itens.length);
+    $(".carrinho").each(function() {
+        var carrinho = $(this);
+
+        var itens = carrinho.find(".item-total:visible");
+        var total = 0;
+        for (var i = 0; i < itens.length; i++) {
+            //Recuperando o td e tranformando em um objeto jQeury
+            var item = $(itens[i]);
+            // gera uma nova variável com a conversào do 
+            //texto para ponto flutuante para poder 
+            //fazer o calculo.
+            //debugger;
+            var valor = parseFloat(item.text());
+            total += valor;
+        }
+        console.log("Valor total: " + total);
+        carrinho.find(".valor-total").text(total);
+        carrinho.find(".total-itens").text(itens.length);
+    });
 };
 
 var removeItem = function(event) {
     // remove marcação ds itens que foram recuperados anteriormente
-    removeMarcacaoUndo();
-
+    removeMarcacaoUndo(this);
     //parâmetro enviado no click
     //podemos executar a função preventDefault
     //que privine o comportamente default
@@ -108,15 +115,19 @@ var removeItem = function(event) {
 };
 
 var undo = function() {
+    //var carrinho = this.closest(".carrinho");
     //alert('undo');
-    removeMarcacaoUndo();
+    removeMarcacaoUndo(this);
     //Recupera somente os trs que estão com a classe hidden ativada
     //e adiciona classe dinamicamente
-    $("tr:hidden").addClass("recuperado").show();
+    $(this).closest(".carrinho").find("tr:hidden").addClass("recuperado").show();
     //Configura para ser executado 1 vez 
     //para remover automático a classe nos itens 
     //que foram retornados para a tela
-    setTimeout('removeMarcacaoUndo()', 9000);
+    //setTimeout(removeMarcacaoUndo(this), 9000);
+
+    // Atualiza os totalizadores
+    atualizaDados();
 };
 
 var aposInicializado = function() {
