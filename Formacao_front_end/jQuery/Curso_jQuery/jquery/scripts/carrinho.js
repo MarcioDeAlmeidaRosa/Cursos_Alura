@@ -8,6 +8,20 @@ Nos seletores do jQuery
 id = tem que ser único
 
 */
+var umaPropaganda = function() {
+    var propagandas = [
+        "O que acha de comprar uma motocicleta?",
+        "O que acha de comprar uma lancha?",
+        "O que acha de comprar uma bicicleta?",
+        "O que acha de comprar um carro?"
+    ];
+    var posicao = Math.floor(propagandas.length * Math.random());
+    var texto = propagandas[posicao];
+    var tr = $("<tr>").addClass("propaganda").append($("<td>"));
+    tr.find("td").attr("colspan", 6).text(texto);
+    return tr;
+};
+
 var removeMarcacaoUndo = function(objeto) {
     //alert(objeto);
     //Remove classe dinamicamente
@@ -138,6 +152,27 @@ var aposInicializado = function() {
     //assim quando clicada, chama a função de remover
     $(".remove-item").click(removeItem);
     $("[value='Undo']").click(undo);
+
+    // $("tr:nth-child(3n)").each(function() {
+    //     umaPropaganda().insertAfter($(this));
+    // });
+
+    // $("tr:nth-child(3n)").each(function() {
+    //     umaPropaganda().insertBefore($(this));
+    // });
+
+    // $("tr:nth-child(even)").each(function() {
+    //     umaPropaganda().insertAfter($(this));
+    // });
+
+    // $("tr:nth-child(odd)").each(function() {
+    //     umaPropaganda().insertAfter($(this));
+    // });
+
+    $(".carrinho").find("tr:nth-child(2n)").each(function() {
+        umaPropaganda().insertBefore($(this));
+    });
+
 };
 //Toda função passada desta forma para o 
 //jQuery só vai ser executada após o total 
