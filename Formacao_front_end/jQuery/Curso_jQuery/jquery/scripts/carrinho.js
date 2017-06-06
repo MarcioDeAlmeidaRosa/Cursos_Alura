@@ -169,7 +169,7 @@ var aposInicializado = function() {
     //     umaPropaganda().insertAfter($(this));
     // });
 
-    $(".carrinho").find("tr:nth-child(2n)").each(function() {
+    $(".carrinho").find("tr:nth-child(2n), tr:last").each(function() {
         umaPropaganda().insertBefore($(this));
     });
 
