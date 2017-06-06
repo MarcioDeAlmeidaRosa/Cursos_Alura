@@ -89,7 +89,7 @@ assim ao executar os códigos abaixo, náo bloqueia a escrita da
 página-->
 <script src="scripts/jQuery/jquery-2.0.3.min.js"></script>
 <script>
-    function atualizaTela() {
+    var atualizaDados = function() {
         var itens = $(".item-total");
         var total = 0;
         for (var i = 0; i < itens.length; i++) {
@@ -127,7 +127,7 @@ página-->
         self.closest("tr").remove();
 
         //Criando função centralizadora que atualiza os totais da tela
-        atualizaTela();
+        atualizaDados();
         //força a saida da função para não executar 
         //os códigos abaixo, serão mantidos somente para exemplos
         return;
@@ -180,7 +180,7 @@ página-->
     };
     var aposInicializado = function() {
         //Criando função centralizadora que atualiza os totais da tela
-        atualizaTela();
+        atualizaDados();
         //registra o evento click para todos os itens que estiverem a
         //classe remove-item configurada 
         //assim quando clicada, chama a função de remover
