@@ -50,6 +50,31 @@ var atualizaDados = function() {
     });
 };
 
+//FORMA DE ATRIBUIR UM CSS DINAMICAMENTE - NÃO RECOMENDADO ALTERAR ESTILO DENTRO DO JAVASCRIPT
+var darDestaque = function() {
+    $(this).css({
+        "background": "#CCC",
+        "opacity": 0.5
+    });
+};
+
+//FORMA DE ATRIBUIR UM CSS DINAMICAMENTE - NÃO RECOMENDADO ALTERAR ESTILO DENTRO DO JAVASCRIPT
+var tirarDestaque = function() {
+    $(this).css({
+        "background": "",
+        "opacity": 1
+    });
+};
+
+var darDestaque2 = function() {
+    $(this).addClass("hovering");
+};
+
+var tirarDestaque2 = function() {
+    $(this).removeClass("hovering");
+};
+
+
 var removeItem = function(event) {
     // remove marcação ds itens que foram recuperados anteriormente
     removeMarcacaoUndo(this);
@@ -169,9 +194,21 @@ var aposInicializado = function() {
     //     umaPropaganda().insertAfter($(this));
     // });
 
-    $(".carrinho").find("tr:nth-child(2n), tr:last").each(function() {
+    $(".carrinho").find("tbody tr:nth-child(2n), tr:last").each(function() {
         umaPropaganda().insertBefore($(this));
     });
+
+    //1 FORMA DE MUDAR O CSS DINAMICAMENTE - NÃO RECOMENDADO
+    //                    quando enrta, quando sai
+    //$('tbody tr').hover(darDestaque, tirarDestaque);
+    //                    quando enrta, quando sai
+    //$('tbody tr').hover(darDestaque2, tirarDestaque2);
+
+
+    //vincula evento ao passar o mouse por cima da tr
+    $("tbody tr").on("mouseenter", darDestaque2);
+    //vincula evento ao sair com o mouse de cima da tr
+    $("tbody tr").on("mouseleave", tirarDestaque2);
 
 };
 //Toda função passada desta forma para o 
