@@ -1,0 +1,10 @@
+.campo-digitacao {
+    width: 100%;
+    height: 100px;
+    resize: none;
+}
+
+.s-contador-caracteres,
+.s-contador-palavras {
+    display: none;
+}
