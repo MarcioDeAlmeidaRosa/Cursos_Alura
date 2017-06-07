@@ -54,7 +54,7 @@ td {
     font-size: 0.7em;
     text-decoration: none;
     text-transform: uppercase;
-    display: inline-block;
+    display: none;
     padding: 0.5em;
 }
 
@@ -84,4 +84,8 @@ input[type=button] {
 
 .hovering {
     background: #CCC;
+}
+
+#mostra-propaganda {
+    display: none;
 }

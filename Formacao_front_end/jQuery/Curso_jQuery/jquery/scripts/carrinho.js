@@ -67,13 +67,14 @@ var tirarDestaque = function() {
 };
 
 var darDestaque2 = function() {
+    $(this).find(".remove-item").fadeIn();
     $(this).addClass("hovering");
 };
 
 var tirarDestaque2 = function() {
+    $(this).find(".remove-item").fadeOut();
     $(this).removeClass("hovering");
 };
-
 
 var removeItem = function(event) {
     // remove marcação ds itens que foram recuperados anteriormente
@@ -169,6 +170,23 @@ var undo = function() {
     atualizaDados();
 };
 
+var escondePropaganda = function(event) {
+    event.preventDefault();
+    $(".propaganda").fadeOut(500);
+};
+
+var mostraPropaganda = function(event) {
+    event.preventDefault();
+    $(".propaganda").fadeIn(500);
+};
+
+//inifica hide/show ou fadeOut/fadeIn em um metodo só --> toggle
+var alternaPropagandas = function(event) {
+    event.preventDefault();
+    $(".propaganda").fadeToggle(500);
+    $(".alterna-propaganda").toggle();
+};
+
 var aposInicializado = function() {
     //Criando função centralizadora que atualiza os totais da tela
     atualizaDados();
@@ -209,6 +227,17 @@ var aposInicializado = function() {
     $("tbody tr").on("mouseenter", darDestaque2);
     //vincula evento ao sair com o mouse de cima da tr
     $("tbody tr").on("mouseleave", tirarDestaque2);
+
+    // chamando metodos diferentes para esconder e mostrar
+    // $("#esconde-propaganda").click(escondePropaganda);
+    // $("#mostra-propaganda").click(mostraPropaganda);
+
+    //comentado para unificar a chamada pelo nome da classe
+    // $("#esconde-propaganda").click(alternaPropagandas);
+    // $("#mostra-propaganda").click(alternaPropagandas);
+
+    //atende o clique nos dois links, vinculando direto pela classe
+    $(".alterna-propaganda").click(alternaPropagandas);
 
 };
 //Toda função passada desta forma para o 
