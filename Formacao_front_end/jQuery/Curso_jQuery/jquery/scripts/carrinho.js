@@ -180,7 +180,7 @@ var mostraPropaganda = function(event) {
     $(".propaganda").fadeIn(500);
 };
 
-//inifica hide/show ou fadeOut/fadeIn em um metodo só --> toggle
+//unifica hide/show ou fadeOut/fadeIn em um metodo só --> toggle
 var alternaPropagandas = function(event) {
     event.preventDefault();
     $(".propaganda").fadeToggle(500);
