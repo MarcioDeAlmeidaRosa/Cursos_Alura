@@ -26,5 +26,22 @@ $(".campo-digitacao").on("input", function() {
         $(".s-contador-palavras").show();
     else
         $(".s-contador-palavras").hide();
+});
 
+var tempoRestante = parseInt($(".tempo-digitacao").text());
+console.log(tempoRestante);
+// $(".campo-digitacao").on("focus", function() {
+//função one similar a on -> porém só vai escutar o evento 1 única vez
+//já a on, toda vez que ele se repetir, será executado
+$(".campo-digitacao").one("focus", function() {
+    var id = setInterval(function() {
+        tempoRestante--;
+        $(".tempo-digitacao").text(tempoRestante);
+        if (tempoRestante === 0) {
+            $(".campo-digitacao").attr("disabled", true);
+            //para a execução do setInterval
+            clearInterval(id);
+        }
+        //1000 milesegundos = 1 segundo
+    }, 1000);
 });
