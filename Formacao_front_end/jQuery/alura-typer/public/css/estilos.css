@@ -29,3 +29,7 @@
 .digitacao-incorreta {
     border: 3px solid red;
 }
+
+.deletar {
+    cursor: pointer;
+}

@@ -12,6 +12,7 @@ $(function() {
     inicializaContadores();
     $("#reiniciar").click(reiniciaJogo);
     InicializaMarcador();
+    AplicarRemover();
 });
 
 function atualizaTamanhoFrase() {
@@ -92,11 +93,22 @@ function finalizaJogo(id) {
     //para a execução do setInterval
     clearInterval(id);
     InserePlacar();
+    AplicarRemover();
 }
 
 function InserePlacar() {
     var corpoTabela = $(".placar").find("tbody");
-    var linha = "<tr><td>Marcus</td><td>1</td></tr>";
+    var totalPalavras = $(".contador-palavras").text();
+    var usuario = "Marcio de Almeida Rosa";
+    var botaoRemover = '<i class="small material-icons deletar">delete</i>';
+    var linha = "<tr><td>" + usuario + "</td><td>" + totalPalavras + "</td><td>" + botaoRemover + "</td></tr>";
     // corpoTabela.append(linha); //--> adiciona no final
     corpoTabela.prepend(linha); //--> adiciona no final
+}
+
+function AplicarRemover() {
+    $(".deletar").click(function() {
+
+        $(this).closest("tr").remove();
+    });
 }
