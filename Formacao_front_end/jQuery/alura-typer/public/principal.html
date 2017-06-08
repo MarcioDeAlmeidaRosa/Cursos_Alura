@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Alura Typer</title>
     <link rel="stylesheet" type="text/css" href="css/libs/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/libs/google-fonts.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
 </head>
 
@@ -14,11 +15,19 @@
         <h1 class="center">Alura Tuper</h1>
         <p class="frase center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         <ul class="informacoes center">
-            <li>0 palavra</li>
-            <li><span class="tempo-digitacao">5</span> Segundos</li>
+            <li>
+                <i class="small material-icons icones">description</i>
+                <span class="total-palavras">0</span> palavra<span class="plural-total-palavras"></span>
+            </li>
+            <li>
+                <i class="small material-icons  icones">query_builder</i>
+                <span class="tempo-digitacao">0</span> Segundos
+            </li>
         </ul>
         <textarea class="campo-digitacao"></textarea>
-        <button id="reiniciar">Reiniciar Jogo</button>
+        <div class="botoes">
+            <a id="reiniciar" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">restore</i></a>
+        </div>
         <ul class="center">
             <li><span class="contador-caracteres">0</span> caracter<span class="s-contador-caracteres">es</span></li>
             <li><span class="contador-palavras">0</span> palavra<span class="s-contador-palavras">s</span></li>

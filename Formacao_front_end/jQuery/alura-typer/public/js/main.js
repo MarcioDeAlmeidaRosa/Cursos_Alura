@@ -19,7 +19,9 @@ function atualizaTamanhoFrase() {
     // recuperando todos os li filhos de informacoes
     // recuperando o primeiro e alterando o texto
     // usando ternário para colocar plural na descrição do contador
-    $(".informacoes").children("li").first().text(tamanho + " palavra" + ((tamanho > 1) ? "s" : ""));
+    // $(".informacoes").children("li").first().text(tamanho + " palavra" + ((tamanho > 1) ? "s" : ""));
+    $('.total-palavras').text(tamanho);
+    $('.plural-total-palavras').text((tamanho > 1) ? "s" : "")
 }
 
 function inicializaTotais() {
@@ -66,10 +68,9 @@ function inicializaCronometro() {
 
 function reiniciaJogo() {
     campo.attr("disabled", false);
-    alert(campo.val());
     campo.val("");
     inicializaTotais();
     $(".tempo-digitacao").text(tempoInicial);
-    campo.toggleClass("campo-desativado");
     inicializaCronometro();
+    campo.toggleClass("campo-desativado");
 }
