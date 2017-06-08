@@ -1,4 +1,5 @@
 var tempoInicial = parseInt($(".tempo-digitacao").text());
+var frasePrincipal = $(".frase");
 var campo = $(".campo-digitacao");
 
 //função que só será executada quando 
@@ -10,10 +11,11 @@ $(function() {
     inicializaCronometro();
     inicializaContadores();
     $("#reiniciar").click(reiniciaJogo);
+    InicializaMarcador();
 });
 
 function atualizaTamanhoFrase() {
-    var frase = jQuery(".frase").text();
+    var frase = frasePrincipal.text();
     var totalPalavras = frase.split(" ");
     var tamanho = totalPalavras.length;
     // recuperando todos os li filhos de informacoes
@@ -56,10 +58,7 @@ function inicializaCronometro() {
             tempoRestante--;
             $(".tempo-digitacao").text(tempoRestante);
             if (tempoRestante === 0) {
-                campo.attr("disabled", true);
-                campo.toggleClass("campo-desativado");
-                //para a execução do setInterval
-                clearInterval(id);
+                finalizaJogo(id);
             }
             //1000 milesegundos = 1 segundo
         }, 1000);
@@ -73,4 +72,31 @@ function reiniciaJogo() {
     $(".tempo-digitacao").text(tempoInicial);
     inicializaCronometro();
     campo.toggleClass("campo-desativado");
+    campo.removeClass("digitacao-incorreta");
+    campo.removeClass("digitacao-correta");
+}
+
+function InicializaMarcador() {
+    campo.on("input", function() {
+        var digitado = $(this).val();
+        var textoComparador = frasePrincipal.text().substr(0, digitado.length);
+        var correto = (digitado === textoComparador);
+        campo.toggleClass("digitacao-correta", correto);
+        campo.toggleClass("digitacao-incorreta", !correto);
+    });
+}
+
+function finalizaJogo(id) {
+    campo.attr("disabled", true);
+    campo.toggleClass("campo-desativado");
+    //para a execução do setInterval
+    clearInterval(id);
+    InserePlacar();
+}
+
+function InserePlacar() {
+    var corpoTabela = $(".placar").find("tbody");
+    var linha = "<tr><td>Marcus</td><td>1</td></tr>";
+    // corpoTabela.append(linha); //--> adiciona no final
+    corpoTabela.prepend(linha); //--> adiciona no final
 }

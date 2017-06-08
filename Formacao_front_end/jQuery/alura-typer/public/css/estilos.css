@@ -2,6 +2,7 @@
     height: 130px;
     resize: none;
     font-size: 1.2em;
+    border: 3px solid black;
 }
 
 .campo-desativado {
@@ -19,4 +20,12 @@
 
 .icones {
     vertical-align: middle;
+}
+
+.digitacao-correta {
+    border: 3px solid green;
+}
+
+.digitacao-incorreta {
+    border: 3px solid red;
 }
