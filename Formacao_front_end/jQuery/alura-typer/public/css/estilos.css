@@ -1,7 +1,15 @@
 .campo-digitacao {
-    width: 100%;
-    height: 100px;
+    height: 130px;
     resize: none;
+    font-size: 1.2em;
+}
+
+.campo-desativado {
+    background-color: lightgray;
+}
+
+.frase {
+    font-size: 1.2em;
 }
 
 .s-contador-caracteres,

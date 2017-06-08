@@ -55,6 +55,7 @@ function inicializaCronometro() {
             $(".tempo-digitacao").text(tempoRestante);
             if (tempoRestante === 0) {
                 campo.attr("disabled", true);
+                campo.toggleClass("campo-desativado");
                 //para a execução do setInterval
                 clearInterval(id);
             }
@@ -65,8 +66,10 @@ function inicializaCronometro() {
 
 function reiniciaJogo() {
     campo.attr("disabled", false);
+    alert(campo.val());
     campo.val("");
     inicializaTotais();
     $(".tempo-digitacao").text(tempoInicial);
+    campo.toggleClass("campo-desativado");
     inicializaCronometro();
 }
