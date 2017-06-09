@@ -42,5 +42,5 @@ function removeLinha() {
 }
 
 var mostraPlacar = function() {
-    $(".placar").slideToggle(600);
+    $(".placar").stop().slideToggle(600);
 };
