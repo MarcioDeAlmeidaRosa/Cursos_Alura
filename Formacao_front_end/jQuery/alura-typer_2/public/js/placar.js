@@ -35,7 +35,7 @@ function novaLinha(usuario, palavras) {
 
 function removeLinha() {
     event.preventDefault();
-    $(this).parent("tr").remove();
+    $(this).closest("tr").remove();
 }
 
 var mostraPlacar = function() {
