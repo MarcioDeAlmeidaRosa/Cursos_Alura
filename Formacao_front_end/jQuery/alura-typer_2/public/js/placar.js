@@ -35,7 +35,10 @@ function novaLinha(usuario, palavras) {
 
 function removeLinha() {
     event.preventDefault();
-    $(this).closest("tr").remove();
+    $(this).closest("tr").fadeOut(function() {
+        $(this).closest("tr").remove();
+    });
+
 }
 
 var mostraPlacar = function() {
