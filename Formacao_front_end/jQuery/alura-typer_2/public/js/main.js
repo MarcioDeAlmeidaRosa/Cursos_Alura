@@ -11,7 +11,7 @@ $(function() {
 
 function atualizaTamanhoFrase() {
     var frase = $(".frase").text();
-    var numPalavras  = frase.split(" ").length;
+    var numPalavras = frase.split(" ").length;
     var tamanhoFrase = $("#tamanho-frase");
 
     tamanhoFrase.text(numPalavras);
@@ -48,14 +48,14 @@ function inicializaMarcadores() {
 function inicializaCronometro() {
     var tempoRestante = $("#tempo-digitacao").text();
     campo.one("focus", function() {
-    	var cronometroID = setInterval(function() {
-    		tempoRestante--;
-    		$("#tempo-digitacao").text(tempoRestante);
-    		if (tempoRestante < 1) {
+        var cronometroID = setInterval(function() {
+            tempoRestante--;
+            $("#tempo-digitacao").text(tempoRestante);
+            if (tempoRestante < 1) {
                 clearInterval(cronometroID);
                 finalizaJogo();
-    		}
-    	}, 1000);
+            }
+        }, 1000);
     });
 }
 
@@ -75,4 +75,9 @@ function reiniciaJogo() {
     campo.toggleClass("campo-desativado");
     campo.removeClass("borda-vermelha");
     campo.removeClass("borda-verde");
+    ScrolFocoPrincipal("body", ".campo-digitacao");
 }
+
+function ScrolFocoPrincipal(elementoFoco, elementoReferencia) {
+    $(elementoFoco).animate({ scrollTop: $(elementoReferencia).offset().top + "px" }, 1000);
+};

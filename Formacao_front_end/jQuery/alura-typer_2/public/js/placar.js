@@ -11,6 +11,8 @@ function inserePlacar() {
     linha.find(".botao-remover").click(removeLinha);
 
     corpoTabela.append(linha);
+    $(".placar").slideDown(500);
+    ScrolFocoPrincipal("body", ".placar");
 }
 
 function novaLinha(usuario, palavras) {
@@ -38,7 +40,6 @@ function removeLinha() {
     $(this).closest("tr").fadeOut(function() {
         $(this).closest("tr").remove();
     });
-
 }
 
 var mostraPlacar = function() {
