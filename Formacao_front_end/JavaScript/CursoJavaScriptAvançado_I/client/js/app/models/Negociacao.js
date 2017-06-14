@@ -18,7 +18,10 @@ class Negociacao {
         //Recuero para congelar a instância do objeto
         //porém não funciona quando a propriedade do
         //objeto é um objeto
-        Object.freeze(this);
+        Object.freeze(this); //Shallow object --> Objeto raso, congela somente atribuição direta
+        //quand a propriedade é um objeto e esse objeto existe outra propriedade
+        //que permite alterar o valor da propriedade, esse freeze não bloqueia isso
+        //podemos corrigir isso com a programação defensiva
     }
 
     get volume() {
