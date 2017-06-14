@@ -13,7 +13,7 @@
 
     <h1 class="text-center">Negociações</h1>
 
-    <form class="form">
+    <form class="form" onsubmit="negocicaoController.adiciona(event)">
 
         <div class="form-group">
             <label for="data">Data</label>
@@ -62,7 +62,9 @@
     </table>
     <!--<script src="js/index.js"></script>-->
     <script src="js/app/models/Negociacao.js"></script>
+    <script src="js/app/controllers/NegociacaoController.js"></script>
     <script>
+        let negocicaoController = new NegociacaoController();
         // var n1 = new Negociacao(new Date(), 5, 700);
         // console.log(n1);
         // n1.quantidade = 20;
@@ -74,61 +76,61 @@
         // console.log(n2);
         // console.log(n2.obtemValume());
 
-        var n1 = new Negociacao(new Date(), 5, 700);
-        Object.freeze(n1);
-        n1._quantidade = 1000000000;
-        console.log(n1);
-        n1.quantidade = 100;
-        console.log(n1.volume);
-        console.log(n1.data);
-        console.log(n1.quantidade);
-        console.log(n1.valor);
+        // var n1 = new Negociacao(new Date(), 5, 700);
+        // Object.freeze(n1);
+        // n1._quantidade = 1000000000;
+        // console.log(n1);
+        // n1.quantidade = 100;
+        // console.log(n1.volume);
+        // console.log(n1.data);
+        // console.log(n1.quantidade);
+        // console.log(n1.valor);
 
 
-        var n2 = new Negociacao(new Date(), 1, 100);
-        console.log(n2.data);
-        var amanha = new Date();
-        amanha.setDate(14);
-        //Essa atribuição não funciona por conta do encapsulamento get
-        n2.data = amanha;
-        console.log(n2.data);
-        //este comando já conseguimos alterar a data
-        n2.data.setDate(14);
-        console.log(n2.data);
+        // var n2 = new Negociacao(new Date(), 1, 100);
+        // console.log(n2.data);
+        // var amanha = new Date();
+        // amanha.setDate(14);
+        // //Essa atribuição não funciona por conta do encapsulamento get
+        // n2.data = amanha;
+        // console.log(n2.data);
+        // //este comando já conseguimos alterar a data
+        // n2.data.setDate(14);
+        // console.log(n2.data);
 
-        var hoje = new Date();
-        var n3 = new Negociacao(hoje, 1, 100);
-        console.log(n3.data);
-        var amanha = new Date();
-        amanha.setDate(14);
-        //Essa atribuição não funciona por conta do encapsulamento get
-        n3.data = amanha;
-        console.log(n3.data);
-        //este comando já conseguimos alterar a data
-        hoje.setDate(14);
-        console.log(n3.data);
+        // var hoje = new Date();
+        // var n3 = new Negociacao(hoje, 1, 100);
+        // console.log(n3.data);
+        // var amanha = new Date();
+        // amanha.setDate(14);
+        // //Essa atribuição não funciona por conta do encapsulamento get
+        // n3.data = amanha;
+        // console.log(n3.data);
+        // //este comando já conseguimos alterar a data
+        // hoje.setDate(14);
+        // console.log(n3.data);
 
-        //Justificativa por que trocar var por let
-        //no Javascript quando usamos var
-        //a variável não existirá somente no escopo
-        //utilizado, conseguimos acessa-lá fora dele tb
-        for (var i = 0; i <= 100; i++) {
-            console.log(1);
-            var nome = "Marcio";
-        }
-        console.log(i);
-        console.log(nome);
+        // //Justificativa por que trocar var por let
+        // //no Javascript quando usamos var
+        // //a variável não existirá somente no escopo
+        // //utilizado, conseguimos acessa-lá fora dele tb
+        // for (var i = 0; i <= 100; i++) {
+        //     console.log(1);
+        //     var nome = "Marcio";
+        // }
+        // console.log(i);
+        // console.log(nome);
 
-        //para contornar esse prblema, podemos usar
-        //let para declarar as variáveis, dessa forma
-        //ganhamos o controle de descopo, a variável
-        //só existe dentro do escopo do seu bloco
-        for (let y = 0; y <= 100; y++) {
-            console.log(y);
-            let nome2 = "Marcio";
-        }
-        console.log(y);
-        console.log(nome2);
+        // //para contornar esse prblema, podemos usar
+        // //let para declarar as variáveis, dessa forma
+        // //ganhamos o controle de descopo, a variável
+        // //só existe dentro do escopo do seu bloco
+        // for (let y = 0; y <= 100; y++) {
+        //     console.log(y);
+        //     let nome2 = "Marcio";
+        // }
+        // console.log(y);
+        // console.log(nome2);
     </script>
 </body>
 
