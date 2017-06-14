@@ -17,17 +17,29 @@ class NegociacaoController {
         //para melhorar a performance,
         //pois é custoso criar e ficar a cada adição
         //tendo que buscar os campos no DOM.
-        this.inputDate = $("#data");
-        this.inputQuantidade = $("#quantidade");
-        this.inputValor = $("#valor");
+        this._inputDate = $("#data");
+        this._inputQuantidade = $("#quantidade");
+        this._inputValor = $("#valor");
     }
 
     adiciona(event) {
         event.preventDefault();
         // alert("chamei ação n controller");
 
-        console.log(this.inputDate.value);
-        console.log(this.inputQuantidade.value);
-        console.log(this.inputValor.value);
+        console.log(typeof(this._inputDate.value));
+
+        console.log(this._inputDate.value);
+        console.log(this._inputQuantidade.value);
+        console.log(this._inputValor.value);
+
+        let negocicacao = new Negociacao(
+            this._inputDate.value,
+            this._inputQuantidade.value,
+            this._inputValor.value
+        );
+
+        //adicionar uma negociação em uma lista
+
+        console.log(negocicacao);
     }
 }
