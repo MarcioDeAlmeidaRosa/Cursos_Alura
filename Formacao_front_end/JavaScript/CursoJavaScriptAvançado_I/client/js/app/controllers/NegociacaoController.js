@@ -29,12 +29,35 @@ class NegociacaoController {
         console.log(typeof(this._inputDate.value));
 
         console.log(this._inputDate.value);
+        console.log("//1º - Forma - usando aplit");
         console.log(new Date(this._inputDate.value.split("-")));
+        console.log("//2º - Forma - usando replace com regex");
         console.log(new Date(this._inputDate.value.replace(/-/g, ',')));
+        console.log("//3º - Forma - usando split recuperando as casas");
         let ano = parseInt(this._inputDate.value.split("-")[0]);
         let mes = parseInt(this._inputDate.value.split("-")[1]) - 1;
         let dia = parseInt(this._inputDate.value.split("-")[2]);
         console.log(new Date(ano, mes, dia));
+        console.log("//4º - Forma - usando spread operator");
+        console.log(
+            new Date(
+                this._inputDate.value
+                .split("-")
+                .map(function(item, indice) {
+                    if (indice == 1)
+                        return item - 1;
+                    return item;
+                })
+            ));
+        console.log("//5º - Forma - usando spread operator - e calculo de módulo");
+        console.log(
+            new Date(
+                this._inputDate.value
+                .split("-")
+                .map(function(item, indice) {
+                    return item - (item % 2);
+                })
+            ));
 
         console.log(this._inputQuantidade.value);
         console.log(this._inputValor.value);
