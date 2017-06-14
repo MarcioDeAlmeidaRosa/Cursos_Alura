@@ -63,16 +63,23 @@
     <!--<script src="js/index.js"></script>-->
     <script src="js/app/models/Negociacao.js"></script>
     <script>
+        // var n1 = new Negociacao(new Date(), 5, 700);
+        // console.log(n1);
+        // n1.quantidade = 20;
+        // console.log(n1);
+
+        // console.log(n1.obtemValume());
+
+        // var n2 = new Negociacao(new Date(), 5, 800);
+        // console.log(n2);
+        // console.log(n2.obtemValume());
+
         var n1 = new Negociacao(new Date(), 5, 700);
         console.log(n1);
-        n1.quantidade = 20;
-        console.log(n1);
-
-        console.log(n1.obtemValume());
-
-        var n2 = new Negociacao(new Date(), 5, 800);
-        console.log(n2);
-        console.log(n2.obtemValume());
+        console.log(n1.getVolume());
+        console.log(n1.getData());
+        console.log(n1.getQuantidade());
+        console.log(n1.getValor());
     </script>
 </body>
 
