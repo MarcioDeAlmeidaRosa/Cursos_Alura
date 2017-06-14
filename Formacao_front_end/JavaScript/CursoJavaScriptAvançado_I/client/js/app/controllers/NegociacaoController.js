@@ -1,12 +1,5 @@
 class NegociacaoController {
-    //     constructor() {
-
-    //     }
-
-    adiciona(event) {
-        event.preventDefault();
-        // alert("chamei ação n controller");
-
+    constructor() {
         //Quando atribuímos a função ou "método da classe document"
         //a referência que é atribuída perde a referência this
         //pois somente a função é "copiada",
@@ -19,15 +12,22 @@ class NegociacaoController {
         //algo similar é feito com jQuery
         let $ = document.querySelector.bind(document);
 
-        let inputDate = $("#data");
-        let inputQuantidade = $("#quantidade");
-        let inputValor = $("#valor");
+        //Estratégia adotada de trazer a busca
+        //no DOM dos campos para o contrutor da classe
+        //para melhorar a performance,
+        //pois é custoso criar e ficar a cada adição
+        //tendo que buscar os campos no DOM.
+        this.inputDate = $("#data");
+        this.inputQuantidade = $("#quantidade");
+        this.inputValor = $("#valor");
+    }
 
-        console.log(inputDate.value);
-        console.log(inputQuantidade.value);
-        console.log(inputValor.value);
+    adiciona(event) {
+        event.preventDefault();
+        // alert("chamei ação n controller");
 
-
-
+        console.log(this.inputDate.value);
+        console.log(this.inputQuantidade.value);
+        console.log(this.inputValor.value);
     }
 }
