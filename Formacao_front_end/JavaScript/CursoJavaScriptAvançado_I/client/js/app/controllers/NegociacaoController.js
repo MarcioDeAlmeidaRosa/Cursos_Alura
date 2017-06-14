@@ -31,6 +31,11 @@ class NegociacaoController {
         console.log(this._inputDate.value);
         console.log(new Date(this._inputDate.value.split("-")));
         console.log(new Date(this._inputDate.value.replace(/-/g, ',')));
+        let ano = parseInt(this._inputDate.value.split("-")[0]);
+        let mes = parseInt(this._inputDate.value.split("-")[1]) - 1;
+        let dia = parseInt(this._inputDate.value.split("-")[2]);
+        console.log(new Date(ano, mes, dia));
+
         console.log(this._inputQuantidade.value);
         console.log(this._inputValor.value);
 
