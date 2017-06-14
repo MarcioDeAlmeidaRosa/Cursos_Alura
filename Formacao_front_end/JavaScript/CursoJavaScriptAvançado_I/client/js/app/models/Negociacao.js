@@ -14,6 +14,11 @@ class Negociacao {
         //que sempre aponta para a instância
         //que esta executando a operação
         //naquele momento
+        //--------------------------------------------
+        //Recuero para congelar a instância do objeto
+        //porém não funciona quando a propriedade do
+        //objeto é um objeto
+        Object.freeze(this);
     }
 
     get volume() {

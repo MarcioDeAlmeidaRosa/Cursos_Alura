@@ -83,6 +83,17 @@
         console.log(n1.data);
         console.log(n1.quantidade);
         console.log(n1.valor);
+
+        var n2 = new Negociacao(new Date(), 1, 100);
+        console.log(n2.data);
+        var amanha = new Date();
+        amanha.setDate(14);
+        //Essa atribuição não funciona por conta do encapsulamento get
+        n2.data = amanha;
+        console.log(n2.data);
+        //este comando já conseguimos alterar a data
+        n2.data.setDate(14);
+        console.log(n2.data);
     </script>
 </body>
 
