@@ -29,11 +29,13 @@ class NegociacaoController {
         console.log(typeof(this._inputDate.value));
 
         console.log(this._inputDate.value);
+        console.log(new Date(this._inputDate.value.split("-")));
+        console.log(new Date(this._inputDate.value.replace(/-/g, ',')));
         console.log(this._inputQuantidade.value);
         console.log(this._inputValor.value);
 
         let negocicacao = new Negociacao(
-            this._inputDate.value,
+            new Date(this._inputDate.value.split("-")),
             this._inputQuantidade.value,
             this._inputValor.value
         );
