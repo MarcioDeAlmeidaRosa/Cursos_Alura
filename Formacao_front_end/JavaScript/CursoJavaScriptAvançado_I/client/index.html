@@ -75,6 +75,8 @@
         // console.log(n2.obtemValume());
 
         var n1 = new Negociacao(new Date(), 5, 700);
+        Object.freeze(n1);
+        n1._quantidade = 1000000000;
         console.log(n1);
         n1.quantidade = 100;
         console.log(n1.volume);
