@@ -107,6 +107,28 @@
         //este comando já conseguimos alterar a data
         hoje.setDate(14);
         console.log(n3.data);
+
+        //Justificativa por que trocar var por let
+        //no Javascript quando usamos var
+        //a variável não existirá somente no escopo
+        //utilizado, conseguimos acessa-lá fora dele tb
+        for (var i = 0; i <= 100; i++) {
+            console.log(1);
+            var nome = "Marcio";
+        }
+        console.log(i);
+        console.log(nome);
+
+        //para contornar esse prblema, podemos usar
+        //let para declarar as variáveis, dessa forma
+        //ganhamos o controle de descopo, a variável
+        //só existe dentro do escopo do seu bloco
+        for (let y = 0; y <= 100; y++) {
+            console.log(y);
+            let nome2 = "Marcio";
+        }
+        console.log(y);
+        console.log(nome2);
     </script>
 </body>
 
