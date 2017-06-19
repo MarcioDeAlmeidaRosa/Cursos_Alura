@@ -25,10 +25,8 @@ class NegociacaoController {
     adiciona(event) {
         event.preventDefault();
 
-        let helper = new DateHelper();
-
         let negocicacao = new Negociacao(
-            helper.textToDate(this._inputDate.value),
+            DateHelper.textToDate(this._inputDate.value),
             this._inputQuantidade.value,
             this._inputValor.value
         );
@@ -37,6 +35,6 @@ class NegociacaoController {
         //adicionar uma negociação em uma lista
 
         console.log(negocicacao);
-        console.log(helper.dateToText(negocicacao.data));
+        console.log(DateHelper.dateToText(negocicacao.data));
     }
 }

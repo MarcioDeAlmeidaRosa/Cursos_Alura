@@ -1,13 +1,17 @@
 class DateHelper {
 
-    dateToText(date) {
+    constructor() {
+        throw new Erro('Esta classe não pode ser instanciada');
+    }
+
+    static dateToText(date) {
         console.log(date);
         return date.getDate() + "/" +
             (date.getMonth() + 1) + "/" +
             date.getFullYear();
     }
 
-    textToDate(text) {
+    static textToDate(text) {
         console.log(typeof(text));
         console.log(text);
         console.log("//1º - Forma - usando aplit");
