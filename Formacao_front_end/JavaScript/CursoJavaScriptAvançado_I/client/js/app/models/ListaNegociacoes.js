@@ -8,6 +8,7 @@ class ListaNegociacoes {
     }
 
     get getNegociacoes() {
-        return this._negociacoes;
+        //usando programação defensiva
+        return [].concat(this._negociacoes);
     }
 }
