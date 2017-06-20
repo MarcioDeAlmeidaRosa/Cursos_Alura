@@ -1,0 +1,48 @@
+<!-- upload.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Upload de arquivo</title>
+    <style>
+        .dados-arquivo {
+            text-transform: uppercase;
+        }
+        
+        table {
+            margin: 0;
+            width: 60%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <label>Informações do arquivo</label>
+    <input class="dados-arquivo" placeholder="formato: nome/tamanho/tipo">
+
+    <button onclick="arquivoController.enviar()">Enviar</button>
+
+    <br>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tamanho</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script src="Model/Arquivo.js"></script>
+    <script src="Controller/ArquivoController.js"></script>
+    <script>
+        let arquivoController = new ArquivoController();
+    </script>
+</body>
+
+</html>
