@@ -40,8 +40,24 @@
 
     <script src="Model/Arquivo.js"></script>
     <script src="Controller/ArquivoController.js"></script>
+    <script src="Controller/ConversorXML.js"></script>
     <script>
         let arquivoController = new ArquivoController();
+
+        //código não compila pois a função é estática
+        // let conversor = new ConversorXML();
+        // conversor.converte({
+        //     nome: 'Guaraci',
+        //     idade: 40
+        // });
+
+        //Esta execução roda, por que esta 
+        //sendo chamado o metodo de converter 
+        //sem criar instância da classe
+        ConversorXML.converte({
+            nome: 'Guaraci',
+            idade: 40
+        });
     </script>
 </body>
 
