@@ -12,7 +12,8 @@ class DateHelper {
     static textToDate(text) {
         //fail fast
 
-        if (!(/\d{4}-\d{2}-\d{2}/.test(text)))
+        //O ˆ indica "começando com " e o $ "terminando com". 
+        if (!(/^\d{4}-\d{2}-\d{2}$/.test(text)))
             throw new Error('Data deve ser informada no padrão YYYY-MM-DD');
 
         console.log(typeof(text));
