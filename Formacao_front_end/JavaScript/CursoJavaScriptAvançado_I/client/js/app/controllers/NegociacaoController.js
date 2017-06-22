@@ -21,6 +21,12 @@ class NegociacaoController {
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
         this._listaNegociacoes = new ListaNegociacoes();
+        
+        //cria propriedade (_negociacoesView) que recebe a instância de (NegociacoesView) e
+        //passamos para ela o elemento do DOM que ela vai atribuir seu valor
+        this._negociacoesView = new NegociacoesView($('#negociacoesView'));
+
+        this._negociacoesView.update();
     }
 
     adiciona(event) {
