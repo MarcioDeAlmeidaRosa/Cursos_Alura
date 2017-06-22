@@ -37,17 +37,14 @@ class NegociacoesView{
                     <tbody>
                         ${
                             //usando template rendering
-                            modelo.getNegociacoes.map(neg => {
-                            console.log(neg);
-                            return `
+                            modelo.getNegociacoes.map(neg =>`
                                 <tr>
-                                <td>${DateHelper.dateToText(neg.data)}</td>
-                                <td>${neg.quantidade}</td>
-                                <td>${neg.valor}</td>
-                                <td>${neg.volume}</td>
+                                    <td>${DateHelper.dateToText(neg.data)}</td>
+                                    <td>${neg.quantidade}</td>
+                                    <td>${neg.valor}</td>
+                                    <td>${neg.volume}</td>
                                 </tr>
-                            `;
-                        }).join('')}
+                            `).join('')}
                     </tbody>
 
                     <tfoot>
