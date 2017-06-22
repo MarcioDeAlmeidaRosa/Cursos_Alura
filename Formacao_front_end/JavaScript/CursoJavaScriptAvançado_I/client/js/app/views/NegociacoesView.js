@@ -51,12 +51,13 @@ class NegociacoesView{
                         <td colspan="3"></td>
                         <td>${
                             //IIFE --> Immediately-Invoked Function Expression
-                            (function() {
-                                    let total = 0;
-                                    modelo.getNegociacoes.forEach(neg => {total += neg.volume; });
-                                    return total;
+                            // (function() {
+                            //         let total = 0;
+                            //         modelo.getNegociacoes.forEach(neg => {total += neg.volume; });
+                            //         return total;
 
-                            })()
+                            // })()
+                            modelo.getNegociacoes.reduce( (total, n) => total + n.volume, 0.0)
                         }</td>
                     </tfoot>
                 </table>
