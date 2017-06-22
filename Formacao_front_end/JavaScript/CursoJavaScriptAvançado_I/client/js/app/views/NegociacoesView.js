@@ -12,7 +12,7 @@ class NegociacoesView extends View{
     //para contornar esse problema, usamos o recurso join, passando uma string vazia
     //assim não será retornado , ao terminar o metodo map
     //deixando nosso HTML da forma que queremos
-    _template(modelo){
+    template(modelo){
         //com templateString conseguimos quebrar linhas sem fazer concatenação da coluna
         return `
                 <table class="table table-hover table-bordered">
