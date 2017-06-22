@@ -24,6 +24,14 @@ class DominandoMapp{
         }));
 
 
+        console.log('Pratique seu conhecimento de ES6 reescrevendo as 3 funções map do exercício anterior, utilizando arrow functions.');
+        console.log('Aqui estão elas:');
+
+        console.log('Dobro = ' + numeros.map(num => num * 2 ));
+
+        console.log('Metade = ' + numeros.map(num => num/2));
+
+        console.log('Raiz Quadrada = ' + numeros.map(num => Math.sqrt(num)));
 
     }
 
