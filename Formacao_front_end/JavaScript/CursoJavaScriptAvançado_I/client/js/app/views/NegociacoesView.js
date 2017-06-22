@@ -1,9 +1,4 @@
 class NegociacoesView extends View{
-
-    constructor(elemento){
-        super(elemento);
-    }
-
     //metodo responsável por retornar uma string com o template
     //da tabela que vai ser injetada dentro do elemento DOM que foi
     //passado como parâmetro no construtor da classe.

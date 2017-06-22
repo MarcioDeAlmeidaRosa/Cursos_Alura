@@ -6,6 +6,8 @@ class View{
     //Quando o método não for implementado nos fihos
     //será executado o método da classe pai, e nesse caso
     //lançará uma exception
+    //PS: antes o método era definido com _template, por conta da herença
+    //essa convenção não pode ser mais usada, por isso foi removido o _ da frente
     template(model){
         throw new Error("O metodo template deve ser implementado...");
     }
