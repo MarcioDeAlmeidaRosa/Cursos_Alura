@@ -29,6 +29,10 @@ class NegociacaoController {
         //metodo responsável por fazer o "binding" do template HTML da tabela
         //para cima do objeto DOM passado como parâmetro para o construtor da classe
         this._negociacoesView.update(this._listaNegociacoes);
+
+        this._mensagem = new Mensagem();
+        this._mensagemView = new MensagemView($('#mensagemView'));
+        this._mensagemView.update(this._mensagem);
     }
 
     adiciona(event) {
@@ -38,6 +42,10 @@ class NegociacaoController {
         //metodo responsável por fazer o "binding" do template HTML da tabela
         //para cima do objeto DOM passado como parâmetro para o construtor da classe
         this._negociacoesView.update(this._listaNegociacoes);
+        
+        this._mensagem.texto = "Negociação adicionada com sucesso!";
+        this._mensagemView.update(this._mensagem);
+
         this._limpaFormulario();
     }
 
