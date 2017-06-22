@@ -60,3 +60,25 @@ function produtorio (array) {
 //O resultado será 10 também. Mas será que vale a pena passar o segundo 
 //parâmetro da função reduce já que neste caso ele não faz diferença? 
 //Tudo vai depender do seu gosto.
+
+
+
+
+
+//9 - Reduce com arrow function
+//Demostre seu conhecimento de ES6 reescrevendo o exemplo da função reduce, 
+//do exercício anterior, utilizando uma arrow function no lugar da função tradicional.
+
+//Aqui está ela, para você não precisar voltar:
+console.log(numeros.reduce(function(total,num) {
+    return total * num;
+}, 1));
+
+
+//Execução do exercício
+//Refatorando o reduce com uma arrow function, ele deve ficar assim:
+console.log(numeros.reduce((total,num) => total * num, 1));
+//Mais uma vez podemos ver um exemplo aonde uma arrow function deixou 
+//o código mais elegante. Continue praticando seu uso que logo logo você 
+//ficará especialista nessa feature do ES6! 
+
