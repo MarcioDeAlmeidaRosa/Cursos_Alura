@@ -21,18 +21,23 @@ class NegociacaoController {
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
         this._listaNegociacoes = new ListaNegociacoes();
-        
+
         //cria propriedade (_negociacoesView) que recebe a instância de (NegociacoesView) e
         //passamos para ela o elemento do DOM que ela vai atribuir seu valor
         this._negociacoesView = new NegociacoesView($('#negociacoesView'));
 
-        this._negociacoesView.update();
+        //metodo responsável por fazer o "binding" do template HTML da tabela
+        //para cima do objeto DOM passado como parâmetro para o construtor da classe
+        this._negociacoesView.update(this._listaNegociacoes);
     }
 
     adiciona(event) {
         event.preventDefault();
         this._listaNegociacoes.adiciona(this._criaNegociacao());
         console.log(this._listaNegociacoes.getNegociacoes);
+        //metodo responsável por fazer o "binding" do template HTML da tabela
+        //para cima do objeto DOM passado como parâmetro para o construtor da classe
+        this._negociacoesView.update(this._listaNegociacoes);
         this._limpaFormulario();
     }
 
