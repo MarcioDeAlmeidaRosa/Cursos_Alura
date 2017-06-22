@@ -1,16 +1,7 @@
-class NegociacoesView{
+class NegociacoesView extends View{
 
     constructor(elemento){
-        this._elemento = elemento;
-    }
-
-    //metodo responsável por fazer o "binding" do template HTML da tabela
-    //para cima do objeto DOM passado como parâmetro para o construtor da classe
-    update(modelo){
-        //Comando responsável ppor pegar o elemento do DOM
-        //passado no construtor da classe, e atribuir
-        //em seu HTML um "template" referente a tabela 
-        this._elemento.innerHTML = this._template(modelo);
+        super(elemento);
     }
 
     //metodo responsável por retornar uma string com o template
