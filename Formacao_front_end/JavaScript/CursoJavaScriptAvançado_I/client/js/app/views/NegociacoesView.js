@@ -48,6 +48,16 @@ class NegociacoesView{
                     </tbody>
 
                     <tfoot>
+                        <td colspan="3"></td>
+                        <td>${
+                            //IIFE --> Immediately-Invoked Function Expression
+                            (function() {
+                                    let total = 0;
+                                    modelo.getNegociacoes.forEach(neg => {total += neg.volume; });
+                                    return total;
+
+                            })()
+                        }</td>
                     </tfoot>
                 </table>
         `;
