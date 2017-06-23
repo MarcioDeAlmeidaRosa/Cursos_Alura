@@ -49,6 +49,14 @@ class NegociacaoController {
         this._limpaFormulario();
     }
 
+    apaga(){
+        this._listaNegociacoes.esvazia();
+        this._negociacoesView.update(this._listaNegociacoes);
+        
+        this._mensagem.texto = "Negociações excluídas com sucesso!";
+        this._mensagemView.update(this._mensagem);
+    }
+
     _criaNegociacao() {
         return new Negociacao(
             DateHelper.textToDate(this._inputDate.value),
