@@ -20,14 +20,18 @@ class NegociacaoController {
         this._inputDate = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
-        this._listaNegociacoes = new ListaNegociacoes();
+        this._listaNegociacoes = new ListaNegociacoes(function(model){
+            //gatilho de atualização
+            console.log(this);
+            //metodo responsável por fazer o "binding" do template HTML da tabela
+            //para cima do objeto DOM passado como parâmetro para o construtor da classe
+            this._negociacoesView.update(model);
+        });
 
         //cria propriedade (_negociacoesView) que recebe a instância de (NegociacoesView) e
         //passamos para ela o elemento do DOM que ela vai atribuir seu valor
         this._negociacoesView = new NegociacoesView($('#negociacoesView'));
-
-        //metodo responsável por fazer o "binding" do template HTML da tabela
-        //para cima do objeto DOM passado como parâmetro para o construtor da classe
+        //faz a primeira renderização da lista
         this._negociacoesView.update(this._listaNegociacoes);
 
         this._mensagem = new Mensagem();
@@ -39,9 +43,6 @@ class NegociacaoController {
         event.preventDefault();
         this._listaNegociacoes.adiciona(this._criaNegociacao());
         console.log(this._listaNegociacoes.getNegociacoes);
-        //metodo responsável por fazer o "binding" do template HTML da tabela
-        //para cima do objeto DOM passado como parâmetro para o construtor da classe
-        this._negociacoesView.update(this._listaNegociacoes);
         
         this._mensagem.texto = "Negociação adicionada com sucesso!";
         this._mensagemView.update(this._mensagem);
@@ -51,7 +52,6 @@ class NegociacaoController {
 
     apaga(){
         this._listaNegociacoes.esvazia();
-        this._negociacoesView.update(this._listaNegociacoes);
         
         this._mensagem.texto = "Negociações excluídas com sucesso!";
         this._mensagemView.update(this._mensagem);
