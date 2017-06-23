@@ -20,13 +20,13 @@ class NegociacaoController {
         this._inputDate = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
-        this._listaNegociacoes = new ListaNegociacoes(this, function(model){
-            //gatilho de atualização
-            console.log(this);
+        this._listaNegociacoes = new ListaNegociacoes(model => 
             //metodo responsável por fazer o "binding" do template HTML da tabela
             //para cima do objeto DOM passado como parâmetro para o construtor da classe
-            this._negociacoesView.update(model);
-        });
+            //PS: o escopo da arrow function é léxico, então o this não muda
+            //é assumido o this do momento da criação e não altera
+            this._negociacoesView.update(model)
+        );
 
         //cria propriedade (_negociacoesView) que recebe a instância de (NegociacoesView) e
         //passamos para ela o elemento do DOM que ela vai atribuir seu valor
