@@ -20,7 +20,7 @@ class NegociacaoController {
         this._inputDate = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
-        this._listaNegociacoes = new ListaNegociacoes(function(model){
+        this._listaNegociacoes = new ListaNegociacoes(this, function(model){
             //gatilho de atualização
             console.log(this);
             //metodo responsável por fazer o "binding" do template HTML da tabela

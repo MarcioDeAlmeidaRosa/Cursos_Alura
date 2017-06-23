@@ -1,13 +1,16 @@
 class ListaNegociacoes {
 
-    constructor(callbackAtualizacao) {
+    constructor(contexto, callbackAtualizacao) {
         this._negociacoes = [];
         this._callbackAtualizacao = callbackAtualizacao;
+        this._contexto = contexto;
     }
 
     adiciona(negociacao) {
         this._negociacoes.push(negociacao);
-        this._callbackAtualizacao(this);
+        //Usando a API Reflection para tornar a classe chamadora como o this da execução
+        Reflect.apply(this._callbackAtualizacao, this._contexto, [this]);
+        // this._callbackAtualizacao(this);
     }
 
     get getNegociacoes() {
@@ -17,6 +20,8 @@ class ListaNegociacoes {
 
     esvazia(){
         this._negociacoes = [];
-        this._callbackAtualizacao(this)
+        //Usando a API Reflection para tornar a classe chamadora como o this da execução
+        Reflect.apply(this._callbackAtualizacao, this._contexto, [this]);
+        // this._callbackAtualizacao(this)
     }
 }
