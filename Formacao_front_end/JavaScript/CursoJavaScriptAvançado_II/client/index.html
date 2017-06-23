@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Negociações</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+
+</head>
+
+<body class="container">
+
+    <h1 class="text-center">Negociações</h1>
+    <div id="mensagemView"></div>
+    <form class="form" onsubmit="negocicaoController.adiciona(event)">
+
+        <div class="form-group">
+            <label for="data">Data</label>
+            <input type="date" id="data" class="form-control" required autofocus/>
+        </div>
+
+        <div class="form-group">
+            <label for="quantidade">Quantidade</label>
+            <input type="number" min="1" step="1" id="quantidade" class="form-control" value="1" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="valor">Valor</label>
+            <input id="valor" type="number" class="form-control" min="0.01" step="0.01" value="0.0" required />
+        </div>
+
+        <button class="btn btn-primary" type="submit">Incluir</button>
+    </form>
+
+    <div class="text-center">
+        <button class="btn btn-primary text-center" type="button">
+            Importar Negociações
+        </button>
+        <button class="btn btn-primary text-center" type="button">
+            Apagar
+        </button>
+    </div>
+    <br>
+    <br>
+    <div id="negociacoesView"></div>
+    <!--<script src="js/index.js"></script>-->
+    <script src="js/app/models/Negociacao.js"></script>
+    <script src="js/app/models/Mensagem.js"></script>
+    <script src="js/app/controllers/NegociacaoController.js"></script>
+    <script src="js/app/helpers/DateHelper.js"></script>
+    <script src="js/app/models/ListaNegociacoes.js"></script>
+    <script src="js/app/views/View.js"></script>
+    <script src="js/app/views/NegociacoesView.js"></script>
+    <script src="js/app/views/MensagemView.js"></script>
+    <script>
+        let negocicaoController = new NegociacaoController();
+        // var n1 = new Negociacao(new Date(), 5, 700);
+        // console.log(n1);
+        // n1.quantidade = 20;
+        // console.log(n1);
+
+        // console.log(n1.obtemValume());
+
+        // var n2 = new Negociacao(new Date(), 5, 800);
+        // console.log(n2);
+        // console.log(n2.obtemValume());
+
+        // var n1 = new Negociacao(new Date(), 5, 700);
+        // Object.freeze(n1);
+        // n1._quantidade = 1000000000;
+        // console.log(n1);
+        // n1.quantidade = 100;
+        // console.log(n1.volume);
+        // console.log(n1.data);
+        // console.log(n1.quantidade);
+        // console.log(n1.valor);
+
+
+        // var n2 = new Negociacao(new Date(), 1, 100);
+        // console.log(n2.data);
+        // var amanha = new Date();
+        // amanha.setDate(14);
+        // //Essa atribuição não funciona por conta do encapsulamento get
+        // n2.data = amanha;
+        // console.log(n2.data);
+        // //este comando já conseguimos alterar a data
+        // n2.data.setDate(14);
+        // console.log(n2.data);
+
+        // var hoje = new Date();
+        // var n3 = new Negociacao(hoje, 1, 100);
+        // console.log(n3.data);
+        // var amanha = new Date();
+        // amanha.setDate(14);
+        // //Essa atribuição não funciona por conta do encapsulamento get
+        // n3.data = amanha;
+        // console.log(n3.data);
+        // //este comando já conseguimos alterar a data
+        // hoje.setDate(14);
+        // console.log(n3.data);
+
+        // //Justificativa por que trocar var por let
+        // //no Javascript quando usamos var
+        // //a variável não existirá somente no escopo
+        // //utilizado, conseguimos acessa-lá fora dele tb
+        // for (var i = 0; i <= 100; i++) {
+        //     console.log(1);
+        //     var nome = "Marcio";
+        // }
+        // console.log(i);
+        // console.log(nome);
+
+        // //para contornar esse prblema, podemos usar
+        // //let para declarar as variáveis, dessa forma
+        // //ganhamos o controle de descopo, a variável
+        // //só existe dentro do escopo do seu bloco
+        // for (let y = 0; y <= 100; y++) {
+        //     console.log(y);
+        //     let nome2 = "Marcio";
+        // }
+        // console.log(y);
+        // console.log(nome2);
+    </script>
+</body>
+
+</html>
