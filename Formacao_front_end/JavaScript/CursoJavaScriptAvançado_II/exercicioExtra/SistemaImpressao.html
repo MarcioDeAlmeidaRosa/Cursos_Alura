@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        class SistemaImpressao {
+
+            constructor() {
+                this._codigo = 2;
+            }
+
+            imprime(nomes) {
+                //exemlo que apresenta o problema
+                //o this de dentro da function
+                //não é o this do contexto da classe
+                //sendo asssim, ao executar o comando this._codigo
+                //é lançada exception
+                try{
+                    nomes.forEach(function(nome) {
+                        console.log(this);
+                        console.log(`${this._codigo}: ${nome}`);
+                    });
+                }
+                catch(e){
+                    console.log(e);
+                }
+
+                //PS: para corrigir esse problama
+                //precisamos usar uma arrow function
+                //assim o this de dentro da função, será do
+                //contexto onde ela foi criada
+                nomes.forEach(nome =>  {
+                    console.log(this);
+                    console.log(`${this._codigo}: ${nome}`);
+                });
+            }
+        }
+
+        let nomes = ['Flávio', 'Nico', 'Douglas'];
+        let si = new SistemaImpressao();
+        si.imprime(nomes);
+
+    </script>
+</body>
+</html>
