@@ -29,6 +29,10 @@
                 alert(`${this._nome} está descendo`);
             }
 
+            plana() {
+                alert(`${this._nome} está planando`);
+            }
+
             ligaMotor() {
                 console.log('liga o motor');
             }
@@ -55,7 +59,20 @@
             desce() {
                 // executa o método `voa` de `Avião` usando como contexto a instância de `Passarinho`
                 //Reutilização de código com Mixin
+                /*
+                    Um detalhe: foi necessário fazer Aviao.prototype.voa porque métodos criados usando 
+                    ES6 são adicionados no prototype. Qualquer método adicionando em prototype estará 
+                    disponível para todas as instâncias. 
+                */
                 Reflect.apply(Aviao.prototype.desce, this, []);
+            }
+
+            plana() {
+                //Reutilização de código com Mixin
+                //Reflect é um artefato novo do ES2015! Contudo, 
+                //poderíamos conseguir o mesmo resultado dessa forma:
+                // No ES5
+                Aviao.prototype.plana.apply(this, []);
             }
         }
     </script>
