@@ -25,6 +25,10 @@
                 alert(`${this._nome} está voando`);
             }
 
+            desce() {
+                alert(`${this._nome} está descendo`);
+            }
+
             ligaMotor() {
                 console.log('liga o motor');
             }
@@ -44,7 +48,14 @@
 
             voa() {
                 // usa o método voa de Aviao
+                //Reutilização de código com Composição
                 this._aviao.voa();
+            }
+
+            desce() {
+                // executa o método `voa` de `Avião` usando como contexto a instância de `Passarinho`
+                //Reutilização de código com Mixin
+                Reflect.apply(Aviao.prototype.desce, this, []);
             }
         }
     </script>
