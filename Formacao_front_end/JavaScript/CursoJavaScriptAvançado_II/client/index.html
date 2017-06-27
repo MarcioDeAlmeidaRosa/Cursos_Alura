@@ -131,6 +131,10 @@
                 // receiver ==> instância do proxy
                 // console.log(`receiver = ${JSON.stringify(receiver)} `);
                 return Reflect.get(target, prop, receiver);
+            },
+            set: function(target, prop, value, receiver) {
+                console.log(`valor anterior ${target[prop]} | valor atual ${value}`);
+                return Reflect.set(target, prop, value, receiver);
             }
         });
 
@@ -138,6 +142,9 @@
         console.log(`Quantidade: ${negociacaoProxy.quantidade}`);
         console.log(`Valor: ${negociacaoProxy.valor}`);
         console.log(`Volume: ${negociacaoProxy.volume}`);
+
+
+        negociacaoProxy._quantidade = 2;
     </script>
 </body>
 
