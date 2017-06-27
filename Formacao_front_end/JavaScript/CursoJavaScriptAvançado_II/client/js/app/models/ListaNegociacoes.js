@@ -17,7 +17,7 @@ class ListaNegociacoes {
         return [].concat(this._negociacoes);
     }
 
-    esvazia(){
+    esvazia() {
         this._negociacoes = [];
         //Usando a API Reflection para tornar a classe chamadora como o this da execução
         ///Reflect.apply(this._callbackAtualizacao, this._contexto, [this]);

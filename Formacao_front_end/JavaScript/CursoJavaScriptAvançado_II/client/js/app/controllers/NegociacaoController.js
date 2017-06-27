@@ -20,7 +20,9 @@ class NegociacaoController {
         this._inputDate = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
-        this._listaNegociacoes = new ListaNegociacoes(model => 
+
+
+        this._listaNegociacoes = new ListaNegociacoes(model =>
             //metodo responsável por fazer o "binding" do template HTML da tabela
             //para cima do objeto DOM passado como parâmetro para o construtor da classe
             //PS: o escopo da arrow function é léxico, então o this não muda
@@ -43,16 +45,16 @@ class NegociacaoController {
         event.preventDefault();
         this._listaNegociacoes.adiciona(this._criaNegociacao());
         console.log(this._listaNegociacoes.getNegociacoes);
-        
+
         this._mensagem.texto = "Negociação adicionada com sucesso!";
         this._mensagemView.update(this._mensagem);
 
         this._limpaFormulario();
     }
 
-    apaga(){
+    apaga() {
         this._listaNegociacoes.esvazia();
-        
+
         this._mensagem.texto = "Negociações excluídas com sucesso!";
         this._mensagemView.update(this._mensagem);
     }

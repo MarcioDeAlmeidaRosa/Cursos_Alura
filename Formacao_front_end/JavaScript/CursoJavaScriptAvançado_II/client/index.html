@@ -122,6 +122,23 @@
         // console.log(y);
         // console.log(nome2);
     </script>
+    <script>
+        let negociacaoProxy = new Proxy(new Negociacao(new Date(), 1, 100), {
+            get: function(target, prop, receiver) {
+                // target ==> instância da negociação dentro do proxy
+                // console.log(`target = ${JSON.stringify(target)}`);
+                console.log(`prop = ${prop}`);
+                // receiver ==> instância do proxy
+                // console.log(`receiver = ${JSON.stringify(receiver)} `);
+                return Reflect.get(target, prop, receiver);
+            }
+        });
+
+        console.log(`Data: ${DateHelper.dateToText(negociacaoProxy.data)}`);
+        console.log(`Quantidade: ${negociacaoProxy.quantidade}`);
+        console.log(`Valor: ${negociacaoProxy.valor}`);
+        console.log(`Volume: ${negociacaoProxy.volume}`);
+    </script>
 </body>
 
 </html>
