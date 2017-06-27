@@ -143,8 +143,28 @@
         console.log(`Valor: ${negociacaoProxy.valor}`);
         console.log(`Volume: ${negociacaoProxy.volume}`);
 
-
         negociacaoProxy._quantidade = 2;
+    </script>
+    <script>
+        //funcionalidade alternativa para pecuperar o acionamento dos metodos e colocar um gatilho em cima deles
+        let lista = new Proxy(new ListaNegociacoes(), {
+            get(target, prop, receiver) {
+                if ((['adiciona', 'esvazia'].includes(prop)) && (typeof(target[prop]) == typeof(Function))) {
+                    return function() {
+                        console.log(`interceptado o metodo ${prop}`);
+                        Reflect.apply(target[prop], target, arguments);
+                    }
+                }
+                console.log(`interceptado a propriedade ${prop}`);
+                return Reflect.get(target, prop, receiver);
+            }
+        });
+
+        lista.adiciona(new Negociacao(new Date(), 1, 10));
+
+        //console.log(lista.getNegociacoes);
+
+        lista.esvazia();
     </script>
 </body>
 
