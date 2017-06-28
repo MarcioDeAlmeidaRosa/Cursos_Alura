@@ -149,6 +149,7 @@
         //funcionalidade alternativa para pecuperar o acionamento dos metodos e colocar um gatilho em cima deles
         let lista = new Proxy(new ListaNegociacoes(), {
             get(target, prop, receiver) {
+                // get: function(target, prop, receiver) {
                 if ((['adiciona', 'esvazia'].includes(prop)) && (typeof(target[prop]) == typeof(Function))) {
                     return function() {
                         console.log(`interceptado o metodo ${prop}`);
