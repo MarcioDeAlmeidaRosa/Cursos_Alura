@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>11 - Truque com ES2015</title>
+    <script>
+        // Forma convencional de declarar um metodo
+        var objeto = {
+            exibeMensagem: function() {
+                console.log("Olá forma convencional");
+            }
+        };
+        objeto.exibeMensagem();
+        //Forma sucinta de declarar o mesmo metodo
+        var objeto = {
+            exibeMensagem() {
+                console.log("Olá forma sucinta");
+            }
+        }
+        objeto.exibeMensagem();
+    </script>
+</head>
+
+<body>
+    <h1>11 - Truque com ES2015</h1>
+    <h2>Olhe o console</h2>
+</body>
+
+</html>
