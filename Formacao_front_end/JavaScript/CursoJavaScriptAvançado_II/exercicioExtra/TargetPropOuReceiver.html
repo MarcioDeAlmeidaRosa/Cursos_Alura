@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12 - Target, prop ou receiver?</title>
+    <script>
+        let pessoa = {
+            nome: 'Flávio'
+        }
+
+        let pessoaProxy = new Proxy(pessoa, {
+            get(target, prop, receiver) {
+                //...
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <h1>12 - Target, prop ou receiver?</h1>
+    <div id="comando"></div>
+    <p>Como segundo argumento de um proxy, passamos um handler, que é um objeto JavaScript que contém as armadilhas (traps) do nosso Proxy. Neste objeto, podemos criar uma propriedade get e passar para ela uma função com 3 parâmetros.</p>
+
+    <br>
+    <p>Sobre estes 3 parâmetros, qual das afirmativas abaixo é completamente verdadeira?</p>
+    <br>
+    <p>O target é o objeto real que é encapsulado pela proxy. É este objeto que não quisemos "sujar" com armadilhas ou qualquer código que não diga respeito ao modelo. </p>
+    <p>O prop é a propriedade em si, que está sendo lida naquele momento.</p>
+    <p>O receiver é a referência ao próprio proxy. É na configuração do handler do Proxy que colocamos armadilhas.</p>
+</body>
+<script>
+    document.querySelector('#comando').innerHTML = `
+        let pessoa = {<br>
+            nome: 'Flávio'<br>
+        }<br>
+        <br>
+        let pessoaProxy = new Proxy(pessoa, {<br>
+            get(target, prop, receiver) {<br>
+                //...<br>
+            }<br>
+        });<br>
+    `;
+</script>
+
+</html>
