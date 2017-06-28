@@ -21,14 +21,30 @@ class NegociacaoController {
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
 
+        let self = this;
 
-        this._listaNegociacoes = new ListaNegociacoes(model =>
-            //metodo responsável por fazer o "binding" do template HTML da tabela
-            //para cima do objeto DOM passado como parâmetro para o construtor da classe
-            //PS: o escopo da arrow function é léxico, então o this não muda
-            //é assumido o this do momento da criação e não altera
-            this._negociacoesView.update(model)
-        );
+        this._listaNegociacoes = new Proxy(new ListaNegociacoes(), {
+            get(target, prop, receiver) {
+                // get: function(target, prop, receiver) {
+                if ((['adiciona', 'esvazia'].includes(prop)) && (typeof(target[prop]) == typeof(Function))) {
+                    return function() {
+                        console.log(`interceptado o metodo ${prop}`);
+                        Reflect.apply(target[prop], target, arguments);
+                        self._negociacoesView.update(target);
+                    }
+                }
+                console.log(`interceptado a propriedade ${prop}`);
+                return Reflect.get(target, prop, receiver);
+            }
+        });
+
+        // this._listaNegociacoes = new ListaNegociacoes(model =>
+        //     //metodo responsável por fazer o "binding" do template HTML da tabela
+        //     //para cima do objeto DOM passado como parâmetro para o construtor da classe
+        //     //PS: o escopo da arrow function é léxico, então o this não muda
+        //     //é assumido o this do momento da criação e não altera
+        //     this._negociacoesView.update(model)
+        // );
 
         //cria propriedade (_negociacoesView) que recebe a instância de (NegociacoesView) e
         //passamos para ela o elemento do DOM que ela vai atribuir seu valor
