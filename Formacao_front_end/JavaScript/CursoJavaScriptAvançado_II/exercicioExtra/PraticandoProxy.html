@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13 - O Primeiro proxy a gente nunca esquece</title>
+    <script>
+        let funcionarioProxy = new Proxy({
+            email: 'abc@abc.com'
+        }, {
+            get(target, prop, receiver) {
+
+                if ((['email'].includes(prop)) && (typeof(target[prop]) != typeof(Function))) {
+                    console.log(`Armadilha aqui ${prop}`);
+                }
+                return Reflect.get(target, prop, receiver);
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <h1>13 - O Primeiro proxy a gente nunca esquece</h1>
+    <h2>Execute (funcionarioProxy.email) no console</h2>
+</body>
+
+</html>
