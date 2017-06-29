@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19 - Arguments</title>
+    <script>
+        //Aprendemos lá no jardim de infância em JavaScript a passar 
+        //parâmetros para funções e métodos. Vejamos um exemplo:
+        function exibeNomeCompleto(nome, sobrenome) {
+
+            alert(`${nome} ${sobrenome}`);
+        }
+
+        exibeNomeCompleto('Flávio', 'Almeida');
+
+        console.log('-------------------------------------------');
+        //Contudo, podemos conseguir o mesmo resultado sem passar parâmetros para a função:
+        function exibeNomeCompleto() {
+
+            alert(`${arguments[0]} ${arguments[1]}`);
+        }
+
+        exibeNomeCompleto('Flávio', 'Almeida');
+
+        //Por mais que nossa função não receba parâmetros, podemos ter acesso aos parâmetros
+        // passados com arguments. É uma variável implícita que nos dá acesso a todos os 
+        //parâmetros passados para a função ou método. É claro que a primeira forma, 
+        //nomear os parâmetros da função, é menos verbosa e mais legível. 
+        //Mas há muitos hacks em JavaScript que podem fazer uso de arguments.
+    </script>
+</head>
+
+<body>
+    <h1>19 - Arguments</h1>
+    <h2>Olhe no console</h2>
+</body>
+
+</html>
