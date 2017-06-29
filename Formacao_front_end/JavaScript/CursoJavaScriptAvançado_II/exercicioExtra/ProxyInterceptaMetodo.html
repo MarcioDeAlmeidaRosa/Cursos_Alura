@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>20 - Proxy Intercepta métodos?</title>
+    <script>
+        class Pessoa {
+
+            constructor(nome) {
+                this._nome = nome;
+            }
+
+            get nome() {
+                return this._nome;
+            }
+
+            set nome(nome) {
+                this._nome = nome;
+            }
+
+            grita(frase) {
+                console.log(`${this._nome} grita ${frase}`);
+                return `${this._nome} grita ${frase}`;
+            }
+        }
+
+        let pessoa = new Pessoa('Barney');
+        pessoa.grita('Olá');
+
+        let pessoaProxy = new Proxy(new Pessoa('Marcio de Almeida Rosa'), {
+            get(target, prop, receiver) {
+                if ((['grita'].includes(prop)) && (typeof(target[prop]) == typeof(Function))) {
+                    return function() {
+                        return Reflect.apply(target[prop], target, arguments);
+                    }
+                }
+                return Reflect.get(target, prop, receiver);
+            }
+        });
+
+        pessoaProxy.grita("Estou dominando uso de proxy agora ai galeraaaaaaaaaaaaaaa!");
+    </script>
+</head>
+
+<body>
+    <h1>20 - Proxy Intercepta métodos?</h1>
+    <h2>Olhe o console</h2>
+</body>
+
+</html>
