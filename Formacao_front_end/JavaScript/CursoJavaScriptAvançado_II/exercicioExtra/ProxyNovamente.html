@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>16 - Mais um proxy, agora para lidar escrita!</title>
+    <script>
+        let proxyFuncionario = new Proxy({
+            email: 'marcio.almeida.rosa@gmail.com'
+        }, {
+            set(target, prop, value, receiver) {
+                console.log(`Valor da propriedade antiga: ${target[prop]}`);
+                console.log(`Valor da propriedade atual: ${value}`);
+                return Reflect.set(target, prop, value, receiver);
+            }
+        });
+
+        proxyFuncionario.email = 'marcio.almeidarosa@yahoo.com';
+
+        //Poderíamos conseguir o mesmo resultado desta forma:
+
+        let proxyFuncionario2 = new Proxy({
+            email: 'marcio.almeida.rosa@gmail.com'
+        }, {
+            set(target, prop, value, receiver) {
+                console.log(`Valor da propriedade antiga: ${target[prop]}`);
+                console.log(`Valor da propriedade atual: ${value}`);
+                target[prop] = value;
+            }
+        });
+
+        proxyFuncionario2.email = 'marcio.almeidarosa@yahoo.com';
+    </script>
+</head>
+
+<body>
+    <h1>16 - Mais um proxy, agora para lidar escrita!</h1>
+    <h2>Olhe no console</h2>
+</body>
+
+</html>
