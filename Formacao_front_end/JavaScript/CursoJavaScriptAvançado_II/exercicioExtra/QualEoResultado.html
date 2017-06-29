@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>21 - Qual é o resultado?</title>
+    <script>
+        class Pessoa {
+
+            constructor(nome) {
+                this._nome = nome;
+            }
+
+            get nome() {
+                return this._nome;
+            }
+
+            set nome(nome) {
+                this._nome = nome;
+            }
+
+            grita(frase) {
+                return `${this._nome} grita ${frase}`;
+            }
+        }
+
+        let pessoa = new Proxy(new Pessoa('Barney'), {
+
+            get(target, prop, receiver) {
+                if (prop == 'grita' && typeof(target[prop]) == typeof(Function)) {
+
+                    return function() {
+                        console.log(`Interceptei o método: ${prop}, por isso estou exbindo essa mensagem!`);
+                        //O resultado de console.log(pessoa.grita('Olá')) é undefined. 
+                        //Isso acontece porque estamos chamando Reflect.apply(target[prop], target, arguments) 
+                        //sem retornar seu valor. Uma solução é adicionar a cláusula return:
+                        // Reflect.apply(target[prop], target, arguments);
+
+                        //correção
+                        return Reflect.apply(target[prop], target, arguments);
+                    }
+                }
+                return Reflect.get(target, prop, receiver);
+            }
+        });
+
+        console.log(pessoa.grita('Olá'));
+
+
+
+        let pessoa2 = new Proxy(new Pessoa('Barney'), {
+
+            get(target, prop, receiver) {
+
+                if (prop == 'grita' && typeof(target[prop]) == typeof(Function)) {
+
+                    return function() {
+
+                        console.log(`Interceptei o método: ${prop}, por isso estou exbindo essa mensagem!`);
+
+                        // aguarda o retorno em uma variável 
+                        let retorno = Reflect.apply(target[prop], target, arguments);
+
+                        console.log(`O valor retornado do método foi ${retorno}`);
+
+                        return retorno; // retornando o resultado do método
+                    }
+                }
+
+                return Reflect.get(target, prop, receiver);
+            }
+
+        });
+        console.log('------------------------------------------------------');
+        console.log(pessoa2.grita('Olá'));
+    </script>
+</head>
+
+<body>
+    <h1>21 - Qual é o resultado?</h1>
+    <h2>Olhe no console</h2>
+</body>
+
+</html>
