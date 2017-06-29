@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14 - Proxy modificando retorno de método</title>
+    <script>
+        let proxyFuncionario = new Proxy({
+            email: "marcio.almeida.rosa@gmail.com",
+            nome: "Marcio de Almeida Rosa"
+        }, {
+            get(target, prop, receiver) {
+                if ((['email'].includes(prop)) && (typeof(target[prop]) != typeof(Function))) {
+                    return `**${target[prop]}**`;
+                }
+                return Reflect.get(target, prop, receiver);
+            }
+        });
+
+        console.log(proxyFuncionario.email);
+        console.log(proxyFuncionario.nome);
+    </script>
+</head>
+
+<body>
+    <h1>14 - Proxy modificando retorno de método</h1>
+    <h2>Olhe no console</h2>
+</body>
+
+</html>
