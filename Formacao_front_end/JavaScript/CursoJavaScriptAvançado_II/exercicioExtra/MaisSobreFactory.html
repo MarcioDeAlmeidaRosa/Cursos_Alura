@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mais sobre Factory</title>
+    <script>
+        class Negociacao {
+            constructor(data, quantidade, valor) {
+                this._data = data;
+                this._quantidadea = quantidade;
+                this._valor = valor;
+            }
+
+            comprar(valorCompra) {
+
+            }
+
+            vender(valorVenda) {
+
+            }
+        }
+        class NegociacaoAcao extends Negociacao {
+
+        }
+        class NegociacaoOpcao extends Negociacao {
+
+        }
+
+        // let negociacao = null;
+
+        // let tipoNegociacao = 'opcao'; //isso poderia vir de um formulário web
+
+        // if (tipoNegociacao == 'opcao') {
+        //     negociacao = new NegociacaoOpcao( /*passando params aqui*/ );
+        // } else {
+        //     negociacao = new NegociacaoAcao( /*passando params aqui*/ );
+        // }
+
+        class NegociacaoFactory {
+            static create(tipoNegociacao, dados) {
+                if (tipoNegociacao == "opcao") {
+                    return new NegociacaoOpcao(dados.data, dados.quantidade, dados.valor);
+                }
+                return new NegociacaoAcao(dados.data, dados.quantidade, dados.valor);
+            }
+        }
+
+        //Repare que a Factory possui mais uma outra responsabilidade, 
+        //instanciar NegociacaoAcao ou NegociacaoOpcao. 
+        //A fábrica decide então qual implementação usar. 
+        //Para quem chama, isso pouco importa, pois basta saber que recebemos uma Negociacao.
+
+        let n = NegociacaoFactory.create("acao", {
+            'data': new Date(),
+            'quantidade': 2,
+            'valor': 34.3
+        });
+
+        console.log(JSON.stringify(n));
+    </script>
+</head>
+
+<body>
+    <h1>Mais sobre Factory</h1>
+    <h2>Olhe no console</h2>
+</body>
+
+</html>
