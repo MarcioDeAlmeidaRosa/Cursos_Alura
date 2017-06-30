@@ -6,9 +6,10 @@ class ProxyFactory {
                 if ((props.includes(prop)) && (ProxyFactory._isFunction(target[prop]))) {
                     return function() {
                         console.log(`interceptado o metodo ${prop}`);
-                        Reflect.apply(target[prop], target, arguments);
+                        let rotorno = Reflect.apply(target[prop], target, arguments);
                         //self._negociacoesView.update(target);
-                        return acao(target);
+                        acao(target);
+                        return rotorno;
                     }
                 }
                 console.log(`interceptado a propriedade ${prop}`);
@@ -16,12 +17,9 @@ class ProxyFactory {
             },
             set(target, prop, value, receiver) {
                 console.log(`Inserceptando ${prop}`);
-                if (props.includes(prop)) {
-                    console.log(`Lançando ação de  ${prop}`);
-                    target[prop] = value;
-                    acao(target);
-                }
-                return Reflect.set(target, prop, value, receiver);
+                let retorno = Reflect.set(target, prop, value, receiver);
+                if (props.includes(prop)) acao(target);
+                return retorno;
             }
         });
     }
