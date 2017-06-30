@@ -15,7 +15,10 @@ class ProxyFactory {
                 return Reflect.get(target, prop, receiver);
             },
             set(target, prop, value, receiver) {
+                console.log(`Inserceptando ${prop}`);
                 if (props.includes(prop)) {
+                    console.log(`Lançando ação de  ${prop}`);
+                    target[prop] = value;
                     acao(target);
                 }
                 return Reflect.set(target, prop, value, receiver);

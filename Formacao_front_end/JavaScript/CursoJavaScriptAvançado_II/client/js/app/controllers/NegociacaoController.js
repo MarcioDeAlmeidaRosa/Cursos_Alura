@@ -21,6 +21,12 @@ class NegociacaoController {
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
 
+        this._listaNegociacoes = new Bind(new ListaNegociacoes(),
+            new NegociacoesView($('#negociacoesView')), ['adiciona', 'esvazia']);
+
+        this._mensagem = new Bind(new Mensagem(),
+            new MensagemView($('#mensagemView')), ['texto']);
+
         //let self = this;
         // this._listaNegociacoes = new Proxy(new ListaNegociacoes(), {
         //     get(target, prop, receiver) {
@@ -48,19 +54,21 @@ class NegociacaoController {
         //cria propriedade (_negociacoesView) que recebe a instância de (NegociacoesView) e
         //passamos para ela o elemento do DOM que ela vai atribuir seu valor
         //faz a primeira renderização da lista
-        this._negociacoesView = new NegociacoesView($('#negociacoesView'));
+        // this._negociacoesView = new NegociacoesView($('#negociacoesView'));
 
-        this._listaNegociacoes = ProxyFactory.create(new ListaNegociacoes(), ['adiciona', 'esvazia'],
-            (model) => this._negociacoesView.update(model));
+        // this._listaNegociacoes = ProxyFactory.create(new ListaNegociacoes(), ['adiciona', 'esvazia'],
+        //     (model) => this._negociacoesView.update(model));
 
-        this._negociacoesView.update(this._listaNegociacoes);
 
-        this._mensagemView = new MensagemView($('#mensagemView'));
+        // this._negociacoesView.update(this._listaNegociacoes);
 
-        this._mensagem = ProxyFactory.create(new Mensagem(), ['texto'],
-            (model) => this._mensagemView.update(model));
+        // this._mensagemView = new MensagemView($('#mensagemView'));
 
-        this._mensagemView.update(this._mensagem);
+        // this._mensagem = ProxyFactory.create(new Mensagem(), ['texto'],
+        //     (model) => this._mensagemView.update(model));
+
+
+        // this._mensagemView.update(this._mensagem);
     }
 
     adiciona(event) {
@@ -68,6 +76,7 @@ class NegociacaoController {
         this._listaNegociacoes.adiciona(this._criaNegociacao());
         console.log(this._listaNegociacoes.getNegociacoes);
 
+        console.log('atribuindo texto');
         this._mensagem.texto = "Negociação adicionada com sucesso!";
         // this._mensagemView.update(this._mensagem);
 
@@ -76,7 +85,6 @@ class NegociacaoController {
 
     apaga() {
         this._listaNegociacoes.esvazia();
-
         this._mensagem.texto = "Negociações excluídas com sucesso!";
         // this._mensagemView.update(this._mensagem);
     }
