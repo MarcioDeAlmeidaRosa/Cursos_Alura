@@ -21,8 +21,6 @@ class NegociacaoController {
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
 
-        this._listaNegociacoes = ProxyFactory.create(new ListaNegociacoes(), ['adiciona', 'esvazia'],
-            (model) => this._negociacoesView.update(model));
         //let self = this;
         // this._listaNegociacoes = new Proxy(new ListaNegociacoes(), {
         //     get(target, prop, receiver) {
@@ -49,13 +47,19 @@ class NegociacaoController {
 
         //cria propriedade (_negociacoesView) que recebe a instância de (NegociacoesView) e
         //passamos para ela o elemento do DOM que ela vai atribuir seu valor
-        this._negociacoesView = new NegociacoesView($('#negociacoesView'));
         //faz a primeira renderização da lista
+        this._negociacoesView = new NegociacoesView($('#negociacoesView'));
+
+        this._listaNegociacoes = ProxyFactory.create(new ListaNegociacoes(), ['adiciona', 'esvazia'],
+            (model) => this._negociacoesView.update(model));
+
         this._negociacoesView.update(this._listaNegociacoes);
+
+        this._mensagemView = new MensagemView($('#mensagemView'));
 
         this._mensagem = ProxyFactory.create(new Mensagem(), ['texto'],
             (model) => this._mensagemView.update(model));
-        this._mensagemView = new MensagemView($('#mensagemView'));
+
         this._mensagemView.update(this._mensagem);
     }
 
