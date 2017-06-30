@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Usando REST</title>
+    <script>
+        // o código abaixo tem um problema, não funciona
+        class Cesta {
+            //Mas sobre REST, temos que o correto é utilizarmos "..."
+            //antes do último parâmetro, e assim tudo que nós passarmos 
+            //de "extra" será colocado dentro de um array, no nosso caso, itens:
+            constructor(tipo, ...itens) {
+                //lógica
+                itens.forEach(item => console.log(item));
+            }
+        }
+
+        let cesta = new Cesta('fruta', ['banana', 'tomate', 'maçã']);
+    </script>
+</head>
+
+<body>
+    <h1>REST</h1>
+    <h2>Olhe no console</h2>
+
+</body>
+
+</html>
