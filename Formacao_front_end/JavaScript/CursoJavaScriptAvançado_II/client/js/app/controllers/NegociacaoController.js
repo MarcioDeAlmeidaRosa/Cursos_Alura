@@ -89,6 +89,41 @@ class NegociacaoController {
         // this._mensagemView.update(this._mensagem);
     }
 
+    importaNegociacoes() {
+        //objeto para fazer chamadas ao server
+        let xhr = new XMLHttpRequest();
+        //Preparando página para abrir a requisição
+        xhr.open('GET', 'negociacoes/semana');
+
+        /* 
+            0: requisição ainda não iniciada
+            1: conexão com o servidor estabelecida
+            2: requisição recebida
+            3: processando requisição
+            4: requisição concluída e a resposta esta pronta
+        */
+        //configurações
+        xhr.onreadystatechange = () => {
+            //4: requisição concluída e a resposta esta pronta
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    console.log('Obtendo as negociações do servidor');
+                } else {
+                    console.log('Não foi possível obter as negociações do servidor');
+                }
+            }
+        };
+
+
+        //executando a requisição
+        xhr.send();
+
+
+
+
+
+    }
+
     _criaNegociacao() {
         return new Negociacao(
             DateHelper.textToDate(this._inputDate.value),
