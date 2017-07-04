@@ -6,13 +6,14 @@ class NegociacaoService {
         xhr.open('GET', 'negociacoes/semana');
 
         /* 
-            0: requisição ainda não iniciada
-            1: conexão com o servidor estabelecida
-            2: requisição recebida
-            3: processando requisição
-            4: requisição concluída e a resposta esta pronta
+            0: requisição ainda não iniciada.
+            1: conexão com o servidor estabelecida.
+            2: requisição recebida.
+            3: processando requisição.
+            4: requisição concluída e a resposta esta pronta.
         */
         //configurações
+        //...onreadystatechange -> ser executada automaticamente cada vez que há uma alteração no estado da requisição.
         xhr.onreadystatechange = () => {
             //4: requisição concluída e a resposta esta pronta
             if (xhr.readyState == 4) {
