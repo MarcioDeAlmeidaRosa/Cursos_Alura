@@ -136,14 +136,20 @@ class NegociacaoController {
         // }).catch(error => this._mensagem.texto = error);
 
         //USANDO PROMISE - NIVEL 2
-        Promise.all([service.obterNegociacoesSemana(),
-                service.obterNegociacoesSemanaAnterior(),
-                service.obterNegociacoesSemanaRetrasada()
-            ])
+        // Promise.all([service.obterNegociacoesSemana(),
+        //         service.obterNegociacoesSemanaAnterior(),
+        //         service.obterNegociacoesSemanaRetrasada()
+        //     ])
+        //     .then(negociacoes => {
+        //         console.log(negociacoes);
+        //         negociacoes.reduce((arrayAchatado, array) => arrayAchatado.concat(array), [])
+        //             .forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
+        //         this._mensagem.texto = "Negociações da semana anterior obtida com sucesso.";
+        //     }).catch(error => this._mensagem.texto = error);
+
+        service.obterNegociacoes()
             .then(negociacoes => {
-                console.log(negociacoes);
-                negociacoes.reduce((arrayAchatado, array) => arrayAchatado.concat(array), [])
-                    .forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
+                negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
                 this._mensagem.texto = "Negociações da semana anterior obtida com sucesso.";
             }).catch(error => this._mensagem.texto = error);
     }

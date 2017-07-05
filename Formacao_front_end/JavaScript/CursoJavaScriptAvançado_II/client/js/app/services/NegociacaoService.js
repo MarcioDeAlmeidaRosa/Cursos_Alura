@@ -5,7 +5,7 @@ class NegociacaoService {
     }
 
     //IMPLEMENTAÇÃO DO PADRÃO PROMISE
-    obterNegociacoesSemana() {
+    _obterNegociacoesSemana() {
         return this._http.get('negociacoes/semana')
             .then(negociacoes =>
                 negociacoes.map(objeto => new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor))
@@ -15,7 +15,7 @@ class NegociacaoService {
             });
     }
 
-    obterNegociacoesSemanaAnterior() {
+    _obterNegociacoesSemanaAnterior() {
         return this._http.get('negociacoes/anterior')
             .then(negociacoes =>
                 negociacoes.map(objeto => new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor))
@@ -25,12 +25,27 @@ class NegociacaoService {
             });
     }
 
-    obterNegociacoesSemanaRetrasada() {
+    _obterNegociacoesSemanaRetrasada() {
         return this._http.get('negociacoes/retrasada').then(negociacoes =>
             negociacoes.map(objeto => new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor))
         ).catch(error => {
             console.log(error);
             throw new Error('Não foi possível obter as negociações da semana retrasada.');
+        });
+    }
+
+    obterNegociacoes() {
+        return new Promise((resolve, reject) => {
+            //USANDO PROMISE - NIVEL 2
+            return Promise.all([this._obterNegociacoesSemana(),
+                    this._obterNegociacoesSemanaAnterior(),
+                    this._obterNegociacoesSemanaRetrasada()
+                ])
+                .then(negociacoes =>
+                    resolve(negociacoes.reduce((arrayAchatado, array) => arrayAchatado.concat(array), []))
+                ).catch(error => {
+                    throw new Error(error);
+                });
         });
     }
 
