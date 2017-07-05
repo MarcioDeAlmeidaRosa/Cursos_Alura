@@ -92,14 +92,31 @@ class NegociacaoController {
     importaNegociacoes() {
         let service = new NegociacaoService();
 
+        //PYRAMID OF DOOM  -> PIRÂMIDE DO DESTINO
+        //CALLBACK HELL    -> INFERNO DE CALLBACK
         service.obterNegociacoesSemana((error, negociacoes) => {
             if (error) {
                 this._mensagem.texto = error;
                 return;
             }
-
             negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));;
-            this._mensagem.texto = "Negociações importada com sucesso.";
+
+            service.obterNegociacoesSemanaAnterior((error, negociacoes) => {
+                if (error) {
+                    this._mensagem.texto = error;
+                    return;
+                }
+                negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));;
+
+                service.obterNegociacoesSemanaRetrasada((error, negociacoes) => {
+                    if (error) {
+                        this._mensagem.texto = error;
+                        return;
+                    }
+                    negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));;
+                    this._mensagem.texto = "Negociações importada com sucesso.";
+                });
+            });
         });
     }
 
