@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simplificando código</title>
+    <script>
+        class Negociacao {
+            constructor() {
+                this.data = null;
+                this.quantidade = null;
+                this.valor = null;
+            }
+        }
+        let dadosServidor = [
+            [
+                [new Date(), 1, 100],
+                [new Date(), 2, 100]
+            ],
+            [
+                [new Date(), 1, 150],
+                [new Date(), 2, 300]
+            ],
+            [
+                [new Date(), 3, 50],
+                [new Date(), 1, 100]
+            ]
+        ];
+
+        let listaDeNegociacoes = dadosServidor.reduce((novoArray, array) =>
+                // novoArray receberá os itens de array, no final terá uma dimensão apenas
+                novoArray.concat(array), []
+            )
+            .map(dado =>
+                // para cada dado, cria uma instância de negociação. No final, teremos uma nova lista só com instâncias de Negociacao
+                new Negociacao(new Date(dado.data), dado.quantidade, dado.valor)
+            );
+        console.log(JSON.stringify(listaDeNegociacoes));
+    </script>
+</head>
+
+<body>
+    <h1>Simplificando código</h1>
+    <h2>Olhe no console</h2>
+
+</body>
+
+</html>
