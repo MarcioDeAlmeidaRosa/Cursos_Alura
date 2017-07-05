@@ -38,11 +38,11 @@ class NegociacaoController {
     adiciona(event) {
         event.preventDefault();
         this._listaNegociacoes.adiciona(this._criaNegociacao());
-        console.log(this._listaNegociacoes.getNegociacoes);
+        console.log(this._listaNegociacoes.Negociacoes);
         //metodo responsável por fazer o "binding" do template HTML da tabela
         //para cima do objeto DOM passado como parâmetro para o construtor da classe
         this._negociacoesView.update(this._listaNegociacoes);
-        
+
         this._mensagem.texto = "Negociação adicionada com sucesso!";
         this._mensagemView.update(this._mensagem);
 

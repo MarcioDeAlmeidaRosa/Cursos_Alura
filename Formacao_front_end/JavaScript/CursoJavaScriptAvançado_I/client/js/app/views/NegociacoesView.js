@@ -1,4 +1,4 @@
-class NegociacoesView extends View{
+class NegociacoesView extends View {
     //metodo responsável por retornar uma string com o template
     //da tabela que vai ser injetada dentro do elemento DOM que foi
     //passado como parâmetro no construtor da classe.
@@ -7,9 +7,9 @@ class NegociacoesView extends View{
     //para contornar esse problema, usamos o recurso join, passando uma string vazia
     //assim não será retornado , ao terminar o metodo map
     //deixando nosso HTML da forma que queremos
-    template(modelo){
-        //com templateString conseguimos quebrar linhas sem fazer concatenação da coluna
-        return `
+    template(modelo) {
+            //com templateString conseguimos quebrar linhas sem fazer concatenação da coluna
+            return `
                 <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
@@ -23,7 +23,7 @@ class NegociacoesView extends View{
                     <tbody>
                         ${
                             //usando template rendering
-                            modelo.getNegociacoes.map(neg =>`
+                            modelo.Negociacoes.map(neg =>`
                                 <tr>
                                     <td>${DateHelper.dateToText(neg.data)}</td>
                                     <td>${neg.quantidade}</td>
@@ -39,11 +39,15 @@ class NegociacoesView extends View{
                             //IIFE --> Immediately-Invoked Function Expression
                             // (function() {
                             //         let total = 0;
-                            //         modelo.getNegociacoes.forEach(neg => {total += neg.volume; });
+                            //         modelo.Negociacoes.forEach(neg => {total += neg.volume; });
                             //         return total;
 
                             // })()
-                            modelo.getNegociacoes.reduce( (total, n) => total + n.volume, 0.0)
+                            
+                            // modelo.Negociacoes.reduce( (total, n) => total + n.volume, 0.0)
+
+                            modelo.Negociacoes.VolumeTotal
+
                         }</td>
                     </tfoot>
                 </table>

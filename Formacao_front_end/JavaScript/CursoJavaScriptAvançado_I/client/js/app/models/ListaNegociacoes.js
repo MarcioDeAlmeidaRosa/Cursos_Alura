@@ -7,8 +7,12 @@ class ListaNegociacoes {
         this._negociacoes.push(negociacao);
     }
 
-    get getNegociacoes() {
+    get Negociacoes() {
         //usando programação defensiva
         return [].concat(this._negociacoes);
+    }
+
+    get VolumeTotal() {
+        return this._negociacoes.reduce((total, n) => total + n.volume, 0.0)
     }
 }

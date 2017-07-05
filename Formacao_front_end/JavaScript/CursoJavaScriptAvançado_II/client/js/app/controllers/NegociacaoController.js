@@ -74,7 +74,7 @@ class NegociacaoController {
     adiciona(event) {
         event.preventDefault();
         this._listaNegociacoes.adiciona(this._criaNegociacao());
-        console.log(this._listaNegociacoes.getNegociacoes);
+        console.log(this._listaNegociacoes.Negociacoes);
 
         console.log('atribuindo texto');
         this._mensagem.texto = "Negociação adicionada com sucesso!";

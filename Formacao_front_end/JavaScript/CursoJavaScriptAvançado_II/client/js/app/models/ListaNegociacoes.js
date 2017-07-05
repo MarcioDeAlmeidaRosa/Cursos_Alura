@@ -13,7 +13,7 @@ class ListaNegociacoes {
         // this._callbackAtualizacao(this);
     }
 
-    get getNegociacoes() {
+    get Negociacoes() {
         //usando programação defensiva
         return [].concat(this._negociacoes);
     }
