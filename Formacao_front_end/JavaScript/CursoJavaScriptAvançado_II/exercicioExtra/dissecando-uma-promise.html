@@ -1,0 +1,69 @@
+<!-- dissecando-uma-promise.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dissecando uma promise</title>
+</head>
+
+<body>
+    <script>
+        let promise = new Promise((resolve, reject) => {
+            setTimeout(() => resolve('PROMISE RESOLVIDA'), 5000);
+        });
+
+        promise.then(resultado => console.log(resultado));
+    </script>
+
+    <script>
+        let promise2 = new Promise((resolve, reject) => {
+            setTimeout(() => resolve('PROMISSE RESOLVIDA'), 5000);
+        });
+
+        promise2.then(resultado => console.log(resultado));
+        console.log('FIM'); // novidade aqui!
+    </script>
+
+    <script>
+        let promise3 = new Promise((resolve, reject) => {
+            console.log(resolve);
+            setTimeout(() => reject('HOUVE PROBLEMAS'), 5000);
+        });
+
+        promise3
+            .then(resultado => console.log(resultado));
+    </script>
+
+    <script>
+        let promise4 = new Promise((resolve, reject) => {
+            console.log(resolve);
+            setTimeout(() => reject('HOUVE PROBLEMAS'), 5000);
+        });
+
+        promise4
+            .then(resultado => console.log(resultado))
+            .catch(erro => console.log(erro)); // exibe no console HOUVE PROBLEMAS
+    </script>
+
+    <script>
+        let ok = false;
+        let promise5 = new Promise((resolve, reject) => {
+
+            // como temos mais de uma instrução, precisamos colocar um bloco em nossa arrow function! Lembrou?
+            setTimeout(() => {
+                if (ok) {
+                    resolve('PROMISE CONCLUÍDA');
+                } else {
+                    reject('HOUVE PROBLEMAS');
+                }
+            }, 5000);
+        });
+
+        promise5
+            .then(resultado => console.log(resultado))
+            .catch(erro => console.log(erro));
+    </script>
+</body>
+
+</html>
