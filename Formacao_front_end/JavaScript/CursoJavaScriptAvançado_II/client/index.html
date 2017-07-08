@@ -6,14 +6,18 @@
     <title>Negociações</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
-
+    <style>
+        .mouse-pointer{
+            cursor: pointer;
+        };
+    </style>
 </head>
 
 <body class="container">
 
     <h1 class="text-center">Negociações</h1>
     <div id="mensagemView"></div>
-    <form class="form" onsubmit="negocicaoController.adiciona(event)">
+    <form class="form" onsubmit="negociacaoController.adiciona(event)">
 
         <div class="form-group">
             <label for="data">Data</label>
@@ -34,10 +38,10 @@
     </form>
 
     <div class="text-center">
-        <button onClick="negocicaoController.importaNegociacoes()" class="btn btn-primary text-center" type="button">
+        <button onClick="negociacaoController.importaNegociacoes()" class="btn btn-primary text-center" type="button">
             Importar Negociações
         </button>
-        <button onClick="negocicaoController.apaga()" class="btn btn-primary text-center" type="button">
+        <button onClick="negociacaoController.apaga()" class="btn btn-primary text-center" type="button">
             Apagar
         </button>
     </div>
@@ -58,7 +62,7 @@
     <script src="js/app/services/NegociacaoService.js"></script>
     <script src="js/app/services/HttpService.js"></script>
     <script>
-        let negocicaoController = new NegociacaoController();
+        let negociacaoController = new NegociacaoController();
         // var n1 = new Negociacao(new Date(), 5, 700);
         // console.log(n1);
         // n1.quantidade = 20;
@@ -171,6 +175,7 @@
 
         lista.esvazia();
     </script>
+    
 </body>
 
 </html>

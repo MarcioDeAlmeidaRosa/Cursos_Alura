@@ -22,10 +22,13 @@ class NegociacaoController {
         this._inputValor = $("#valor");
 
         this._listaNegociacoes = new Bind(new ListaNegociacoes(),
-            new NegociacoesView($('#negociacoesView')), 'adiciona', 'esvazia');
+            new NegociacoesView($('#negociacoesView')), 'adiciona', 'esvazia', 'ordena', 'inverteOrdem');
 
         this._mensagem = new Bind(new Mensagem(),
             new MensagemView($('#mensagemView')), 'texto');
+
+        //Variável para controle de alteração crescente e decrescente
+        this._ordemAtual = '';
 
         //let self = this;
         // this._listaNegociacoes = new Proxy(new ListaNegociacoes(), {
@@ -152,6 +155,16 @@ class NegociacaoController {
                 negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
                 this._mensagem.texto = "Negociações da semana anterior obtida com sucesso.";
             }).catch(error => this._mensagem.texto = error);
+    }
+
+    ordena(coluna){
+        if (this._ordemAtual === coluna){
+            this._listaNegociacoes.inverteOrdem();
+        }
+        else{
+            this._listaNegociacoes.ordena((a, b) => a[coluna] - b[coluna]); 
+        }
+        this._ordemAtual = coluna;
     }
 
     _criaNegociacao() {

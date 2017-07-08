@@ -24,4 +24,12 @@ class ListaNegociacoes {
         ///Reflect.apply(this._callbackAtualizacao, this._contexto, [this]);
         // this._callbackAtualizacao(this)
     }
+
+    ordena(criterio){
+        this._negociacoes.sort(criterio);
+    }
+
+    inverteOrdem() {
+        this._negociacoes.reverse();
+    }
 }

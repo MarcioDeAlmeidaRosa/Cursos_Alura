@@ -20,5 +20,36 @@ class View {
         //passado no construtor da classe, e atribuir
         //em seu HTML um "template" referente a (tabela ou outro elemento passado)
         this._elemento.innerHTML = this.template(modelo);
+
+        //POG para aplicar o controle de mouseouver no cabeçalho
+        let $ = document.querySelector.bind(document);
+        
+        $('#cab_dat').onmouseover = ()=>{
+            $('#cab_dat').classList.add('mouse-pointer');//.cursor = pointer; 
+        };
+        $('#cab_dat').onmouseout = ()=>{
+            $('#cab_dat').classList.remove('mouse-pointer');//.cursor = pointer; 
+        };
+        
+        $('#cab_qtd').onmouseover = ()=>{
+            $('#cab_qtd').classList.add('mouse-pointer');//.cursor = pointer; 
+        };
+        $('#cab_qtd').onmouseout = ()=>{
+            $('#cab_qtd').classList.remove('mouse-pointer');//.cursor = pointer; 
+        };
+
+        $('#cab_vlr').onmouseover = ()=>{
+            $('#cab_vlr').classList.add('mouse-pointer');//.cursor = pointer; 
+        };
+        $('#cab_vlr').onmouseout = ()=>{
+            $('#cab_vlr').classList.remove('mouse-pointer');//.cursor = pointer; 
+        };
+
+        $('#cab_vol').onmouseover = ()=>{
+            $('#cab_vol').classList.add('mouse-pointer');//.cursor = pointer; 
+        };
+        $('#cab_vol').onmouseout = ()=>{
+            $('#cab_vol').classList.remove('mouse-pointer');//.cursor = pointer; 
+        };
     }
 }

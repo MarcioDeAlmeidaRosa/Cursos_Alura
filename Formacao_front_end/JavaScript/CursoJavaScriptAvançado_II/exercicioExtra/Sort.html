@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sort</title>
+    <script>
+        let lista = [10,1, 5, 9, 8, 12, 15];
+        console.log('ordernação crescente -- com base na tabela  tabela ASCII');
+        lista.sort();
+        console.log(lista); // exibe a lista na ordem crescente
+
+
+        console.log('ordernação decrescente');
+        lista.reverse();
+        console.log(lista); // exibe a lista na ordem crescente
+
+        class Negociacao{
+            constructor(data, quantidade, valor){
+                this.data = data;
+                this.quantidade = quantidade;
+                this.valor = valor;
+            }
+        }
+
+        let negociacoes = [
+            new Negociacao(new Date(), 7, 200),
+            new Negociacao(new Date(), 1, 300),
+            new Negociacao(new Date(), 8, 100)
+        ];
+
+        // Com o critério selecionado, se o valor retornado for 0 não há 
+        //alteração a ser feita, se o valor retornado for positivo, b deve 
+        //vir antes de a, se o valor for negativo, a deve vir antes de b.
+        negociacoes.sort((a, b) => a.quantidade -  b.quantidade);
+        console.log('ordernação crescente por quantidade');
+        negociacoes.forEach(negociacao => console.log(negociacao)); // exibe a lista na ordem crescente
+
+
+        negociacoes.sort((a, b) => b.data -  a.data);
+        console.log('ordernação crescente por data');
+        negociacoes.forEach(negociacao => console.log(negociacao));// exibe a lista na ordem crescente
+
+        console.log('// negativo')/
+        console.log(new Date(2016,4,12) - new Date(2016,5,1));
+
+        console.log('// positivo')/
+        console.log(new Date(2016,5,1) - new Date(2016,4,12));
+
+        console.log('// 0')/
+        console.log(new Date(2016,5,1) -  new Date(2016,5,1));
+
+        console.log('E se quisermos uma ordem decrescente por quantidade? Só inverter a subtração:');
+        negociacoes.sort((a, b) => b.quantidade -  a.quantidade); // agora é b menos a!
+        negociacoes.forEach(negociacao => console.log(negociacao));
+
+
+
+        
+
+
+
+    </script>
+</head>
+<body>
+    <h1>Exemplo de ordenação em array</h1>
+    <h2>Olhe no console</h2>
+    
+</body>
+</html>
