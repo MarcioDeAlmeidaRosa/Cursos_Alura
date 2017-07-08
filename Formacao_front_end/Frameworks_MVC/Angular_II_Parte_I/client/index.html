@@ -16,8 +16,11 @@
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
 
+    <!--loader de módulos escolhido pelo angular-->
     <script src="systemjs.config.js"></script>
     <script>
+        // Lê o arquivo systemjs.config.js e importa o arquivo 
+        // parametrizado no packages - app - main
         System.import('app').catch(function(err) {
             console.error(err);
         });
