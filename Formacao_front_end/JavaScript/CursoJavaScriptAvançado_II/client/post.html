@@ -28,7 +28,7 @@
 
         <button class="btn btn-primary" type="submit" onclick="sendPost(event)">Enviar dados para servidor</button>
     </form>
-
+    <script src="js/app/services/HttpService.js"></script>
     <script>
         let $ = document.querySelector.bind(document);
 
@@ -42,32 +42,16 @@
                 quantidade: $('#quantidade').value,
                 valor: $('#valor').value
             };
-            //enviar o XMLHttpRequest
-
-            //criando objeto para comunicação com o servidor
-            let xhr = new XMLHttpRequest();
-            //DOMString method,DOMString url,optional boolean async, optional DOMString user,optional DOMString password
-            xhr.open('POST', '/negociacoes', true);
-
-            //setando o cabeçalho
-            xhr.setRequestHeader('Content-type', 'application/json');
-
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
-                        $('#data').value = '';
-                        $('#quantidade').value = 1;
-                        $('#valor').value = 0.0;
-                        $('#data').focus();
-                        console.log('Negociação cadastrada com sucesso');
-                    } else {
-                        console.log('Erro ao cadastrar negociação');
-                    }
-                    console.log(xhr.responseText);
-                }
-            };
-            //chamando o cadastramento
-            xhr.send(JSON.stringify(negociacao));
+            new HttpService()
+                .post('/negociacoes', negociacao)
+                .then(()=>{
+                    $('#data').value = '';
+                    $('#quantidade').value = 1;
+                    $('#valor').value = 0.0;
+                    $('#data').focus();
+                    console.log('Negociação cadastrada com sucesso');
+                })
+                .catch(erro => alert(`Não foi possível enviar a negociação: ${erro}`) );
         }
     </script>
 </body>
