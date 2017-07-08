@@ -12,6 +12,13 @@ class DateHelper {
     static textToDate(text) {
         //fail fast
 
+        // mudamos a validação para aceitar o novo formato!
+        if(!/\d{2}\/\d{2}\/\d{4}/.test(text)) 
+            throw new Error('Deve estar no formato dd/mm/aaaa');
+        
+        //Voltando a conversão para yyyy-mm-dd para não mudar o restante da função.
+        text = text.split('/').reverse().join('-');
+
         //O ˆ indica "começando com " e o $ "terminando com". 
         if (!(/^\d{4}-\d{2}-\d{2}$/.test(text)))
             throw new Error('Data deve ser informada no padrão YYYY-MM-DD');

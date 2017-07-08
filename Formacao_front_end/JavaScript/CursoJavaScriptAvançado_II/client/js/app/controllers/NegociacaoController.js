@@ -76,14 +76,18 @@ class NegociacaoController {
 
     adiciona(event) {
         event.preventDefault();
-        this._listaNegociacoes.adiciona(this._criaNegociacao());
-        console.log(this._listaNegociacoes.Negociacoes);
+        try{
+            this._listaNegociacoes.adiciona(this._criaNegociacao());
+            console.log(this._listaNegociacoes.Negociacoes);
 
-        console.log('atribuindo texto');
-        this._mensagem.texto = "Negociação adicionada com sucesso!";
-        // this._mensagemView.update(this._mensagem);
+            console.log('atribuindo texto');
+            this._mensagem.texto = "Negociação adicionada com sucesso!";
+            // this._mensagemView.update(this._mensagem);
 
-        this._limpaFormulario();
+            this._limpaFormulario();
+        }catch(erro){
+            this._mensagem.texto = erro;
+        }
     }
 
     apaga() {
