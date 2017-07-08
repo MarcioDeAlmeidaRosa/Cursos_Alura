@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
     templateUrl: './foto.component.html'
 })
 export class FotoComponent{
-    // criando propriedades inbounded property
+    // criando propriedades inbound properties
     // a propriedade receberá o valor de fora do componente
     @Input() titulo;
     @Input() url;
