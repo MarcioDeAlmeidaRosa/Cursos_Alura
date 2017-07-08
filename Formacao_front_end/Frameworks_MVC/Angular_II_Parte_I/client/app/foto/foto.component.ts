@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 @Component({
     // quando usamos moduleId: module.id, no templateUrl não 
     // precisa ser passado o caminho completo do template
@@ -10,5 +10,8 @@ import { Component } from '@angular/core';
     templateUrl: './foto.component.html'
 })
 export class FotoComponent{
-
+    // criando propriedades inbounded property
+    // a propriedade receberá o valor de fora do componente
+    @Input() titulo;
+    @Input() url;
 }
