@@ -8,13 +8,15 @@ import 'rxjs/add/operator/map';
 import { AppComponent } from './app.component';
 import { FotoModule } from './foto/foto.module';
 import { PainelModel } from './painel/painel.module';
+import {CadastroComponent} from './cadastro/cadastro.component';
+import {ListagemComponent} from './listagem/listagem.component';
 
 
 @NgModule({
     //BrowserModule ->define que vai rodar no , import somente no módulo pricipal da app
     // importando HttpModule para atender a injeção de dependência para chamadas ajax
     imports: [ BrowserModule, FotoModule, HttpModule, PainelModel ],//declara os modulos que serão utilizados pela aplicação principal
-    declarations: [ AppComponent ],
+    declarations: [ AppComponent, CadastroComponent, ListagemComponent ],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
