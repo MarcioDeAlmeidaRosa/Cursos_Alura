@@ -2,7 +2,15 @@
     <h1 class="text-center">Alurapic</h1>
 </div>
 <div class="container">
-    <!--só conseguiremos usar "foto" por que importamos 
-    FotoModule no módulo principal da aplicação-->
-    <foto *ngFor="let foto of fotos" [url]="foto.url" [titulo]="foto.titulo"></foto>
+    <div class="row">
+        <!--só conseguiremos usar "foto" por que importamos 
+        FotoModule no módulo principal da aplicação-->
+        <painel *ngFor="let foto of fotos" [titulo]="foto.titulo" class="col-md-2">
+            <!--depende de <ng-content></ng-content> configurado 
+            dentro do componente que esta sendo utilizado, 
+            só desta forma este conteúdo será apresentado 
+            dentro do outro compoente-->
+            <foto [url]="foto.url"></foto>
+        </painel>
+    </div>
 </div>
