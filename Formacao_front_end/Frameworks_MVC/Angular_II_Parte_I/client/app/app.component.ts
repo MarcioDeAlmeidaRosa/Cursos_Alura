@@ -15,7 +15,8 @@ import { Http } from '@angular/http';
 })
 export class AppComponent{
 
-    _http;
+    fotos: Object[] = [];
+
     //@Inject(Http) => orienta ao angular que antes de criar a instância de AppComponent
     // é preciso contruir o Http para ser injetado no contrutor
     // como essa classe tem o construtor complexo, o Angular prove um Provider que já
@@ -27,7 +28,19 @@ export class AppComponent{
     
     //Temos outra forma para tipar uma variável com TS, usando :Type na frente da variável
     constructor(http: Http){
-        // _http = http;
+        //O metodo get do Angular 2 devolve um Observable<Response> 
+        // onde você tem que se inscrever para ser notificado quando
+        // a resposta estiver pronta
+        let stream = http.get('v1/fotos');
+        //Metodo de inscrição que recebe um callback, este só cherá chamado
+        // quando o servidor responder a requisição get
+        stream.subscribe(res => {
+            // A resposta é um objeto do tipo Response
+            // nele precisamos acessar alguns métodos/propriedades
+            // para verificar o que foi respondido pelo servidor
+            // this.fotos = res.text();
+            this.fotos = res.json();
+        });
     }
     
 }
