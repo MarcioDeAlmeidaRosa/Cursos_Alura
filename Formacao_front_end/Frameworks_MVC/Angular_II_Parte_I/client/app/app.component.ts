@@ -31,15 +31,27 @@ export class AppComponent{
         //O metodo get do Angular 2 devolve um Observable<Response> 
         // onde você tem que se inscrever para ser notificado quando
         // a resposta estiver pronta
-        let stream = http.get('v1/fotos');
+        //let stream = http.get('v1/fotos');
         //Metodo de inscrição que recebe um callback, este só cherá chamado
         // quando o servidor responder a requisição get
-        stream.subscribe(res => {
-            // A resposta é um objeto do tipo Response
-            // nele precisamos acessar alguns métodos/propriedades
-            // para verificar o que foi respondido pelo servidor
-            // this.fotos = res.text();
-            this.fotos = res.json();
+        // stream.subscribe(res => {
+        //     // A resposta é um objeto do tipo Response
+        //     // nele precisamos acessar alguns métodos/propriedades
+        //     // para verificar o que foi respondido pelo servidor
+        //     // this.fotos = res.text();
+        //     this.fotos = res.json();
+        // });
+
+        // Podemos reduzir o código desta forma
+        http
+        .get('v1/fotos')
+        //funcionalidade map liberada depois do --> import 'rxjs/add/operator/map'; ---> feito em app.module.ts
+        .map( res=> res.json() )
+        .subscribe(foto => {
+            //Com a utilização de map, o metodo subscribe já receberá um objeto foto
+            this.fotos = foto;
+        }, erro => {
+            console.log(erro);
         });
     }
     
