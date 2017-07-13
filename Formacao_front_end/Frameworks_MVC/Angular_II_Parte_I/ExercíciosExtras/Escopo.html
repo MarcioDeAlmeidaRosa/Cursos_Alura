@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Escopo</title>
+    <script>
+        class Recibo {
+
+            constructor(cliente) {
+                this.cliente = cliente;
+                this.lancamentos = [];
+            }
+
+            adicionaLancamento(lancamento) {
+                this.lancamentos.push(lancamento);
+            }
+
+            imprime() {
+                //Uncaught TypeError: Cannot read property 'cliente' of undefined
+                // this.lancamentos.forEach(function(lancamento) {
+                //     console.log(this.cliente + ',' + lancamento.descricao + ',' + lancamento.valor);
+                // });
+
+                this.lancamentos.forEach(lancamento => {
+                    console.log(this.cliente + ',' + lancamento.descricao + ',' + lancamento.valor);
+                });
+            }
+        }
+
+        class Lancamento {
+
+            constructor(descricao, valor) {
+                this.descricao = descricao;
+                this.valor = valor;
+            }
+        }
+
+        // instanciando um Recibo
+        var recibo = new Recibo('Flávio');
+
+        // adicionando lançamentos no recibo 
+        recibo.adicionaLancamento(new Lancamento('Lançamento A', 100.12));
+        recibo.adicionaLancamento(new Lancamento('Lançamento B', 200.00));
+
+        // esta linha não funciona, gera um erro!
+        recibo.imprime();
+    </script>
+</head>
+
+<body>
+    <h1>Escopo de objeto</h1>
+    <h2>Olhe no console</h2>
+</body>
+
+</html>
